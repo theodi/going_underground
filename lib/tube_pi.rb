@@ -2,6 +2,8 @@ require 'sinatra/base'
 require_relative './tube_client'
 
 class TubePi < Sinatra::Base
+  set :public_folder, 'public'
+  
   get '/' do
     @content = '<h1>Hello from TubePi</h1>'
     @title = 'TubePi'
