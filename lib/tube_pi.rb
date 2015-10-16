@@ -17,8 +17,7 @@ class TubePi < Sinatra::Base
   end
 
   get '/weight.json' do
-    date = params[:date]
-    r = TubeClient.new(date: date, car: params[:car], interval: params[:interval]).results
+    r = TubeClient.new(from: params[:from], to: params[:to], car: params[:car], interval: params[:interval]).results
 
     results = r["aggregations"]["2"]["buckets"].map do |r|
       {

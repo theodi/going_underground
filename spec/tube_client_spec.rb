@@ -9,8 +9,8 @@ describe TubeClient do
     expect(client.results["hits"]["total"]).to eq(271844)
   end
 
-  it "returns results for a particular day" do
-    client = TubeClient.new(date: "2015-09-07")
+  it "returns results for a particular period" do
+    client = TubeClient.new(from: "2015-09-07", to: "2015-09-08")
 
     results = client.results
 

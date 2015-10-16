@@ -18,12 +18,18 @@ class TubeClient
     @url = ENV['ES_URL']
     @car = options[:car]
 
-    options[:date] ||= "2015-09-01"
-    date = Time.parse(options[:date]).utc
+    options[:from] ||= "2015-09-01T00:00:00"
+    options[:to]   ||= "2015-09-02T00:00:00"
 
-    @from = date.to_i * 1000
-    @to = @from + 86400000
+    @from = parse_datetime(options[:from])
+    @to = parse_datetime(options[:to])
+
     @interval = options[:interval] || "10m"
+  end
+
+  def parse_datetime(datetime)
+    utc = Time.parse(datetime).utc
+    return utc.to_i * 1000
   end
 
   def search

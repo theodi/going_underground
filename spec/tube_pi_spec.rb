@@ -37,7 +37,7 @@ describe "TubePi" do
   end
 
   it "should allow the date to be specified" do
-    get '/weight.json', date: "23-09-2015"
+    get '/weight.json', from: "23-09-2015", to: "24-09-2015"
 
     json = JSON.parse(last_response.body)
 
@@ -45,12 +45,12 @@ describe "TubePi" do
   end
 
   it "should allow the car to be specified" do
-    expect(TubeClient).to receive(:new).with(date: nil, car: "A", interval: nil).and_call_original
+    expect(TubeClient).to receive(:new).with(from: nil, to: nil, car: "A", interval: nil).and_call_original
     get '/weight.json', car: "A"
   end
 
   it "should allow the interval to be specified" do
-    expect(TubeClient).to receive(:new).with(date: nil, car: nil, interval: "1h").and_call_original
+    expect(TubeClient).to receive(:new).with(from: nil, to: nil, car: nil, interval: "1h").and_call_original
     get '/weight.json', interval: "1h"
   end
 
