@@ -54,6 +54,6 @@ function myGraph(json) {
   nv.addGraph(function() { return chart });
 }
 
-d3.json("/weight.json", myGraph);
+d3.json("/weight.json?<%= @params %>", myGraph);
 
 </script>
