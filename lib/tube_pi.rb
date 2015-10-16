@@ -3,11 +3,15 @@ require_relative './tube_client'
 
 class TubePi < Sinatra::Base
   set :public_folder, 'public'
-  
+
   get '/' do
     @content = '<h1>Hello from TubePi</h1>'
     @title = 'TubePi'
     erb :index, layout: :default
+  end
+
+  get '/weight' do
+    erb :weight, layout: :default
   end
 
   get '/weight.json' do

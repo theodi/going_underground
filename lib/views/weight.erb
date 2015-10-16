@@ -1,0 +1,59 @@
+<div id='chart'>
+  <svg style='height:500px'> </svg>
+</div>
+
+<script>
+
+function myGraph(json) {
+  var chart = nv.models.lineChart().
+                options({
+                  margin: {left: 100, bottom: 100},  //Adjust chart margins to give the x-axis some breathing room.
+                  useInteractiveGuideline: true,  //We want nice looking tooltips and a guideline!
+                  duration: 350,  //how fast do you want the lines to transition?
+                  showLegend: false,       //Show the legend, allowing users to turn on/off line series.
+                  showYAxis: true,        //Show the y-axis
+                  showXAxis: true,        //Show the x-axis
+                  yDomain: [0,100],
+                  xScale: d3.time.scale.utc()
+                });
+
+  timeFormat = d3.time.format("%Y-%m-%dT%H:%M:%S+00:00");
+
+  chart.xAxis     //Chart x-axis settings
+      .axisLabel('Time')
+      .tickFormat(function(d) { return d3.time.format("%H:%M:%S")(new Date(d)) })
+      .rotateLabels(75)
+      .showMaxMin(false)
+      .ticks(d3.time.hour, 1)
+
+  chart.yAxis     //Chart y-axis settings
+      .axisLabel('Weight (%)')
+      .tickFormat(d3.format('.02f'));
+
+  var values = [];
+  json.results.forEach(function(r) {
+    values.push({
+      x: timeFormat.parse(r.timestamp),
+      y: r.value
+    })
+  })
+
+  data = [
+    {
+      values: values,
+      key: 'Weight (%)',
+      color: '#ff7f0e'
+    }
+  ]
+
+  d3.select('#chart svg')    //Select the <svg> element you want to render the chart in.
+      .datum(data)         //Populate the <svg> element with chart data...
+      .call(chart);          //Finally, render the chart!
+
+  nv.utils.windowResize(chart.update);
+  nv.addGraph(function() { return chart });
+}
+
+d3.json("/weight.json", myGraph);
+
+</script>
