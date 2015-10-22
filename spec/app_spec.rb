@@ -1,19 +1,19 @@
 require 'spec_helper'
 require 'rack/test'
 
-require File.expand_path '../../lib/tube_pi.rb', __FILE__
+require File.expand_path '../../lib/sir_handel/app.rb', __FILE__
 
 ENV['RACK_ENV'] = 'test'
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app() TubePi end
+  def app() SirHandel::App end
 end
 
 # For RSpec 2.x
 RSpec.configure { |c| c.include RSpecMixin }
 
-describe "TubePi" do
+describe "SirHandel::App" do
 
   it "should allow accessing the home page" do
     get '/'
@@ -45,12 +45,12 @@ describe "TubePi" do
   end
 
   it "should allow the car to be specified" do
-    expect(TubeClient).to receive(:new).with(from: nil, to: nil, car: "A", interval: nil).and_call_original
+    expect(SirHandel::Client).to receive(:new).with(from: nil, to: nil, car: "A", interval: nil).and_call_original
     get '/weight.json', car: "A"
   end
 
   it "should allow the interval to be specified" do
-    expect(TubeClient).to receive(:new).with(from: nil, to: nil, car: nil, interval: "1h").and_call_original
+    expect(SirHandel::Client).to receive(:new).with(from: nil, to: nil, car: nil, interval: "1h").and_call_original
     get '/weight.json', interval: "1h"
   end
 

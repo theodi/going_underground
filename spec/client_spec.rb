@@ -1,16 +1,16 @@
 require 'spec_helper'
-require 'tube_client'
+require 'sir_handel/client'
 
-describe TubeClient do
+describe SirHandel::Client do
 
   it "returns the correct number of results" do
-    client = TubeClient.new
+    client = SirHandel::Client.new
 
     expect(client.results["hits"]["total"]).to eq(271844)
   end
 
   it "returns results for a particular period" do
-    client = TubeClient.new(from: "2015-09-07", to: "2015-09-08")
+    client = SirHandel::Client.new(from: "2015-09-07", to: "2015-09-08")
 
     results = client.results
 
@@ -19,13 +19,13 @@ describe TubeClient do
   end
 
   it "returns results for a given car" do
-    client = TubeClient.new(car: "A")
+    client = SirHandel::Client.new(car: "A")
 
     expect(client.address_query).to eq("memoryAddress:2E64930W")
   end
 
   it "returns a given interval" do
-    client = TubeClient.new(interval: "1h")
+    client = SirHandel::Client.new(interval: "1h")
 
     results = client.results
 
