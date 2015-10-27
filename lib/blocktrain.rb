@@ -5,5 +5,6 @@ require 'date'
 
 require 'blocktrain/version'
 require 'blocktrain/client'
+require 'blocktrain/aggregation'
 
 Dotenv.load

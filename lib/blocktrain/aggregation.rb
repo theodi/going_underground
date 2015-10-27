@@ -9,13 +9,16 @@ module Blocktrain
     }
 
     def initialize(options = {})
-      @url = ENV['ES_URL']
       @car = options[:car]
 
       @from = parse_datetime(options.fetch(:from, '2015-09-01T00:00:00'))
       @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
 
       @interval = options.fetch(:interval, '10m')
+    end
+
+    def results
+      Client.results(body)['aggregations']
     end
 
     def parse_datetime(datetime)
