@@ -36,26 +36,26 @@ module Blocktrain
 
     def query
       {
-        'filtered' => {
-          'query' => {
-            'query_string' => {
-              'analyze_wildcard' =>true,
-              'query' =>address_query
+        filtered:  {
+          query:  {
+            query_string:  {
+              analyze_wildcard: true,
+              query: address_query
             }
           },
-          'filter' => {
-            'bool' => {
-              'must' => [
+          filter:  {
+            bool:  {
+              must:  [
                 {
-                  'range' => {
-                    'timeStamp' => {
-                      'gte' =>@from,
-                      'lte' =>@to
+                  range:  {
+                    timeStamp:  {
+                      gte: @from,
+                      lte: @to
                     }
                   }
                 }
               ],
-              'must_not' => []
+              must_not:  []
             }
           }
         }
@@ -64,22 +64,22 @@ module Blocktrain
 
     def aggs
       {
-         'weight_chart' => {
-           'date_histogram' => {
-             'field' => 'timeStamp',
-             'interval' => @interval,
-             'pre_zone' => '+01:00',
-             'pre_zone_adjust_large_interval' =>true,
-             'min_doc_count' => 1,
-             'extended_bounds' => {
-               'min' =>@from,
-               'max' =>@to
+         weight_chart:  {
+           date_histogram:  {
+             field:  'timeStamp',
+             interval:  @interval,
+             pre_zone:  '+01:00',
+             pre_zone_adjust_large_interval: true,
+             min_doc_count:  1,
+             extended_bounds:  {
+               min: @from,
+               max: @to
              }
           },
-          'aggregations' => {
-            'weight' => {
-              'avg' => {
-                'field' => 'value'
+          aggregations:  {
+            weight:  {
+              avg:  {
+                field:  'value'
               }
             }
           }
@@ -89,8 +89,8 @@ module Blocktrain
 
     def body
       {
-        'query' => query,
-        'size' =>0,
+        query:  query,
+        size: 0,
         'aggregations' => aggs,
       }
     end
