@@ -1,5 +1,9 @@
-require "blocktrain/version"
+require 'curb'
+require 'dotenv'
+require 'json'
+require 'date'
 
-module Blocktrain
-  # Your code goes here...
-end
+require 'blocktrain/version'
+require 'blocktrain/client'
+
+Dotenv.load
