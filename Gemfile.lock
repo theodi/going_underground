@@ -2,6 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     awesome_print (1.6.1)
+    blocktrain (0.1.2)
+      curb (~> 0.8)
+      dotenv (~> 2.0)
     coderay (1.1.0)
     curb (0.8.8)
     daemons (1.2.3)
@@ -48,7 +51,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  curb
+  blocktrain
   dotenv
   pry
   rack-test
@@ -56,3 +59,6 @@ DEPENDENCIES
   rspec
   sinatra
   thin
+
+BUNDLED WITH
+   1.10.6

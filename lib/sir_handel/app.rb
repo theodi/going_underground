@@ -1,5 +1,6 @@
 require 'sinatra/base'
-require_relative './client'
+require 'blocktrain'
+require 'json'
 
 module SirHandel
   class App < Sinatra::Base
@@ -20,12 +21,19 @@ module SirHandel
     get '/weight.json' do
       headers 'Access-Control-Allow-Origin' => '*'
 
-      r = Client.new(from: params[:from], to: params[:to], car: params[:car], interval: params[:interval]).results
+      search = {
+        from: params.fetch('from', '2015-09-01 00:00:00Z'),
+        to: params.fetch('to', '2015-09-02 00:00:00Z'),
+        interval: params.fetch('interval', '1h'),
+        car: params['car']
+      }
 
-      results = r["aggregations"]["2"]["buckets"].map do |r|
+      r = Blocktrain::Aggregations::TrainWeightAggregation.new(search).results
+
+      results = r["weight_chart"]["buckets"].map do |r|
         {
-          "timestamp" => DateTime.strptime((r["key"] + 3600000).to_s, "%Q"),
-          "value" => r["1"]["value"]
+          "timestamp" => DateTime.strptime(r["key"].to_s, "%Q"),
+          "value" => r["weight"]["value"]
         }
       end
 

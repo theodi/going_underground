@@ -1,16 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.1.4'
-
+gem 'awesome_print'
+gem 'blocktrain'
+gem 'dotenv'
+gem 'rake'
 gem 'sinatra'
 gem 'thin'
-gem 'rake'
-gem 'curb'
-gem 'dotenv'
-gem 'awesome_print'
 
 group :test do
   gem 'pry'
-  gem 'rspec'
   gem 'rack-test'
+  gem 'rspec'
 end
