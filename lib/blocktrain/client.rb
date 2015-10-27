@@ -2,20 +2,20 @@ module Blocktrain
   class Client
 
     CAR_CODES = {
-      "A" => "2E64930W",
-      "B" => "2E64932W",
-      "C" => "2E64934W",
-      "D" => "2E64936W"
+      'A' => '2E64930W',
+      'B' => '2E64932W',
+      'C' => '2E64934W',
+      'D' => '2E64936W'
     }
 
     def initialize(options = {})
       @url = ENV['ES_URL']
       @car = options[:car]
 
-      @from = parse_datetime(options.fetch(:from, "2015-09-01T00:00:00"))
-      @to = parse_datetime(options.fetch(:to, "2015-09-02T00:00:00"))
+      @from = parse_datetime(options.fetch(:from, '2015-09-01T00:00:00'))
+      @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
 
-      @interval = options.fetch(:interval, "10m")
+      @interval = options.fetch(:interval, '10m')
     end
 
     def parse_datetime(datetime)
@@ -36,7 +36,7 @@ module Blocktrain
 
     def address_query
       if @car.nil?
-        CAR_CODES.map { |code| "memoryAddress:#{code}" }.join(" OR ")
+        CAR_CODES.map { |code| "memoryAddress:#{code}" }.join(' OR ')
       else
         "memoryAddress:#{CAR_CODES[@car]}"
       end
@@ -44,26 +44,26 @@ module Blocktrain
 
     def query
       {
-        "filtered" => {
-          "query" => {
-            "query_string" => {
-              "analyze_wildcard" =>true,
-              "query" =>address_query
+        'filtered' => {
+          'query' => {
+            'query_string' => {
+              'analyze_wildcard' =>true,
+              'query' =>address_query
             }
           },
-          "filter" => {
-            "bool" => {
-              "must" => [
+          'filter' => {
+            'bool' => {
+              'must' => [
                 {
-                  "range" => {
-                    "timeStamp" => {
-                      "gte" =>@from,
-                      "lte" =>@to
+                  'range' => {
+                    'timeStamp' => {
+                      'gte' =>@from,
+                      'lte' =>@to
                     }
                   }
                 }
               ],
-              "must_not" => []
+              'must_not' => []
             }
           }
         }
@@ -72,22 +72,22 @@ module Blocktrain
 
     def aggs
       {
-         "weight_chart" => {
-           "date_histogram" => {
-             "field" => "timeStamp",
-             "interval" => @interval,
-             "pre_zone" => "+01:00",
-             "pre_zone_adjust_large_interval" =>true,
-             "min_doc_count" => 1,
-             "extended_bounds" => {
-               "min" =>@from,
-               "max" =>@to
+         'weight_chart' => {
+           'date_histogram' => {
+             'field' => 'timeStamp',
+             'interval' => @interval,
+             'pre_zone' => '+01:00',
+             'pre_zone_adjust_large_interval' =>true,
+             'min_doc_count' => 1,
+             'extended_bounds' => {
+               'min' =>@from,
+               'max' =>@to
              }
           },
-          "aggregations" => {
-            "weight" => {
-              "avg" => {
-                "field" => "value"
+          'aggregations' => {
+            'weight' => {
+              'avg' => {
+                'field' => 'value'
               }
             }
           }
@@ -97,9 +97,9 @@ module Blocktrain
 
     def body
       {
-        "query" => query,
-        "size" =>0,
-        "aggregations" => aggs,
+        'query' => query,
+        'size' =>0,
+        'aggregations' => aggs,
       }
     end
   end
