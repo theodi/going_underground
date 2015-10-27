@@ -39,10 +39,10 @@ function myGraph(json) {
 
   chart.xAxis     //Chart x-axis settings
       .axisLabel('Time')
-      .tickFormat(function(d) { return d3.time.format("%H:%M:%S")(new Date(d)) })
+      .tickFormat(function(d) { return d3.time.format("%Y-%m-%d")(new Date(d)) })
       .rotateLabels(75)
       .showMaxMin(false)
-      .ticks(d3.time.hour, 1)
+      .ticks(d3.time.day, 1)
 
   chart.yAxis     //Chart y-axis settings
       .axisLabel('Weight (%)')
