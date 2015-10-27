@@ -1,5 +1,6 @@
 module Blocktrain
   describe Client do
+    
     let(:query) {
       JSON.parse File.read 'spec/support/fixtures/query.json'
     }
