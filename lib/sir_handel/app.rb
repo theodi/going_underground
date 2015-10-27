@@ -17,6 +17,7 @@ module SirHandel
     end
 
     get '/weight.json' do
+      content_type :json
       headers 'Access-Control-Allow-Origin' => '*'
 
       search = {
