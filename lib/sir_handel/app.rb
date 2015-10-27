@@ -13,8 +13,6 @@ module SirHandel
     end
 
     get '/weight' do
-      @params = URI.encode_www_form(params.delete_if { |k,v| v.nil? })
-
       erb :weight, layout: :default
     end
 
