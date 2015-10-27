@@ -37,4 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 2.9'
   spec.add_development_dependency 'webmock', '~> 1.21'
   spec.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'terminal-notifier-guard', '~> 1.6'
 end
