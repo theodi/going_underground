@@ -18,8 +18,8 @@ http_interactions:
       - nginx/1.4.6 (Ubuntu)
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 27 Oct 2015 15:11:33 GMT
-      - Tue, 27 Oct 2015 15:11:33 GMT
+      - Tue, 27 Oct 2015 15:53:40 GMT
+      - Tue, 27 Oct 2015 15:53:40 GMT
       Content-Type:
       - application/json; charset=UTF-8
       - text/html
@@ -35,7 +35,7 @@ http_interactions:
       - kibana
     body:
       encoding: ASCII-8BIT
-      string: '{"took":4,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":0,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[]}}}'
+      string: '{"took":3,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":0,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[]}}}'
     http_version: 
-  recorded_at: Tue, 27 Oct 2015 15:12:34 GMT
+  recorded_at: Tue, 27 Oct 2015 15:54:41 GMT
 recorded_with: VCR 2.9.3

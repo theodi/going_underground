@@ -18,8 +18,8 @@ http_interactions:
       - nginx/1.4.6 (Ubuntu)
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 27 Oct 2015 14:09:25 GMT
-      - Tue, 27 Oct 2015 14:09:27 GMT
+      - Tue, 27 Oct 2015 15:54:00 GMT
+      - Tue, 27 Oct 2015 15:54:02 GMT
       Content-Type:
       - application/json; charset=UTF-8
       - text/html
@@ -35,7 +35,7 @@ http_interactions:
       - kibana
     body:
       encoding: ASCII-8BIT
-      string: '{"took":1827,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":317565,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[{"key_as_string":"2015-09-01T10:00:00.000Z","key":1441101600000,"doc_count":61782,"weight":{"value":2357.2381761678157}},{"key_as_string":"2015-09-01T10:10:00.000Z","key":1441102200000,"doc_count":53884,"weight":{"value":2339.0039343775516}},{"key_as_string":"2015-09-01T10:20:00.000Z","key":1441102800000,"doc_count":50435,"weight":{"value":2428.2594031922276}},{"key_as_string":"2015-09-01T10:30:00.000Z","key":1441103400000,"doc_count":53051,"weight":{"value":2273.1923620666907}},{"key_as_string":"2015-09-01T10:40:00.000Z","key":1441104000000,"doc_count":55138,"weight":{"value":2366.833653741521}},{"key_as_string":"2015-09-01T10:50:00.000Z","key":1441104600000,"doc_count":43275,"weight":{"value":2502.42290005777}}]}}}'
+      string: '{"took":1706,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":317565,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[{"key_as_string":"2015-09-01T10:00:00.000Z","key":1441101600000,"doc_count":61782,"weight":{"value":2357.2381761678157}},{"key_as_string":"2015-09-01T10:10:00.000Z","key":1441102200000,"doc_count":53884,"weight":{"value":2339.0039343775516}},{"key_as_string":"2015-09-01T10:20:00.000Z","key":1441102800000,"doc_count":50435,"weight":{"value":2428.2594031922276}},{"key_as_string":"2015-09-01T10:30:00.000Z","key":1441103400000,"doc_count":53051,"weight":{"value":2273.1923620666907}},{"key_as_string":"2015-09-01T10:40:00.000Z","key":1441104000000,"doc_count":55138,"weight":{"value":2366.833653741521}},{"key_as_string":"2015-09-01T10:50:00.000Z","key":1441104600000,"doc_count":43275,"weight":{"value":2502.42290005777}}]}}}'
     http_version: 
-  recorded_at: Tue, 27 Oct 2015 14:10:28 GMT
+  recorded_at: Tue, 27 Oct 2015 15:55:03 GMT
 recorded_with: VCR 2.9.3
