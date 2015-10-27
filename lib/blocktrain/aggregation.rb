@@ -2,10 +2,10 @@ module Blocktrain
   class Aggregation
 
     CAR_CODES = {
-      'A' => '2E64930W',
-      'B' => '2E64932W',
-      'C' => '2E64934W',
-      'D' => '2E64936W'
+      A: '2E64930W',
+      B: '2E64932W',
+      C: '2E64934W',
+      D: '2E64936W'
     }
 
     def initialize(options = {})
@@ -36,26 +36,26 @@ module Blocktrain
 
     def query
       {
-        filtered:  {
-          query:  {
-            query_string:  {
+        filtered: {
+          query: {
+            query_string: {
               analyze_wildcard: true,
               query: address_query
             }
           },
-          filter:  {
-            bool:  {
-              must:  [
+          filter: {
+            bool: {
+              must: [
                 {
-                  range:  {
-                    timeStamp:  {
+                  range: {
+                    timeStamp: {
                       gte: @from,
                       lte: @to
                     }
                   }
                 }
               ],
-              must_not:  []
+              must_not: []
             }
           }
         }
@@ -64,34 +64,34 @@ module Blocktrain
 
     def aggs
       {
-         weight_chart:  {
-           date_histogram:  {
-             field:  'timeStamp',
-             interval:  @interval,
-             pre_zone:  '+01:00',
+         weight_chart: {
+           date_histogram: {
+             field: 'timeStamp',
+             interval: @interval,
+             pre_zone: '+01:00',
              pre_zone_adjust_large_interval: true,
-             min_doc_count:  1,
-             extended_bounds:  {
+             min_doc_count: 1,
+             extended_bounds: {
                min: @from,
                max: @to
              }
           },
-          aggregations:  {
-            weight:  {
-              avg:  {
+          aggregations: {
+            weight: {
+              avg: {
                 field:  'value'
               }
             }
           }
-        },
+        }
       }
     end
 
     def body
       {
-        query:  query,
+        query: query,
         size: 0,
-        'aggregations' => aggs,
+        aggregations: aggs,
       }
     end
   end
