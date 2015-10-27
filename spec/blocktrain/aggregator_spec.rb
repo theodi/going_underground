@@ -11,14 +11,14 @@ module Blocktrain
         expect(aggregations).to have_key('weight_chart')
       end
 
-        it 'has 6 buckets in result', :vcr do
-          expect(aggregations['weight_chart']['buckets'].count).to eql(6)
-        end
-
-        it 'has a value called weight', :vcr do
-          expect(aggregations['weight_chart']['buckets'].first).to have_key('weight')
-        end
+      it 'has 6 buckets in result', :vcr do
+        expect(aggregations['weight_chart']['buckets'].count).to eql(6)
       end
 
+      it 'has a value called weight', :vcr do
+        expect(aggregations['weight_chart']['buckets'].first).to have_key('weight')
+      end
+
+    end
   end
 end
