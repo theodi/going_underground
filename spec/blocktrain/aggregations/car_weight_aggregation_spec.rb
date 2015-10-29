@@ -9,12 +9,11 @@ module Blocktrain
         }
 
         it 'has an aggregation called weight_chart' do
-          binding.pry
-          expect(aggregations).to have_key 'weight'
-          expect(aggregations['weight']).to have_key 'buckets'
-          expect(aggregations['weight']['buckets'].count).to eq 4
-          expect(aggregations['weight']['buckets'][0].keys).to include 'max_weight', 'min_weight', 'avg_weight'
-          expect(aggregations['weight']['buckets'][2]['avg_weight']['value']).to be_within(0.1).of 22.7
+          expect(aggregations).to have_key 'weight_chart'
+          expect(aggregations['weight_chart']).to have_key 'buckets'
+          expect(aggregations['weight_chart']['buckets'].count).to eq 6
+          expect(aggregations['weight_chart']['buckets'][0]['weight']['buckets'][0].keys).to include 'max_weight', 'min_weight', 'avg_weight'
+          expect(aggregations['weight_chart']['buckets'][2]['weight']['buckets'][2]['avg_weight']['value']).to be_within(0.1).of 10.7
         end
 
       end
