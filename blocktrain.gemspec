@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['ops@theodi.org']
 
   spec.summary       = %q{Train train train}
-  spec.description   = %q{Train if fools}
+  spec.description   = %q{Train of fools}
   spec.homepage      = 'http://github.org/theodi/blocktrain'
   spec.license       = 'MIT'
 
