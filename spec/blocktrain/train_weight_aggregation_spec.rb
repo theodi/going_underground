@@ -19,6 +19,10 @@ module Blocktrain
         expect(aggregations['weight_chart']['buckets'].first).to have_key('weight')
       end
 
+      it 'has the expected weight', :vcr do
+        expect(aggregations['weight_chart']['buckets'].first['weight']['value']).to be_within(0.1).of 32.9
+      end
+
     end
   end
 end
