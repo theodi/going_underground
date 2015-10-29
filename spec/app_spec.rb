@@ -13,7 +13,7 @@ end
 # For RSpec 2.x
 RSpec.configure { |c| c.include RSpecMixin }
 
-describe "SirHandel::App" do
+describe "SirHandel::App", :vcr do
 
   it "should allow accessing the home page" do
     get '/'

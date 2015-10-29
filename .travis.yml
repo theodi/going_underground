@@ -1,3 +1,7 @@
 language: ruby
 rvm:
 - 2.1.4
+env:
+  global:
+    TUBE_INDEX: train_data
+    ES_URL: http://elastic.search/
