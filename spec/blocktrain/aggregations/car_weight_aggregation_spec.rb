@@ -9,6 +9,7 @@ module Blocktrain
         }
 
         it 'has an aggregation called weight_chart' do
+          binding.pry
           expect(aggregations).to have_key 'weight'
           expect(aggregations['weight']).to have_key 'buckets'
           expect(aggregations['weight']['buckets'].count).to eq 4

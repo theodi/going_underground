@@ -4,3 +4,8 @@ require_relative 'support/vcr_setup'
 
 require 'coveralls'
 Coveralls.wear!
+
+begin
+  require 'pry'
+rescue LoadError
+end
