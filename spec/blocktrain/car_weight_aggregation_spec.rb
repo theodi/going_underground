@@ -1,5 +1,5 @@
 module Blocktrain
-  describe OtherAggregation do
+  describe CarWeightAggregation do
 
     describe 'hour long histogram' do
 

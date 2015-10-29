@@ -1,5 +1,5 @@
 module Blocktrain
-  describe Aggregation do
+  describe TrainWeightAggregation do
 
     describe 'hour long histogram' do
 
