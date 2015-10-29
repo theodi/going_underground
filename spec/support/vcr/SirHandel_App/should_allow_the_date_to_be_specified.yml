@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"analyze_wildcard":true,"query":"memoryAddress:2E64930W
+        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442966400000,"lte":1443052800000}}}]}}}},"size":0,"aggregations":{"weight_chart":{"date_histogram":{"field":"timeStamp","interval":"1h","pre_zone":"+01:00","pre_zone_adjust_large_interval":true,"min_doc_count":1,"extended_bounds":{"min":1442966400000,"max":1443052800000}},"aggregations":{"weight":{"avg":{"field":"value"}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Thu, 29 Oct 2015 18:04:35 GMT
+      - Thu, 29 Oct 2015 18:04:35 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      - text/html
+      Content-Length:
+      - '203'
+      - '2580'
+      Connection:
+      - keep-alive
+      - keep-alive
+      Www-Authenticate:
+      - Basic realm="Restricted Access"
+      X-App-Name:
+      - kibana
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":37,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":251558,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[{"key_as_string":"2015-09-23T04:00:00.000Z","key":1442980800000,"doc_count":3602,"weight":{"value":15.5941143808995}},{"key_as_string":"2015-09-23T05:00:00.000Z","key":1442984400000,"doc_count":10794,"weight":{"value":14.738929034648878}},{"key_as_string":"2015-09-23T06:00:00.000Z","key":1442988000000,"doc_count":17284,"weight":{"value":30.975410784540614}},{"key_as_string":"2015-09-23T07:00:00.000Z","key":1442991600000,"doc_count":17437,"weight":{"value":51.43132419567586}},{"key_as_string":"2015-09-23T08:00:00.000Z","key":1442995200000,"doc_count":17237,"weight":{"value":29.259615942449383}},{"key_as_string":"2015-09-23T09:00:00.000Z","key":1442998800000,"doc_count":7003,"weight":{"value":11.775953162930172}},{"key_as_string":"2015-09-23T10:00:00.000Z","key":1443002400000,"doc_count":2597,"weight":{"value":10.966499807470157}},{"key_as_string":"2015-09-23T11:00:00.000Z","key":1443006000000,"doc_count":17007,"weight":{"value":15.450285176691951}},{"key_as_string":"2015-09-23T12:00:00.000Z","key":1443009600000,"doc_count":16092,"weight":{"value":15.199664429530202}},{"key_as_string":"2015-09-23T13:00:00.000Z","key":1443013200000,"doc_count":15764,"weight":{"value":14.960669880740928}},{"key_as_string":"2015-09-23T14:00:00.000Z","key":1443016800000,"doc_count":11892,"weight":{"value":13.676841574167508}},{"key_as_string":"2015-09-23T15:00:00.000Z","key":1443020400000,"doc_count":17129,"weight":{"value":29.088738396870802}},{"key_as_string":"2015-09-23T16:00:00.000Z","key":1443024000000,"doc_count":19276,"weight":{"value":45.96020958705125}},{"key_as_string":"2015-09-23T17:00:00.000Z","key":1443027600000,"doc_count":17660,"weight":{"value":45.253850509626275}},{"key_as_string":"2015-09-23T18:00:00.000Z","key":1443031200000,"doc_count":17504,"weight":{"value":28.58123857404022}},{"key_as_string":"2015-09-23T19:00:00.000Z","key":1443034800000,"doc_count":14117,"weight":{"value":15.853297442799462}},{"key_as_string":"2015-09-23T20:00:00.000Z","key":1443038400000,"doc_count":15813,"weight":{"value":18.352494782773668}},{"key_as_string":"2015-09-23T21:00:00.000Z","key":1443042000000,"doc_count":11404,"weight":{"value":12.417397404419502}},{"key_as_string":"2015-09-23T22:00:00.000Z","key":1443045600000,"doc_count":963,"weight":{"value":10.269989615784008}},{"key_as_string":"2015-09-23T23:00:00.000Z","key":1443049200000,"doc_count":983,"weight":{"value":9.533062054933875}}]}}}'
+    http_version: 
+  recorded_at: Thu, 29 Oct 2015 18:05:42 GMT
+recorded_with: VCR 2.9.3

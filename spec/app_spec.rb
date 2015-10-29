@@ -13,7 +13,7 @@ end
 # For RSpec 2.x
 RSpec.configure { |c| c.include RSpecMixin }
 
-describe "SirHandel::App" do
+describe "SirHandel::App", :vcr do
 
   it "should allow accessing the home page" do
     get '/'
@@ -27,30 +27,30 @@ describe "SirHandel::App" do
 
     expect(json["results"].first).to eq({
       "timestamp"=>"2015-09-01T00:00:00+00:00",
-      "value"=>8.450292397660819
+      "value"=>5.972153972153972
     })
 
     expect(json["results"].last).to eq({
-      "timestamp"=>"2015-09-01T23:50:00+00:00",
-      "value"=>7.500754147812971
+      "timestamp"=>"2015-09-01T23:00:00+00:00",
+      "value"=>10.33873320537428
     })
   end
 
   it "should allow the date to be specified" do
-    get '/weight.json', from: "23-09-2015", to: "24-09-2015"
+    get '/weight.json', from: "2015-09-23 00:00:00Z", to: "2015-09-24 00:00:00Z"
 
     json = JSON.parse(last_response.body)
 
-    expect(json["results"].first["timestamp"]).to eq("2015-09-23T00:00:00+00:00")
+    expect(json["results"].first["timestamp"]).to eq("2015-09-23T04:00:00+00:00")
   end
 
   it "should allow the car to be specified" do
-    expect(SirHandel::Client).to receive(:new).with(from: nil, to: nil, car: "A", interval: nil).and_call_original
+    expect(Blocktrain::Aggregations::TrainWeightAggregation).to receive(:new).with(hash_including(car: "A")).and_call_original
     get '/weight.json', car: "A"
   end
 
   it "should allow the interval to be specified" do
-    expect(SirHandel::Client).to receive(:new).with(from: nil, to: nil, car: nil, interval: "1h").and_call_original
+    expect(Blocktrain::Aggregations::TrainWeightAggregation).to receive(:new).with(hash_including(interval: "1h")).and_call_original
     get '/weight.json', interval: "1h"
   end
 

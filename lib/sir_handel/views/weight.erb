@@ -1,15 +1,15 @@
 <form class="form-inline" action="/weight" method="get">
   <div class="form-group">
     <label for="from">From</label>
-    <input type="text" class="form-control" id="from" name="from">
+    <input type="text" class="form-control" id="from" name="from" value="<%= params[:from] %>">
   </div>
   <div class="form-group">
     <label for="to">To</label>
-    <input type="text" class="form-control" id="to" name="to">
+    <input type="text" class="form-control" id="to" name="to" value="<%= params[:to] %>">
   </div>
   <div class="form-group">
     <label for="interval">Interval</label>
-    <input type="text" class="form-control" id="interval" name="interval" style="width: 75px">
+    <input type="text" class="form-control" id="interval" name="interval" value="<%= params[:interval] %>" style="width: 75px">
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -39,10 +39,10 @@ function myGraph(json) {
 
   chart.xAxis     //Chart x-axis settings
       .axisLabel('Time')
-      .tickFormat(function(d) { return d3.time.format("%H:%M:%S")(new Date(d)) })
+      .tickFormat(function(d) { return d3.time.format("%Y-%m-%d")(new Date(d)) })
       .rotateLabels(75)
       .showMaxMin(false)
-      .ticks(d3.time.hour, 1)
+      .ticks(d3.time.day, 1)
 
   chart.yAxis     //Chart y-axis settings
       .axisLabel('Weight (%)')
@@ -72,6 +72,6 @@ function myGraph(json) {
   nv.addGraph(function() { return chart });
 }
 
-d3.json("/weight.json?<%= @params %>", myGraph);
+d3.json('<%= url('/weight.json') + '?' + URI.encode_www_form(params) %>', myGraph);
 
 </script>
