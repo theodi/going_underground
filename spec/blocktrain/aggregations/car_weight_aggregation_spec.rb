@@ -13,7 +13,7 @@ module Blocktrain
           expect(aggregations['weight_chart']).to have_key 'buckets'
           expect(aggregations['weight_chart']['buckets'].count).to eq 6
           expect(aggregations['weight_chart']['buckets'][0]['weight']['buckets'][0].keys).to include 'max_weight', 'min_weight', 'avg_weight'
-          expect(aggregations['weight_chart']['buckets'][2]['weight']['buckets'][2]['avg_weight']['value']).to be_within(0.1).of 10.7
+          expect(aggregations['weight_chart']['buckets'][2]['weight']['buckets'][2]['avg_weight']['value']).to be_within(0.1).of 4.04
         end
 
       end
