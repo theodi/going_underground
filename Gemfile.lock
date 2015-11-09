@@ -3,7 +3,7 @@ GEM
   specs:
     addressable (2.3.8)
     awesome_print (1.6.1)
-    blocktrain (0.1.2)
+    blocktrain (0.1.4)
       curb (~> 0.8)
       dotenv (~> 2.0)
     coderay (1.1.0)
