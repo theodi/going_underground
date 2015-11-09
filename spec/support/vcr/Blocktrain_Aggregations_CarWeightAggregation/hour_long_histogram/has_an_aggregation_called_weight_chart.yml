@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"analyze_wildcard":true,"query":"memoryAddress:2E64930W
+        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"size":0,"aggregations":{"weight_chart":{"date_histogram":{"field":"timeStamp","interval":"10m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441101600000,"max":1441105200000}},"aggregations":{"weight":{"terms":{"field":"memoryAddress"},"aggregations":{"avg_weight":{"avg":{"field":"value"}},"max_weight":{"max":{"field":"value"}},"min_weight":{"min":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 09 Nov 2015 16:53:47 GMT
+      - Mon, 09 Nov 2015 16:53:48 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '4281'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":6,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":5459,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[{"key_as_string":"2015-09-01T11:00:00.000+01:00","key":1441101600000,"doc_count":1733,"weight":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E64930W","doc_count":455,"max_weight":{"value":58.0},"avg_weight":{"value":41.41318681318681},"min_weight":{"value":19.0}},{"key":"2E64936W","doc_count":439,"max_weight":{"value":46.0},"avg_weight":{"value":28.19362186788155},"min_weight":{"value":16.0}},{"key":"2E64932W","doc_count":435,"max_weight":{"value":62.0},"avg_weight":{"value":47.38850574712644},"min_weight":{"value":34.0}},{"key":"2E64934W","doc_count":404,"max_weight":{"value":65.0},"avg_weight":{"value":33.58910891089109},"min_weight":{"value":13.0}}]}},{"key_as_string":"2015-09-01T11:10:00.000+01:00","key":1441102200000,"doc_count":1419,"weight":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E64930W","doc_count":386,"max_weight":{"value":56.0},"avg_weight":{"value":23.476683937823836},"min_weight":{"value":4.0}},{"key":"2E64936W","doc_count":368,"max_weight":{"value":43.0},"avg_weight":{"value":22.619565217391305},"min_weight":{"value":9.0}},{"key":"2E64934W","doc_count":345,"max_weight":{"value":48.0},"avg_weight":{"value":21.2},"min_weight":{"value":4.0}},{"key":"2E64932W","doc_count":320,"max_weight":{"value":42.0},"avg_weight":{"value":18.4125},"min_weight":{"value":0.0}}]}},{"key_as_string":"2015-09-01T11:20:00.000+01:00","key":1441102800000,"doc_count":195,"weight":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E64936W","doc_count":52,"max_weight":{"value":30.0},"avg_weight":{"value":22.98076923076923},"min_weight":{"value":17.0}},{"key":"2E64932W","doc_count":51,"max_weight":{"value":14.0},"avg_weight":{"value":10.627450980392156},"min_weight":{"value":7.0}},{"key":"2E64930W","doc_count":46,"max_weight":{"value":9.0},"avg_weight":{"value":4.043478260869565},"min_weight":{"value":0.0}},{"key":"2E64934W","doc_count":46,"max_weight":{"value":34.0},"avg_weight":{"value":25.630434782608695},"min_weight":{"value":18.0}}]}},{"key_as_string":"2015-09-01T11:30:00.000+01:00","key":1441103400000,"doc_count":1301,"weight":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E64930W","doc_count":355,"max_weight":{"value":85.0},"avg_weight":{"value":49.52957746478873},"min_weight":{"value":3.0}},{"key":"2E64932W","doc_count":322,"max_weight":{"value":59.0},"avg_weight":{"value":33.493788819875775},"min_weight":{"value":7.0}},{"key":"2E64936W","doc_count":314,"max_weight":{"value":39.0},"avg_weight":{"value":25.420382165605094},"min_weight":{"value":13.0}},{"key":"2E64934W","doc_count":310,"max_weight":{"value":47.0},"avg_weight":{"value":30.970967741935485},"min_weight":{"value":19.0}}]}},{"key_as_string":"2015-09-01T11:40:00.000+01:00","key":1441104000000,"doc_count":169,"weight":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E64930W","doc_count":46,"max_weight":{"value":22.0},"avg_weight":{"value":17.804347826086957},"min_weight":{"value":12.0}},{"key":"2E64934W","doc_count":42,"max_weight":{"value":9.0},"avg_weight":{"value":3.9761904761904763},"min_weight":{"value":1.0}},{"key":"2E64936W","doc_count":41,"max_weight":{"value":8.0},"avg_weight":{"value":4.536585365853658},"min_weight":{"value":1.0}},{"key":"2E64932W","doc_count":40,"max_weight":{"value":16.0},"avg_weight":{"value":12.85},"min_weight":{"value":8.0}}]}},{"key_as_string":"2015-09-01T11:50:00.000+01:00","key":1441104600000,"doc_count":642,"weight":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E64930W","doc_count":209,"max_weight":{"value":19.0},"avg_weight":{"value":12.033492822966506},"min_weight":{"value":4.0}},{"key":"2E64932W","doc_count":179,"max_weight":{"value":15.0},"avg_weight":{"value":3.888268156424581},"min_weight":{"value":0.0}},{"key":"2E64934W","doc_count":150,"max_weight":{"value":10.0},"avg_weight":{"value":3.046666666666667},"min_weight":{"value":0.0}},{"key":"2E64936W","doc_count":104,"max_weight":{"value":10.0},"avg_weight":{"value":2.6346153846153846},"min_weight":{"value":0.0}}]}}]}}}'
+    http_version: 
+  recorded_at: Mon, 09 Nov 2015 16:53:48 GMT
+recorded_with: VCR 2.9.3
