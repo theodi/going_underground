@@ -2,7 +2,8 @@ module Blocktrain
   class Aggregation
     def initialize(options = {})
       @lookups = Lookups.instance.lookups
-      @car = options[:car]
+      @signal = options[:signal]
+      @sub_signal = options[:sub_signal]
 
       @from = parse_datetime(options.fetch(:from, '2015-09-01T00:00:00'))
       @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
@@ -20,10 +21,14 @@ module Blocktrain
     end
 
     def address_query
-      if @car.nil?
-        @lookups['car_codes'].map { |car, code| "memoryAddress:#{code}" }.join(' OR ')
+      if @lookups[@signal].is_a?(Hash)
+        if @sub_signal.nil?
+          @lookups[@signal].map { |k, v| "memoryAddress:#{v}" }.join(' OR ')
+        else
+          "memoryAddress:#{@lookups[@signal][@sub_signal]}"
+        end
       else
-        "memoryAddress:#{@lookups['car_codes'][@car]}"
+        "memoryAddress:#{@lookups[@signal]}"
       end
     end
 
