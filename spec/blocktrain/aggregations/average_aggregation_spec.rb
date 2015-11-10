@@ -2,7 +2,7 @@ module Blocktrain
   module Aggregations
     describe AverageAggregation do
 
-      include_examples "aggregations", described_class
+      include_examples "histogram aggregations", described_class
       
       describe 'hour long histogram' do
 

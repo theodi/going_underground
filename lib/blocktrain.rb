@@ -10,6 +10,7 @@ require 'blocktrain/client'
 require 'blocktrain/lookups'
 require 'blocktrain/query'
 require 'blocktrain/aggregation'
+require 'blocktrain/aggregations/histogram_aggregation'
 require 'blocktrain/aggregations/average_aggregation'
 require 'blocktrain/aggregations/min_max_aggregation'
 
