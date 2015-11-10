@@ -3,6 +3,7 @@ module Blocktrain
 
     def initialize(options = {})
       @lookups = Lookups.instance.lookups
+      @memory_address = options.fetch(:memory_address, nil)
       @signal = options[:signal]
       @sub_signal = options[:sub_signal]
 
@@ -26,6 +27,8 @@ module Blocktrain
     end
 
     def address_query
+      # Look up memory addresses directly if specified
+      return "memoryAddress:#{@memory_address}" if @memory_address
       # No query if there isn't a signal specified
       return nil if @signal.nil?
       # Find the right memory address
