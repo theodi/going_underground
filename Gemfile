@@ -13,4 +13,7 @@ group :test do
   gem 'rspec'
   gem 'vcr'
   gem 'webmock'
+  gem 'capybara'
+  gem 'cucumber-api-steps', require: false
+  gem 'coveralls'
 end
