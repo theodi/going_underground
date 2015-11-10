@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'awesome_print'
-gem 'blocktrain'
+gem 'blocktrain', path: '../blocktrain'
 gem 'dotenv'
 gem 'rake'
 gem 'sinatra'

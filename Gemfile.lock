@@ -1,11 +1,15 @@
+PATH
+  remote: ../blocktrain
+  specs:
+    blocktrain (0.2.1)
+      curb (~> 0.8)
+      dotenv (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
     awesome_print (1.6.1)
-    blocktrain (0.1.4)
-      curb (~> 0.8)
-      dotenv (~> 2.0)
     coderay (1.1.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
@@ -61,7 +65,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  blocktrain
+  blocktrain!
   dotenv
   pry
   rack-test
