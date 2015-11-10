@@ -9,3 +9,9 @@ begin
   require 'pry'
 rescue LoadError
 end
+
+RSpec.configure do |config|
+  config.after :each do
+    Blocktrain::Lookups.instance.reset!
+  end
+end

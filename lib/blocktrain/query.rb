@@ -2,9 +2,8 @@ module Blocktrain
   class Query
 
     def initialize(options = {})
-      @lookups = Lookups.instance.lookups
+      @memory_address = options.fetch(:memory_address, nil)
       @signal = options[:signal]
-      @sub_signal = options[:sub_signal]
 
       @from = parse_datetime(options.fetch(:from, '2015-09-01T00:00:00'))
       @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
@@ -26,39 +25,47 @@ module Blocktrain
     end
 
     def address_query
-      if @lookups[@signal].is_a?(Hash)
-        if @sub_signal.nil?
-          @lookups[@signal].map { |k, v| "memoryAddress:#{v}" }.join(' OR ')
-        else
-          "memoryAddress:#{@lookups[@signal][@sub_signal]}"
-        end
-      else
-        "memoryAddress:#{@lookups[@signal]}"
-      end
+      # Look up memory addresses directly if specified
+      return "memoryAddress:#{@memory_address}" if @memory_address
+      # No query if there isn't a signal specified
+      return nil if @signal.nil?
+      # Find the right memory address
+      lookups = Lookups.instance.lookups
+      "memoryAddress:#{lookups[@signal]}"
     end
 
     def query
       {
         filtered: {
-          query: {
-            query_string: {
-              query: address_query
-            }
-          },
-          filter: {
-            bool: {
-              must: [
-                {
-                  range: {
-                    timeStamp: {
-                      gte: @from,
-                      lte: @to
-                    }
-                  }
+          query: filtered_query,
+          filter: filtered_filter
+        }
+      }
+    end
+    
+    def filtered_query
+      q = address_query
+      return {} if q.nil?
+      {
+        query_string: {
+          query: q
+        }
+      }
+    end
+    
+    def filtered_filter
+      {
+        bool: {
+          must: [
+            {
+              range: {
+                timeStamp: {
+                  gte: @from,
+                  lte: @to
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       }
     end

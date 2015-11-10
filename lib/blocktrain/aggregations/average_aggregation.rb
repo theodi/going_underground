@@ -1,6 +1,6 @@
 module Blocktrain
   module Aggregations
-    class AverageAggregation < Aggregation
+    class AverageAggregation < HistogramAggregation
 
       def local_aggregations
         {

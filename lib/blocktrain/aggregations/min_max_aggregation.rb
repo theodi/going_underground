@@ -1,6 +1,6 @@
 module Blocktrain
   module Aggregations
-    class MinMaxAggregation < Aggregation
+    class MinMaxAggregation < HistogramAggregation
 
       def local_aggregations
         {
