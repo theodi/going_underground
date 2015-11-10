@@ -15,6 +15,10 @@ module Blocktrain
     def results
       result['hits']['hits']
     end
+    
+    def hits 
+      result['hits']['total']
+    end
 
     def parse_datetime(datetime)
       utc = Time.parse(datetime).utc
