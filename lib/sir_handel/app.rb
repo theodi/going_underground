@@ -35,8 +35,8 @@ module SirHandel
 
       results = r['results']['buckets'].map do |r|
         {
-          "timestamp" => DateTime.strptime(r["key"].to_s, "%Q"),
-          "value" => r["average_value"]["value"]
+          'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
+          'value' => r['average_value']['value']
         }
       end
 
