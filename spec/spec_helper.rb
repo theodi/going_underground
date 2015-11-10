@@ -22,6 +22,9 @@ require_relative 'support/vcr_setup'
 ENV['ES_URL'] = 'http://elastic.search/'
 
 RSpec.configure do |config|
+  config.after :each do
+    Blocktrain::Lookups.instance.reset!
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
