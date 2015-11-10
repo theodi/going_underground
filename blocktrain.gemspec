@@ -39,4 +39,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webmock', '~> 1.21'
   spec.add_development_dependency 'coveralls', '~> 0.8'
   spec.add_development_dependency 'terminal-notifier-guard', '~> 1.6'
+  spec.add_development_dependency 'github_changelog_generator', '~> 1.9'
 end
