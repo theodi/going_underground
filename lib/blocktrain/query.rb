@@ -26,6 +26,9 @@ module Blocktrain
     end
 
     def address_query
+      # No query if there isn't a signal specified
+      return nil if @signal.nil?
+      # Find the right memory address
       if @lookups[@signal].is_a?(Hash)
         if @sub_signal.nil?
           @lookups[@signal].map { |k, v| "memoryAddress:#{v}" }.join(' OR ')
@@ -40,25 +43,35 @@ module Blocktrain
     def query
       {
         filtered: {
-          query: {
-            query_string: {
-              query: address_query
-            }
-          },
-          filter: {
-            bool: {
-              must: [
-                {
-                  range: {
-                    timeStamp: {
-                      gte: @from,
-                      lte: @to
-                    }
-                  }
+          query: filtered_query,
+          filter: filtered_filter
+        }
+      }
+    end
+    
+    def filtered_query
+      q = address_query
+      return {} if q.nil?
+      {
+        query_string: {
+          query: q
+        }
+      }
+    end
+    
+    def filtered_filter
+      {
+        bool: {
+          must: [
+            {
+              range: {
+                timeStamp: {
+                  gte: @from,
+                  lte: @to
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       }
     end
