@@ -1,9 +1,9 @@
-[![Build Status](http://img.shields.io/travis/theodi/blocktrain.svg?style=flat-square)](https://travis-ci.org/theodi/blocktrain)
-[![Dependency Status](http://img.shields.io/gemnasium/theodi/blocktrain.svg?style=flat-square)](https://gemnasium.com/theodi/blocktrain)
-[![Coverage Status](http://img.shields.io/coveralls/theodi/blocktrain.svg?style=flat-square)](https://coveralls.io/r/theodi/blocktrain)
-[![Code Climate](http://img.shields.io/codeclimate/github/theodi/blocktrain.svg?style=flat-square)](https://codeclimate.com/github/theodi/blocktrain)
+[![Build Status](http://img.shields.io/travis/TheODI-UD2D/blocktrain.svg?style=flat-square)](https://travis-ci.org/TheODI-UD2D/blocktrain)
+[![Dependency Status](http://img.shields.io/gemnasium/TheODI-UD2D/blocktrain.svg?style=flat-square)](https://gemnasium.com/TheODI-UD2D/blocktrain)
+[![Coverage Status](http://img.shields.io/coveralls/TheODI-UD2D/blocktrain.svg?style=flat-square)](https://coveralls.io/r/TheODI-UD2D/blocktrain)
+[![Code Climate](http://img.shields.io/codeclimate/github/TheODI-UD2D/blocktrain.svg?style=flat-square)](https://codeclimate.com/github/TheODI-UD2D/blocktrain)
 [![Gem Version](http://img.shields.io/gem/v/blocktrain.svg?style=flat-square)](https://rubygems.org/gems/blocktrain)
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://theodi.mit-license.org)
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://TheODI-UD2D.mit-license.org)
 
 # Blocktrain
 
