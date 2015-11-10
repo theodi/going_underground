@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'blocktrain'
 require 'json'
 
+Dotenv.load
+
 module SirHandel
   class App < Sinatra::Base
     set :public_folder, 'public'
@@ -24,15 +26,17 @@ module SirHandel
         from: params.fetch('from', '2015-09-01 00:00:00Z'),
         to: params.fetch('to', '2015-09-02 00:00:00Z'),
         interval: params.fetch('interval', '1h'),
-        car: params['car']
+        signal: 'train_speed'
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
-      results = r["weight_chart"]["buckets"].map do |r|
+    #  raise r.inspect
+
+      results = r['results']['buckets'].map do |r|
         {
           "timestamp" => DateTime.strptime(r["key"].to_s, "%Q"),
-          "value" => r["weight"]["value"]
+          "value" => r["average_value"]["value"]
         }
       end
 
