@@ -2,6 +2,8 @@ module Blocktrain
   module Aggregations
     describe MinMaxAggregation do
 
+      include_examples "aggregations", described_class
+
       describe 'hour long histogram' do
 
         subject(:aggregations) {
