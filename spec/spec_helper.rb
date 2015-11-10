@@ -1,4 +1,6 @@
 require_relative 'support/vcr_setup'
+require 'coveralls'
+Coveralls.wear_merged!
 
 # Comment out when recording new VCR cassettes
 ENV['ES_URL'] = 'http://elastic.search/'
