@@ -23,16 +23,20 @@ describe "SirHandel::App", :vcr do
   it "should return some default data" do
     get '/weight.json'
 
+    File.open 'foo.html', 'w' do |f|
+      f.write last_response.body
+    end
+
     json = JSON.parse(last_response.body)
 
     expect(json["results"].first).to eq({
       "timestamp"=>"2015-09-01T00:00:00+00:00",
-      "value"=>5.972153972153972
+      "value"=>0.0
     })
 
     expect(json["results"].last).to eq({
       "timestamp"=>"2015-09-01T23:00:00+00:00",
-      "value"=>10.33873320537428
+      "value"=>5308.094351083215
     })
   end
 
