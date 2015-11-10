@@ -2,7 +2,6 @@ module Blocktrain
   class Query
 
     def initialize(options = {})
-      @lookups = Lookups.instance.lookups
       @memory_address = options.fetch(:memory_address, nil)
       @signal = options[:signal]
 
@@ -31,6 +30,8 @@ module Blocktrain
       # No query if there isn't a signal specified
       return nil if @signal.nil?
       # Find the right memory address
+      lookups = Lookups.instance.lookups
+      "memoryAddress:#{lookups[@signal]}"
     end
 
     def query
