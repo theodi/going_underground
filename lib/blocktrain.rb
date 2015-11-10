@@ -9,7 +9,7 @@ require 'blocktrain/version'
 require 'blocktrain/client'
 require 'blocktrain/lookups'
 require 'blocktrain/aggregation'
-require 'blocktrain/aggregations/train_weight_aggregation'
-require 'blocktrain/aggregations/car_weight_aggregation'
+require 'blocktrain/aggregations/average_aggregation'
+require 'blocktrain/aggregations/min_max_aggregation'
 
 Dotenv.load

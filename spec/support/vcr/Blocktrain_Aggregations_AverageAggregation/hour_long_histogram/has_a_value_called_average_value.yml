@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"analyze_wildcard":true,"query":"memoryAddress:2E64930W
+        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441101600000,"max":1441105200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 10 Nov 2015 09:40:01 GMT
+      - Tue, 10 Nov 2015 09:40:01 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '951'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":4,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":5459,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T11:00:00.000+01:00","key":1441101600000,"doc_count":1733,"average_value":{"value":37.740334679746105}},{"key_as_string":"2015-09-01T11:10:00.000+01:00","key":1441102200000,"doc_count":1419,"average_value":{"value":21.558844256518675}},{"key_as_string":"2015-09-01T11:20:00.000+01:00","key":1441102800000,"doc_count":195,"average_value":{"value":15.907692307692308}},{"key_as_string":"2015-09-01T11:30:00.000+01:00","key":1441103400000,"doc_count":1301,"average_value":{"value":35.31975403535742}},{"key_as_string":"2015-09-01T11:40:00.000+01:00","key":1441104000000,"doc_count":169,"average_value":{"value":9.976331360946746}},{"key_as_string":"2015-09-01T11:50:00.000+01:00","key":1441104600000,"doc_count":642,"average_value":{"value":6.140186915887851}}]}}}'
+    http_version: 
+  recorded_at: Tue, 10 Nov 2015 09:40:01 GMT
+recorded_with: VCR 2.9.3
