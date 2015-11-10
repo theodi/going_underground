@@ -5,7 +5,6 @@ module Blocktrain
       @lookups = Lookups.instance.lookups
       @memory_address = options.fetch(:memory_address, nil)
       @signal = options[:signal]
-      @sub_signal = options[:sub_signal]
 
       @from = parse_datetime(options.fetch(:from, '2015-09-01T00:00:00'))
       @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
@@ -32,15 +31,6 @@ module Blocktrain
       # No query if there isn't a signal specified
       return nil if @signal.nil?
       # Find the right memory address
-      if @lookups[@signal].is_a?(Hash)
-        if @sub_signal.nil?
-          @lookups[@signal].map { |k, v| "memoryAddress:#{v}" }.join(' OR ')
-        else
-          "memoryAddress:#{@lookups[@signal][@sub_signal]}"
-        end
-      else
-        "memoryAddress:#{@lookups[@signal]}"
-      end
     end
 
     def query
