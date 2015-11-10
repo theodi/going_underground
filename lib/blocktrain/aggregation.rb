@@ -34,5 +34,10 @@ module Blocktrain
         aggregations: aggs,
       }
     end
+    
+    def local_aggregations
+      raise RuntimeError.new("Aggregation cannot be used directly. Use a derived class instead like AverageAggregation.")
+    end
+    
   end
 end

@@ -7,5 +7,10 @@ module Blocktrain
       expect(subject.instance_variable_get("@interval")).to eq('10m')
     end
 
+    it "can't be used by itself" do
+      a = Aggregation.new
+      expect { a.aggs }.to raise_error(RuntimeError,"Aggregation cannot be used directly. Use a derived class instead like AverageAggregation.")
+    end
+
   end
 end
