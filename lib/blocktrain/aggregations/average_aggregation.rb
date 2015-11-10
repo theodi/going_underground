@@ -1,16 +1,17 @@
 module Blocktrain
   module Aggregations
-    class TrainWeightAggregation < Aggregation
+    class AverageAggregation < Aggregation
 
       def local_aggregations
         {
-          weight: {
+          average_value: {
             avg: {
               field: 'value'
             }
           }
         }
       end
+
     end
   end
 end

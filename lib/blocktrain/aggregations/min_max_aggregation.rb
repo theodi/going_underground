@@ -1,23 +1,23 @@
 module Blocktrain
   module Aggregations
-    class CarWeightAggregation < Aggregation
+    class MinMaxAggregation < Aggregation
 
       def local_aggregations
         {
-          weight: {
+          value: {
             terms: { field: 'memoryAddress' },
             aggregations: {
-              avg_weight: {
+              average_value: {
                 avg: {
                   field: 'value'
                 }
               },
-              max_weight: {
+              max_value: {
                 max: {
                   field: 'value'
                 }
               },
-              min_weight: {
+              min_value: {
                 min: {
                   field: 'value'
                 }

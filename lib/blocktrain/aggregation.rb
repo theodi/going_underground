@@ -61,7 +61,7 @@ module Blocktrain
 
     def aggs
       {
-        weight_chart: {
+        results: {
           date_histogram: {
             field: 'timeStamp',
             interval: @interval,
