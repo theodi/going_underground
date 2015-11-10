@@ -1,8 +1,8 @@
-[![Build Status](http://img.shields.io/travis/theodi/sir_handel.svg?style=flat-square)](https://travis-ci.org/theodi/sir_handel)
-[![Dependency Status](http://img.shields.io/gemnasium/theodi/sir_handel.svg?style=flat-square)](https://gemnasium.com/theodi/sir_handel)
-[![Coverage Status](http://img.shields.io/coveralls/theodi/sir_handel.svg?style=flat-square)](https://coveralls.io/r/theodi/sir_handel)
-[![Code Climate](http://img.shields.io/codeclimate/github/theodi/sir_handel.svg?style=flat-square)](https://codeclimate.com/github/theodi/sir_handel)
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://theodi.mit-license.org)
+[![Build Status](http://img.shields.io/travis/TheODI-UD2D/sir_handel.svg?style=flat-square)](https://travis-ci.org/TheODI-UD2D/sir_handel)
+[![Dependency Status](http://img.shields.io/gemnasium/TheODI-UD2D/sir_handel.svg?style=flat-square)](https://gemnasium.com/TheODI-UD2D/sir_handel)
+[![Coverage Status](http://img.shields.io/coveralls/TheODI-UD2D/sir_handel.svg?style=flat-square)](https://coveralls.io/r/TheODI-UD2D/sir_handel)
+[![Code Climate](http://img.shields.io/codeclimate/github/TheODI-UD2D/sir_handel.svg?style=flat-square)](https://codeclimate.com/github/TheODI-UD2D/sir_handel)
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://TheODI-UD2D.mit-license.org)
 
 # Sir Handel
 
