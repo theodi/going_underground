@@ -23,10 +23,6 @@ describe "SirHandel::App", :vcr do
   it "should return some default data" do
     get '/weight.json'
 
-    File.open 'foo.html', 'w' do |f|
-      f.write last_response.body
-    end
-
     json = JSON.parse(last_response.body)
 
     expect(json["results"].first).to eq({
