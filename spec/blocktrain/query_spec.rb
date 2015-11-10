@@ -27,13 +27,13 @@ module Blocktrain
 
     end
 
-    it 'provides 100 results by default' do
+    it 'provides 100 results by default', :vcr do
       subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', signal: 'train_speed')
       expect(subject.results.count).to eq(100)
       expect(subject.hits).to eq(9766)
     end
 
-    it 'provides the correct number of results if limit is specified' do
+    it 'provides the correct number of results if limit is specified', :vcr do
       subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', signal: 'train_speed', limit: 10)
       expect(subject.results.count).to eq(10)
       expect(subject.hits).to eq(9766)
