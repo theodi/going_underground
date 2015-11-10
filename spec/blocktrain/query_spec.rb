@@ -1,12 +1,11 @@
 module Blocktrain
   describe Query do
 
-    it 'queries a single signal' do
+    it 'queries a single signal', :vcr do
       subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', signal: 'train_speed')
 
       expect(subject.address_query).to eq('memoryAddress:2E491EEW')
     end
-
 
     it 'provides 100 results by default', :vcr do
       subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', signal: 'train_speed')
