@@ -44,13 +44,8 @@ describe "SirHandel::App", :vcr do
     expect(json["results"].first["timestamp"]).to eq("2015-09-23T04:00:00+00:00")
   end
 
-  it "should allow the car to be specified" do
-    expect(Blocktrain::Aggregations::TrainWeightAggregation).to receive(:new).with(hash_including(car: "A")).and_call_original
-    get '/weight.json', car: "A"
-  end
-
   it "should allow the interval to be specified" do
-    expect(Blocktrain::Aggregations::TrainWeightAggregation).to receive(:new).with(hash_including(interval: "1h")).and_call_original
+    expect(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with(hash_including(interval: "1h")).and_call_original
     get '/weight.json', interval: "1h"
   end
 

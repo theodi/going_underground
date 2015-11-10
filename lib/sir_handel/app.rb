@@ -27,7 +27,7 @@ module SirHandel
         car: params['car']
       }
 
-      r = Blocktrain::Aggregations::TrainWeightAggregation.new(search).results
+      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
       results = r["weight_chart"]["buckets"].map do |r|
         {
