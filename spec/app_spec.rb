@@ -13,45 +13,40 @@ end
 # For RSpec 2.x
 RSpec.configure { |c| c.include RSpecMixin }
 
-describe "SirHandel::App", :vcr do
+describe 'SirHandel::App', :vcr do
 
-  it "should allow accessing the home page" do
+  it 'should allow accessing the home page' do
     get '/'
     expect(last_response).to be_ok
   end
 
-  it "should return some default data" do
+  it 'should return some default data' do
     get '/weight.json'
 
     json = JSON.parse(last_response.body)
 
-    expect(json["results"].first).to eq({
-      "timestamp"=>"2015-09-01T00:00:00+00:00",
-      "value"=>5.972153972153972
+    expect(json['results'].first).to eq({
+      'timestamp'=>'2015-09-01T00:00:00+00:00',
+      'value'=>0.0
     })
 
-    expect(json["results"].last).to eq({
-      "timestamp"=>"2015-09-01T23:00:00+00:00",
-      "value"=>10.33873320537428
+    expect(json['results'].last).to eq({
+      'timestamp'=>'2015-09-01T23:00:00+00:00',
+      'value'=>5308.094351083215
     })
   end
 
-  it "should allow the date to be specified" do
-    get '/weight.json', from: "2015-09-23 00:00:00Z", to: "2015-09-24 00:00:00Z"
+  it 'should allow the date to be specified' do
+    get '/weight.json', from: '2015-09-23 00:00:00Z', to: '2015-09-24 00:00:00Z'
 
     json = JSON.parse(last_response.body)
 
-    expect(json["results"].first["timestamp"]).to eq("2015-09-23T04:00:00+00:00")
+    expect(json['results'].first['timestamp']).to eq('2015-09-23T04:00:00+00:00')
   end
 
-  it "should allow the car to be specified" do
-    expect(Blocktrain::Aggregations::TrainWeightAggregation).to receive(:new).with(hash_including(car: "A")).and_call_original
-    get '/weight.json', car: "A"
-  end
-
-  it "should allow the interval to be specified" do
-    expect(Blocktrain::Aggregations::TrainWeightAggregation).to receive(:new).with(hash_including(interval: "1h")).and_call_original
-    get '/weight.json', interval: "1h"
+  it 'should allow the interval to be specified' do
+    expect(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with(hash_including(interval: '1h')).and_call_original
+    get '/weight.json', interval: '1h'
   end
 
 end
