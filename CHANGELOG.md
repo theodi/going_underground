@@ -3,6 +3,10 @@
 ## [v0.2.2](https://github.com/TheODI-UD2D/blocktrain/tree/v0.2.2) (2015-11-11)
 [Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.1...v0.2.2)
 
+**Merged pull requests:**
+
+- Add task to publish gem [\#8](https://github.com/TheODI-UD2D/blocktrain/pull/8) ([pezholio](https://github.com/pezholio))
+
 ## [v0.2.1](https://github.com/TheODI-UD2D/blocktrain/tree/v0.2.1) (2015-11-10)
 [Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.0...v0.2.1)
 
