@@ -1,5 +1,15 @@
 # Change Log
 
+## [v0.2.2](https://github.com/TheODI-UD2D/blocktrain/tree/v0.2.2) (2015-11-11)
+[Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.1...v0.2.2)
+
+## [v0.2.1](https://github.com/TheODI-UD2D/blocktrain/tree/v0.2.1) (2015-11-10)
+[Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.0...v0.2.1)
+
+**Merged pull requests:**
+
+- Auto-detect available signals from Elasticsearch [\#7](https://github.com/TheODI-UD2D/blocktrain/pull/7) ([Floppy](https://github.com/Floppy))
+
 ## [v0.2.0](https://github.com/TheODI-UD2D/blocktrain/tree/v0.2.0) (2015-11-10)
 [Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.1.4...v0.2.0)
 
