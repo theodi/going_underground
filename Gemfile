@@ -16,4 +16,8 @@ group :test do
   gem 'capybara'
   gem 'cucumber-api-steps', require: false
   gem 'coveralls'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'terminal-notifier-guard'
+  gem 'rspec-pride'
 end
