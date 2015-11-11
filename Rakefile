@@ -44,6 +44,7 @@ RSpec::Core::RakeTask.new
 
 task :default => [:spec]
 
+desc 'Write changelog, tag & release gem, bump version'
 task :publish do
   GemPublisher.new.publish
 end
