@@ -14,11 +14,12 @@ module SirHandel
       erb :index, layout: :default
     end
 
-    get '/weight' do
+    get '/signal' do
+      @signals = Blocktrain::Lookups.instance.lookups
       erb :weight, layout: :default
     end
 
-    get '/weight.json' do
+    get '/signal.json' do
       content_type :json
       headers 'Access-Control-Allow-Origin' => '*'
 
@@ -31,8 +32,6 @@ module SirHandel
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
-    #  raise r.inspect
-
       results = r['results']['buckets'].map do |r|
         {
           'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
@@ -41,6 +40,8 @@ module SirHandel
       end
 
       {
+        min: results.min_by { |h| h['value'] }["value"],
+        max: results.max_by { |h| h['value'] }["value"],
         results: results
       }.to_json
     end
