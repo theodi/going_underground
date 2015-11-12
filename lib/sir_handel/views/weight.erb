@@ -1,4 +1,4 @@
-<form class="form-inline" action="/weight" method="get">
+<form class="form-inline" action="/signal" method="get">
   <div class="form-group">
     <label for="from">From</label>
     <input type="text" class="form-control" id="from" name="from" value="<%= params[:from] %>">
@@ -10,6 +10,14 @@
   <div class="form-group">
     <label for="interval">Interval</label>
     <input type="text" class="form-control" id="interval" name="interval" value="<%= params[:interval] %>" style="width: 75px">
+  </div>
+  <div class="form-group">
+    <label for="signal">Signal</label>
+    <select class="form-control" id="signal" name="signal">
+      <% @signals.each do |signal,address| %>
+        <option><%= signal %></option>
+      <% end %>
+    </select>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -31,7 +39,7 @@ function myGraph(json) {
                   showLegend: false,       //Show the legend, allowing users to turn on/off line series.
                   showYAxis: true,        //Show the y-axis
                   showXAxis: true,        //Show the x-axis
-                  yDomain: [0,100],
+                  yDomain: [0,10000],
                   xScale: d3.time.scale.utc()
                 });
 
@@ -72,6 +80,6 @@ function myGraph(json) {
   nv.addGraph(function() { return chart });
 }
 
-d3.json('<%= url('/weight.json') + '?' + URI.encode_www_form(params) %>', myGraph);
+d3.json('<%= url('/signal.json') + '?' + URI.encode_www_form(params) %>', myGraph);
 
 </script>

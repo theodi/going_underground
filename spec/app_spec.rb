@@ -21,7 +21,7 @@ describe 'SirHandel::App', :vcr do
   end
 
   it 'should return some default data' do
-    get '/weight.json'
+    get '/signal.json'
 
     json = JSON.parse(last_response.body)
 
@@ -36,8 +36,17 @@ describe 'SirHandel::App', :vcr do
     })
   end
 
+  it 'should return min and max data' do
+    get '/signal.json'
+
+    json = JSON.parse(last_response.body)
+
+    expect(json['min']).to eq(0.0)
+    expect(json['max']).to eq(5858.588810837933)
+  end
+
   it 'should allow the date to be specified' do
-    get '/weight.json', from: '2015-09-23 00:00:00Z', to: '2015-09-24 00:00:00Z'
+    get '/signal.json', from: '2015-09-23 00:00:00Z', to: '2015-09-24 00:00:00Z'
 
     json = JSON.parse(last_response.body)
 
@@ -46,7 +55,7 @@ describe 'SirHandel::App', :vcr do
 
   it 'should allow the interval to be specified' do
     expect(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with(hash_including(interval: '1h')).and_call_original
-    get '/weight.json', interval: '1h'
+    get '/signal.json', interval: '1h'
   end
 
 end
