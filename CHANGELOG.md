@@ -1,5 +1,17 @@
 # Change Log
 
+## [v0.3.0](https://github.com/TheODI-UD2D/blocktrain/tree/v0.3.0) (2015-11-12)
+[Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.3...v0.3.0)
+
+**Merged pull requests:**
+
+- Query multiple signals [\#11](https://github.com/TheODI-UD2D/blocktrain/pull/11) ([pezholio](https://github.com/pezholio))
+- Feature get all signals [\#10](https://github.com/TheODI-UD2D/blocktrain/pull/10) ([pikesley](https://github.com/pikesley))
+- Code of conduct [\#9](https://github.com/TheODI-UD2D/blocktrain/pull/9) ([pikesley](https://github.com/pikesley))
+
+## [v0.2.3](https://github.com/TheODI-UD2D/blocktrain/tree/v0.2.3) (2015-11-11)
+[Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.2...v0.2.3)
+
 ## [v0.2.2](https://github.com/TheODI-UD2D/blocktrain/tree/v0.2.2) (2015-11-11)
 [Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.1...v0.2.2)
 
