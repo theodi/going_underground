@@ -15,6 +15,7 @@ module SirHandel
     end
 
     get '/weight' do
+      @signals = Blocktrain::Lookups.instance.lookups
       erb :weight, layout: :default
     end
 
