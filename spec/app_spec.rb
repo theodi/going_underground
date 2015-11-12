@@ -3,8 +3,6 @@ require 'rack/test'
 
 require File.expand_path '../../lib/sir_handel/app.rb', __FILE__
 
-ENV['RACK_ENV'] = 'test'
-
 module RSpecMixin
   include Rack::Test::Methods
   def app() SirHandel::App end

@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] = 'test'
+
 require_relative 'support/vcr_setup'
 require 'coveralls'
 Coveralls.wear_merged!
