@@ -7,7 +7,7 @@ module Blocktrain
       describe 'hour long histogram' do
 
         subject(:aggregations) {
-          described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', interval: '10m', signal: 'train_speed').results
+          described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', interval: '10m', signals: 'train_speed').results
         }
 
         it 'has an aggregation called results', :vcr do

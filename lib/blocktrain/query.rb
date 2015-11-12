@@ -2,20 +2,20 @@ module Blocktrain
   class Query
 
     def initialize(options = {})
-      @memory_address = options.fetch(:memory_address, nil)
-      @signal = options[:signal]
+      @memory_addresses = [options.fetch(:memory_addresses, nil)].flatten.compact
+      @signals = [options[:signals]].flatten.compact
 
       @from = parse_datetime(options.fetch(:from, '2015-09-01T00:00:00'))
       @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
-      
+
       @limit = options.fetch(:limit, 100)
     end
 
     def results
       result['hits']['hits']
     end
-    
-    def hits 
+
+    def hits
       result['hits']['total']
     end
 
@@ -26,12 +26,20 @@ module Blocktrain
 
     def address_query
       # Look up memory addresses directly if specified
-      return "memoryAddress:#{@memory_address}" if @memory_address
-      # No query if there isn't a signal specified
-      return nil if @signal.nil?
-      # Find the right memory address
-      lookups = Lookups.instance.lookups
-      "memoryAddress:#{lookups[@signal]}"
+      unless @memory_addresses == []
+        build_query(@memory_addresses)
+      else
+        # No query if there isn't a signal specified
+        return nil if @signals == []
+        lookups = Lookups.instance.lookups
+        @signals = @signals.map { |s| lookups[s] }
+        build_query(@signals)
+      end
+    end
+
+    def build_query(addresses)
+      addresses.map! { |a| "memoryAddress:#{a}" }
+      addresses.join(" OR ")
     end
 
     def query
@@ -42,7 +50,7 @@ module Blocktrain
         }
       }
     end
-    
+
     def filtered_query
       q = address_query
       return {} if q.nil?
@@ -52,7 +60,7 @@ module Blocktrain
         }
       }
     end
-    
+
     def filtered_filter
       {
         bool: {
