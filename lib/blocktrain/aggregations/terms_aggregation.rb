@@ -15,19 +15,22 @@ module Blocktrain
           }
         }
       end
-      
+
       def aggs
         {
           langs: {
-            terms: { field: @term }
+            terms: {
+              field: @term,
+              size: 0
+            }
           }
         }
       end
-      
+
       def results
         result['aggregations']['langs']['buckets']
       end
-      
+
     end
   end
 end
