@@ -36,6 +36,15 @@ describe 'SirHandel::App', :vcr do
     })
   end
 
+  it 'should return min and max data' do
+    get '/signal.json'
+
+    json = JSON.parse(last_response.body)
+
+    expect(json['min']).to eq(0.0)
+    expect(json['max']).to eq(5858.588810837933)
+  end
+
   it 'should allow the date to be specified' do
     get '/signal.json', from: '2015-09-23 00:00:00Z', to: '2015-09-24 00:00:00Z'
 
