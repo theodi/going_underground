@@ -1,1 +1,1 @@
-web: bundle exec ruby lib/tube_pi.rb
+web: bundle exec ruby lib/sir_handel/app.rb
