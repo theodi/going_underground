@@ -19,7 +19,7 @@ module Blocktrain
       addresses = r.map {|x| x["key"]}
       # Get a memory location for each key
       addresses.each do |address|
-        r = Query.new(from: '2015-09-01 10:00:00Z', to: '2015-09-30 11:00:00Z', memory_address: address, limit: 1).results
+        r = Query.new(from: '2015-09-01 10:00:00Z', to: '2015-09-30 11:00:00Z', memory_addresses: address, limit: 1).results
         signal_name = remove_cruft(r.first["_source"]["signalName"].to_s)
         @lookups[signal_name] = address
       end
