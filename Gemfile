@@ -9,6 +9,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'thin'
 gem 'rack-conneg'
+gem 'actionpack', '~> 4'
 
 group :test do
   gem 'pry'
@@ -17,7 +18,7 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'capybara'
-  gem 'cucumber-api-steps', require: false
+  gem 'cucumber-api-steps', require: false #, github: 'theodi/cucumber-api-steps', branch: 'feature-test-content-type'
   gem 'coveralls'
   gem 'guard-rspec'
   gem 'guard-cucumber'

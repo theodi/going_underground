@@ -8,7 +8,9 @@ require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 require 'cucumber/api_steps'
+require 'active_support/core_ext/object/blank'
 require 'coveralls'
+
 Coveralls.wear_merged!
 
 Capybara.app = SirHandel::App
