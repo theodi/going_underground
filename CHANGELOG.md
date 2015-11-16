@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.3.1](https://github.com/TheODI-UD2D/blocktrain/tree/v0.3.1) (2015-11-16)
+[Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.3.0...v0.3.1)
+
+**Merged pull requests:**
+
+- List only aliases [\#12](https://github.com/TheODI-UD2D/blocktrain/pull/12) ([pezholio](https://github.com/pezholio))
+
 ## [v0.3.0](https://github.com/TheODI-UD2D/blocktrain/tree/v0.3.0) (2015-11-12)
 [Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.2.3...v0.3.0)
 
