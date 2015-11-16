@@ -5,7 +5,7 @@ module SirHandel
         return if ENV['RACK_ENV'] == 'test'
         return if authorized?
         headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-        halt 401, "Not authorized\n"
+        halt 401, 'Not authorized\n'
       end
 
       def authorized?

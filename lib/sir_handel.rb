@@ -48,8 +48,8 @@ module SirHandel
           end
 
           {
-            min: results.min_by { |h| h['value'] }["value"],
-            max: results.max_by { |h| h['value'] }["value"],
+            min: results.min_by { |h| h['value'] }['value'],
+            max: results.max_by { |h| h['value'] }['value'],
             results: results
           }.to_json
         end
