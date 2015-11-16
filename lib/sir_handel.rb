@@ -3,25 +3,15 @@ require 'blocktrain'
 require 'json'
 require 'rack/conneg'
 
-#require_relative 'sir_handel/helpers'
+require 'sir_handel/helpers'
+require 'sir_handel/racks'
 
 Dotenv.load
 
 module SirHandel
   class App < Sinatra::Base
     set :public_folder, 'public'
-
-    use(Rack::Conneg) do |conneg|
-      conneg.set :accept_all_extensions, false
-      conneg.set :fallback, :html
-      conneg.provide([:html, :json])
-    end
-
-    before do
-      if negotiated?
-        content_type negotiated_type
-      end
-    end
+    set :views, 'views'
 
     get '/' do
       @content = '<h1>Hello from TubePi</h1>'
@@ -68,25 +58,5 @@ module SirHandel
 
     # start the server if ruby file executed directly
     run! if app_file == $0
-
-  helpers do
-    def protected!
-      return if ENV['RACK_ENV'] == 'test'
-      return if authorized?
-      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-      halt 401, "Not authorized\n"
-    end
-
-    def authorized?
-      @auth ||= Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and
-        @auth.basic? and
-        @auth.credentials and
-        @auth.credentials == [
-          ENV['TUBE_USERNAME'],
-          ENV['TUBE_PASSWORD']
-        ]
-      end
-    end
   end
 end
