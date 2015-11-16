@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rack/test'
 
-require File.expand_path '../../lib/sir_handel/app.rb', __FILE__
+require File.expand_path '../../lib/sir_handel.rb', __FILE__
 
 module RSpecMixin
   include Rack::Test::Methods
