@@ -27,5 +27,10 @@ module Blocktrain
       expect(described_class.instance.lookups['train_speed']).to eq '2E491EEW'
     end
 
+    it 'returns a list with only aliases', :vcr do
+      expect(described_class.instance.aliases.count).to eq 78
+      expect(described_class.instance.aliases['train_speed']).to eq '2E491EEW'
+    end
+
   end
 end
