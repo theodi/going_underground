@@ -15,11 +15,14 @@ module SirHandel
     end
 
     get '/signal' do
+      protected!
       @signals = Blocktrain::Lookups.instance.lookups
       erb :weight, layout: :default
     end
 
     get '/signal.json' do
+      protected!
+
       content_type :json
       headers 'Access-Control-Allow-Origin' => '*'
 
@@ -48,5 +51,25 @@ module SirHandel
 
     # start the server if ruby file executed directly
     run! if app_file == $0
+
+  helpers do
+    def protected!
+      return if ENV['RACK_ENV'] == 'test'
+      return if authorized?
+      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+      halt 401, "Not authorized\n"
+    end
+
+    def authorized?
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? and
+        @auth.basic? and
+        @auth.credentials and
+        @auth.credentials == [
+          ENV['TUBE_USERNAME'],
+          ENV['TUBE_PASSWORD']
+        ]
+      end
+    end
   end
 end
