@@ -3,8 +3,8 @@ require 'blocktrain'
 require 'json'
 require 'rack/conneg'
 
-require 'sir_handel/helpers'
-require 'sir_handel/racks'
+require_relative 'sir_handel/helpers'
+require_relative 'sir_handel/racks'
 
 Dotenv.load
 
