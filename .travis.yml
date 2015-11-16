@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-- 2.1.4
+- 2.2.0
 env:
   global:
     TUBE_INDEX: train_data
