@@ -92,6 +92,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.6.4)
+    rack-conneg (0.1.5)
+      rack (>= 1.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -165,6 +167,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   pry
+  rack-conneg
   rack-test
   rake
   rspec

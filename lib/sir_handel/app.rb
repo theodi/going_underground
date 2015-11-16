@@ -1,12 +1,27 @@
 require 'sinatra/base'
 require 'blocktrain'
 require 'json'
+require 'rack/conneg'
+
+#require_relative 'sir_handel/helpers'
 
 Dotenv.load
 
 module SirHandel
   class App < Sinatra::Base
     set :public_folder, 'public'
+
+    use(Rack::Conneg) do |conneg|
+      conneg.set :accept_all_extensions, false
+      conneg.set :fallback, :html
+      conneg.provide([:html, :json])
+    end
+
+    before do
+      if negotiated?
+        content_type negotiated_type
+      end
+    end
 
     get '/' do
       @content = '<h1>Hello from TubePi</h1>'
@@ -16,37 +31,39 @@ module SirHandel
 
     get '/signal' do
       protected!
-      @signals = Blocktrain::Lookups.instance.lookups
-      erb :weight, layout: :default
-    end
 
-    get '/signal.json' do
-      protected!
+      respond_to do |wants|
+        wants.html do
+          @signals = Blocktrain::Lookups.instance.lookups
+          erb :weight, layout: :default
+        end
 
-      content_type :json
-      headers 'Access-Control-Allow-Origin' => '*'
+        wants.json do
+          headers 'Access-Control-Allow-Origin' => '*'
 
-      search = {
-        from: params.fetch('from', '2015-09-01 00:00:00Z'),
-        to: params.fetch('to', '2015-09-02 00:00:00Z'),
-        interval: params.fetch('interval', '1h'),
-        signals: 'train_speed'
-      }
+          search = {
+            from: params.fetch('from', '2015-09-01 00:00:00Z'),
+            to: params.fetch('to', '2015-09-02 00:00:00Z'),
+            interval: params.fetch('interval', '1h'),
+            signals: 'train_speed'
+          }
 
-      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+          r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
-      results = r['results']['buckets'].map do |r|
-        {
-          'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
-          'value' => r['average_value']['value']
-        }
+          results = r['results']['buckets'].map do |r|
+            {
+              'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
+              'value' => r['average_value']['value']
+            }
+          end
+
+          {
+            min: results.min_by { |h| h['value'] }["value"],
+            max: results.max_by { |h| h['value'] }["value"],
+            results: results
+          }.to_json
+        end
       end
-
-      {
-        min: results.min_by { |h| h['value'] }["value"],
-        max: results.max_by { |h| h['value'] }["value"],
-        results: results
-      }.to_json
     end
 
     # start the server if ruby file executed directly

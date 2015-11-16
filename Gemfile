@@ -8,6 +8,7 @@ gem 'dotenv'
 gem 'rake'
 gem 'sinatra'
 gem 'thin'
+gem 'rack-conneg'
 
 group :test do
   gem 'pry'
