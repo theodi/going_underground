@@ -53,7 +53,6 @@ function myGraph(json) {
       .tickFormat(function(d) { return d3.time.format("%Y-%m-%d")(new Date(d)) })
       .rotateLabels(75)
       .showMaxMin(false)
-      .ticks(d3.time.day, 1)
 
   chart.yAxis     //Chart y-axis settings
       .axisLabel('Value')
