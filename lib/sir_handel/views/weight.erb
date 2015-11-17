@@ -15,7 +15,7 @@
     <label for="signal">Signal</label>
     <select class="form-control" id="signal" name="signal">
       <% @signals.each do |signal,address| %>
-        <option><%= signal %></option>
+        <option <%= "selected='selected'" if @signal == signal %>><%= signal %></option>
       <% end %>
     </select>
   </div>
