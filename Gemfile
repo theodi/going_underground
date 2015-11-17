@@ -10,7 +10,7 @@ gem 'sinatra'
 gem 'thin'
 gem 'rack-conneg'
 gem 'actionpack', '~> 4'
-gem 'il8n'
+gem 'i18n'
 
 group :test do
   gem 'pry'
