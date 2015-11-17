@@ -56,7 +56,7 @@ function myGraph(json) {
       .ticks(d3.time.day, 1)
 
   chart.yAxis     //Chart y-axis settings
-      .axisLabel('Weight (%)')
+      .axisLabel('Value')
       .tickFormat(d3.format('.02f'));
 
   var values = [];
@@ -70,7 +70,7 @@ function myGraph(json) {
   data = [
     {
       values: values,
-      key: 'Weight (%)',
+      key: 'Value',
       color: '#ff7f0e'
     }
   ]
