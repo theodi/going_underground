@@ -30,27 +30,14 @@ module SirHandel
         end
 
         wants.json do
-          headers 'Access-Control-Allow-Origin' => '*'
+          target = "/signal/%s?from=%s&to=%s&interval=%s" % [
+            params.fetch('signal', 'train_speed'),
+            params.fetch('from', '2015-09-01 00:00:00Z'),
+            params.fetch('to', '2015-09-02 00:00:00Z'),
+            params.fetch('interval', '1h')
+          ]
 
-          search = {
-            from: params.fetch('from', '2015-09-01 00:00:00Z'),
-            to: params.fetch('to', '2015-09-02 00:00:00Z'),
-            interval: params.fetch('interval', '1h'),
-            signals: params.fetch('signal', 'train_speed')
-          }
-
-          r = Blocktrain::Aggregations::AverageAggregation.new(search).results
-
-          results = r['results']['buckets'].map do |r|
-            {
-              'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
-              'value' => r['average_value']['value']
-            }
-          end
-
-          {
-            results: results
-          }.to_json
+          redirect to target
         end
       end
     end

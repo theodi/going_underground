@@ -11,4 +11,4 @@ Feature: Authentication
     Given I send and accept JSON
     And I authenticate as the user "thomas" with the password "tank_engine"
     When I send a GET request to "signal"
-    Then the response status should be "200"
+    Then the response status should be "302"
