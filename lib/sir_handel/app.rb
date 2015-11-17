@@ -16,7 +16,7 @@ module SirHandel
 
     get '/signal' do
       protected!
-      @signals = Blocktrain::Lookups.instance.lookups
+      @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
       erb :weight, layout: :default
     end
 
