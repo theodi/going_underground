@@ -18,6 +18,37 @@ describe 'SirHandel::App', :vcr do
     expect(last_response).to be_ok
   end
 
+  it 'should delete aliases with no signal name' do
+    expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+      {
+        "thing_1" => "1",
+        "thing_2" => "2",
+        "thing_3" => "3",
+        "thing_4" => nil
+      }
+    }
+
+    get '/signal'
+
+    expect(last_response.body).to match(/thing_3/)
+    expect(last_response.body).to_not match(/thing_4/)
+  end
+
+  it 'should set the selected signal to selected' do
+    expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+      {
+        "thing_1" => "1",
+        "thing_2" => "2",
+        "thing_3" => "3",
+        "thing_4" => nil
+      }
+    }
+
+    get '/signal', {signal: 'thing_3'}
+
+    expect(last_response.body).to match(/<option selected='selected'>thing_3<\/option>/)
+  end
+
   it 'should return some default data' do
     get '/signal.json'
 
