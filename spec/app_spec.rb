@@ -34,7 +34,7 @@ module SirHandel
 
       get '/signal', {signal: 'thing_3'}
 
-      expect(last_response.body).to match(/<option selected='selected'>thing_3<\/option>/)
+      expect(last_response.body).to match(/<option selected='selected' value='thing_3'/)
     end
 
     it 'should return some default data' do
@@ -65,6 +65,6 @@ module SirHandel
       expect(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with(hash_including(interval: '1h')).and_call_original
       get '/signal.json', interval: '1h'
     end
-    
+
   end
 end
