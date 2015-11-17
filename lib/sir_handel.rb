@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'blocktrain'
 require 'json'
 require 'rack/conneg'
+require 'i18n'
+require 'i18n/backend/fallbacks'
 
 require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
