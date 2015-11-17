@@ -15,7 +15,7 @@
     <label for='signal'>Signal</label>
     <select class='form-control' id='signal' name='signal'>
       <% @signals.each do |signal,address| %>
-        <option><%= signal %></option>
+        <option <%= "selected='selected'" if @signal == signal %>><%= signal %></option>
       <% end %>
     </select>
   </div>
@@ -31,6 +31,9 @@
 <script>
 
 function myGraph(json) {
+
+  var extent = d3.extent(json.results.map(function(r) { return r.value; }))
+
   var chart = nv.models.lineChart().
                 options({
                   margin: {left: 100, bottom: 100},  //Adjust chart margins to give the x-axis some breathing room.
@@ -39,7 +42,7 @@ function myGraph(json) {
                   showLegend: false,       //Show the legend, allowing users to turn on/off line series.
                   showYAxis: true,        //Show the y-axis
                   showXAxis: true,        //Show the x-axis
-                  yDomain: [0,10000],
+                  yDomain: extent,
                   xScale: d3.time.scale.utc()
                 });
 
@@ -47,13 +50,12 @@ function myGraph(json) {
 
   chart.xAxis     //Chart x-axis settings
       .axisLabel('Time')
-      .tickFormat(function(d) { return d3.time.format('%Y-%m-%d')(new Date(d)) })
+      .tickFormat(function(d) { return timeFormat(new Date(d)) })
       .rotateLabels(75)
       .showMaxMin(false)
-      .ticks(d3.time.day, 1)
 
   chart.yAxis     //Chart y-axis settings
-      .axisLabel('Weight (%)')
+      .axisLabel('Value')
       .tickFormat(d3.format('.02f'));
 
   var values = [];
@@ -67,7 +69,7 @@ function myGraph(json) {
   data = [
     {
       values: values,
-      key: 'Weight (%)',
+      key: 'Value',
       color: '#ff7f0e'
     }
   ]

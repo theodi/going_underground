@@ -6,6 +6,37 @@ module SirHandel
       expect(last_response).to be_ok
     end
 
+    it 'should delete aliases with no signal name' do
+      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+        {
+          'thing_1' => '1',
+          'thing_2' => '2',
+          'thing_3' => '3',
+          'thing_4' => nil
+        }
+      }
+
+      get '/signal'
+
+      expect(last_response.body).to match(/thing_3/)
+      expect(last_response.body).to_not match(/thing_4/)
+    end
+
+    it 'should set the selected signal to selected' do
+      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+        {
+          'thing_1' => '1',
+          'thing_2' => '2',
+          'thing_3' => '3',
+          'thing_4' => nil
+        }
+      }
+
+      get '/signal', {signal: 'thing_3'}
+
+      expect(last_response.body).to match(/<option selected='selected'>thing_3<\/option>/)
+    end
+
     it 'should return some default data' do
       get '/signal.json'
 
@@ -22,15 +53,6 @@ module SirHandel
       })
     end
 
-    it 'should return min and max data' do
-      get '/signal.json'
-
-      json = JSON.parse(last_response.body)
-
-      expect(json['min']).to eq(0.0)
-      expect(json['max']).to eq(5858.588810837933)
-    end
-
     it 'should allow the date to be specified' do
       get '/signal.json', from: '2015-09-23 00:00:00Z', to: '2015-09-24 00:00:00Z'
 
@@ -43,6 +65,6 @@ module SirHandel
       expect(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with(hash_including(interval: '1h')).and_call_original
       get '/signal.json', interval: '1h'
     end
-
+    
   end
 end
