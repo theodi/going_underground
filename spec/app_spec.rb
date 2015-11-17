@@ -38,6 +38,7 @@ module SirHandel
     end
 
     it 'should return some default data' do
+      pending 'Moving tests to Cucumber'
       get '/signal.json'
 
       json = JSON.parse(last_response.body)
@@ -54,6 +55,8 @@ module SirHandel
     end
 
     it 'should allow the date to be specified' do
+      pending 'Moving tests to Cucumber'
+
       get '/signal.json', from: '2015-09-23 00:00:00Z', to: '2015-09-24 00:00:00Z'
 
       json = JSON.parse(last_response.body)
@@ -62,9 +65,11 @@ module SirHandel
     end
 
     it 'should allow the interval to be specified' do
+      pending 'Moving tests to Cucumber'
+
       expect(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with(hash_including(interval: '1h')).and_call_original
       get '/signal.json', interval: '1h'
     end
-    
+
   end
 end
