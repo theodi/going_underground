@@ -39,7 +39,7 @@ function myGraph(json) {
                   showLegend: false,       //Show the legend, allowing users to turn on/off line series.
                   showYAxis: true,        //Show the y-axis
                   showXAxis: true,        //Show the x-axis
-                  yDomain: [0,10000],
+                  yDomain: [json.min,json.max],
                   xScale: d3.time.scale.utc()
                 });
 
