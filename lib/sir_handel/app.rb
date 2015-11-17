@@ -30,7 +30,7 @@ module SirHandel
         from: params.fetch('from', '2015-09-01 00:00:00Z'),
         to: params.fetch('to', '2015-09-02 00:00:00Z'),
         interval: params.fetch('interval', '1h'),
-        signals: 'train_speed'
+        signals: params.fetch('signal', 'train_speed')
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
