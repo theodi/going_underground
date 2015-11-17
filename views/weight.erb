@@ -1,26 +1,26 @@
-<form class="form-inline" action="/signal" method="get">
-  <div class="form-group">
-    <label for="from">From</label>
-    <input type="text" class="form-control" id="from" name="from" value="<%= params[:from] %>">
+<form class='form-inline' action='/signal' method='get'>
+  <div class='form-group'>
+    <label for='from'>From</label>
+    <input type='text' class='form-control' id='from' name='from' value='<%= params[:from] %>'>
   </div>
-  <div class="form-group">
-    <label for="to">To</label>
-    <input type="text" class="form-control" id="to" name="to" value="<%= params[:to] %>">
+  <div class='form-group'>
+    <label for='to'>To</label>
+    <input type='text' class='form-control' id='to' name='to' value='<%= params[:to] %>'>
   </div>
-  <div class="form-group">
-    <label for="interval">Interval</label>
-    <input type="text" class="form-control" id="interval" name="interval" value="<%= params[:interval] %>" style="width: 75px">
+  <div class='form-group'>
+    <label for='interval'>Interval</label>
+    <input type='text' class='form-control' id='interval' name='interval' value='<%= params[:interval] %>' style='width: 75px'>
   </div>
-  <div class="form-group">
-    <label for="signal">Signal</label>
-    <select class="form-control" id="signal" name="signal">
+  <div class='form-group'>
+    <label for='signal'>Signal</label>
+    <select class='form-control' id='signal' name='signal'>
       <% @signals.each do |signal,address| %>
         <option><%= signal %></option>
       <% end %>
     </select>
   </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <div class='form-group'>
+    <button type='submit' class='btn btn-primary'>Submit</button>
   </div>
 </form>
 
@@ -43,11 +43,11 @@ function myGraph(json) {
                   xScale: d3.time.scale.utc()
                 });
 
-  timeFormat = d3.time.format("%Y-%m-%dT%H:%M:%S+00:00");
+  timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
 
   chart.xAxis     //Chart x-axis settings
       .axisLabel('Time')
-      .tickFormat(function(d) { return d3.time.format("%Y-%m-%d")(new Date(d)) })
+      .tickFormat(function(d) { return d3.time.format('%Y-%m-%d')(new Date(d)) })
       .rotateLabels(75)
       .showMaxMin(false)
       .ticks(d3.time.day, 1)
