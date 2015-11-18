@@ -18,16 +18,27 @@
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
     <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
     <link rel='stylesheet' media='screen' href='https://fontlibrary.org/face/railway-sans' type='text/css'/>
-    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css'>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/d3/3.5.9/d3.min.js'></script>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js'></script>
-    <link rel='icon' type='image/png' href='/assets/favicon.ico' />
+    <script src='//cdn.plot.ly/plotly-latest.min.js'></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <style type='text/css'>
       body, h1, h2 {
         font-family: 'RailwayRegular';
         font-weight: normal;
         font-style: normal;
+      }
+
+      form {
+        margin-bottom: 20px;
+      }
+
+      #chart p {
+        text-align: center;
+      }
+
+      .fa-spinner {
+        font-size: 200px;
+        color: #ccc;
       }
     </style>
 
@@ -40,7 +51,7 @@
         <h1>Everybody onboard the Block-Train!</h1>
       </div>
       <div class='row'>
-        <div class='col-md-8'>
+        <div class='col-md-14'>
           <%= yield %>
         </div>
       </div>
