@@ -42,7 +42,7 @@ module SirHandel
 
       get '/signals', {signal: 'thing_3'}
 
-      expect(last_response.body).to match(/<option selected='selected'>thing_3<\/option>/)
+      expect(last_response.body).to match(/<option selected='selected' value='thing_3'/)
     end
 
 ###    it 'should return some default data' do
