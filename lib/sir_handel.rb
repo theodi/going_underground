@@ -24,10 +24,10 @@ module SirHandel
       @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
 
       respond_to do |wants|
-        # wants.html do
-        #   @signal = params['signal']
-        #   erb :weight, layout: :default
-        # end
+        wants.html do
+          @signal = params['signal']
+          erb :weight, layout: :default
+        end
 
         wants.json do
           values = @signals.keys.map { |key| { name: key , url: SirHandel::build_url(key, request.base_url) } }
@@ -41,11 +41,11 @@ module SirHandel
       protected!
 
       respond_to do |wants|
-        # wants.html do
-        #   @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
-        #   @signal = params['signal']
-        #   erb :weight, layout: :default
-        # end
+        wants.html do
+          @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
+          @signal = params['signal']
+          erb :weight, layout: :default
+        end
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'

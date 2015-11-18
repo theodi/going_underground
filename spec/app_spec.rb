@@ -24,7 +24,7 @@ module SirHandel
         }
       }
 
-      get '/signal'
+      get '/signals'
 
       expect(last_response.body).to match(/thing_3/)
       expect(last_response.body).to_not match(/thing_4/)
@@ -40,7 +40,7 @@ module SirHandel
         }
       }
 
-      get '/signal', {signal: 'thing_3'}
+      get '/signals', {signal: 'thing_3'}
 
       expect(last_response.body).to match(/<option selected='selected'>thing_3<\/option>/)
     end
