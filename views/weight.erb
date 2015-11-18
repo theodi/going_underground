@@ -24,7 +24,9 @@
   </div>
 </form>
 
-<div id='chart' style="height:600px; width: 100%;"></div>
+<div id='chart' style="height:600px; width: 100%;">
+  <p><i class="fa fa-spinner fa-spin"></i></p>
+</div>
 
 <script>
 
@@ -43,6 +45,14 @@ function myGraph(json) {
       tickangle: 75,
       exponentformat: 'e',
       type: 'datetime',
+      tickfont: {
+        family: 'RailwayRegular'
+      }
+    },
+    yaxis: {
+      tickfont: {
+        family: 'RailwayRegular'
+      }
     }
   }
 
