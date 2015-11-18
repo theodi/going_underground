@@ -19,7 +19,7 @@ module SirHandel
       erb :index, layout: :default
     end
 
-    get '/signal' do
+    get '/signals' do
       protected!
 
       respond_to do |wants|
@@ -40,7 +40,7 @@ module SirHandel
       end
     end
 
-    get '/signal/:signal' do
+    get '/signals/:signal' do
       protected!
 
       respond_to do |wants|

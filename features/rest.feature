@@ -6,6 +6,6 @@ Feature: REST it up
 
   @vcr
   Scenario: Get a REST-ish URL
-    When I send a GET request to "signal/train_speed"
+    When I send a GET request to "signals/train_speed"
     Then the response status should be "200"
     And the JSON response should have "$.results[0].timestamp" with the text "2015-09-01T00:00:00+00:00"
