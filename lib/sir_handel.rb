@@ -30,14 +30,12 @@ module SirHandel
         end
 
         wants.json do
-          target = "/signal/%s?from=%s&to=%s&interval=%s" % [
-            params.fetch('signal', 'train_speed'),
-            params.fetch('from', '2015-09-01 00:00:00Z'),
-            params.fetch('to', '2015-09-02 00:00:00Z'),
-            params.fetch('interval', '1h')
-          ]
 
-          redirect to target
+          @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
+
+          values = @signals.keys.map { |key| { name: key , url: SirHandel::build_url(key, request.base_url) } }
+
+          { signals: values }.to_json
         end
       end
     end
@@ -80,5 +78,9 @@ module SirHandel
 
     # start the server if ruby file executed directly
     run! if app_file == $0
+  end
+
+  def self.build_url path, base
+    "#{base}/signals/#{path.gsub '_', '-'}.json"
   end
 end
