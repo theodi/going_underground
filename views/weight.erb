@@ -62,6 +62,8 @@ function myGraph(json) {
   })
 
   Plotly.newPlot('chart', [data], layout);
+
+  d3.selectAll("#chart p").classed("hidden", true);
 }
 
 d3.json('<%= url('/signal.json') + '?' + URI.encode_www_form(params) %>', myGraph);
