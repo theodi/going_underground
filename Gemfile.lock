@@ -202,6 +202,7 @@ DEPENDENCIES
   dotenv
   guard-cucumber
   guard-rspec
+  i18n
   pry
   rack-conneg
   rack-test
@@ -213,6 +214,3 @@ DEPENDENCIES
   thin
   vcr
   webmock
-
-BUNDLED WITH
-   1.10.6
