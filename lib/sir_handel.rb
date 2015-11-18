@@ -54,7 +54,7 @@ module SirHandel
             from: params.fetch('from', '2015-09-01 00:00:00Z'),
             to: params.fetch('to', '2015-09-02 00:00:00Z'),
             interval: params.fetch('interval', '1h'),
-            signals: params.fetch('signal')
+            signals: SirHandel::parameterize_signal(params.fetch('signal'))
           }
 
           r = Blocktrain::Aggregations::AverageAggregation.new(search).results
@@ -79,5 +79,9 @@ module SirHandel
 
   def self.build_url path, base
     "#{base}/signals/#{path.gsub '_', '-'}.json"
+  end
+
+  def self.parameterize_signal signal
+    signal.gsub('-', '_')
   end
 end
