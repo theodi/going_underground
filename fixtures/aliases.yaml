@@ -1,0 +1,79 @@
+---
+train_run_distance: 
+a_car_temperature: 
+actual_chopper_power: 
+actual_motor_power: 2E58A38W
+actuate_braking: 2E44126
+actuate_motor: 2E44127
+all_doors_closed: 2E4643B
+ato_start_button_1_pressed: 2E4645C
+ato_start_button_2_pressed: 2E4645D
+atp_worst_case_forward_location_offset: 2E54858W
+atp_worst_case_forward_location: 2E5485AW
+available_dynamic_brake: 
+b_car_temperature: 
+brake_cylinder_pressure_car_a_bogie_a: 2E464B6W
+brake_cylinder_pressure_car_a_bogie_d: 2E464B8W
+brake_cylinder_pressure_car_b_bogie_a: 2E464BAW
+brake_cylinder_pressure_car_b_bogie_d: 2E464BCW
+brake_cylinder_pressure_car_c_bogie_a: 2E464BEW
+brake_cylinder_pressure_car_c_bogie_d: 2E464C0W
+brake_cylinder_pressure_car_d_bogie_a: 2E464C2W
+brake_cylinder_pressure_car_d_bogie_d: 2E464C4W
+c_car_temperature: 2E4CD5CW
+compressor_motor_running: 2E60BA2
+compressor_start: 2E60BC2
+cop_is_ok_for_supervision: 2E46508
+crew_number: 
+d_car_temperature: 2E4CD5AW
+day: 
+destination_code: 
+dynamic_brake_ok: 2E45405
+emergency_brake_applied: 2E493EA
+estimated_brake_resistor_temparature: 2E58B40W
+hour: 
+hscb_close: 
+line_current: 2E4414CW
+line_voltage: 2E4414AW
+lma_end_location_offset: 2E4CFAEW
+lma_end_location: 2E4CFACW
+main_reservoir_pressure: 2E4CD7CW
+mcm_state: 
+mcs_driving_mode_auto: 2E4647F
+mcs_driving_mode_forward: 2E4645A
+mcs_driving_mode_inter: 2E46459
+mcs_driving_mode_protected_manual: 2E4645B
+mcs_driving_mode_reverse: 2E46458
+mcs_driving_mode_selected: 2E55A2D
+minute: 
+month: 
+order_hscb_to_open_from_cop: 
+passenger_load_to_ato: 2E6493CW
+passesnger_load_car_a: 2E64930W
+passesnger_load_car_b: 2E64932W
+passesnger_load_car_c: 2E64934W
+passesnger_load_car_d: 2E64936W
+pressure_low_limit: 2E60D96W
+pv1_temperature: 
+pv2_temperature: 
+second: 
+sync_all_clocks: 
+sync_local_clock: 
+sync_master_clock_from_pdp1: 
+sync_master_clock_from_pdp2: 
+sync_pdp_clock: 
+this_cab_active: 
+tr_br_effort_reference_1: 2E450D6W
+tr_br_effort_reference_2: 2E450D8W
+traction_brake_achieved: 2E4540CW
+traction_brake_effort_reference: 2E450CAW
+train_fault_report_code: 
+train_mode: 
+train_number: 
+train_service_code: 
+train_speed: 2E491EEW
+train_stock_type: 
+train_unit_number_1st: 
+train_unit_number_2nd: 
+wsp_active: 2E464E7
+year: 

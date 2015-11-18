@@ -17,6 +17,11 @@ Coveralls.wear_merged!
 
 Capybara.app = SirHandel::App
 
+Before("@blocktrain") do
+  allow(Blocktrain::Lookups.instance).to receive(:aliases) { YAML.load_file("fixtures/aliases.yaml") }
+  allow(Blocktrain::Lookups.instance).to receive(:lookups) { YAML.load_file("fixtures/lookups.yaml") }
+end
+
 class SirHandelWorld
   include Capybara::DSL
   include RSpec::Expectations
