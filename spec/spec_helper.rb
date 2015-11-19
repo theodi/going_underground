@@ -1,10 +1,11 @@
+require 'coveralls'
+Coveralls.wear_merged!
+
 ENV['RACK_ENV'] = 'test'
 # Comment out when recording new VCR cassettes
 ENV['ES_URL'] = 'http://elastic.search/'
 
 require 'rack/test'
-require 'coveralls'
-Coveralls.wear_merged!
 require_relative 'support/vcr_setup'
 
 require File.expand_path '../../lib/sir_handel.rb', __FILE__
