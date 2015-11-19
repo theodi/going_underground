@@ -11,7 +11,10 @@ module SirHandel
 
     it 'should allow accessing the home page' do
       get '/'
-      expect(last_response).to be_ok
+      expect(last_response).to be_redirect
+  #    require 'pry' ; binding.pry
+      follow_redirect!
+      expect(last_request.url). to eq 'http://example.org/signals'
     end
 
     it 'should delete aliases with no signal name' do

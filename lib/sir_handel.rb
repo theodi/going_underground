@@ -21,9 +21,7 @@ module SirHandel
     set :views, 'views'
 
     get '/' do
-      @content = '<h1>Hello from TubePi</h1>'
-      @title = 'TubePi'
-      erb :index, layout: :default
+      redirect to('/signals')
     end
 
     get '/signals' do
