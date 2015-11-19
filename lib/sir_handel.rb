@@ -50,7 +50,7 @@ module SirHandel
         wants.html do
           @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
           @signal = params['signal']
-          erb :weight, layout: :default
+          erb :signal, layout: :default
         end
 
         wants.json do
