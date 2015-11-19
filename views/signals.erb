@@ -1,0 +1,5 @@
+<ul>
+  <% @signals.each do |key, value| %>
+    <li><a href="<%= SirHandel::build_url(key, request.base_url, nil) %>"><%= I18n.t(key) %></a>
+  <% end %>
+</ul>

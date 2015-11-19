@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear_merged!
+
 ENV['RACK_ENV'] = 'cucumber'
 ENV['TUBE_USERNAME'] = 'thomas'
 ENV['TUBE_PASSWORD'] = 'tank_engine'
@@ -7,13 +10,17 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib/sir_handel.rb')
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
+require 'cucumber/rspec/doubles'
+
 require 'cucumber/api_steps'
 require 'active_support/core_ext/object/blank'
-require 'coveralls'
-
-Coveralls.wear_merged!
 
 Capybara.app = SirHandel::App
+
+Before("@blocktrain") do
+  allow(Blocktrain::Lookups.instance).to receive(:aliases) { YAML.load_file("fixtures/aliases.yaml") }
+  allow(Blocktrain::Lookups.instance).to receive(:lookups) { YAML.load_file("fixtures/lookups.yaml") }
+end
 
 class SirHandelWorld
   include Capybara::DSL

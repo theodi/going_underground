@@ -12,6 +12,11 @@ Dotenv.load
 
 module SirHandel
   class App < Sinatra::Base
+
+    helpers do
+      include SirHandel::Helpers
+    end
+
     set :public_folder, 'public'
     set :views, 'views'
 
@@ -21,7 +26,24 @@ module SirHandel
       erb :index, layout: :default
     end
 
-    get '/signal' do
+    get '/signals' do
+      protected!
+      @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
+
+      respond_to do |wants|
+        wants.html do
+          erb :signals, layout: :default
+        end
+
+        wants.json do
+          values = @signals.keys.map { |key| { name: key , url: SirHandel::build_url(key, request.base_url) } }
+
+          { signals: values }.to_json
+        end
+      end
+    end
+
+    get '/signals/:signal/?:from?/?:to?' do
       protected!
 
       respond_to do |wants|
@@ -38,7 +60,7 @@ module SirHandel
             from: params.fetch('from', '2015-09-01 00:00:00Z'),
             to: params.fetch('to', '2015-09-02 00:00:00Z'),
             interval: params.fetch('interval', '1h'),
-            signals: params.fetch('signal', 'train_speed')
+            signals: SirHandel::parameterize_signal(params.fetch('signal'))
           }
 
           r = Blocktrain::Aggregations::AverageAggregation.new(search).results
@@ -59,5 +81,13 @@ module SirHandel
 
     # start the server if ruby file executed directly
     run! if app_file == $0
+  end
+
+  def self.build_url path, base, format = '.json'
+    "#{base}/signals/#{path.gsub '_', '-'}#{format}"
+  end
+
+  def self.parameterize_signal signal
+    signal.gsub('-', '_')
   end
 end
