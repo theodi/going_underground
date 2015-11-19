@@ -14,6 +14,12 @@ module RSpecMixin
   def app() SirHandel::App end
 end
 
+module SirHandel
+  class TestHelpers
+    include SirHandel::Helpers
+  end
+end
+
 RSpec.configure do |config|
   config.include RSpecMixin
 
