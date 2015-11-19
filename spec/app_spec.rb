@@ -46,5 +46,16 @@ module SirHandel
       expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-2/)
       expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-3/)
     end
+
+    it 'redirects to a RESTful URL' do
+      post '/signals/passesnger-load-car-a', {
+        from: '2015-09-03 07:00:00',
+        to: '2015-09-03 10:00:00',
+        interval: '5s' }
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
+    end
   end
 end

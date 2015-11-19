@@ -48,9 +48,8 @@ module SirHandel
 
       respond_to do |wants|
         wants.html do
-          @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
           @signal = params['signal']
-          erb :weight, layout: :default
+          erb :signal, layout: :default
         end
 
         wants.json do
@@ -77,6 +76,13 @@ module SirHandel
           }.to_json
         end
       end
+    end
+
+    post '/signals/:signal' do
+      from = DateTime.parse(params[:from]).to_s
+      to = DateTime.parse(params[:to]).to_s
+
+      redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{params[:interval]}")
     end
 
     # start the server if ruby file executed directly
