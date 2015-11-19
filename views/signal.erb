@@ -19,6 +19,25 @@
   </div>
   <div class='form-group'>
     <label for='interval'>Interval</label>
+    <select name='interval' id='interval'>
+      <%
+        [
+          "1s",
+          "5s",
+          "10s",
+          "30s",
+          "1m",
+          "5m",
+          "10m",
+          "30m",
+          "1h",
+          "1d"
+        ].each do |interval|
+      %>
+      <option <% if @params[:interval] == interval %>selected='selected' <% end %>><%= interval %></option>
+      <% end %>
+    </select>
+
     <input type='text' class='form-control' id='interval' name='interval' value='<%= params[:interval] %>' style='width: 75px'>
   </div>
   <div class='form-group'>
