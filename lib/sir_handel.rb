@@ -39,7 +39,7 @@ module SirHandel
       end
     end
 
-    get '/signals/:signal' do
+    get '/signals/:signal/?:from?/?:to?' do
       protected!
 
       respond_to do |wants|
