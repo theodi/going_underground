@@ -48,7 +48,6 @@ module SirHandel
 
       respond_to do |wants|
         wants.html do
-          @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
           @signal = params['signal']
           erb :signal, layout: :default
         end
