@@ -11,7 +11,10 @@ module SirHandel
 
     it 'should allow accessing the home page' do
       get '/'
-      expect(last_response).to be_ok
+      expect(last_response).to be_redirect
+  #    require 'pry' ; binding.pry
+      follow_redirect!
+      expect(last_request.url). to eq 'http://example.org/signals'
     end
 
     it 'should delete aliases with no signal name' do
@@ -56,6 +59,18 @@ module SirHandel
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
+    end
+
+    it 'redirects with defaults' do
+      post '/signals/passesnger-load-car-a', {
+        from: '',
+        to: '',
+        interval: ''
+      }
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-01T00:00:00+00:00/2015-09-02T00:00:00+00:00?interval=10m'
     end
   end
 end

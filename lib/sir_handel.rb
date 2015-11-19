@@ -21,13 +21,12 @@ module SirHandel
     set :views, 'views'
 
     get '/' do
-      @content = '<h1>Hello from TubePi</h1>'
-      @title = 'TubePi'
-      erb :index, layout: :default
+      redirect to('/signals')
     end
 
     get '/signals' do
       protected!
+      @title = 'Available signals'
       @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
 
       respond_to do |wants|
@@ -46,9 +45,15 @@ module SirHandel
     get '/signals/:signal/?:from?/?:to?' do
       protected!
 
+      @signal = params['signal']
+      @from = params.fetch('from', '2015-09-01 00:00:00Z')
+      @to = params.fetch('to', '2015-09-02 00:00:00Z')
+      @interval = params.fetch('interval', '1h')
+
+      @title = I18n.t @signal.gsub('-', '_')
+
       respond_to do |wants|
         wants.html do
-          @signal = params['signal']
           erb :signal, layout: :default
         end
 
@@ -56,10 +61,10 @@ module SirHandel
           headers 'Access-Control-Allow-Origin' => '*'
 
           search = {
-            from: params.fetch('from', '2015-09-01 00:00:00Z'),
-            to: params.fetch('to', '2015-09-02 00:00:00Z'),
-            interval: params.fetch('interval', '1h'),
-            signals: SirHandel::parameterize_signal(params.fetch('signal'))
+            from: @from,
+            to: @to,
+            interval: @interval,
+            signals: SirHandel::parameterize_signal(@signal)
           }
 
           r = Blocktrain::Aggregations::AverageAggregation.new(search).results
@@ -79,10 +84,16 @@ module SirHandel
     end
 
     post '/signals/:signal' do
-      from = DateTime.parse(params[:from]).to_s
-      to = DateTime.parse(params[:to]).to_s
+      params.delete_if { |k,v| v == '' }
 
-      redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{params[:interval]}")
+      from = params.fetch('from', '2015-09-01 00:00:00Z')
+      to = params.fetch('to', '2015-09-02 00:00:00Z')
+      interval = params.fetch('interval', '10m')
+
+      from = DateTime.parse(from).to_s
+      to = DateTime.parse(to).to_s
+
+      redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{interval}")
     end
 
     # start the server if ruby file executed directly
