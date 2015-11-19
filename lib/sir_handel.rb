@@ -12,7 +12,7 @@ Dotenv.load
 
 module SirHandel
   class App < Sinatra::Base
-    
+
     helpers do
       include SirHandel::Helpers
     end
@@ -32,8 +32,7 @@ module SirHandel
 
       respond_to do |wants|
         wants.html do
-          @signal = params['signal']
-          erb :weight, layout: :default
+          erb :signals, layout: :default
         end
 
         wants.json do
@@ -84,8 +83,8 @@ module SirHandel
     run! if app_file == $0
   end
 
-  def self.build_url path, base
-    "#{base}/signals/#{path.gsub '_', '-'}.json"
+  def self.build_url path, base, format = '.json'
+    "#{base}/signals/#{path.gsub '_', '-'}#{format}"
   end
 
   def self.parameterize_signal signal
