@@ -12,6 +12,11 @@ Dotenv.load
 
 module SirHandel
   class App < Sinatra::Base
+    
+    helpers do
+      include SirHandel::Helpers
+    end
+
     set :public_folder, 'public'
     set :views, 'views'
 
