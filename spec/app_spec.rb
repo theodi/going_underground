@@ -30,7 +30,7 @@ module SirHandel
       expect(last_response.body).to_not match(/thing_4/)
     end
 
-    it 'should set the selected signal to selected' do
+    it 'should list the signals' do
       expect(Blocktrain::Lookups.instance).to receive(:aliases) {
         {
           'thing_1' => '1',
@@ -42,42 +42,9 @@ module SirHandel
 
       get '/signals', {signal: 'thing_3'}
 
-      expect(last_response.body).to match(/<option selected='selected' value='thing_3'/)
+      expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-1/)
+      expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-2/)
+      expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-3/)
     end
-
-###    it 'should return some default data' do
-###      pending 'Moving tests to Cucumber'
-###      get '/signal.json'
-###
-###      json = JSON.parse(last_response.body)
-###
-###      expect(json['results'].first).to eq({
-###        'timestamp'=>'2015-09-01T00:00:00+00:00',
-###        'value'=>0.0
-###      })
-###
-###      expect(json['results'].last).to eq({
-###        'timestamp'=>'2015-09-01T23:00:00+00:00',
-###        'value'=>5308.094351083215
-###      })
-###    end
-###
-###    it 'should allow the date to be specified' do
-###      pending 'Moving tests to Cucumber'
-###
-###      get '/signal.json', from: '2015-09-23 00:00:00Z', to: '2015-09-24 00:00:00Z'
-###
-###      json = JSON.parse(last_response.body)
-###
-###      expect(json['results'].first['timestamp']).to eq('2015-09-23T04:00:00+00:00')
-###    end
-###
-###    it 'should allow the interval to be specified' do
-###      pending 'Moving tests to Cucumber'
-###
-###      expect(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with(hash_including(interval: '1h')).and_call_original
-###      get '/signal.json', interval: '1h'
-###    end
-###
   end
 end
