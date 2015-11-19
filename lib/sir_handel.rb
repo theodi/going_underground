@@ -78,6 +78,13 @@ module SirHandel
       end
     end
 
+    post '/signals/:signal' do
+      from = DateTime.parse(params[:from]).to_s
+      to = DateTime.parse(params[:to]).to_s
+
+      redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{params[:interval]}")
+    end
+
     # start the server if ruby file executed directly
     run! if app_file == $0
   end
