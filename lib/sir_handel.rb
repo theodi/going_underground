@@ -46,14 +46,20 @@ module SirHandel
       end
     end
 
-    get '/signals/:signal/?:from?/?:to?' do
+    get '/signals/:signal' do
+      signal = params['signal']
+      interval = params.fetch('interval', settings.default_interval)
+
+      redirect to("/signals/#{signal}/#{settings.default_from}/#{settings.default_to}?interval=#{interval}")
+    end
+
+    get '/signals/:signal/:from/:to' do
       protected!
 
       @from = params[:from]
       @to = params[:to]
       @signal = params['signal']
       @interval = params.fetch('interval', '1h')
-
 
       respond_to do |wants|
         wants.html do
