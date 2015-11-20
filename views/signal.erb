@@ -97,21 +97,28 @@ d3.json(document.URL, function(error, json) {
 });
 
 $(function () {
-  var format = 'YYYY-MM-DD HH:mm:ss'
+  d3.json('http://sir_handel.dev/cromulent-dates', function(error, json) {
+    var format = 'YYYY-MM-DD HH:mm:ss'
 
-  $('#from-date').datetimepicker({
-    format: format
-  });
-  $('#to-date').datetimepicker({
-    format: format,
-    useCurrent: false
-  });
+    $('#from-date').datetimepicker({
+      format: format,
+      minDate: json.start,
+      maxDate: json.end
+    });
 
-  $("#from-date").on("dp.change", function (e) {
-      $('#to-date').data("DateTimePicker").minDate(e.date);
-  });
-  $("#to-date").on("dp.change", function (e) {
-      $('#from-date').data("DateTimePicker").maxDate(e.date);
+    $('#to-date').datetimepicker({
+      format: format,
+      useCurrent: false,
+      minDate: json.start,
+      maxDate: json.end
+    });
+
+    $("#from-date").on("dp.change", function (e) {
+        $('#to-date').data("DateTimePicker").minDate(e.date);
+    });
+    $("#to-date").on("dp.change", function (e) {
+        $('#from-date').data("DateTimePicker").maxDate(e.date);
+    });
   });
 });
 
