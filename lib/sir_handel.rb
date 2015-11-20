@@ -108,11 +108,11 @@ module SirHandel
       from = DateTime.parse(@from) rescue invalid << "'#{@from}' is not a valid ISO8601 date/time."
       to = DateTime.parse(@to) rescue invalid << "'#{@to}' is not a valid ISO8601 date/time."
 
-      if invalid.blank?
+      if invalid.count == 0
         invalid << "'from' date must be before 'to' date." if from > to
       end
 
-      error_400(invalid.join(" ")) unless invalid.blank?
+      error_400(invalid.join(" ")) unless invalid.count == 0
     end
 
     # start the server if ruby file executed directly
