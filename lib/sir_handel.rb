@@ -52,6 +52,8 @@ module SirHandel
 
       @title = I18n.t @signal.gsub('-', '_')
 
+      check_dates
+
       respond_to do |wants|
         wants.html do
           erb :signal, layout: :default
@@ -66,8 +68,6 @@ module SirHandel
             interval: @interval,
             signals: SirHandel::parameterize_signal(@signal)
           }
-
-          error_400("'from' date must be before 'to' date.") if DateTime.parse(@from) > DateTime.parse(@to)
 
           r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
@@ -100,6 +100,19 @@ module SirHandel
 
     def error_400(message)
       error 400, {:status => message}.to_json
+    end
+
+    def check_dates
+      invalid = []
+
+      from = DateTime.parse(@from) rescue invalid << "'#{@from}' is not a valid ISO8601 date/time."
+      to = DateTime.parse(@to) rescue invalid << "'#{@to}' is not a valid ISO8601 date/time."
+
+      if invalid.blank?
+        invalid << "'from' date must be before 'to' date." if from > to
+      end
+
+      error_400(invalid.join(" ")) unless invalid.blank?
     end
 
     # start the server if ruby file executed directly
