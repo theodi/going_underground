@@ -97,9 +97,18 @@ module SirHandel
     end
 
     get '/cromulent-dates' do
+      search = {
+        from: '2015-01-01T00:00:00+00:00',
+        to: '2016-01-01T00:00:00+00:00',
+        interval: '10m',
+        signals: 'line_current'
+      }
+
+      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+
       {
-        start: '2015-08-28T02:00:00+00:00',
-        end: '2015-09-28T23:20:00+00:00'
+        start: Time.parse(r['results']['buckets'].first['key_as_string']).utc.to_datetime.iso8601,
+        end: Time.parse(r['results']['buckets'].last['key_as_string']).utc.to_datetime.iso8601
       }.to_json
     end
 
