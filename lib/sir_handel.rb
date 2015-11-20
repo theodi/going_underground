@@ -45,9 +45,9 @@ module SirHandel
     get '/signals/:signal/?:from?/?:to?' do
       protected!
 
+      @from = params[:from]
+      @to = params[:to]
       @signal = params['signal']
-      @from = params.fetch('from', '2015-09-01 00:00:00Z')
-      @to = params.fetch('to', '2015-09-02 00:00:00Z')
       @interval = params.fetch('interval', '1h')
 
 
