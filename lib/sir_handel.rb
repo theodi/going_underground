@@ -4,9 +4,11 @@ require 'json'
 require 'rack/conneg'
 require 'i18n'
 require 'i18n/backend/fallbacks'
+require 'redis'
 
 require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
+require_relative 'sir_handel/tasks'
 
 Dotenv.load
 
@@ -105,6 +107,11 @@ module SirHandel
       to = DateTime.parse(to).to_s
 
       redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{interval}")
+    end
+
+    get '/cromulent-dates' do
+      redis = Redis.new(url: ENV['REDIS_URL'])
+      redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
     end
 
     def error_400(message)
