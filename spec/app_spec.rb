@@ -12,7 +12,6 @@ module SirHandel
     it 'should allow accessing the home page' do
       get '/'
       expect(last_response).to be_redirect
-  #    require 'pry' ; binding.pry
       follow_redirect!
       expect(last_request.url). to eq 'http://example.org/signals'
     end
@@ -67,6 +66,14 @@ module SirHandel
         to: '',
         interval: ''
       }
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-01T00:00:00+00:00/2015-09-02T00:00:00+00:00?interval=10m'
+    end
+
+    it 'redirects to default datetimes' do
+      get '/signals/passesnger-load-car-a'
 
       expect(last_response).to be_redirect
       follow_redirect!
