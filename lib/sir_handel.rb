@@ -67,6 +67,8 @@ module SirHandel
             signals: SirHandel::parameterize_signal(@signal)
           }
 
+          error_400("'from' date must be before 'to' date.") if DateTime.parse(@from) > DateTime.parse(@to)
+
           r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
           results = r['results']['buckets'].map do |r|
@@ -96,6 +98,10 @@ module SirHandel
       redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{interval}")
     end
 
+    def error_400(message)
+      error 400, {:status => message}.to_json
+    end
+
     # start the server if ruby file executed directly
     run! if app_file == $0
   end
@@ -107,4 +113,5 @@ module SirHandel
   def self.parameterize_signal signal
     signal.gsub('-', '_')
   end
+
 end
