@@ -4,9 +4,11 @@ require 'json'
 require 'rack/conneg'
 require 'i18n'
 require 'i18n/backend/fallbacks'
+require 'redis'
 
 require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
+require_relative 'sir_handel/tasks'
 
 Dotenv.load
 
@@ -97,19 +99,9 @@ module SirHandel
     end
 
     get '/cromulent-dates' do
-      search = {
-        from: '2015-01-01T00:00:00+00:00',
-        to: '2016-01-01T00:00:00+00:00',
-        interval: '10m',
-        signals: 'line_current'
-      }
-
-      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
-
-      {
-        start: Time.parse(r['results']['buckets'].first['key_as_string']).utc.to_datetime.iso8601,
-        end: Time.parse(r['results']['buckets'].last['key_as_string']).utc.to_datetime.iso8601
-      }.to_json
+    #  require 'pry' ; binding.pry
+      redis = Redis.new(url: ENV['REDIS_URL'])
+      redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
     end
 
     # start the server if ruby file executed directly

@@ -11,3 +11,12 @@ unless ENV['RACK_ENV'] == 'production'
 
   task :default => [:spec, :cucumber, 'coveralls:push']
 end
+
+namespace :dates do
+  desc 'Store cromulised dates'
+  task :cromulise do
+    Dotenv.load
+
+    SirHandel::Tasks.cromulise
+  end
+end

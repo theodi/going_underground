@@ -11,6 +11,7 @@ gem 'thin'
 gem 'rack-conneg'
 gem 'actionpack', '~> 4'
 gem 'i18n'
+gem 'redis'
 
 group :test do
   gem 'pry'
