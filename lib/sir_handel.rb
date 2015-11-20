@@ -50,10 +50,10 @@ module SirHandel
       @to = params.fetch('to', '2015-09-02 00:00:00Z')
       @interval = params.fetch('interval', '1h')
 
-      @title = I18n.t @signal.gsub('-', '_')
 
       respond_to do |wants|
         wants.html do
+          @title = I18n.t @signal.gsub('-', '_')
           erb :signal, layout: :default
         end
 
