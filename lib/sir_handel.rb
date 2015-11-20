@@ -59,6 +59,7 @@ module SirHandel
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
+          check_dates
 
           search = {
             from: @from,
@@ -96,6 +97,23 @@ module SirHandel
       redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{interval}")
     end
 
+    def error_400(message)
+      error 400, {:status => message}.to_json
+    end
+
+    def check_dates
+      invalid = []
+
+      from = DateTime.parse(@from) rescue invalid << "'#{@from}' is not a valid ISO8601 date/time."
+      to = DateTime.parse(@to) rescue invalid << "'#{@to}' is not a valid ISO8601 date/time."
+
+      if invalid.count == 0
+        invalid << "'from' date must be before 'to' date." if from > to
+      end
+
+      error_400(invalid.join(" ")) unless invalid.count == 0
+    end
+
     # start the server if ruby file executed directly
     run! if app_file == $0
   end
@@ -107,4 +125,5 @@ module SirHandel
   def self.parameterize_signal signal
     signal.gsub('-', '_')
   end
+
 end
