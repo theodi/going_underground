@@ -52,8 +52,6 @@ module SirHandel
 
       @title = I18n.t @signal.gsub('-', '_')
 
-      check_dates
-
       respond_to do |wants|
         wants.html do
           erb :signal, layout: :default
@@ -61,6 +59,7 @@ module SirHandel
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
+          check_dates
 
           search = {
             from: @from,
