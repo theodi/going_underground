@@ -96,6 +96,13 @@ module SirHandel
       redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{interval}")
     end
 
+    get '/cromulent-dates' do
+      {
+        start: '2015-08-28T02:00:00+00:00',
+        end: '2015-09-28T23:20:00+00:00'
+      }.to_json
+    end
+
     # start the server if ruby file executed directly
     run! if app_file == $0
   end
