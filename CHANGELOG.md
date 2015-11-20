@@ -1,5 +1,19 @@
 # Change Log
 
+## [v0.3.3](https://github.com/TheODI-UD2D/blocktrain/tree/v0.3.3) (2015-11-20)
+[Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.3.2...v0.3.3)
+
+**Merged pull requests:**
+
+- Make index configurable [\#14](https://github.com/TheODI-UD2D/blocktrain/pull/14) ([pezholio](https://github.com/pezholio))
+
+## [v0.3.2](https://github.com/TheODI-UD2D/blocktrain/tree/v0.3.2) (2015-11-17)
+[Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.3.1...v0.3.2)
+
+**Merged pull requests:**
+
+- Only query across one day [\#13](https://github.com/TheODI-UD2D/blocktrain/pull/13) ([pezholio](https://github.com/pezholio))
+
 ## [v0.3.1](https://github.com/TheODI-UD2D/blocktrain/tree/v0.3.1) (2015-11-16)
 [Full Changelog](https://github.com/TheODI-UD2D/blocktrain/compare/v0.3.0...v0.3.1)
 
