@@ -97,7 +97,7 @@ d3.json(document.URL, function(error, json) {
 });
 
 $(function () {
-  d3.json('http://sir_handel.dev/cromulent-dates', function(error, json) {
+  d3.json('//'+ location.hostname +'/cromulent-dates', function(error, json) {
     var format = 'YYYY-MM-DD HH:mm:ss'
 
     $('#from-date').datetimepicker({
