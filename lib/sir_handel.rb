@@ -78,22 +78,9 @@ module SirHandel
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
-          check_dates
+          search.to_json
+        end
 
-          search = {
-            from: @from,
-            to: @to,
-            interval: @interval,
-            signals: SirHandel::parameterize_signal(@signal)
-          }
-
-          r = Blocktrain::Aggregations::AverageAggregation.new(search).results
-
-          results = r['results']['buckets'].map do |r|
-            {
-              'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
-              'value' => r['average_value']['value']
-            }
         wants.csv do
           headers = ['timestamp', @signal].to_csv
 
@@ -103,9 +90,6 @@ module SirHandel
             end
           end
 
-          {
-            results: results
-          }.to_json
           "#{headers}#{body}"
         end
       end
@@ -131,6 +115,30 @@ module SirHandel
 
     def error_400(message)
       error 400, {:status => message}.to_json
+    end
+
+    def search
+      check_dates
+
+      search = {
+        from: @from,
+        to: @to,
+        interval: @interval,
+        signals: SirHandel::parameterize_signal(@signal)
+      }
+
+      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+
+      results = r['results']['buckets'].map do |r|
+        {
+          'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
+          'value' => r['average_value']['value']
+        }
+      end
+
+      {
+        results: results
+      }
     end
 
     def check_dates
