@@ -5,7 +5,7 @@ Feature: Get some CSVs
     Given I request CSV
     And I authenticate as the user "thomas" with the password "tank_engine"
 
-  Scenario: Get default data
+  Scenario: Get CSV data
     When I send a GET request to "/signals/passesnger_load_car_b/2015-09-01T00:00:00+00:00/2015-09-01T01:00:00+00:00?interval=30m"
     Then the response status should be "200"
     And the response should be a CSV
