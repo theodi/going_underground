@@ -82,7 +82,9 @@ module SirHandel
         end
 
         wants.csv do
-          headers = ['timestamp', @signal].to_csv
+          headers 'Access-Control-Allow-Origin' => '*'
+
+          csv_headers = ['timestamp', @signal].to_csv
 
           body = CSV.generate do |csv|
             search[:results].each do |line|
@@ -90,7 +92,7 @@ module SirHandel
             end
           end
 
-          "#{headers}#{body}"
+          "#{csv_headers}#{body}"
         end
       end
     end
