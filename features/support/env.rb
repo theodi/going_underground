@@ -1,5 +1,7 @@
-require 'coveralls'
-Coveralls.wear_merged!
+if ENV['COVERAGE']
+  require 'coveralls'
+  Coveralls.wear_merged!
+end
 
 ENV['RACK_ENV'] = 'cucumber'
 ENV['TUBE_USERNAME'] = 'thomas'
