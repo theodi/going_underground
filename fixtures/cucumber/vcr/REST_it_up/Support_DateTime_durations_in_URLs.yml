@@ -16,8 +16,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Thu, 19 Nov 2015 08:02:05 GMT
-      - Thu, 19 Nov 2015 08:02:05 GMT
+      - Mon, 23 Nov 2015 09:22:21 GMT
+      - Mon, 23 Nov 2015 09:22:21 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -34,13 +34,13 @@ http_interactions:
       - 10.92.139.117
       Content-Length:
       - '345'
-      - '691'
+      - '692'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":87,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":24423,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-23T06:00:00.000+01:00","key":1442984400000,"doc_count":6460,"average_value":{"value":4341.073839009288}},{"key_as_string":"2015-09-23T07:00:00.000+01:00","key":1442988000000,"doc_count":2430,"average_value":{"value":4643.801234567901}},{"key_as_string":"2015-09-23T08:00:00.000+01:00","key":1442991600000,"doc_count":7464,"average_value":{"value":4485.814710610933}},{"key_as_string":"2015-09-23T09:00:00.000+01:00","key":1442995200000,"doc_count":8069,"average_value":{"value":5568.386912876441}}]}}}'
+      string: '{"took":101,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":24423,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-23T06:00:00.000+01:00","key":1442984400000,"doc_count":6460,"average_value":{"value":4341.073839009288}},{"key_as_string":"2015-09-23T07:00:00.000+01:00","key":1442988000000,"doc_count":2430,"average_value":{"value":4643.801234567901}},{"key_as_string":"2015-09-23T08:00:00.000+01:00","key":1442991600000,"doc_count":7464,"average_value":{"value":4485.814710610933}},{"key_as_string":"2015-09-23T09:00:00.000+01:00","key":1442995200000,"doc_count":8069,"average_value":{"value":5568.386912876441}}]}}}'
     http_version: 
-  recorded_at: Thu, 19 Nov 2015 08:02:07 GMT
+  recorded_at: Mon, 23 Nov 2015 09:22:21 GMT
 recorded_with: VCR 3.0.0

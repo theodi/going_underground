@@ -20,3 +20,13 @@ namespace :dates do
     SirHandel::Tasks.cromulise
   end
 end
+
+namespace :store do
+  desc 'Store lookups in redis'
+  task :lookups do
+    Dotenv.load
+
+    SirHandel::Tasks.get_lookups
+    SirHandel::Tasks.get_aliases
+  end
+end

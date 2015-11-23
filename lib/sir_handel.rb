@@ -9,6 +9,7 @@ require 'redis'
 require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
 require_relative 'sir_handel/tasks'
+require_relative 'sir_handel/lookups'
 
 Dotenv.load
 
@@ -25,6 +26,11 @@ module SirHandel
     set :default_from, '2015-09-01T00:00:00+00:00'
     set :default_to, '2015-09-02T00:00:00+00:00'
     set :default_interval, '10m'
+
+    def self.run!
+      Blocktrain::Lookups.instance.fetch_from_redis
+      super
+    end
 
     get '/' do
       redirect to('/signals')

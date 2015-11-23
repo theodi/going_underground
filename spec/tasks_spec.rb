@@ -6,5 +6,40 @@ module SirHandel
 
       described_class.cromulise
     end
+
+    it 'stores the lookups in redis' do
+      lookups = {
+        'lookup_1' => '1',
+        'lookup_2' => '2',
+        'lookup_3' => '3',
+        'lookup_4' => nil,
+        'thing_1' => '1',
+        'thing_2' => '2',
+        'thing_3' => '3',
+        'thing_4' => nil
+      }
+
+      expect(Blocktrain::Lookups.instance).to receive(:lookups) { lookups }
+
+      expect_any_instance_of(Redis).to receive(:set).with('lookups', lookups.to_json).once
+
+      described_class.get_lookups
+    end
+
+    it 'stores the aliases in redis' do
+      aliases = {
+        'thing_1' => '1',
+        'thing_2' => '2',
+        'thing_3' => '3',
+        'thing_4' => nil
+      }
+
+      expect(Blocktrain::Lookups.instance).to receive(:aliases) { aliases }
+
+      expect_any_instance_of(Redis).to receive(:set).with('aliases', aliases.to_json).once
+
+      described_class.get_aliases
+    end
+
   end
 end
