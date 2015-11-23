@@ -13,8 +13,6 @@ require_relative 'sir_handel/lookups'
 
 Dotenv.load
 
-Blocktrain::Lookups.instance.fetch_from_redis
-
 module SirHandel
   class App < Sinatra::Base
 
@@ -28,6 +26,11 @@ module SirHandel
     set :default_from, '2015-09-01T00:00:00+00:00'
     set :default_to, '2015-09-02T00:00:00+00:00'
     set :default_interval, '10m'
+
+    def self.run!
+      Blocktrain::Lookups.instance.fetch_from_redis
+      super
+    end
 
     get '/' do
       redirect to('/signals')
