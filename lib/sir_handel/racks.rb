@@ -3,7 +3,11 @@ module SirHandel
    use(Rack::Conneg) do |conneg|
      conneg.set :accept_all_extensions, false
      conneg.set :fallback, :html
-     conneg.provide([:html, :json])
+     conneg.provide([
+       :html,
+       :json,
+       :csv
+      ])
    end
 
    configure do

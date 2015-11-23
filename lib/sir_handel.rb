@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'blocktrain'
 require 'json'
+require 'csv'
 require 'rack/conneg'
 require 'i18n'
 require 'i18n/backend/fallbacks'
@@ -93,11 +94,19 @@ module SirHandel
               'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
               'value' => r['average_value']['value']
             }
+        wants.csv do
+          headers = ['timestamp', @signal].to_csv
+
+          body = CSV.generate do |csv|
+            search[:results].each do |line|
+              csv << [line['timestamp'].to_s, line['value']]
+            end
           end
 
           {
             results: results
           }.to_json
+          "#{headers}#{body}"
         end
       end
     end
