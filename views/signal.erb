@@ -45,21 +45,17 @@
       </div>
     </form>
   </div>
-  <div class='col-md-4'>
+  <div class='col-md-2'>
     <% csv_url = "/signals/#{@signal}/#{@from}/#{@to}.csv?#{@interval}" %>
-    <a class='btn btn-default' href='<%= csv_url %>'>CSV download</a>
+    <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
+  </div>
+  <div class='col-md-2'>
+    <a class='btn btn-success' href='/signals'>Back to list</a>
   </div>
 </div>
 
 <div id='chart' style="height:500px; width: 100%;">
   <p><i class="fa fa-spinner fa-spin"></i></p>
-</div>
-
-<div class='row'>
-  <div class='col-md-10'></div>
-  <div class='col-md-2'>
-    <a href='/signals'>Back to list</a>
-  </div>
 </div>
 
 <script>
