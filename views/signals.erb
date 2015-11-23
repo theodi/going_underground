@@ -1,5 +1,12 @@
-<ul>
+<div class='row'>
   <% @signals.each do |key, value| %>
-    <li><a href="<%= SirHandel::build_url(key, request.base_url, nil) %>"><%= I18n.t(key) %></a>
+    <% unless I18n.t(key).match /translation missing/ %>
+      <div class='col-md-4'>
+        <a href="<%= SirHandel::build_url(key, request.base_url, nil) %>">
+          <i class='fa fa-subway'></i>
+          <%= I18n.t(key) %>
+        </a>
+      </div>
+    <% end %>
   <% end %>
-</ul>
+</div>
