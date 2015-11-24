@@ -46,7 +46,7 @@
     </form>
   </div>
   <div class='col-md-2'>
-    <% csv_url = "/signals/#{@signal}/#{@from}/#{@to}.csv?#{@interval}" %>
+    <% csv_url = "/signals/#{@signal}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
     <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
   </div>
   <div class='col-md-2'>
