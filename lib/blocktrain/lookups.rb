@@ -14,6 +14,7 @@ module Blocktrain
 
     def reset!
       @lookups = nil
+      @aliases = nil
     end
 
     # Separate out initialization for testing purposes
@@ -35,6 +36,13 @@ module Blocktrain
         @aliases[key.to_s] = @lookups[value]
         @lookups[key.to_s] = @lookups[value]
       end
+    end
+
+    def fetch_from_redis
+      redis = Redis.new(url: ENV['REDIS_URL'])
+
+      @lookups = JSON.parse(redis.get('lookups') || lookups.to_json)
+      @aliases = JSON.parse(redis.get('aliases') || aliases.to_json)
     end
 
     private

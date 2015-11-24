@@ -10,7 +10,6 @@ require_relative 'blocktrain'
 require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
 require_relative 'sir_handel/tasks'
-require_relative 'sir_handel/lookups'
 require_relative 'sir_handel/trends'
 
 Dotenv.load
