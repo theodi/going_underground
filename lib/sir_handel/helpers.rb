@@ -46,12 +46,22 @@ module SirHandel
     def default_dates
       dates = JSON.parse(cromulent_dates)
 
-      from = DateTime.parse(dates["start"])
+      from = round_up(DateTime.parse(dates["start"]))
       to = from + 1
       {
         from: from.to_s,
         to: to.to_s
       }
+    end
+
+    def round_up(date)
+      if date.hour != 0
+        # Add 24 hours on and round down to midnight
+        date = (date.to_time.utc + 24 * 3600).to_date
+        date.to_datetime
+      else
+        date
+      end
     end
 
     def redis
