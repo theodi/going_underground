@@ -28,17 +28,13 @@ module SirHandel
     set :default_to, '2015-09-02T00:00:00+00:00'
     set :default_interval, '10m'
 
-    def self.run!
-      Blocktrain::Lookups.instance.fetch_from_redis
-      super
-    end
-
     get '/' do
       redirect to('/signals')
     end
 
     get '/signals' do
       protected!
+
       @title = 'Available signals'
       @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
 
