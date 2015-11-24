@@ -68,5 +68,29 @@ module SirHandel
       @redis ||= Redis.new(url: ENV['REDIS_URL'])
       @redis
     end
+
+    def search
+      check_dates
+
+      search = {
+        from: @from,
+        to: @to,
+        interval: @interval,
+        signals: SirHandel::parameterize_signal(@signal)
+      }
+
+      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+
+      results = r['results']['buckets'].map do |r|
+        {
+          'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
+          'value' => r['average_value']['value']
+        }
+      end
+
+      {
+        results: results
+      }
+    end
   end
 end
