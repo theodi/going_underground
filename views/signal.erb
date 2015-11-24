@@ -67,6 +67,7 @@ function myGraph(json) {
   };
 
   var layout = {
+    showlegend: false,
     xaxis: {
       tickangle: 75,
       exponentformat: 'e',
@@ -80,14 +81,24 @@ function myGraph(json) {
         family: 'RailwayRegular'
       }
     }
-  }
+  };
 
   json.results.forEach(function(r) {
     data.x.push(timeFormat.parse(r.timestamp))
     data.y.push(r.value)
-  })
+  });
 
-  Plotly.newPlot('chart', [data], layout);
+  var trend = {
+      x: [timeFormat.parse(json.trend.from.timestamp), timeFormat.parse(json.trend.to.timestamp)],
+      y: [json.trend.from.value, json.trend.to.value],
+      mode: 'lines',
+      line: {
+          color: 'rgb(200, 0, 0)',
+          width: 1
+      }
+  };
+
+  Plotly.newPlot('chart', [data, trend], layout);
 
   d3.selectAll("#chart p").classed("hidden", true);
 }

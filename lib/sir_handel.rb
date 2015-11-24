@@ -11,6 +11,7 @@ require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
 require_relative 'sir_handel/tasks'
 require_relative 'sir_handel/lookups'
+require_relative 'sir_handel/trends'
 
 Dotenv.load
 
@@ -78,7 +79,7 @@ module SirHandel
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
-          search.to_json
+          with_trend(search).to_json
         end
 
         wants.csv do
@@ -139,6 +140,12 @@ module SirHandel
       {
         results: results
       }
+    end
+
+    def with_trend(search)
+      search.merge(
+        trend: Trend.new(search[:results], @from, @to).to_hash
+      )
     end
 
     def check_dates
