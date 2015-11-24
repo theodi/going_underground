@@ -2,10 +2,7 @@ module Blocktrain
   class Client
 
     def self.results query
-      r = Curl::Easy.http_post(endpoint, query.to_json) do |c|
-        c.ssl_verify_peer = false
-      end
-
+      r = Curl::Easy.http_post(endpoint, query.to_json)
       JSON.parse r.body_str
     end
 
