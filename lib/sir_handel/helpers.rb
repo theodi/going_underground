@@ -42,6 +42,18 @@ module SirHandel
     def cromulent_dates
       redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
     end
+
+    def default_dates
+      dates = JSON.parse(cromulent_dates)
+
+      from = DateTime.parse(dates["start"])
+      to = from + 1
+      {
+        from: from.to_s,
+        to: to.to_s
+      }
+    end
+
     def redis
       @redis ||= Redis.new(url: ENV['REDIS_URL'])
       @redis

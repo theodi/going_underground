@@ -69,7 +69,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-01T00:00:00+00:00/2015-09-02T00:00:00+00:00?interval=10m'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-29T00:00:00+00:00/2015-09-30T00:00:00+00:00?interval=10m'
     end
 
     it 'redirects to default datetimes' do
@@ -77,7 +77,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-01T00:00:00+00:00/2015-09-02T00:00:00+00:00?interval=10m'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-29T00:00:00+00:00/2015-09-30T00:00:00+00:00?interval=10m'
     end
   end
 end

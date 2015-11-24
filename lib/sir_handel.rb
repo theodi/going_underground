@@ -25,8 +25,6 @@ module SirHandel
     set :public_folder, 'public'
     set :views, 'views'
 
-    set :default_from, '2015-09-01T00:00:00+00:00'
-    set :default_to, '2015-09-02T00:00:00+00:00'
     set :default_interval, '10m'
 
     def self.run!
@@ -60,7 +58,7 @@ module SirHandel
       signal = params['signal']
       interval = params.fetch('interval', settings.default_interval)
 
-      redirect to("/signals/#{signal}/#{settings.default_from}/#{settings.default_to}?interval=#{interval}")
+      redirect to("/signals/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
     end
 
     get '/signals/:signal/:from/:to' do
@@ -101,8 +99,8 @@ module SirHandel
     post '/signals/:signal' do
       params.delete_if { |k,v| v == '' }
 
-      from = params.fetch('from', settings.default_from)
-      to = params.fetch('to', settings.default_to)
+      from = params.fetch('from', default_dates[:from])
+      to = params.fetch('to', default_dates[:to])
       interval = params.fetch('interval', settings.default_interval)
 
       from = DateTime.parse(from).to_s
