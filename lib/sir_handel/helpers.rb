@@ -56,8 +56,8 @@ module SirHandel
 
     def round_up(date)
       if date.hour != 0
-        # Add 24 hours on and round down to midnight
-        date = (date.to_time.utc + 24 * 3600).to_date
+        # Go to next day and round down to midnight
+        date = date.next_day.to_date
         date.to_datetime
       else
         date
