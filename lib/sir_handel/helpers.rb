@@ -92,5 +92,11 @@ module SirHandel
         results: results
       }
     end
+
+    def with_trend(search)
+      search.merge(
+        trend: Trend.new(search[:results], @from, @to).to_hash
+      )
+    end
   end
 end
