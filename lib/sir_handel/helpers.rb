@@ -38,5 +38,13 @@ module SirHandel
     def error_400(message)
       error 400, {:status => message}.to_json
     end
+
+    def cromulent_dates
+      redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
+    end
+    def redis
+      @redis ||= Redis.new(url: ENV['REDIS_URL'])
+      @redis
+    end
   end
 end

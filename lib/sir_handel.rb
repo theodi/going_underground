@@ -112,8 +112,7 @@ module SirHandel
     end
 
     get '/cromulent-dates' do
-      redis = Redis.new(url: ENV['REDIS_URL'])
-      redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
+      cromulent_dates
     end
 
     # start the server if ruby file executed directly
