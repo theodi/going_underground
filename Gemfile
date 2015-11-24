@@ -12,6 +12,8 @@ gem 'rack-conneg'
 gem 'actionpack', '~> 4'
 gem 'i18n'
 gem 'redis'
+gem 'puma'
+gem 'foreman'
 
 group :test do
   gem 'pry'
