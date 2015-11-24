@@ -63,7 +63,8 @@ function myGraph(json) {
   var data = {
       x: [],
       y: [],
-      type: 'scatter'
+      type: 'scatter',
+      name: 'Measurement'
   };
 
   var layout = {
@@ -92,6 +93,7 @@ function myGraph(json) {
       x: [timeFormat.parse(json.trend.from.timestamp), timeFormat.parse(json.trend.to.timestamp)],
       y: [json.trend.from.value, json.trend.to.value],
       mode: 'lines',
+      name: 'Trend',
       line: {
           color: 'rgb(200, 0, 0)',
           width: 1
