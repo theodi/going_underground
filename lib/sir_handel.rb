@@ -77,45 +77,23 @@ module SirHandel
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
-          if @signals.count == 1
-            search_results = search(@signals.first)
-            {
-              signals: [
-                with_trend(search_results)
-              ]
-            }.to_json
-          else
-            result1 = search(@signals.first)
-            result2 = search(@signals.last)
-            {
-              signals: [
-                with_trend(result1),
-                result2
-              ]
-            }.to_json
-          end
+
+          {
+            signals: get_results
+          }.to_json
         end
 
         wants.csv do
           headers 'Access-Control-Allow-Origin' => '*'
 
           csv_headers = @signals.dup.unshift('timestamp').to_csv
+          results = get_results
 
-          result = search(@signals.first)
-
-          if @signals.count == 1
-            body = CSV.generate do |csv|
-              result[:results].each do |line|
-                csv << [line['timestamp'].to_s, line['value']]
-              end
-            end
-          else
-            comparison = search(@signals.last)
-
-            body = CSV.generate do |csv|
-              result[:results].each_with_index do |line, i|
-                csv << [line['timestamp'].to_s, line['value'], comparison[:results][i]['value']]
-              end
+          body = CSV.generate do |csv|
+            results[0][:results].each_with_index do |result, i|
+              line = [result['timestamp'].to_s, result['value']]
+              line << results[1][:results][i]['value'] if results[1]
+              csv << line
             end
           end
 
