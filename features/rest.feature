@@ -12,6 +12,7 @@ Feature: REST it up
   Scenario: Support DateTime durations in URLs
     When I send a GET request to "signals/train-speed/2015-09-23T06:00:00/2015-09-23T10:00:00"
     Then the response status should be "200"
+    And the JSON response should have "$.signals[0].name" with the text "Train Speed"
     And the JSON response should have "$.signals[0]results[0].timestamp" with the text "2015-09-23T05:00:00+00:00"
     And the JSON response should have "$.signals[0]results[3].timestamp" with the text "2015-09-23T08:00:00+00:00"
 
@@ -24,6 +25,8 @@ Feature: REST it up
   Scenario: Allow two signals to be set
     When I send a GET request to "signals/train-speed;passesnger-load-car-b/2015-09-23T06:00:00/2015-09-23T10:00:00?interval=5s"
     Then the response status should be "200"
+    And the JSON response should have "$.signals[0].name" with the text "Train Speed"
+    And the JSON response should have "$.signals[1].name" with the text "Passenger Load Car B (%)"
     And the JSON response should have "$.signals[1]results[0].timestamp" with the text "2015-09-23T05:00:00+00:00"
     And the JSON response should have "$.signals[1]results[1].timestamp" with the text "2015-09-23T05:00:05+00:00"
 

@@ -68,23 +68,11 @@ function myGraph(json) {
       x: [],
       y: [],
       type: 'scatter',
-      name: 'Measurement',
+      name: json.signals[0].name,
       line: {
           color: 'rgb(0, 0, 153)',
           width: 2
       }
-  };
-
-  var comparison = {
-    x: [],
-    y: [],
-    yaxis: 'y2',
-    type: 'scatter',
-    name: 'Measurement',
-    line: {
-        color: 'rgb(204, 51, 51)',
-        width: 2
-    }
   };
 
   var layout = {
@@ -98,8 +86,14 @@ function myGraph(json) {
       }
     },
     yaxis: {
+      title: json.signals[0].name,
+      titlefont: {
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
+      },
       tickfont: {
-        family: 'RailwayRegular'
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
       }
     }
   };
@@ -113,12 +107,31 @@ function myGraph(json) {
 
   if (json.signals[1]) {
     layout['yaxis2'] = {
+      title: json.signals[1].name,
+      showgrid: false,
+      titlefont: {
+        family: 'RailwayRegular',
+        color: 'rgb(204, 51, 51)',
+      },
       tickfont: {
-        family: 'RailwayRegular'
+        family: 'RailwayRegular',
+        color: 'rgb(204, 51, 51)',
       },
       overlaying: 'y',
       side: 'right'
     }
+
+    var comparison = {
+      x: [],
+      y: [],
+      yaxis: 'y2',
+      type: 'scatter',
+      name: json.signals[1].name,
+      line: {
+          color: 'rgb(204, 51, 51)',
+          width: 2
+      }
+    };
 
     json.signals[1].results.forEach(function(r) {
       comparison.x.push(timeFormat.parse(r.timestamp))
