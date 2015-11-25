@@ -59,12 +59,12 @@ module SirHandel
       redirect to("/signals/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
     end
 
-    get '/signals/:signal/:from/:to' do
+    get '/signals/:signals/:from/:to' do
       protected!
 
       @from = params[:from]
       @to = params[:to]
-      @signal = params['signal']
+      @signals = params['signals'].split(';')
       @interval = params.fetch('interval', '1h')
 
       respond_to do |wants|
@@ -75,7 +75,23 @@ module SirHandel
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
-          with_trend(search).to_json
+          if @signals.count == 1
+            search_results = search(@signals.first)
+            {
+              signals: [
+                with_trend(search_results)
+              ]
+            }.to_json
+          else
+            result1 = search(@signals.first)
+            result2 = search(@signals.last)
+            {
+              signals: [
+                with_trend(result1),
+                result2
+              ]
+            }.to_json
+          end
         end
 
         wants.csv do
