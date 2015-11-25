@@ -70,6 +70,7 @@ module SirHandel
       @signals = params['signals'].split(';')
       @interval = params.fetch('interval', '1h')
 
+      error_400('Please set a maximum of two signals') if @signals.count > 2
       respond_to do |wants|
         headers 'Vary' => 'Accept'
 
