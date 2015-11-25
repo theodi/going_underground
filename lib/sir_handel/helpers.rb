@@ -101,6 +101,7 @@ module SirHandel
       end
 
       {
+        name: I18n.t(signal.gsub '-', '_'),
         results: results
       }
     end
