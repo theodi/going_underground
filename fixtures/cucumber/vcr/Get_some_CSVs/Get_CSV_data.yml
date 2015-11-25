@@ -16,11 +16,11 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Tue, 24 Nov 2015 12:19:41 GMT
-      - Tue, 24 Nov 2015 12:19:41 GMT
+      - Wed, 25 Nov 2015 14:15:05 GMT
+      - Wed, 25 Nov 2015 14:15:05 GMT
       Server:
       - fp/25c4c
-      - fp/f6bd83
+      - fp/25c4c
       Www-Authenticate:
       - Basic realm=shield
       X-Found-Handling-Cluster:
@@ -42,5 +42,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":209,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":138,"average_value":{"value":12.543478260869565}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":71,"average_value":{"value":12.605633802816902}}]}}}'
     http_version: 
-  recorded_at: Tue, 24 Nov 2015 12:19:41 GMT
+  recorded_at: Wed, 25 Nov 2015 14:15:05 GMT
 recorded_with: VCR 3.0.0

@@ -98,11 +98,23 @@ module SirHandel
         wants.csv do
           headers 'Access-Control-Allow-Origin' => '*'
 
-          csv_headers = ['timestamp', @signal].to_csv
+          csv_headers = @signals.dup.unshift('timestamp').to_csv
 
-          body = CSV.generate do |csv|
-            search[:results].each do |line|
-              csv << [line['timestamp'].to_s, line['value']]
+          result = search(@signals.first)
+
+          if @signals.count == 1
+            body = CSV.generate do |csv|
+              result[:results].each do |line|
+                csv << [line['timestamp'].to_s, line['value']]
+              end
+            end
+          else
+            comparison = search(@signals.last)
+
+            body = CSV.generate do |csv|
+              result[:results].each_with_index do |line, i|
+                csv << [line['timestamp'].to_s, line['value'], comparison[:results][i]['value']]
+              end
             end
           end
 
