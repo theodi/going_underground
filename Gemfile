@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 gem 'awesome_print'
-gem 'blocktrain' #, path: '../blocktrain'
 gem 'dotenv'
 gem 'rake'
 gem 'sinatra'

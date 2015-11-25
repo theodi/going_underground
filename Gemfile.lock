@@ -22,9 +22,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     awesome_print (1.6.1)
-    blocktrain (0.3.2)
-      curb (~> 0.8)
-      dotenv (~> 2.0)
     builder (3.2.2)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -201,7 +198,6 @@ PLATFORMS
 DEPENDENCIES
   actionpack (~> 4)
   awesome_print
-  blocktrain
   capybara
   coveralls
   cucumber-api-steps

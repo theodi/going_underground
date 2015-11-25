@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'blocktrain'
 require 'json'
 require 'csv'
 require 'rack/conneg'
@@ -7,6 +6,7 @@ require 'i18n'
 require 'i18n/backend/fallbacks'
 require 'redis'
 
+require_relative 'blocktrain'
 require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
 require_relative 'sir_handel/tasks'
