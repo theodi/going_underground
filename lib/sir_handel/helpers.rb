@@ -123,5 +123,11 @@ module SirHandel
         trend: Trend.new(search[:results], @from, @to).to_hash
       )
     end
+
+    def get_results
+      @signals.map do |s|
+        with_trend(search s)
+      end
+    end
   end
 end
