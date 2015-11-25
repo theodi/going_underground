@@ -14,6 +14,7 @@ gem 'i18n'
 gem 'redis'
 gem 'puma'
 gem 'foreman'
+gem 'curb', '~> 0.8'
 
 group :test do
   gem 'pry'

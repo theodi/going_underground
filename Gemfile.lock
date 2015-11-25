@@ -205,6 +205,7 @@ DEPENDENCIES
   capybara
   coveralls
   cucumber-api-steps
+  curb (~> 0.8)
   dotenv
   foreman
   guard-cucumber
@@ -223,3 +224,6 @@ DEPENDENCIES
   thin
   vcr
   webmock
+
+BUNDLED WITH
+   1.10.6
