@@ -42,7 +42,9 @@ module SirHandel
         end
 
         wants.json do
-          values = @signals.keys.map { |key| { name: key , url: SirHandel::build_url(key, request.base_url) } }
+          values = @signals.keys.map do |key|
+            { name: key, url: url(signal_path(key, :json)) }
+          end
 
           { signals: values }.to_json
         end
@@ -110,14 +112,6 @@ module SirHandel
 
     # start the server if ruby file executed directly
     run! if app_file == $0
-  end
-
-  def self.build_url path, base, format = '.json'
-    "#{base}/signals/#{path.gsub '_', '-'}#{format}"
-  end
-
-  def self.parameterize_signal signal
-    signal.gsub('-', '_')
   end
 
 end

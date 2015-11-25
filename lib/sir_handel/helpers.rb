@@ -64,6 +64,18 @@ module SirHandel
       end
     end
 
+    def web_signal(signal)
+      signal.gsub('_', '-')
+    end
+
+    def db_signal(signal)
+      signal.gsub('-', '_')
+    end
+
+    def signal_path(signal, format=nil)
+      ["/signals/#{web_signal(signal)}", format].compact.join('.')
+    end
+
     def redis
       @redis ||= Redis.new(url: ENV['REDIS_URL'])
       @redis
@@ -76,7 +88,7 @@ module SirHandel
         from: @from,
         to: @to,
         interval: @interval,
-        signals: SirHandel::parameterize_signal(@signal)
+        signals: db_signal(@signal)
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results

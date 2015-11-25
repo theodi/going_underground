@@ -1,14 +1,6 @@
 module SirHandel
   describe App, :vcr do
 
-    it 'constructs a URL' do
-      expect(SirHandel::build_url 'actual_motor_power', 'http://example.org').to eq 'http://example.org/signals/actual-motor-power.json'
-    end
-
-    it 'parameterizes signal names' do
-      expect(SirHandel::parameterize_signal 'signal-1').to eq('signal_1')
-    end
-
     it 'should allow accessing the home page' do
       get '/'
       expect(last_response).to be_redirect

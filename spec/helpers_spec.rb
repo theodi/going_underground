@@ -52,6 +52,16 @@ module SirHandel
       end
 
     end
-    
+
+    it 'parameterizing signal names' do
+      expect(helpers.db_signal 'signal-1').to eq('signal_1')
+      expect(helpers.web_signal 'signal_1').to eq('signal-1')
+    end
+
+    it 'generates signal urls' do
+      url = helpers.signal_path('actual_motor_power', :json)
+      expect(url).to eq('/signals/actual-motor-power.json')
+    end
+
   end
 end
