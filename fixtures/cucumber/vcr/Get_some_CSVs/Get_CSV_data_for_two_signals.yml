@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64932W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441065600000,"lte":1441069200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"30m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441065600000,"max":1441069200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
@@ -16,8 +16,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Wed, 25 Nov 2015 14:14:08 GMT
-      - Wed, 25 Nov 2015 14:14:08 GMT
+      - Fri, 27 Nov 2015 11:26:12 GMT
+      - Fri, 27 Nov 2015 11:26:12 GMT
       Server:
       - fp/25c4c
       - fp/f6bd83
@@ -40,12 +40,12 @@ http_interactions:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":209,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":138,"average_value":{"value":12.543478260869565}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":71,"average_value":{"value":12.605633802816902}}]}}}'
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":209,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":138,"average_value":{"value":12.543478260869565}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":71,"average_value":{"value":12.605633802816902}}]}}}'
     http_version: 
-  recorded_at: Wed, 25 Nov 2015 14:14:08 GMT
+  recorded_at: Fri, 27 Nov 2015 11:26:12 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441065600000,"lte":1441069200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"30m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441065600000,"max":1441069200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
@@ -59,11 +59,11 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Wed, 25 Nov 2015 14:15:06 GMT
-      - Wed, 25 Nov 2015 14:15:06 GMT
+      - Fri, 27 Nov 2015 11:32:18 GMT
+      - Fri, 27 Nov 2015 11:32:18 GMT
       Server:
       - fp/25c4c
-      - fp/25c4c
+      - fp/f6bd83
       Www-Authenticate:
       - Basic realm=shield
       X-Found-Handling-Cluster:
@@ -83,12 +83,12 @@ http_interactions:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":131,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":17,"average_value":{"value":2.411764705882353}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":114,"average_value":{"value":3.1140350877192984}}]}}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":131,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":17,"average_value":{"value":2.411764705882353}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":114,"average_value":{"value":3.1140350877192984}}]}}}'
     http_version: 
-  recorded_at: Wed, 25 Nov 2015 14:15:06 GMT
+  recorded_at: Fri, 27 Nov 2015 11:32:18 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64932W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441065600000,"lte":1441069200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"30m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441065600000,"max":1441069200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
@@ -102,8 +102,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Wed, 25 Nov 2015 14:15:06 GMT
-      - Wed, 25 Nov 2015 14:15:06 GMT
+      - Fri, 27 Nov 2015 11:32:18 GMT
+      - Fri, 27 Nov 2015 11:32:18 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -128,5 +128,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":209,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":138,"average_value":{"value":12.543478260869565}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":71,"average_value":{"value":12.605633802816902}}]}}}'
     http_version: 
-  recorded_at: Wed, 25 Nov 2015 14:15:06 GMT
+  recorded_at: Fri, 27 Nov 2015 11:32:18 GMT
 recorded_with: VCR 3.0.0

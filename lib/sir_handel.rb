@@ -70,7 +70,8 @@ module SirHandel
       error_400('Please set a maximum of two signals') if @signals.count > 2
       respond_to do |wants|
         wants.html do
-          @title = I18n.t @signal.gsub('-', '_')
+          signals = @signals.map { |s| I18n.t(s.gsub '-', '_') }
+          @title = signals.join(' compared with ')
           erb :signal, layout: :default
         end
 
