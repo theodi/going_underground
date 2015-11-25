@@ -64,7 +64,7 @@ function myGraph(json) {
 
   var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
 
-  var data = {
+  var signal = {
       x: [],
       y: [],
       type: 'scatter',
@@ -73,6 +73,18 @@ function myGraph(json) {
           color: 'rgb(0, 0, 153)',
           width: 2
       }
+  };
+
+  var comparison = {
+    x: [],
+    y: [],
+    yaxis: 'y2',
+    type: 'scatter',
+    name: 'Measurement',
+    line: {
+        color: 'rgb(204, 51, 51)',
+        width: 2
+    }
   };
 
   var layout = {
@@ -92,23 +104,44 @@ function myGraph(json) {
     }
   };
 
-  json.results.forEach(function(r) {
-    data.x.push(timeFormat.parse(r.timestamp))
-    data.y.push(r.value)
+  json.signals[0].results.forEach(function(r) {
+    signal.x.push(timeFormat.parse(r.timestamp))
+    signal.y.push(r.value)
   });
 
-  var trend = {
-      x: [timeFormat.parse(json.trend.from.timestamp), timeFormat.parse(json.trend.to.timestamp)],
-      y: [json.trend.from.value, json.trend.to.value],
-      mode: 'lines',
-      name: 'Trend',
-      line: {
-          color: 'rgb(204, 51, 51)',
-          width: 1
-      }
-  };
+  var data = [signal]
 
-  Plotly.newPlot('chart', [data, trend], layout);
+  if (json.signals[1]) {
+    layout['yaxis2'] = {
+      tickfont: {
+        family: 'RailwayRegular'
+      },
+      overlaying: 'y',
+      side: 'right'
+    }
+
+    json.signals[1].results.forEach(function(r) {
+      comparison.x.push(timeFormat.parse(r.timestamp))
+      comparison.y.push(r.value)
+    });
+
+    data.push(comparison)
+  } else {
+    var trend = {
+        x: [timeFormat.parse(json.signals[0].trend.from.timestamp), timeFormat.parse(json.signals[0].trend.to.timestamp)],
+        y: [json.signals[0].trend.from.value, json.signals[0].trend.to.value],
+        mode: 'lines',
+        name: 'Trend',
+        line: {
+            color: 'rgb(204, 51, 51)',
+            width: 1
+        }
+    };
+
+    data.push(trend)
+  }
+
+  Plotly.newPlot('chart', data, layout);
 
   d3.selectAll("#chart p").classed("hidden", true);
 }
