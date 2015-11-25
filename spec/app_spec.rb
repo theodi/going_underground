@@ -94,5 +94,15 @@ module SirHandel
       follow_redirect!
       expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
     end
+
+    it 'shows the title of a signal' do
+      get '/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      expect(last_response.body).to match(/Passenger Load Car A \(%\)<\/h1>/)
+    end
+
+    it 'shows the title of two signals' do
+      get '/signals/passesnger-load-car-a;passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      expect(last_response.body).to match(/Passenger Load Car A \(%\) compared with Passenger Load Car B \(%\)<\/h1>/)
+    end
   end
 end

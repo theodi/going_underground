@@ -75,7 +75,8 @@ module SirHandel
         headers 'Vary' => 'Accept'
 
         wants.html do
-          @title = I18n.t @signal.gsub('-', '_')
+          signals = @signals.map { |s| I18n.t(s.gsub '-', '_') }
+          @title = signals.join(' compared with ')
           erb :signal, layout: :default
         end
 
