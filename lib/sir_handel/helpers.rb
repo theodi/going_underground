@@ -81,14 +81,14 @@ module SirHandel
       @redis
     end
 
-    def search
+    def search(signal)
       check_dates
 
       search = {
         from: @from,
         to: @to,
         interval: @interval,
-        memory_addresses: lookups[db_signal(@signal)].upcase
+        memory_addresses: lookups[db_signal(signal)].upcase
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
