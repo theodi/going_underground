@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"analyze_wildcard":true,"query":"memoryAddress:[''A'',
+        ''2E64930W''] OR memoryAddress:[''B'', ''2E64932W''] OR memoryAddress:[''C'',
+        ''2E64934W''] OR memoryAddress:[''D'', ''2E64936W'']"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}],"must_not":[]}}}},"size":0,"aggregations":{"weight_chart":{"date_histogram":{"field":"timeStamp","interval":"10m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441101600000,"max":1441105200000}},"aggregations":{"weight":{"avg":{"field":"value"}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 10 Nov 2015 15:53:55 GMT
+      - Tue, 10 Nov 2015 15:53:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '168'
+      - '345'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":0,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[]}}}'
+    http_version: 
+  recorded_at: Tue, 10 Nov 2015 15:53:56 GMT
+recorded_with: VCR 2.9.3

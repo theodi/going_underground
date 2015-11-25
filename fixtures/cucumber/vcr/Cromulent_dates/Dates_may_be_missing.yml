@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441065600000,"lte":1441152000000}}}]}}}},"size":0,"aggregations":{"langs":{"terms":{"field":"memoryAddress","size":0}}}}'
@@ -45,7 +45,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:06 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4414CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -88,7 +88,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:14 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4414AW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -131,7 +131,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:21 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4540CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -174,7 +174,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:25 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -217,7 +217,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:28 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E49E16W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -260,7 +260,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:31 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E450D8W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -303,7 +303,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:33 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E450D6W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -346,7 +346,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:35 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E450CAW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -389,7 +389,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:37 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464BAW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -432,7 +432,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:38 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464BCW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -475,7 +475,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:39 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464B6W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -518,7 +518,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:40 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4CD7CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -561,7 +561,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:41 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464C4W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -604,7 +604,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:42 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464B8W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -647,7 +647,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:43 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464BEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -690,7 +690,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:44 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464C2W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -733,7 +733,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:45 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464C0W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -776,7 +776,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:46 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E54858W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -819,7 +819,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:47 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -862,7 +862,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:47 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64932W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -905,7 +905,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:48 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64934W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -948,7 +948,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:49 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -991,7 +991,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:49 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E6493CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1034,7 +1034,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:50 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E58B40W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1077,7 +1077,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:50 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E49EB4W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1120,7 +1120,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:51 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E5485AW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1163,7 +1163,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:51 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E63F52W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1206,7 +1206,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:51 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E66C1CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1249,7 +1249,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:51 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E66CA6W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1292,7 +1292,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:52 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E49E12W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1335,7 +1335,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:52 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E44126"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1378,7 +1378,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:52 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E44127"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1421,7 +1421,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:52 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E45405"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1464,7 +1464,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:53 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4CFACW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1507,7 +1507,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:53 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4CFC0W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1550,7 +1550,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:53 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4CFAEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1593,7 +1593,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:53 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4CFC2W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1636,7 +1636,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:53 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4645C"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1679,7 +1679,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:54 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4645D"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1722,7 +1722,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:54 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4643B"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1765,7 +1765,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:54 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E60BA2"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1808,7 +1808,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:54 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E60BC2"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1851,7 +1851,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:54 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E493EA"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1894,7 +1894,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:55 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E55A2D"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1937,7 +1937,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:55 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4ADEC"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -1980,7 +1980,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:55 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4645A"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2023,7 +2023,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:55 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4647F"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2066,7 +2066,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:56 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E46459"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2109,7 +2109,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:56 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E44CB0"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2152,7 +2152,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:56 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E46458"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2195,7 +2195,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:56 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4645B"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2238,7 +2238,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:56 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E46508"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2281,7 +2281,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:57 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E45415"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2324,7 +2324,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:57 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4541CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2367,7 +2367,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:57 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E464E7"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2410,7 +2410,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:57 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E48698"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2453,7 +2453,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:57 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E49A5AW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2496,7 +2496,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:58 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E49E2EW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2539,7 +2539,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:58 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E49E30W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2582,7 +2582,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:58 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E49ECCW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2625,7 +2625,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:58 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4CD5AW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2668,7 +2668,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:59 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4CD5CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2711,7 +2711,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:59 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E58A38W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2754,7 +2754,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:59 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E58B42W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2797,7 +2797,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:40:59 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E60D96W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2840,7 +2840,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:41:00 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E60E5EW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2883,7 +2883,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:41:00 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E63F54W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2926,7 +2926,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:41:00 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E66C1EW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1443610800000}}}]}}}},"size":1}'
@@ -2969,7 +2969,7 @@ http_interactions:
   recorded_at: Tue, 24 Nov 2015 11:41:00 GMT
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E4414CW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1420070400000,"lte":1451606400000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"1h","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1420070400000,"max":1451606400000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'

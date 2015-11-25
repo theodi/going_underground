@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.3'
 
 gem 'awesome_print'
-gem 'blocktrain' #, path: '../blocktrain'
 gem 'dotenv'
 gem 'rake'
 gem 'sinatra'
@@ -14,6 +13,7 @@ gem 'i18n'
 gem 'redis'
 gem 'puma'
 gem 'foreman'
+gem 'curb', '~> 0.8'
 
 group :test do
   gem 'pry'

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://1c3896668c131013e40bf29fbe4b3148.eu-west-1.aws.found.io:9243/train_data/_search
+    uri: http://elastic.search//train_data/_search
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442984400000,"lte":1442998800000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"5s","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1442984400000,"max":1442998800000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
