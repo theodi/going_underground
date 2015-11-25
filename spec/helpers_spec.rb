@@ -30,5 +30,28 @@ module SirHandel
       expect(helpers.authorized?).to eq(true)
     end
 
+    context 'round_up' do
+
+      it 'rounds up dates' do
+        (1..23).each do |h|
+          date = DateTime.parse("2015-08-28T#{"%02d" % h}:00:00+00:00")
+          expect(helpers.round_up(date)).to eq(DateTime.parse('2015-08-29T00:00:00+00:00'))
+        end
+      end
+
+      it 'rounds up dates with odd minutes and seconds' do
+        (1..23).each do |h|
+          date = DateTime.parse("2015-08-28T#{"%02d" % h}:#{rand(59) % h}:#{rand(59) % h}+00:00")
+          expect(helpers.round_up(date)).to eq(DateTime.parse('2015-08-29T00:00:00+00:00'))
+        end
+      end
+
+      it 'leaves midnight untouched' do
+        date = DateTime.parse("2015-08-28T00:00:00+00:00")
+        expect(helpers.round_up(date)).to eq(date)
+      end
+
+    end
+    
   end
 end

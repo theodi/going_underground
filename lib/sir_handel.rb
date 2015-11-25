@@ -25,8 +25,6 @@ module SirHandel
     set :public_folder, 'public'
     set :views, 'views'
 
-    set :default_from, '2015-09-01T00:00:00+00:00'
-    set :default_to, '2015-09-02T00:00:00+00:00'
     set :default_interval, '10m'
 
     get '/' do
@@ -56,7 +54,7 @@ module SirHandel
       signal = params['signal']
       interval = params.fetch('interval', settings.default_interval)
 
-      redirect to("/signals/#{signal}/#{settings.default_from}/#{settings.default_to}?interval=#{interval}")
+      redirect to("/signals/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
     end
 
     get '/signals/:signal/:from/:to' do
@@ -97,8 +95,8 @@ module SirHandel
     post '/signals/:signal' do
       params.delete_if { |k,v| v == '' }
 
-      from = params.fetch('from', settings.default_from)
-      to = params.fetch('to', settings.default_to)
+      from = params.fetch('from', default_dates[:from])
+      to = params.fetch('to', default_dates[:to])
       interval = params.fetch('interval', settings.default_interval)
 
       from = DateTime.parse(from).to_s
@@ -108,55 +106,7 @@ module SirHandel
     end
 
     get '/cromulent-dates' do
-      redis = Redis.new(url: ENV['REDIS_URL'])
-      redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
-    end
-
-    def error_400(message)
-      error 400, {:status => message}.to_json
-    end
-
-    def search
-      check_dates
-
-      search = {
-        from: @from,
-        to: @to,
-        interval: @interval,
-        signals: SirHandel::parameterize_signal(@signal)
-      }
-
-      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
-
-      results = r['results']['buckets'].map do |r|
-        {
-          'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
-          'value' => r['average_value']['value']
-        }
-      end
-
-      {
-        results: results
-      }
-    end
-
-    def with_trend(search)
-      search.merge(
-        trend: Trend.new(search[:results], @from, @to).to_hash
-      )
-    end
-
-    def check_dates
-      invalid = []
-
-      from = DateTime.parse(@from) rescue invalid << "'#{@from}' is not a valid ISO8601 date/time."
-      to = DateTime.parse(@to) rescue invalid << "'#{@to}' is not a valid ISO8601 date/time."
-
-      if invalid.count == 0
-        invalid << "'from' date must be before 'to' date." if from > to
-      end
-
-      error_400(invalid.join(" ")) unless invalid.count == 0
+      cromulent_dates
     end
 
     # start the server if ruby file executed directly

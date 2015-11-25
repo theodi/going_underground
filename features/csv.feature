@@ -1,4 +1,4 @@
-@vcr
+@vcr @blocktrain
 Feature: Get some CSVs
 
   Background:
