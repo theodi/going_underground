@@ -64,16 +64,18 @@ module SirHandel
 
       @from = params[:from]
       @to = params[:to]
-      @signals = params['signals'].split(';')
+      @signals = params['signals']
       @interval = params.fetch('interval', '1h')
 
-      error_400('Please set a maximum of two signals') if @signals.count > 2
+      @signal_array = @signals.split(';')
+
+      error_400('Please set a maximum of two signals') if @signal_array.count > 2
 
       respond_to do |wants|
         wants.html do
           @signal_list = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
 
-          signals = @signals.map { |s| I18n.t(s.gsub '-', '_') }
+          signals = @signal_array.map { |s| I18n.t(s.gsub '-', '_') }
           @title = signals.join(' compared with ')
           erb :signal, layout: :default
         end
@@ -89,7 +91,7 @@ module SirHandel
         wants.csv do
           headers 'Access-Control-Allow-Origin' => '*'
 
-          csv_headers = @signals.dup.unshift('timestamp').to_csv
+          csv_headers = @signal_array.dup.unshift('timestamp').to_csv
           results = get_results
 
           body = CSV.generate do |csv|
