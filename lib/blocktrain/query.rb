@@ -32,14 +32,14 @@ module Blocktrain
         # No query if there isn't a signal specified
         return nil if @signals == []
         lookups = Lookups.instance.lookups
-        @signals = @signals.map { |s| lookups[s] }
-        build_query(@signals)
+        signals = @signals.map { |s| lookups[s] }
+        build_query(signals)
       end
     end
 
     def build_query(addresses)
-      addresses.map! { |a| "memoryAddress:#{a}" }
-      addresses.join(" OR ")
+      terms = addresses.map { |a| "memoryAddress:#{a}" }
+      terms.join(" OR ")
     end
 
     def query
