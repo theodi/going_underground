@@ -87,3 +87,5 @@ en:
   pv1_temperature: "PV1 Temperature"
   pv1_temperature: "PV1 Temperature"
   pv2_temperature: "PV2 Temperature"
+  tr_br_effort_reference_1: "Tr/Br effort reference 1"
+  tr_br_effort_reference_2: "Tr/Br effort reference 2"
