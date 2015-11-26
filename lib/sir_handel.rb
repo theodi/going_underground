@@ -114,10 +114,15 @@ module SirHandel
       to = params.fetch('to', default_dates[:to])
       interval = params.fetch('interval', settings.default_interval)
 
+      signal = [
+        params[:signal],
+        params[:compare]
+      ].delete_if { |s| s.nil? }.join(';')
+
       from = DateTime.parse(from).to_s
       to = DateTime.parse(to).to_s
 
-      redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{interval}")
+      redirect to("/signals/#{signal}/#{from}/#{to}?interval=#{interval}")
     end
 
     get '/cromulent-dates' do
