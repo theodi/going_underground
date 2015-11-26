@@ -41,6 +41,15 @@
         </select>
       </div>
       <div class='form-group'>
+        <label for='compare'>Compare with...</label>
+        <select name='compare' id='compare' class='form-control'>
+          <option value=''>None</option>
+          <% @signal_list.each do |key, value| %>
+            <option value='<%= key %>'><%= I18n.t(key) %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class='form-group'>
         <button type='submit' class='btn btn-primary'>Submit</button>
       </div>
     </form>

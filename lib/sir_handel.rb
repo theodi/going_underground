@@ -71,10 +71,13 @@ module SirHandel
       @interval = params.fetch('interval', '1h')
 
       error_400('Please set a maximum of two signals') if @signals.count > 2
+
       respond_to do |wants|
         headers 'Vary' => 'Accept'
 
         wants.html do
+          @signal_list = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
+
           signals = @signals.map { |s| I18n.t(s.gsub '-', '_') }
           @title = signals.join(' compared with ')
           erb :signal, layout: :default
