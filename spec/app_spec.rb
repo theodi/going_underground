@@ -75,6 +75,16 @@ module SirHandel
       expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
     end
 
+    it 'redirects with a comparison' do
+      post '/signals/passesnger-load-car-a', {
+        compare: 'passesnger-load-car-b'
+      }
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a;passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+    end
+
     it 'redirects with defaults' do
       post '/signals/passesnger-load-car-a', {
         from: '',
