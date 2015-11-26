@@ -60,50 +60,15 @@
 
 <script>
 
+var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
+
 function myGraph(json) {
 
-  var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
+  var layout = getLayout(json.signals[0].name)
+  var signal = getSignal(json.signals[0].results, json.signals[0].name, 'rgb(0, 0, 153)')
+  var trend =  getTrend(json.signals[0].trend, 'rgb(0, 0, 153)')
 
-  var signal = {
-      x: [],
-      y: [],
-      type: 'scatter',
-      name: json.signals[0].name,
-      line: {
-          color: 'rgb(0, 0, 153)',
-          width: 2
-      }
-  };
-
-  var layout = {
-    showlegend: false,
-    xaxis: {
-      tickangle: 75,
-      exponentformat: 'e',
-      type: 'datetime',
-      tickfont: {
-        family: 'RailwayRegular'
-      }
-    },
-    yaxis: {
-      title: json.signals[0].name,
-      titlefont: {
-        family: 'RailwayRegular',
-        color: 'rgb(0, 0, 153)',
-      },
-      tickfont: {
-        family: 'RailwayRegular',
-        color: 'rgb(0, 0, 153)',
-      }
-    }
-  };
-
-  json.signals[0].results.forEach(function(r) {
-    signal.x.push(timeFormat.parse(r.timestamp))
-    signal.y.push(r.value)
-  });
-
-  var data = [signal]
+  var data = [signal, trend]
 
   if (json.signals[1]) {
     layout['yaxis2'] = {
@@ -121,42 +86,81 @@ function myGraph(json) {
       side: 'right'
     }
 
-    var comparison = {
-      x: [],
-      y: [],
-      yaxis: 'y2',
-      type: 'scatter',
-      name: json.signals[1].name,
-      line: {
-          color: 'rgb(204, 51, 51)',
-          width: 2
-      }
-    };
-
-    json.signals[1].results.forEach(function(r) {
-      comparison.x.push(timeFormat.parse(r.timestamp))
-      comparison.y.push(r.value)
-    });
+    var comparison = getSignal(json.signals[1].results, json.signals[1].name, 'rgb(204, 51, 51)', 'y2')
+    var trend = getTrend(json.signals[1].trend, 'rgb(204, 51, 51)')
 
     data.push(comparison)
-  } else {
-    var trend = {
-        x: [timeFormat.parse(json.signals[0].trend.from.timestamp), timeFormat.parse(json.signals[0].trend.to.timestamp)],
-        y: [json.signals[0].trend.from.value, json.signals[0].trend.to.value],
-        mode: 'lines',
-        name: 'Trend',
-        line: {
-            color: 'rgb(204, 51, 51)',
-            width: 1
-        }
-    };
-
     data.push(trend)
   }
 
   Plotly.newPlot('chart', data, layout);
 
   d3.selectAll("#chart p").classed("hidden", true);
+}
+
+function getTrend(trend, colour) {
+  return {
+      x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
+      y: [trend.from.value, trend.to.value],
+      mode: 'lines',
+      name: 'Trend',
+      line: {
+        dash: 'dashdot',
+        color: colour,
+        width: 1
+      }
+  }
+}
+
+function getSignal(data, name, colour, axis) {
+  axis = typeof axis !== 'undefined' ? axis : 'y';
+
+  signal = {
+      x: [],
+      y: [],
+      yaxis: axis,
+      type: 'scatter',
+      name: name,
+      line: {
+          color: colour,
+          width: 2
+      }
+  };
+
+  data.forEach(function(r) {
+    signal.x.push(timeFormat.parse(r.timestamp))
+    signal.y.push(r.value)
+  });
+
+  return signal;
+}
+
+function getLayout(name) {
+  return {
+    showlegend: false,
+    xaxis: {
+      tickangle: 75,
+      exponentformat: 'e',
+      type: 'datetime',
+      zeroline: true,
+      zerolinewidth: 2,
+      
+      tickfont: {
+        family: 'RailwayRegular'
+      }
+    },
+    yaxis: {
+      title: name,
+      titlefont: {
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
+      },
+      tickfont: {
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
+      }
+    }
+  };
 }
 
 d3.json(document.URL, function(error, json) {
