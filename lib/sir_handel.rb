@@ -114,6 +114,8 @@ module SirHandel
       to = params.fetch('to', default_dates[:to])
       interval = params.fetch('interval', settings.default_interval)
 
+      params[:signal] = params[:signal].split(';').first
+
       signal = [
         params[:signal],
         params[:compare]
