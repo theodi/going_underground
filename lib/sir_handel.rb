@@ -127,7 +127,7 @@ module SirHandel
       from = DateTime.parse(from).to_s
       to = DateTime.parse(to).to_s
 
-      redirect to("/signals/#{signal}/#{from}/#{to}?interval=#{interval}")
+      redirect to("/signals/#{web_signal(signal)}/#{from}/#{to}?interval=#{interval}")
     end
 
     get '/cromulent-dates' do
