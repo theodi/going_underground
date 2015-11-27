@@ -46,7 +46,7 @@
         <select name='compare' id='compare' class='form-control'>
           <option value=''>None</option>
           <% @signal_list.each do |key, value| %>
-            <option value='<%= key %>'><%= I18n.t(key) %></option>
+            <option  <% if @signal_array[1] == web_signal(key) %>selected='selected' <% end %> value='<%= key %>'><%= I18n.t(key) %></option>
           <% end %>
         </select>
       </div>
