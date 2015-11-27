@@ -1,5 +1,6 @@
+<p><a href="/signals" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
 <div class='row'>
-  <div class='col-md-8'>
+  <div class='col-md-12'>
     <form class='form-inline' action='/signals/<%= @signals %>' method='post'>
       <div class='form-group'>
         <label for='from'>From</label>
@@ -54,17 +55,21 @@
       </div>
     </form>
   </div>
-  <div class='col-md-2'>
-    <% csv_url = "/signals/#{@signals}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
-    <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
-  </div>
-  <div class='col-md-2'>
-    <a class='btn btn-success' href='/signals'>Back to list</a>
-  </div>
 </div>
 
 <div id='chart' style="height:500px; width: 100%;">
   <p><i class="fa fa-spinner fa-spin"></i></p>
+</div>
+
+<div class='row'>
+  <div class='col-md-12' style='text-align: right; margin-bottom: 12px;'>
+    <% csv_url = "/signals/#{@signals}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
+    <% json_url = "/signals/#{@signals}/#{@from}/#{@to}.json?interval=#{@interval}" %>
+    <p>
+      <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
+      <a class='btn btn-success' href='<%= json_url %>'>JSON version</a>
+    </p>
+  </div>
 </div>
 
 <script>
