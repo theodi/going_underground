@@ -5,7 +5,9 @@ end
 
 ENV['RACK_ENV'] = 'test'
 # Comment out when recording new VCR cassettes
-ENV['ES_URL'] = 'http://elastic.search/'
+unless ENV['VCR_RECORD'] == 'yes'
+  ENV['ES_URL'] = 'http://elastic.search/'
+end
 
 require 'rack/test'
 require_relative 'support/vcr_setup'

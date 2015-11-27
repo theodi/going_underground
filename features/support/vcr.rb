@@ -2,7 +2,11 @@ require 'vcr'
 require 'webmock/cucumber'
 
 VCR.configure do |c|
-  c.default_cassette_options = { :record => :once }
+  if ENV['VCR_RECORD'] == 'yes'
+    c.default_cassette_options = { :record => :once }
+  else
+    c.default_cassette_options = { :record => :none }
+  end
   c.cassette_library_dir = 'fixtures/cucumber/vcr'
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = true
