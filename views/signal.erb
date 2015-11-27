@@ -80,7 +80,7 @@ function myGraph(json) {
 
   var layout = getLayout(json.signals[0].name)
   var signal = getSignal(json.signals[0].results, json.signals[0].name, 'rgb(0, 0, 153)')
-  var trend =  getTrend(json.signals[0].trend, 'rgb(0, 0, 153)')
+  var trend =  getTrend(json.signals[0].trend, json.signals[0].name, 'rgb(0, 0, 153)')
 
   var data = [signal, trend]
 
@@ -101,7 +101,7 @@ function myGraph(json) {
     }
 
     var comparison = getSignal(json.signals[1].results, json.signals[1].name, 'rgb(204, 51, 51)', 'y2')
-    var trend = getTrend(json.signals[1].trend, 'rgb(204, 51, 51)')
+    var trend = getTrend(json.signals[1].trend, json.signals[1].name, 'rgb(204, 51, 51)')
 
     data.push(comparison)
     data.push(trend)
@@ -112,12 +112,12 @@ function myGraph(json) {
   d3.selectAll("#chart p").classed("hidden", true);
 }
 
-function getTrend(trend, colour) {
+function getTrend(trend, name, colour) {
   return {
       x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
       y: [trend.from.value, trend.to.value],
       mode: 'lines',
-      name: 'Trend',
+      name: name + ' Trend',
       line: {
         dash: 'dashdot',
         color: colour,
