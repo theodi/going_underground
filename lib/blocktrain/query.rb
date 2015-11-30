@@ -88,7 +88,7 @@ module Blocktrain
     private
 
       def result
-        Client.results(body)
+        Client.new.search(body)
       end
 
   end

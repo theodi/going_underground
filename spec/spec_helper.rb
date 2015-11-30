@@ -4,9 +4,8 @@ if ENV['COVERAGE']
 end
 
 ENV['RACK_ENV'] = 'test'
-# Comment out when recording new VCR cassettes
 unless ENV['VCR_RECORD'] == 'yes'
-  ENV['ES_URL'] = 'http://elastic.search/'
+  ENV['ES_URL'] = 'http://elastic.search'
 end
 
 require 'rack/test'

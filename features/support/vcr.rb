@@ -11,8 +11,8 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = false
 
-  c.filter_sensitive_data('http://elastic.search/') { ENV['ES_URL'] }
-  c.filter_sensitive_data('http://elastic.search/') { u = URI(ENV['ES_URL']); u.userinfo = ''; u.to_s }
+  c.filter_sensitive_data('http://elastic.search') { ENV['ES_URL'] }
+  c.filter_sensitive_data('http://elastic.search') { u = URI(ENV['ES_URL']); u.userinfo = ''; u.to_s }
 end
 
 VCR.cucumber_tags do |t|

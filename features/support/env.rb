@@ -6,8 +6,10 @@ end
 ENV['RACK_ENV'] = 'cucumber'
 ENV['TUBE_USERNAME'] = 'thomas'
 ENV['TUBE_PASSWORD'] = 'tank_engine'
-# Comment out when recording new VCR cassettes
-ENV['ES_URL'] = 'http://elastic.search/'
+
+unless ENV['VCR_RECORD'] == 'yes'
+  ENV['ES_URL'] = 'http://elastic.search'
+end
 
 require File.join(File.dirname(__FILE__), '..', '..', 'lib/sir_handel.rb')
 
