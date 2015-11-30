@@ -10,8 +10,8 @@ VCR.configure do |c|
   end
   c.allow_http_connections_when_no_cassette = false
 
-  c.filter_sensitive_data('http://elastic.search/') { ENV['ES_URL'] }
-  c.filter_sensitive_data('http://elastic.search/') { u = URI(ENV['ES_URL']); u.userinfo = ''; u.to_s }
+  c.filter_sensitive_data('http://elastic.search') { ENV['ES_URL'] }
+  c.filter_sensitive_data('http://elastic.search') { u = URI(ENV['ES_URL']); u.userinfo = ''; u.to_s }
 
   c.configure_rspec_metadata!
 end
