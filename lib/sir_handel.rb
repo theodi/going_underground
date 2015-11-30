@@ -38,6 +38,8 @@ module SirHandel
       @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
 
       respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
         wants.html do
           erb :signals, layout: :default
         end
@@ -68,6 +70,8 @@ module SirHandel
       @interval = params.fetch('interval', '1h')
 
       respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
         wants.html do
           @title = I18n.t @signal.gsub('-', '_')
           erb :signal, layout: :default
