@@ -1,10 +1,9 @@
 <% @groups.each do |title, members| %>
   <h2><%= I18n.t title %></h2>
   <div class='row' id='<%= title %>'>
-    <% members.each do |key| %>
-      <% signal = @signals.select { |k, v| v == key }.keys.first %>
-      <%= erb :signal_list, locals: { signal: signal } %>
+    <% members.each do |signal| %>
       <% @signals.delete signal %>
+      <%= erb :signal_list, locals: { signal: signal } %>
     <% end %>
   </div>
 <% end %>

@@ -12,8 +12,8 @@ module SirHandel
       expect_any_instance_of(described_class).to receive(:groups) {
         {
           'group_1' => [
-            '1',
-            '2'
+            'thing_1',
+            'thing_2'
           ]
         }
       }
@@ -38,8 +38,8 @@ module SirHandel
       expect_any_instance_of(described_class).to receive(:groups) {
         {
           'group_1' => [
-            '2E4414CW',
-            '2E4414AW'
+            'line_current',
+            'line_voltage'
           ]
         }
       }
