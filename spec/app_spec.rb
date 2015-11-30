@@ -1,6 +1,17 @@
 module SirHandel
   describe App, :vcr do
 
+    before(:each) do
+      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+        {
+          'thing_1' => '1',
+          'thing_2' => '2',
+          'thing_3' => '3',
+          'thing_4' => nil
+        }
+      }
+    end
+
     it 'should allow accessing the home page' do
       get '/'
       expect(last_response).to be_redirect
@@ -9,15 +20,6 @@ module SirHandel
     end
 
     it 'should delete aliases with no signal name' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
-        {
-          'thing_1' => '1',
-          'thing_2' => '2',
-          'thing_3' => '3',
-          'thing_4' => nil
-        }
-      }
-
       get '/signals'
 
       expect(last_response.body).to match(/thing_3/)
@@ -25,15 +27,6 @@ module SirHandel
     end
 
     it 'should list the signals' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
-        {
-          'thing_1' => '1',
-          'thing_2' => '2',
-          'thing_3' => '3',
-          'thing_4' => nil
-        }
-      }
-
       get '/signals', {signal: 'thing_3'}
 
       expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-1/)
@@ -93,29 +86,11 @@ module SirHandel
     end
 
     it 'shows the title of a signal' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
-        {
-          'thing_1' => '1',
-          'thing_2' => '2',
-          'thing_3' => '3',
-          'thing_4' => nil
-        }
-      }
-
       get '/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
       expect(last_response.body).to match(/Passenger Load Car A \(%\)<\/h1>/)
     end
 
     it 'shows the title of two signals' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
-        {
-          'thing_1' => '1',
-          'thing_2' => '2',
-          'thing_3' => '3',
-          'thing_4' => nil
-        }
-      }
-
       get '/signals/passesnger-load-car-a;passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
       expect(last_response.body).to match(/Passenger Load Car A \(%\) compared with Passenger Load Car B \(%\)<\/h1>/)
     end
