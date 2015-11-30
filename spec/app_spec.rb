@@ -8,24 +8,8 @@ module SirHandel
       expect(last_request.url). to eq 'http://example.org/signals'
     end
 
-    it 'should delete aliases with no signal name' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
-        {
-          'thing_1' => '1',
-          'thing_2' => '2',
-          'thing_3' => '3',
-          'thing_4' => nil
-        }
-      }
-
-      get '/signals'
-
-      expect(last_response.body).to match(/thing_3/)
-      expect(last_response.body).to_not match(/thing_4/)
-    end
-
     it 'should list the signals' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+      expect_any_instance_of(described_class).to receive(:lookups) {
         {
           'thing_1' => '1',
           'thing_2' => '2',

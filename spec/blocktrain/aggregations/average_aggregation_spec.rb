@@ -1,13 +1,15 @@
+require_relative '../aggregation_spec'
+
 module Blocktrain
   module Aggregations
     describe AverageAggregation do
 
       include_examples "histogram aggregations", described_class
-      
+
       describe 'hour long histogram' do
 
         subject(:aggregations) {
-          described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', interval: '10m', signals: 'train_speed').results
+          described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', interval: '10m', memory_addresses: '2E491EEW').results
         }
 
         it 'has an aggregation called results', :vcr do
