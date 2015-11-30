@@ -1,5 +1,3 @@
-require_relative '../aggregation_spec'
-
 module Blocktrain
   module Aggregations
     describe AverageAggregation do
