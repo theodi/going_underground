@@ -1,32 +1,21 @@
-<% seen = [] %>
-<% @groups.each do |group| %>
-  <h2><%= group[0] %></h2>
-  <div class='row' id='<%= group[0] %>'>
-    <% group[1].each do |key| %>
-      <div class='col-md-4'>
-        <% s = @signals.select { |k, v| v == key } %>
-        <% s.each do |k, v| %>
-          <a href="<%= url(signal_path(k)) %>">
-            <i class='fa fa-subway'></i>
-            <%= I18n.t(k) %>
-          </a>
-          <% seen.push k %>
-        <% end %>
-      </div>
+<% @groups.each do |title, members| %>
+  <h2><%= I18n.t title %></h2>
+  <div class='row' id='<%= title %>'>
+    <% members.each do |key| %>
+      <% signal = @signals.select { |k, v| v == key }.keys.first %>
+      <%= erb :signal_list, locals: { signal: signal } %>
+      <% @signals.delete signal %>
     <% end %>
   </div>
 <% end %>
 
-<h2>Ungrouped</h2>
-<div class='row' id='ungrouped'>
-  <% @signals.each do |key, value| %>
-    <% unless seen.include? key %>
-      <div class='col-md-4'>
-        <a href="<%= url(signal_path(key)) %>">
-          <i class='fa fa-subway'></i>
-          <%= I18n.t(key) %>
-        </a>
-      </div>
+<% if @signals.count > 0 %>
+
+  <h2>Ungrouped</h2>
+  <div class='row' id='ungrouped'>
+    <% @signals.each do |key, value| %>
+      <%= erb :signal_list, locals: { signal: key } %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+
+<% end %>

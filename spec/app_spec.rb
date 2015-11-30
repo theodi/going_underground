@@ -9,6 +9,15 @@ module SirHandel
     end
 
     it 'should list the signals' do
+      expect_any_instance_of(described_class).to receive(:groups) {
+        {
+          'group_1' => [
+            '1',
+            '2'
+          ]
+        }
+      }
+
       expect_any_instance_of(described_class).to receive(:lookups) {
         {
           'thing_1' => '1',
