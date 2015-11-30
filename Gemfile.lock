@@ -201,6 +201,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   i18n
+  nokogiri
   pry
   puma
   rack-conneg

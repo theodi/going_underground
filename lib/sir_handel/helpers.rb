@@ -106,7 +106,15 @@ module SirHandel
     end
 
     def lookups
-      YAML.load_file File.join('config', 'signal_aliases.yml')
+      load_yaml 'signal_aliases.yml'
+    end
+
+    def groups
+      load_yaml 'signal_groups.yml'
+    end
+
+    def load_yaml(filename)
+      YAML.load_file File.join('config', filename)
     end
 
     def with_trend(search)

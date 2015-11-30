@@ -25,6 +25,26 @@ module SirHandel
       expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-3/)
     end
 
+    it 'should group signals' do
+      expect_any_instance_of(described_class).to receive(:groups) {
+        {
+          'group_1' => [
+            '2E4414CW',
+            '2E4414AW'
+          ]
+        }
+      }
+
+      get '/signals'
+
+      body = Nokogiri::HTML.parse(last_response.body)
+
+      expect(body.css('#group_1').first.css('div').count).to eq(2)
+      expect(body.css('#group_1').first.css('div').first.to_s).to match /Line Current/
+
+      expect(body.css('#ungrouped').first.to_s).to_not match /Line Current/
+    end
+
     it 'redirects to a RESTful URL' do
       post '/signals/passesnger-load-car-a', {
         from: '2015-09-03 07:00:00',

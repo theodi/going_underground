@@ -1,8 +1,7 @@
-<% groups = YAML.load_file 'config/signal_groups.yml' %>
 <% seen = [] %>
-<% groups.each do |group| %>
+<% @groups.each do |group| %>
   <h2><%= group[0] %></h2>
-  <div class='row'>
+  <div class='row' id='<%= group[0] %>'>
     <% group[1].each do |key| %>
       <div class='col-md-4'>
         <% s = @signals.select { |k, v| v == key } %>
@@ -19,7 +18,7 @@
 <% end %>
 
 <h2>Ungrouped</h2>
-<div class='row'>
+<div class='row' id='ungrouped'>
   <% @signals.each do |key, value| %>
     <% unless seen.include? key %>
       <div class='col-md-4'>

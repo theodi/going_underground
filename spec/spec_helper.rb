@@ -10,6 +10,7 @@ unless ENV['VCR_RECORD'] == 'yes'
 end
 
 require 'rack/test'
+require 'nokogiri'
 require_relative 'support/vcr_setup'
 
 require File.expand_path '../../lib/sir_handel.rb', __FILE__

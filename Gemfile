@@ -27,4 +27,5 @@ group :test do
   gem 'guard-cucumber'
   gem 'terminal-notifier-guard'
   gem 'rspec-pride'
+  gem 'nokogiri'
 end

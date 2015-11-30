@@ -36,6 +36,7 @@ module SirHandel
 
       @title = 'Available signals'
       @signals = lookups
+      @groups = groups
 
       respond_to do |wants|
         wants.html do
