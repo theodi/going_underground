@@ -18,11 +18,11 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 30 Nov 2015 13:33:34 GMT
-      - Mon, 30 Nov 2015 13:33:34 GMT
+      - Mon, 30 Nov 2015 14:10:21 GMT
+      - Mon, 30 Nov 2015 14:10:21 GMT
       Server:
       - fp/25c4c
-      - fp/f6bd83
+      - fp/25c4c
       Www-Authenticate:
       - Basic realm=shield
       X-Found-Handling-Cluster:
@@ -44,5 +44,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":0,"max_score":0.0,"hits":[]},"aggregations":{"weight_chart":{"buckets":[]}}}'
     http_version: 
-  recorded_at: Mon, 30 Nov 2015 13:33:42 GMT
+  recorded_at: Mon, 30 Nov 2015 14:10:28 GMT
 recorded_with: VCR 3.0.0
