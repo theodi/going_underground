@@ -1,10 +1,33 @@
+<% groups = YAML.load_file 'config/signal_groups.yml' %>
+<% seen = [] %>
+<% groups.each do |group| %>
+  <h2><%= group[0] %></h2>
+  <div class='row'>
+    <% group[1].each do |key| %>
+      <div class='col-md-4'>
+        <% s = @signals.select { |k, v| v == key } %>
+        <% s.each do |k, v| %>
+          <a href="<%= url(signal_path(k)) %>">
+            <i class='fa fa-subway'></i>
+            <%= I18n.t(k) %>
+          </a>
+          <% seen.push k %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<h2>Ungrouped</h2>
 <div class='row'>
   <% @signals.each do |key, value| %>
+    <% unless seen.include? key %>
       <div class='col-md-4'>
         <a href="<%= url(signal_path(key)) %>">
           <i class='fa fa-subway'></i>
           <%= I18n.t(key) %>
         </a>
       </div>
+    <% end %>
   <% end %>
 </div>
