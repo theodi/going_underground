@@ -35,7 +35,7 @@ module SirHandel
       protected!
 
       @title = 'Available signals'
-      @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
+      @signals = lookups
 
       respond_to do |wants|
         wants.html do

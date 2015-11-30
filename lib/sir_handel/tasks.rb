@@ -5,7 +5,7 @@ module SirHandel
         from: '2015-01-01T00:00:00+00:00',
         to: '2016-01-01T00:00:00+00:00',
         interval: '1h',
-        signals: 'line_current'
+        memory_addresses: '2E4414CW'
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
