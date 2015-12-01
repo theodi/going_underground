@@ -1,19 +1,22 @@
 module Blocktrain
   class ATPQuery < Query
 
-    attr_reader :direction
+    ATP_WORST_CASE_FORWARD_LOCATION = %w[2E5485AW]
+
+    attr_reader :station, :direction
 
     def initialize(options={})
+      @station = options.fetch(:station, :seven_sisters)
       @direction = options.fetch(:direction, :southbound)
-      options[:signals] ||= %w[atp_worst_case_forward_location]
+      options[:memory_addresses] ||= ATP_WORST_CASE_FORWARD_LOCATION
       super(options)
     end
 
     def filtered_filter
       super.tap do |f|
         f[:bool][:must] = [
-          station_filter(direction, :seven_sisters),
-          segments_filter(direction)
+          station_filter,
+          segments_filter
         ]
       end
     end
@@ -28,13 +31,13 @@ module Blocktrain
       ['timeStamp']
     end
 
-    def station_filter(dir, station)
+    def station_filter
       stations = {
         seven_sisters: {
           southbound: 289
         }
       }
-      range = case dir
+      range = case direction
       when :northbound
         op = :gt
       when :southbound
@@ -43,14 +46,14 @@ module Blocktrain
       {
         range: {
           value: {
-            op => stations[station][dir]
+            op => stations[station][direction]
           }
         }
       }
     end
 
-    def segments_filter(dir)
-      script = case dir
+    def segments_filter
+      script = case direction
       when :northbound
         "doc['value'].value % 2 == 0"
       when :southbound
@@ -64,7 +67,7 @@ module Blocktrain
       }
     end
 
-    def puts
+    def output
       results.map {|i| i['_source']}.each do |i|
         puts [i['timeStamp'].ljust(25), i['value'], i['runLengthMs']].join("\t")
       end
