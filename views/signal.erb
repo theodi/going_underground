@@ -1,6 +1,7 @@
+<p><a href="/signals" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
 <div class='row'>
-  <div class='col-md-8'>
-    <form class='form-inline' action='/signals/<%= @signal %>' method='post'>
+  <div class='col-md-12'>
+    <form class='form-inline' action='/signals/<%= @signals %>' method='post'>
       <div class='form-group'>
         <label for='from'>From</label>
         <div class='input-group date' id='from-date'>
@@ -41,16 +42,18 @@
         </select>
       </div>
       <div class='form-group'>
+        <label for='compare'>Compare with...</label>
+        <select name='compare' id='compare' class='form-control'>
+          <option value=''>None</option>
+          <% @signal_list.each do |key, value| %>
+            <option  <% if @signal_array[1] == web_signal(key) %>selected='selected' <% end %> value='<%= key %>'><%= I18n.t(key) %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class='form-group'>
         <button type='submit' class='btn btn-primary'>Submit</button>
       </div>
     </form>
-  </div>
-  <div class='col-md-2'>
-    <% csv_url = "/signals/#{@signal}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
-    <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
-  </div>
-  <div class='col-md-2'>
-    <a class='btn btn-success' href='/signals'>Back to list</a>
   </div>
 </div>
 
@@ -58,59 +61,120 @@
   <p><i class="fa fa-spinner fa-spin"></i></p>
 </div>
 
+<div class='row'>
+  <div class='col-md-12' style='text-align: right; margin-bottom: 12px;'>
+    <% csv_url = "/signals/#{@signals}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
+    <% json_url = "/signals/#{@signals}/#{@from}/#{@to}.json?interval=#{@interval}" %>
+    <p>
+      <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
+      <a class='btn btn-success' href='<%= json_url %>'>JSON version</a>
+    </p>
+  </div>
+</div>
+
 <script>
+
+var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
 
 function myGraph(json) {
 
-  var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
+  var layout = getLayout(json.signals[0].name)
+  var signal = getSignal(json.signals[0].results, json.signals[0].name, 'rgb(0, 0, 153)')
+  var trend =  getTrend(json.signals[0].trend, json.signals[0].name, 'rgb(0, 0, 153)')
 
-  var data = {
+  var data = [signal, trend]
+
+  if (json.signals[1]) {
+    layout['yaxis2'] = {
+      title: json.signals[1].name,
+      showgrid: false,
+      titlefont: {
+        family: 'RailwayRegular',
+        color: 'rgb(204, 51, 51)',
+      },
+      tickfont: {
+        family: 'RailwayRegular',
+        color: 'rgb(204, 51, 51)',
+      },
+      overlaying: 'y',
+      side: 'right'
+    }
+
+    var comparison = getSignal(json.signals[1].results, json.signals[1].name, 'rgb(204, 51, 51)', 'y2')
+    var trend = getTrend(json.signals[1].trend, json.signals[1].name, 'rgb(204, 51, 51)')
+
+    data.push(comparison)
+    data.push(trend)
+  }
+
+  Plotly.newPlot('chart', data, layout);
+
+  d3.selectAll("#chart p").classed("hidden", true);
+}
+
+function getTrend(trend, name, colour) {
+  return {
+      x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
+      y: [trend.from.value, trend.to.value],
+      mode: 'lines',
+      name: name + ' Trend',
+      line: {
+        dash: 'dashdot',
+        color: colour,
+        width: 1
+      }
+  }
+}
+
+function getSignal(data, name, colour, axis) {
+  axis = typeof axis !== 'undefined' ? axis : 'y';
+
+  signal = {
       x: [],
       y: [],
+      yaxis: axis,
       type: 'scatter',
-      name: 'Measurement',
+      name: name,
       line: {
-          color: 'rgb(0, 0, 153)',
+          color: colour,
           width: 2
       }
   };
 
-  var layout = {
-    showlegend: false,
+  data.forEach(function(r) {
+    signal.x.push(timeFormat.parse(r.timestamp))
+    signal.y.push(r.value)
+  });
+
+  return signal;
+}
+
+function getLayout(name) {
+  return {
+    showlegend: true,
     xaxis: {
       tickangle: 75,
       exponentformat: 'e',
       type: 'datetime',
+      zeroline: true,
+      zerolinewidth: 2,
+
       tickfont: {
         family: 'RailwayRegular'
       }
     },
     yaxis: {
+      title: name,
+      titlefont: {
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
+      },
       tickfont: {
-        family: 'RailwayRegular'
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
       }
     }
   };
-
-  json.results.forEach(function(r) {
-    data.x.push(timeFormat.parse(r.timestamp))
-    data.y.push(r.value)
-  });
-
-  var trend = {
-      x: [timeFormat.parse(json.trend.from.timestamp), timeFormat.parse(json.trend.to.timestamp)],
-      y: [json.trend.from.value, json.trend.to.value],
-      mode: 'lines',
-      name: 'Trend',
-      line: {
-          color: 'rgb(204, 51, 51)',
-          width: 1
-      }
-  };
-
-  Plotly.newPlot('chart', [data, trend], layout);
-
-  d3.selectAll("#chart p").classed("hidden", true);
 }
 
 d3.json(document.URL, function(error, json) {

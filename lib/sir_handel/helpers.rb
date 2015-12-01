@@ -81,14 +81,14 @@ module SirHandel
       @redis
     end
 
-    def search
+    def search(signal)
       check_dates
 
       search = {
         from: @from,
         to: @to,
         interval: @interval,
-        memory_addresses: lookups[db_signal(@signal)].upcase
+        memory_addresses: lookups[db_signal(signal)].upcase
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
@@ -101,6 +101,7 @@ module SirHandel
       end
 
       {
+        name: I18n.t(signal.gsub '-', '_'),
         results: results
       }
     end
@@ -121,6 +122,12 @@ module SirHandel
       search.merge(
         trend: Trend.new(search[:results], @from, @to).to_hash
       )
+    end
+
+    def get_results
+      @signal_array.map do |s|
+        with_trend(search s)
+      end
     end
   end
 end

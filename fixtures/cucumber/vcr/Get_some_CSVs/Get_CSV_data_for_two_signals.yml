@@ -1,0 +1,132 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64932W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441065600000,"lte":1441069200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"30m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441065600000,"max":1441069200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 27 Nov 2015 11:26:12 GMT
+      - Fri, 27 Nov 2015 11:26:12 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '425'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":209,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":138,"average_value":{"value":12.543478260869565}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":71,"average_value":{"value":12.605633802816902}}]}}}'
+    http_version: 
+  recorded_at: Fri, 27 Nov 2015 11:26:12 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441065600000,"lte":1441069200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"30m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441065600000,"max":1441069200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 27 Nov 2015 11:32:18 GMT
+      - Fri, 27 Nov 2015 11:32:18 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '424'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":131,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":17,"average_value":{"value":2.411764705882353}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":114,"average_value":{"value":3.1140350877192984}}]}}}'
+    http_version: 
+  recorded_at: Fri, 27 Nov 2015 11:32:18 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64932W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441065600000,"lte":1441069200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"30m","time_zone":"+01:00","min_doc_count":1,"extended_bounds":{"min":1441065600000,"max":1441069200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 27 Nov 2015 11:32:18 GMT
+      - Fri, 27 Nov 2015 11:32:18 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '425'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":209,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T01:00:00.000+01:00","key":1441065600000,"doc_count":138,"average_value":{"value":12.543478260869565}},{"key_as_string":"2015-09-01T01:30:00.000+01:00","key":1441067400000,"doc_count":71,"average_value":{"value":12.605633802816902}}]}}}'
+    http_version: 
+  recorded_at: Fri, 27 Nov 2015 11:32:18 GMT
+recorded_with: VCR 3.0.0

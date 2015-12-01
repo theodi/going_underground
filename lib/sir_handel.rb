@@ -62,35 +62,48 @@ module SirHandel
       redirect to("/signals/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
     end
 
-    get '/signals/:signal/:from/:to' do
+    get '/signals/:signals/:from/:to' do
       protected!
 
       @from = params[:from]
       @to = params[:to]
-      @signal = params['signal']
+      @signals = params['signals']
       @interval = params.fetch('interval', '1h')
+
+      @signal_array = @signals.split(',')
+
+      error_400('Please set a maximum of two signals') if @signal_array.count > 2
 
       respond_to do |wants|
         headers 'Vary' => 'Accept'
 
         wants.html do
-          @title = I18n.t @signal.gsub('-', '_')
+          @signal_list = lookups
+
+          signals = @signal_array.map { |s| I18n.t(s.gsub '-', '_') }
+          @title = signals.join(' compared with ')
           erb :signal, layout: :default
         end
 
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
-          with_trend(search).to_json
+
+          {
+            signals: get_results
+          }.to_json
         end
 
         wants.csv do
           headers 'Access-Control-Allow-Origin' => '*'
 
-          csv_headers = ['timestamp', @signal].to_csv
+          csv_headers = @signal_array.dup.unshift('timestamp').to_csv
+          results = get_results
 
           body = CSV.generate do |csv|
-            search[:results].each do |line|
-              csv << [line['timestamp'].to_s, line['value']]
+            results[0][:results].each_with_index do |result, i|
+              line = [result['timestamp'].to_s, result['value']]
+              line << results[1][:results][i]['value'] if results[1]
+              csv << line
             end
           end
 
@@ -106,10 +119,17 @@ module SirHandel
       to = params.fetch('to', default_dates[:to])
       interval = params.fetch('interval', settings.default_interval)
 
+      params[:signal] = params[:signal].split(',').first
+
+      signal = [
+        params[:signal],
+        params[:compare]
+      ].delete_if { |s| s.nil? }.join(',')
+
       from = DateTime.parse(from).to_s
       to = DateTime.parse(to).to_s
 
-      redirect to("/signals/#{params[:signal]}/#{from}/#{to}?interval=#{interval}")
+      redirect to("/signals/#{web_signal(signal)}/#{from}/#{to}?interval=#{interval}")
     end
 
     get '/cromulent-dates' do
