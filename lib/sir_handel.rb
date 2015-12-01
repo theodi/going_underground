@@ -80,7 +80,7 @@ module SirHandel
         wants.html do
           @signal_list = lookups
 
-          signals = @signal_array.map { |s| I18n.t(s.gsub '-', '_') }
+          signals = @signal_array.map { |s| I18n.t(db_signal(s)) }
           @title = signals.join(' compared with ')
           erb :signal, layout: :default
         end
