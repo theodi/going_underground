@@ -1,0 +1,29 @@
+{
+  "name": "sir_handel",
+  "scripts": {
+  },
+  "env": {
+    "ES_URL": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "REDIS_URL": {
+      "required": true
+    },
+    "TUBE_PASSWORD": {
+      "required": true
+    },
+    "TUBE_USERNAME": {
+      "required": true
+    }
+  },
+  "addons": [
+    "redistogo",
+    "scheduler"
+  ]
+}
