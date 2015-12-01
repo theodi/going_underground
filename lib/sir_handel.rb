@@ -121,10 +121,7 @@ module SirHandel
 
       params[:signal] = params[:signal].split(',').first
 
-      signal = [
-        params[:signal],
-        params[:compare]
-      ].delete_if { |s| s.nil? }.join(',')
+      signal = params.values_at(:signal, :compare).compact.join(',')
 
       from = DateTime.parse(from).to_s
       to = DateTime.parse(to).to_s
