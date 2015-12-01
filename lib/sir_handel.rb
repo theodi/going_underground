@@ -70,7 +70,7 @@ module SirHandel
       @signals = params['signals']
       @interval = params.fetch('interval', '1h')
 
-      @signal_array = @signals.split(';')
+      @signal_array = @signals.split(',')
 
       error_400('Please set a maximum of two signals') if @signal_array.count > 2
 
@@ -119,12 +119,12 @@ module SirHandel
       to = params.fetch('to', default_dates[:to])
       interval = params.fetch('interval', settings.default_interval)
 
-      params[:signal] = params[:signal].split(';').first
+      params[:signal] = params[:signal].split(',').first
 
       signal = [
         params[:signal],
         params[:compare]
-      ].delete_if { |s| s.nil? }.join(';')
+      ].delete_if { |s| s.nil? }.join(',')
 
       from = DateTime.parse(from).to_s
       to = DateTime.parse(to).to_s

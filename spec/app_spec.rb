@@ -82,17 +82,17 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a;passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
     end
 
     it 'redirects with a new comparison' do
-      post '/signals/passesnger-load-car-a;passesnger-load-car-b', {
+      post '/signals/passesnger-load-car-a,passesnger-load-car-b', {
         compare: 'passesnger-load-car-c'
       }
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a;passesnger-load-car-c/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
     end
 
     it 'redirects with defaults' do
@@ -121,7 +121,7 @@ module SirHandel
     end
 
     it 'shows the title of two signals' do
-      get '/signals/passesnger-load-car-a;passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
       expect(last_response.body).to match(/Passenger Load Car A \(%\) compared with Passenger Load Car B \(%\)<\/h1>/)
     end
   end
