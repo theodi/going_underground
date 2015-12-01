@@ -24,6 +24,7 @@ module SirHandel
 
     set :public_folder, 'public'
     set :views, 'views'
+    set :raise_errors, ['cucumber', 'test'].include?(ENV['RACK_ENV'])
 
     set :default_interval, '10m'
 
