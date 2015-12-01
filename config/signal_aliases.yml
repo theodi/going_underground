@@ -17,8 +17,8 @@ mcs_driving_mode_auto: 2E4647F
 mcs_driving_mode_selected: 2E55A2D
 actuate_braking: 2E44126
 actuate_motor: 2E44127
-tr/br_effort_reference_1: 2E450D6W
-tr/br_effort_reference_2: 2E450D8W
+tr_br_effort_reference_1: 2E450D6W
+tr_br_effort_reference_2: 2E450D8W
 traction_brake_effort_reference: 2E450CAW
 emergency_brake_applied: 2E493EA
 brake_cylinder_pressure_car_a_bogie_a: 2E464B6W
