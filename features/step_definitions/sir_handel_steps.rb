@@ -12,6 +12,12 @@ Given /^I have the following Cromulent Dates$/ do |json|
   }
 end
 
+Given(/^I have the following grouped signals$/) do |string|
+  allow_any_instance_of(SirHandel::App).to receive(:groups) {
+    YAML.load(string)
+  }
+end
+
 Given /^I have no Cromulent Dates$/ do
   allow_any_instance_of(Redis).to receive(:get) {
     nil

@@ -133,6 +133,23 @@ module SirHandel
       redirect to("/signals/#{web_signal(signal)}/#{from}/#{to}?interval=#{interval}")
     end
 
+    get '/groups/:group/:from/:to' do
+      @from = params[:from]
+      @to = params[:to]
+      @interval = params.fetch('interval', '1h')
+      @signal_array = groups[db_signal(params[:group])]
+
+      respond_to do |wants|
+        wants.json do
+          headers 'Access-Control-Allow-Origin' => '*'
+
+          {
+            signals: get_results
+          }.to_json
+        end
+      end
+    end
+
     get '/cromulent-dates' do
       cromulent_dates
     end
