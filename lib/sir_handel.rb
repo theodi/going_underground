@@ -96,7 +96,7 @@ module SirHandel
         wants.csv do
           headers 'Access-Control-Allow-Origin' => '*'
 
-          csv_headers = @signal_array.dup.unshift('timestamp').to_csv
+          csv_headers = ['timestamp', *@signal_array].to_csv
           results = get_results
 
           body = CSV.generate do |csv|
