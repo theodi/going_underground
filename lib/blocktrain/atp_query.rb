@@ -14,7 +14,7 @@ module Blocktrain
 
     def filtered_filter
       super.tap do |f|
-        f[:bool][:must] = [
+        f[:bool][:must] << [
           station_filter,
           segments_filter
         ]
