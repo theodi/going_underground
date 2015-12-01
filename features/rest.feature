@@ -23,7 +23,7 @@ Feature: REST it up
     And the JSON response should have "$.signals[0]results[1].timestamp" with the text "2015-09-23T05:00:05+00:00"
 
   Scenario: Allow two signals to be set
-    When I send a GET request to "signals/train-speed;passesnger-load-car-b/2015-09-23T06:00:00/2015-09-23T10:00:00?interval=5s"
+    When I send a GET request to "signals/train-speed,passesnger-load-car-b/2015-09-23T06:00:00/2015-09-23T10:00:00?interval=5s"
     Then the response status should be "200"
     And the JSON response should have "$.signals[0].name" with the text "Train Speed"
     And the JSON response should have "$.signals[1].name" with the text "Passenger Load Car B (%)"
@@ -41,6 +41,6 @@ Feature: REST it up
     And the JSON response should have "$.status" with the text "'madeupdate' is not a valid ISO8601 date/time. 'anothermadeupdate' is not a valid ISO8601 date/time."
 
   Scenario: Don't let more than two signals to be set
-    When I send a GET request to "signals/train-speed;passesnger-load-car-b;passesnger-load-car-c/2015-09-23T06:00:00/2015-09-23T10:00:00?interval=5s"
+    When I send a GET request to "signals/train-speed,passesnger-load-car-b,passesnger-load-car-c/2015-09-23T06:00:00/2015-09-23T10:00:00?interval=5s"
     Then the response status should be "400"
     And the JSON response should have "$.status" with the text "Please set a maximum of two signals"
