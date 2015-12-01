@@ -126,7 +126,7 @@ module SirHandel
 
     def get_results
       @signal_array.map do |s|
-        with_trend(search s)
+        with_trend(search(s))
       end
     end
   end
