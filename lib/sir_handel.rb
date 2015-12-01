@@ -80,7 +80,7 @@ module SirHandel
         wants.html do
           @signal_list = lookups
 
-          signals = @signal_array.map { |s| I18n.t(s.gsub '-', '_') }
+          signals = @signal_array.map { |s| I18n.t(db_signal(s)) }
           @title = signals.join(' compared with ')
           erb :signal, layout: :default
         end
@@ -96,14 +96,15 @@ module SirHandel
         wants.csv do
           headers 'Access-Control-Allow-Origin' => '*'
 
-          csv_headers = @signal_array.dup.unshift('timestamp').to_csv
+          csv_headers = ['timestamp', *@signal_array].to_csv
           results = get_results
 
           body = CSV.generate do |csv|
-            results[0][:results].each_with_index do |result, i|
-              line = [result['timestamp'].to_s, result['value']]
-              line << results[1][:results][i]['value'] if results[1]
-              csv << line
+            r1 = results[0][:results]
+            r2 = if results[1] then results[1][:results] else [] end
+            r1.zip(r2).each_with_index do |(s1, s2), i|
+              s2 ||= {}
+              csv << [*s1.values_at('timestamp', 'value'), s2['value']].compact
             end
           end
 
@@ -121,10 +122,7 @@ module SirHandel
 
       params[:signal] = params[:signal].split(',').first
 
-      signal = [
-        params[:signal],
-        params[:compare]
-      ].delete_if { |s| s.nil? }.join(',')
+      signal = params.values_at(:signal, :compare).compact.join(',')
 
       from = DateTime.parse(from).to_s
       to = DateTime.parse(to).to_s
