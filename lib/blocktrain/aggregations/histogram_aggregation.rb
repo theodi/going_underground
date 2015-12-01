@@ -8,7 +8,6 @@ module Blocktrain
             date_histogram: {
               field: 'timeStamp',
               interval: @interval,
-              time_zone: '+01:00',
               min_doc_count: 1,
               extended_bounds: {
                 min: @from,
