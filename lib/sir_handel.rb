@@ -84,7 +84,7 @@ module SirHandel
           if data[:results].count > 0
             with_trend(data).to_json
           else
-            error_400 'No results for this query'
+            {nodata: 'No results for this query'}.to_json
           end
         end
 
