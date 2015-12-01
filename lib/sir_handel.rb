@@ -139,6 +139,8 @@ module SirHandel
       @interval = params.fetch('interval', '1h')
       @signal_array = groups[db_signal(params[:group])]
 
+      error 404, {:status => 'Group not found'}.to_json if @signal_array.nil?
+
       respond_to do |wants|
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
