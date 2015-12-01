@@ -78,7 +78,7 @@ module SirHandel
         headers 'Vary' => 'Accept'
 
         wants.html do
-          @signal_list = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
+          @signal_list = lookups
 
           signals = @signal_array.map { |s| I18n.t(s.gsub '-', '_') }
           @title = signals.join(' compared with ')
