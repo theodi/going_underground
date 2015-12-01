@@ -8,6 +8,16 @@ module SirHandel
       expect(last_request.url). to eq 'http://example.org/signals'
     end
 
+    it 'varys on the accept header for signals' do
+      get '/signals'
+      expect(last_response.headers['Vary']).to eq('Accept')
+    end
+
+    it 'varys on the accept header for a particular signal' do
+      get '/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      expect(last_response.headers['Vary']).to eq('Accept')
+    end
+
     it 'should list the signals' do
       expect_any_instance_of(described_class).to receive(:groups) {
         {
