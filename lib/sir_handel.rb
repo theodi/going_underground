@@ -72,6 +72,7 @@ module SirHandel
 
       respond_to do |wants|
         headers 'Vary' => 'Accept'
+        headers 'Access-Control-Allow-Origin' => '*'
 
         wants.html do
           @title = I18n.t @signal.gsub('-', '_')
@@ -79,13 +80,10 @@ module SirHandel
         end
 
         wants.json do
-          headers 'Access-Control-Allow-Origin' => '*'
           with_trend(search).to_json
         end
 
         wants.csv do
-          headers 'Access-Control-Allow-Origin' => '*'
-
           csv_headers = ['timestamp', @signal].to_csv
 
           body = CSV.generate do |csv|
