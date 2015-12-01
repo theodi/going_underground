@@ -1,10 +1,24 @@
-<div class='row'>
-  <% @signals.each do |key, value| %>
-      <div class='col-md-4'>
-        <a href="<%= url(signal_path(key)) %>">
-          <i class='fa fa-subway'></i>
-          <%= I18n.t(key) %>
-        </a>
-      </div>
+<% if @groups %>
+
+  <% @groups.each do |title, members| %>
+    <h2><%= I18n.t title %></h2>
+    <div class='row' id='<%= title %>'>
+      <% members.each do |signal| %>
+        <% @signals.delete signal %>
+        <%= erb :signal_list, locals: { signal: signal } %>
+      <% end %>
+    </div>
   <% end %>
-</div>
+
+<% end %>
+
+<% if @signals.count > 0 %>
+
+  <h2>Ungrouped</h2>
+  <div class='row' id='ungrouped'>
+    <% @signals.each do |key, value| %>
+      <%= erb :signal_list, locals: { signal: key } %>
+    <% end %>
+  </div>
+
+<% end %>

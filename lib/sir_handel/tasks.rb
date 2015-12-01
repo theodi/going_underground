@@ -5,7 +5,7 @@ module SirHandel
         from: '2015-01-01T00:00:00+00:00',
         to: '2016-01-01T00:00:00+00:00',
         interval: '1h',
-        signals: 'line_current'
+        memory_addresses: '2E4414CW'
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
@@ -18,16 +18,6 @@ module SirHandel
       redis.set 'cromulent-dates', cromulent_dates
 
       cromulent_dates
-    end
-
-    def self.get_lookups
-      lookups = Blocktrain::Lookups.instance.lookups
-      redis.set('lookups', lookups.to_json)
-    end
-
-    def self.get_aliases
-      aliases = Blocktrain::Lookups.instance.aliases
-      redis.set('aliases', aliases.to_json)
     end
 
     def self.redis

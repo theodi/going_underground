@@ -18,24 +18,17 @@ module SirHandel
       expect(last_response.headers['Vary']).to eq('Accept')
     end
 
-    it 'should delete aliases with no signal name' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+    it 'should list the signals' do
+      expect_any_instance_of(described_class).to receive(:groups) {
         {
-          'thing_1' => '1',
-          'thing_2' => '2',
-          'thing_3' => '3',
-          'thing_4' => nil
+          'group_1' => [
+            'thing_1',
+            'thing_2'
+          ]
         }
       }
 
-      get '/signals'
-
-      expect(last_response.body).to match(/thing_3/)
-      expect(last_response.body).to_not match(/thing_4/)
-    end
-
-    it 'should list the signals' do
-      expect(Blocktrain::Lookups.instance).to receive(:aliases) {
+      expect_any_instance_of(described_class).to receive(:lookups) {
         {
           'thing_1' => '1',
           'thing_2' => '2',
@@ -49,6 +42,26 @@ module SirHandel
       expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-1/)
       expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-2/)
       expect(last_response.body).to match(/a href="http:\/\/example\.org\/signals\/thing-3/)
+    end
+
+    it 'should group signals' do
+      expect_any_instance_of(described_class).to receive(:groups) {
+        {
+          'group_1' => [
+            'line_current',
+            'line_voltage'
+          ]
+        }
+      }
+
+      get '/signals'
+
+      body = Nokogiri::HTML.parse(last_response.body)
+
+      expect(body.css('#group_1').first.css('div').count).to eq(2)
+      expect(body.css('#group_1').first.css('div').first.to_s).to match /Line Current/
+
+      expect(body.css('#ungrouped').first.to_s).to_not match /Line Current/
     end
 
     it 'redirects to a RESTful URL' do

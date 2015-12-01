@@ -1,13 +1,21 @@
 if ENV['COVERAGE']
+  require 'simplecov'
   require 'coveralls'
   Coveralls.wear_merged!
+
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+  SimpleCov.start do
+    add_filter 'features/support/vcr'
+  end
 end
 
 ENV['RACK_ENV'] = 'cucumber'
 ENV['TUBE_USERNAME'] = 'thomas'
 ENV['TUBE_PASSWORD'] = 'tank_engine'
-# Comment out when recording new VCR cassettes
-ENV['ES_URL'] = 'http://elastic.search/'
+
+unless ENV['VCR_RECORD'] == 'yes'
+  ENV['ES_URL'] = 'http://elastic.search/'
+end
 
 require File.join(File.dirname(__FILE__), '..', '..', 'lib/sir_handel.rb')
 
@@ -20,11 +28,6 @@ require 'cucumber/api_steps'
 require 'active_support/core_ext/object/blank'
 
 Capybara.app = SirHandel::App
-
-Before("@blocktrain") do
-  allow(Blocktrain::Lookups.instance).to receive(:aliases) { YAML.load_file("fixtures/aliases.yaml") }
-  allow(Blocktrain::Lookups.instance).to receive(:lookups) { YAML.load_file("fixtures/lookups.yaml") }
-end
 
 class SirHandelWorld
   include Capybara::DSL

@@ -1,0 +1,11 @@
+# For example:
+# 
+# brake_cylinder_pressure:
+#   - brake_cylinder_pressure_car_a_bogie_a
+#   - brake_cylinder_pressure_car_a_bogie_d
+#   - brake_cylinder_pressure_car_b_bogie_a
+#   - brake_cylinder_pressure_car_b_bogie_d
+#   - brake_cylinder_pressure_car_c_bogie_a
+#   - brake_cylinder_pressure_car_c_bogie_d
+#   - brake_cylinder_pressure_car_d_bogie_a
+#   - brake_cylinder_pressure_car_d_bogie_d

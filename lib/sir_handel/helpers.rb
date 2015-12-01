@@ -88,7 +88,7 @@ module SirHandel
         from: @from,
         to: @to,
         interval: @interval,
-        signals: db_signal(@signal)
+        memory_addresses: lookups[db_signal(@signal)].upcase
       }
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
@@ -103,6 +103,18 @@ module SirHandel
       {
         results: results
       }
+    end
+
+    def lookups
+      load_yaml 'signal_aliases.yml'
+    end
+
+    def groups
+      load_yaml 'signal_groups.yml'
+    end
+
+    def load_yaml(filename)
+      YAML.load_file File.join('config', filename)
     end
 
     def with_trend(search)

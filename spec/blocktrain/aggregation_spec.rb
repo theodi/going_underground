@@ -2,7 +2,7 @@ module Blocktrain
   describe Aggregation do
 
     it 'gets the interval' do
-      subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', interval: '10m', signals: 'train_speed')
+      subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', interval: '10m', memory_addresses: '2E491EEW')
 
       expect(subject.instance_variable_get("@interval")).to eq('10m')
     end
@@ -16,15 +16,15 @@ module Blocktrain
 end
 
 RSpec.shared_examples "histogram aggregations" do |described_class|
-  
+
   it "returns 0 results", :vcr do
-    agg = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', signals: 'train_speed')
+    agg = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', memory_addresses: '2E491EEW')
     expect(agg.send(:result)['hits']['hits'].count).to eq(0)
   end
-  
+
   it "returns 0 results even if a limit is specified", :vcr do
-    agg = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', signals: 'train_speed', limit: 1000)
+    agg = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', memory_addresses: '2E491EEW', limit: 1000)
     expect(agg.send(:result)['hits']['hits'].count).to eq(0)
   end
-  
+
 end

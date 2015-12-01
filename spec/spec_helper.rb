@@ -1,6 +1,12 @@
 if ENV['COVERAGE']
+  require 'simplecov'
   require 'coveralls'
   Coveralls.wear_merged!
+
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+  SimpleCov.start do
+    add_filter 'spec/support/vcr_setup'
+  end
 end
 
 ENV['RACK_ENV'] = 'test'
@@ -10,6 +16,7 @@ unless ENV['VCR_RECORD'] == 'yes'
 end
 
 require 'rack/test'
+require 'nokogiri'
 require_relative 'support/vcr_setup'
 
 require File.expand_path '../../lib/sir_handel.rb', __FILE__
@@ -27,10 +34,6 @@ end
 
 RSpec.configure do |config|
   config.include RSpecMixin
-
-  config.after :each do
-    Blocktrain::Lookups.instance.reset!
-  end
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

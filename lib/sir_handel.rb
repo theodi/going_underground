@@ -35,7 +35,8 @@ module SirHandel
       protected!
 
       @title = 'Available signals'
-      @signals = Blocktrain::Lookups.instance.aliases.delete_if {|k,v| v.nil? }
+      @signals = lookups
+      @groups = groups
 
       respond_to do |wants|
         headers 'Vary' => 'Accept'
