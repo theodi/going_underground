@@ -115,12 +115,16 @@ function myGraph(json) {
 
 d3.json(document.URL, function(error, json) {
   d3.selectAll("#chart p").classed("hidden", false);
+
   if (error) {
     json = JSON.parse(error.responseText)
-    alert(json.status);
     d3.selectAll("#chart p").classed("hidden", true);
   } else {
-    myGraph(json);
+    if ('results' in json) {
+      myGraph(json);
+    } else {
+      d3.selectAll("#chart p").classed("hidden", true);
+    }
   }
 });
 
