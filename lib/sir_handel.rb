@@ -80,7 +80,12 @@ module SirHandel
         end
 
         wants.json do
-          with_trend(search).to_json
+          data = search
+          if data[:results].count > 0
+            with_trend(data).to_json
+          else
+            error_400 'No results for this query'
+          end
         end
 
         wants.csv do
