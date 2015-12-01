@@ -25,16 +25,8 @@ module Blocktrain
     end
 
     def address_query
-      # Look up memory addresses directly if specified
-      unless @memory_addresses == []
-        build_query(@memory_addresses)
-      else
-        # No query if there isn't a signal specified
-        return nil if @signals == []
-        lookups = Lookups.instance.lookups
-        signals = @signals.map { |s| lookups[s] }
-        build_query(signals)
-      end
+      return nil if @memory_addresses == []
+      build_query(@memory_addresses)
     end
 
     def build_query(addresses)
