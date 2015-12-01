@@ -100,10 +100,11 @@ module SirHandel
           results = get_results
 
           body = CSV.generate do |csv|
-            results[0][:results].each_with_index do |result, i|
-              line = [result['timestamp'].to_s, result['value']]
-              line << results[1][:results][i]['value'] if results[1]
-              csv << line
+            r1 = results[0][:results]
+            r2 = if results[1] then results[1][:results] else [] end
+            r1.zip(r2).each_with_index do |(s1, s2), i|
+              s2 ||= {}
+              csv << [*s1.values_at('timestamp', 'value'), s2['value']].compact
             end
           end
 
