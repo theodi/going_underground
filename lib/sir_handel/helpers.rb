@@ -94,7 +94,7 @@ module SirHandel
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
       if r.nil?
-        results = []
+        results_hash(signal, [])
       else
         results = r['results']['buckets'].map do |r|
           {
@@ -102,8 +102,11 @@ module SirHandel
             'value' => r['average_value']['value']
           } rescue nil
         end
+        results_hash(signal, results)
       end
+    end
 
+    def results_hash(signal, results)
       {
         name: I18n.t(signal.gsub '-', '_'),
         results: results
@@ -123,13 +126,9 @@ module SirHandel
     end
 
     def with_trend(search)
-      if search[:results] == []
-        return search
-      else
-        return search.merge(
-          trend: Trend.new(search[:results], @from, @to).to_hash
-        )
-      end
+      search.merge(
+        trend: Trend.new(search[:results], @from, @to).to_hash
+      )
     end
 
     def get_results
