@@ -25,3 +25,10 @@ passesnger_load:
     When I send a GET request to "groups/non-existent-group/2015-09-23T06:00:00/2015-09-23T10:00:00"
     Then the response status should be "404"
     And the JSON response should have "$.status" with the text "Group not found"
+
+  Scenario: Return an empty array when a signal in a group has no data
+    Given the signal 'passesnger_load_car_c' returns no data
+    And I send a GET request to "groups/passesnger-load/2015-09-23T06:00:00/2015-09-23T10:00:00"
+    Then the response status should be "200"
+    And the JSON response should have "$.signals[0].results[*]" with a length of 4
+    And the JSON response should have "$.signals[2].results[*]" with a length of 0

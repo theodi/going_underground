@@ -39,3 +39,19 @@ end
 And /^the CSV response should have the values:$/ do |values|
   expect(CSV.parse(last_response.body)[1..-1]).to include values.split
 end
+
+Given(/^the signal '(.+)' returns no data$/) do |signal|
+  memory_address = lookups[db_signal(signal)].upcase
+
+  allow(Blocktrain::Aggregations::AverageAggregation).to receive(:new).and_call_original
+  allow(Blocktrain::Aggregations::AverageAggregation).to receive(:new).with({
+    from: anything,
+    to: anything,
+    interval: anything,
+    memory_addresses: memory_address
+  }) do
+    stub = Blocktrain::Aggregations::AverageAggregation.new
+    allow(stub).to receive(:results) { nil }
+    stub
+  end
+end
