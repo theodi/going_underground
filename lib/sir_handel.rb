@@ -56,16 +56,6 @@ module SirHandel
       end
     end
 
-    get '/:type/:signal' do
-      signal = params['signal']
-      type = params['type']
-      interval = params.fetch('interval', settings.default_interval)
-
-      return status(404) unless ['signals', 'groups'].include?(type)
-
-      redirect to("/#{type}/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
-    end
-
     get '/signals/:signals/:from/:to' do
       protected!
 
@@ -116,26 +106,6 @@ module SirHandel
       end
     end
 
-    post '/signals/:signal' do
-      params.delete_if { |k,v| v == '' }
-
-      from = params.fetch('from', default_dates[:from])
-      to = params.fetch('to', default_dates[:to])
-      interval = params.fetch('interval', settings.default_interval)
-
-      params[:signal] = params[:signal].split(',').first
-
-      signal = [
-        params[:signal],
-        params[:compare]
-      ].delete_if { |s| s.nil? }.join(',')
-
-      from = DateTime.parse(from).to_s
-      to = DateTime.parse(to).to_s
-
-      redirect to("/signals/#{web_signal(signal)}/#{from}/#{to}?interval=#{interval}")
-    end
-
     get '/groups/:group/:from/:to' do
       @from = params[:from]
       @to = params[:to]
@@ -161,6 +131,36 @@ module SirHandel
           }.to_json
         end
       end
+    end
+
+    post '/:type/:signal' do
+      params.delete_if { |k,v| v == '' }
+
+      from = params.fetch('from', default_dates[:from])
+      to = params.fetch('to', default_dates[:to])
+      interval = params.fetch('interval', settings.default_interval)
+      type = get_type
+
+      params[:signal] = params[:signal].split(',').first
+
+      signal = [
+        params[:signal],
+        params[:compare]
+      ].delete_if { |s| s.nil? }.join(',')
+
+      from = DateTime.parse(from).to_s
+      to = DateTime.parse(to).to_s
+
+      redirect to("/#{type}/#{web_signal(signal)}/#{from}/#{to}?interval=#{interval}")
+    end
+
+    get '/:type/:signal' do
+      signal = params['signal']
+      type = params['type']
+      interval = params.fetch('interval', settings.default_interval)
+      type = get_type
+
+      redirect to("/#{type}/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
     end
 
     get '/cromulent-dates' do

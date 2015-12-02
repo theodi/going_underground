@@ -91,6 +91,17 @@ module SirHandel
       expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
     end
 
+    it 'redirects to a RESTful URL with a group' do
+      post '/groups/my-awesome-group', {
+        from: '2015-09-03 07:00:00',
+        to: '2015-09-03 10:00:00',
+        interval: '5s' }
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/groups/my-awesome-group/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
+    end
+
     it 'redirects with a comparison' do
       post '/signals/passesnger-load-car-a', {
         compare: 'passesnger-load-car-b'

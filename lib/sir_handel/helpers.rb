@@ -35,6 +35,11 @@ module SirHandel
       error_400(invalid.join(" ")) unless invalid.count == 0
     end
 
+    def get_type
+      halt(404) unless ['signals', 'groups'].include?(params[:type])
+      params[:type]
+    end
+
     def error_400(message)
       error 400, {:status => message}.to_json
     end
