@@ -1,0 +1,211 @@
+<p><a href="/signals" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
+<div class='row'>
+  <div class='col-md-12'>
+    <form class='form-inline' action='/signals/<%= @signals %>' method='post'>
+      <div class='form-group'>
+        <label for='from'>From</label>
+        <div class='input-group date' id='from-date'>
+          <input type='text' class="form-control" id='from' name='from' value='<%= @from %>'/>
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='from'>To</label>
+        <div class='input-group date' id='to-date'>
+          <input type='text' class="form-control" id='to' name='to' value='<%= @to %>'/>
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='interval'>Interval</label>
+        <select name='interval' id='interval' class='form-control'>
+          <%
+            {
+              "1 second" => "1s",
+              "5 seconds" => "5s",
+              "10 seconds" => "10s",
+              "30 seconds" => "30s",
+              "1 minute" => "1m",
+              "5 minutes" => "5m",
+              "10 minutes" => "10m",
+              "30 minutes" => "30m",
+              "1 hour" => "1h",
+              "1 day" => "1d"
+            }.each do |label, interval|
+          %>
+          <option <% if @interval == interval %>selected='selected' <% end %> value='<%= interval %>'><%= label %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class='form-group'>
+        <label for='compare'>Compare with...</label>
+        <select name='compare' id='compare' class='form-control'>
+          <option value=''>None</option>
+          <% @signal_list.each do |key, value| %>
+            <option  <% if @signal_array[1] == web_signal(key) %>selected='selected' <% end %> value='<%= key %>'><%= I18n.t(key) %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id='chart' style="height:500px; width: 100%;">
+  <p><i class="fa fa-spinner fa-spin"></i></p>
+</div>
+
+<div class='row'>
+  <div class='col-md-12' style='text-align: right; margin-bottom: 12px;'>
+    <% csv_url = "/signals/#{@signals}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
+    <% json_url = "/signals/#{@signals}/#{@from}/#{@to}.json?interval=#{@interval}" %>
+    <p>
+      <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
+      <a class='btn btn-success' href='<%= json_url %>'>JSON version</a>
+    </p>
+  </div>
+</div>
+
+<script>
+
+var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
+
+var colours = [
+  '#B36305',
+  '#E32017',
+  '#FFD300',
+  '#00782A',
+  '#F3A9BB',
+  '#A0A5A9',
+  '#9B0056',
+  '#000000',
+  '#003688',
+  '#0098D4',
+  '#95CDBA'
+]
+
+function myGraph(json) {
+
+  var layout = getLayout('<%= @title %>')
+  var data = []
+
+  json.signals.forEach(function(s, i) {
+    data.push(getSignal(s.results, s.name, colours[i]))
+    data.push(getTrend(s.trend, s.name, colours[i]))
+  })
+
+  Plotly.newPlot('chart', data, layout);
+
+  d3.selectAll("#chart p").classed("hidden", true);
+}
+
+function getTrend(trend, name, colour) {
+  return {
+      x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
+      y: [trend.from.value, trend.to.value],
+      mode: 'lines',
+      name: name + ' Trend',
+      line: {
+        dash: 'dashdot',
+        color: colour,
+        width: 1
+      }
+  }
+}
+
+function getSignal(data, name, colour, axis) {
+  axis = typeof axis !== 'undefined' ? axis : 'y';
+
+  signal = {
+      x: [],
+      y: [],
+      yaxis: axis,
+      type: 'scatter',
+      name: name,
+      line: {
+          color: colour,
+          width: 2
+      }
+  };
+
+  data.forEach(function(r) {
+    signal.x.push(timeFormat.parse(r.timestamp))
+    signal.y.push(r.value)
+  });
+
+  return signal;
+}
+
+function getLayout(name) {
+  return {
+    showlegend: true,
+    xaxis: {
+      tickangle: 75,
+      exponentformat: 'e',
+      type: 'datetime',
+      zeroline: true,
+      zerolinewidth: 2,
+
+      tickfont: {
+        family: 'RailwayRegular'
+      }
+    },
+    yaxis: {
+      title: name,
+      titlefont: {
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
+      },
+      tickfont: {
+        family: 'RailwayRegular',
+        color: 'rgb(0, 0, 153)',
+      }
+    }
+  };
+}
+
+d3.json(document.URL, function(error, json) {
+  d3.selectAll("#chart p").classed("hidden", false);
+  if (error) {
+    json = JSON.parse(error.responseText)
+    alert(json.status);
+    d3.selectAll("#chart p").classed("hidden", true);
+  } else {
+    myGraph(json);
+  }
+});
+
+$(function () {
+  d3.json('/cromulent-dates', function(error, json) {
+    var format = 'YYYY-MM-DD HH:mm:ss'
+
+    $('#from-date').datetimepicker({
+      format: format,
+      useCurrent: false,
+      minDate: json.start,
+      maxDate: json.end
+    });
+
+    $('#to-date').datetimepicker({
+      format: format,
+      useCurrent: false,
+      minDate: json.start,
+      maxDate: json.end
+    });
+
+    $("#from-date").on("dp.change", function (e) {
+        $('#to-date').data("DateTimePicker").minDate(e.date);
+    });
+    $("#to-date").on("dp.change", function (e) {
+        $('#from-date').data("DateTimePicker").maxDate(e.date);
+    });
+  });
+});
+
+</script>

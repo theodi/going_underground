@@ -137,11 +137,21 @@ module SirHandel
       @from = params[:from]
       @to = params[:to]
       @interval = params.fetch('interval', '1h')
-      @signal_array = groups[db_signal(params[:group])]
+      @group = params[:group]
+      @signal_array = groups[db_signal(@group)]
 
       error 404, {:status => 'Group not found'}.to_json if @signal_array.nil?
 
       respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.html do
+          @signal_list = lookups
+
+          @title = I18n.t("groups.#{@group.gsub('-', '_')}")
+          erb :group, layout: :default
+        end
+
         wants.json do
           headers 'Access-Control-Allow-Origin' => '*'
 

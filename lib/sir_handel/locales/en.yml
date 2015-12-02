@@ -92,3 +92,5 @@ en:
   battery_current_sensor: "Battery Current Sensor"
   brake_cylinder_pressure: "Brake Cylinder Pressure"
   passenger_load: "Passenger Load"
+  groups:
+    passesnger_load: "Passenger Load (%)"
