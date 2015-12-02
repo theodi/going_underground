@@ -149,8 +149,6 @@ module SirHandel
         headers 'Vary' => 'Accept'
 
         wants.html do
-          @signal_list = lookups
-
           @title = I18n.t("groups.#{@group.gsub('-', '_')}")
           erb :group, layout: :default
         end
