@@ -56,11 +56,14 @@ module SirHandel
       end
     end
 
-    get '/signals/:signal' do
+    get '/:type/:signal' do
       signal = params['signal']
+      type = params['type']
       interval = params.fetch('interval', settings.default_interval)
 
-      redirect to("/signals/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
+      return status(404) unless ['signals', 'groups'].include?(type)
+
+      redirect to("/#{type}/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
     end
 
     get '/signals/:signals/:from/:to' do

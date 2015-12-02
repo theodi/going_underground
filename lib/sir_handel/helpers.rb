@@ -76,6 +76,10 @@ module SirHandel
       ["/signals/#{web_signal(signal)}", format].compact.join('.')
     end
 
+    def group_path(group, format=nil)
+      ["/groups/#{web_signal(group)}", format].compact.join('.')
+    end
+
     def redis
       @redis ||= Redis.new(url: ENV['REDIS_URL'])
       @redis

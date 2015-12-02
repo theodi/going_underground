@@ -79,6 +79,7 @@ module SirHandel
       body = Nokogiri::HTML.parse(last_response.body)
       expect(body.css('#group_1').last.css('div').last.to_s).to match /group_1 Grouped/
     end
+
     it 'redirects to a RESTful URL' do
       post '/signals/passesnger-load-car-a', {
         from: '2015-09-03 07:00:00',
@@ -128,6 +129,20 @@ module SirHandel
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+    end
+
+    it 'redirects to default datetimes with a group' do
+      get '/groups/passesnger-load'
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+    end
+
+    it 'returns 404 for an unknown redirect type' do
+      get '/foobar/passesnger-load'
+
+      expect(last_response.status).to eq(404)
     end
 
     it 'shows the title of a signal' do
