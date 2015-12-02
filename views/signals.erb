@@ -1,12 +1,18 @@
 <% if @groups %>
 
   <% @groups.each do |title, members| %>
-    <h2><%= I18n.t title %></h2>
+    <h2><%= I18n.t "groups.#{title}" %></h2>
     <div class='row' id='<%= title %>'>
       <% members.each do |signal| %>
         <% @signals.delete signal %>
         <%= erb :signal_list, locals: { signal: signal } %>
       <% end %>
+      <div class='col-md-4'>
+        <a href="<%= url(group_path(title)) %>">
+          <i class='fa fa-subway'></i>
+          <%= I18n.t "groups.#{title}" %> Grouped
+        </a>
+      </div>
     </div>
   <% end %>
 

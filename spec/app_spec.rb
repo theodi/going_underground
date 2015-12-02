@@ -58,12 +58,27 @@ module SirHandel
 
       body = Nokogiri::HTML.parse(last_response.body)
 
-      expect(body.css('#group_1').first.css('div').count).to eq(2)
+      expect(body.css('#group_1').first.css('div').count).to eq(3)
       expect(body.css('#group_1').first.css('div').first.to_s).to match /Line Current/
 
       expect(body.css('#ungrouped').first.to_s).to_not match /Line Current/
     end
 
+    it 'should show a grouped link' do
+      expect_any_instance_of(described_class).to receive(:groups) {
+        {
+          'group_1' => [
+            'line_current',
+            'line_voltage'
+          ]
+        }
+      }
+
+      get '/signals'
+
+      body = Nokogiri::HTML.parse(last_response.body)
+      expect(body.css('#group_1').last.css('div').last.to_s).to match /group_1 Grouped/
+    end
     it 'redirects to a RESTful URL' do
       post '/signals/passesnger-load-car-a', {
         from: '2015-09-03 07:00:00',
