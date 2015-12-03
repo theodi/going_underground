@@ -81,8 +81,7 @@ var colours = [
   '#95CDBA'
 ]
 
-function myGraph(json) {
-
+function groupGraph(json) {
   var layout = getLayout('<%= @title %>')
   var data = []
 
@@ -96,107 +95,9 @@ function myGraph(json) {
   d3.selectAll("#chart p").classed("hidden", true);
 }
 
-function getTrend(trend, name, colour) {
-  return {
-      x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
-      y: [trend.from.value, trend.to.value],
-      mode: 'lines',
-      name: name + ' Trend',
-      line: {
-        dash: 'dashdot',
-        color: colour,
-        width: 1
-      }
-  }
-}
-
-function getSignal(data, name, colour, axis) {
-  axis = typeof axis !== 'undefined' ? axis : 'y';
-
-  signal = {
-      x: [],
-      y: [],
-      yaxis: axis,
-      type: 'scatter',
-      name: name,
-      line: {
-          color: colour,
-          width: 2
-      }
-  };
-
-  data.forEach(function(r) {
-    signal.x.push(timeFormat.parse(r.timestamp))
-    signal.y.push(r.value)
-  });
-
-  return signal;
-}
-
-function getLayout(name) {
-  return {
-    showlegend: true,
-    xaxis: {
-      tickangle: 75,
-      exponentformat: 'e',
-      type: 'datetime',
-      zeroline: true,
-      zerolinewidth: 2,
-
-      tickfont: {
-        family: 'RailwayRegular'
-      }
-    },
-    yaxis: {
-      title: name,
-      titlefont: {
-        family: 'RailwayRegular',
-        color: 'rgb(0, 0, 153)',
-      },
-      tickfont: {
-        family: 'RailwayRegular',
-        color: 'rgb(0, 0, 153)',
-      }
-    }
-  };
-}
-
-d3.json(document.URL, function(error, json) {
-  d3.selectAll("#chart p").classed("hidden", false);
-  if (error) {
-    json = JSON.parse(error.responseText)
-    alert(json.status);
-    d3.selectAll("#chart p").classed("hidden", true);
-  } else {
-    myGraph(json);
-  }
-});
-
 $(function () {
-  d3.json('/cromulent-dates', function(error, json) {
-    var format = 'YYYY-MM-DD HH:mm:ss'
-
-    $('#from-date').datetimepicker({
-      format: format,
-      useCurrent: false,
-      minDate: json.start,
-      maxDate: json.end
-    });
-
-    $('#to-date').datetimepicker({
-      format: format,
-      useCurrent: false,
-      minDate: json.start,
-      maxDate: json.end
-    });
-
-    $("#from-date").on("dp.change", function (e) {
-        $('#to-date').data("DateTimePicker").minDate(e.date);
-    });
-    $("#to-date").on("dp.change", function (e) {
-        $('#from-date').data("DateTimePicker").maxDate(e.date);
-    });
-  });
+  callDatePicker();
+  drawChart(groupGraph);
 });
 
 </script>
