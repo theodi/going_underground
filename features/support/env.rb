@@ -1,13 +1,13 @@
-if ENV['COVERAGE']
-  require 'simplecov'
-  require 'coveralls'
-  Coveralls.wear_merged!
-
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-  SimpleCov.start do
-    add_filter 'features/support/vcr'
-  end
-end
+### if ENV['COVERAGE']
+###   require 'simplecov'
+###   require 'coveralls'
+###   Coveralls.wear_merged!
+###
+###   SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+###   SimpleCov.start do
+###     add_filter 'features/support/vcr'
+###   end
+### end
 
 ENV['RACK_ENV'] = 'cucumber'
 ENV['TUBE_USERNAME'] = 'thomas'
