@@ -1,13 +1,13 @@
-if ENV['COVERAGE']
-  require 'simplecov'
-  require 'coveralls'
-  Coveralls.wear_merged!
-
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-  SimpleCov.start do
-    add_filter 'spec/support/vcr_setup'
-  end
-end
+###if ENV['COVERAGE']
+###  require 'simplecov'
+###  require 'coveralls'
+###  Coveralls.wear_merged!
+###
+###  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+###  SimpleCov.start do
+###    add_filter 'spec/support/vcr_setup'
+###  end
+###end
 
 ENV['RACK_ENV'] = 'test'
 # Comment out when recording new VCR cassettes
