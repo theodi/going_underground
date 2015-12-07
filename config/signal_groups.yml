@@ -1,5 +1,50 @@
-passesnger_load:
+general_train:
+  - train_number
+  - crew_number
+  - destination_code
+  - train_service_code
+  - train_fault_report_code
+  - train_stock_type
+  - train_unit_number_1st
+  - train_unit_number_2nd
+  - train_mode
+  - train_run_distance
+  - this_cab_active
+  - atp_worst_case_forward_location
+  - atp_worst_case_forward_location_offset
+  - train_speed
+
+train_telemetry:
+  - train_number
+  - line_voltage
+  - line_current
+  - actuate_braking
+  - actuate_motor
+  - main_reservoir_pressure
+  - traction_brake_achieved
+  - actual_chopper_power
+  - actual_motor_power
+  - available_dynamic_brake
+  - estimated_brake_resistor_temparature
+
+customers_and_enthusiasts:
+  - a_car_temperature
+  - b_car_temperature
+  - c_car_temperature
+  - d_car_temperature
   - passesnger_load_car_a
   - passesnger_load_car_b
   - passesnger_load_car_c
   - passesnger_load_car_d
+  - passenger_load_to_ato
+  - atp_worst_case_forward_location
+  - atp_worst_case_forward_location_offset
+
+line_diagnostics:
+  - train_speed
+  - line_voltage
+  - line_current
+  - actual_chopper_power
+  - actual_motor_power
+  - atp_worst_case_forward_location
+  - atp_worst_case_forward_location_offset
