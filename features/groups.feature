@@ -32,3 +32,25 @@ passesnger_load:
     Then the response status should be "200"
     And the JSON response should have "$.signals[0].results[*]" with a length of 4
     And the JSON response should have "$.signals[2].results[*]" with a length of 0
+
+  Scenario: Get CSV data for two signals
+    Given I request CSV
+    When I send a GET request to "groups/passesnger-load/2015-09-01T00:00:00+00:00/2015-09-01T01:00:00+00:00?interval=30m"
+    Then the response status should be "200"
+    And the response should be a CSV
+    And the CSV response should have the headers:
+    """
+    timestamp
+    passesnger_load_car_a
+    passesnger_load_car_b
+    passesnger_load_car_c
+    passesnger_load_car_d
+    """
+    And the CSV response should have the values:
+    """
+    2015-09-01T00:00:00+00:00
+    2.411764705882353
+    12.543478260869565
+    1.6280487804878048
+    2.5
+    """

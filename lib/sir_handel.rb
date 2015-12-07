@@ -130,6 +130,32 @@ module SirHandel
             signals: get_results
           }.to_json
         end
+
+        wants.csv do
+          headers 'Access-Control-Allow-Origin' => '*'
+
+          csv_headers = @signal_array.dup.unshift('timestamp')
+
+          results = get_results
+
+          lines = results[0][:results].dup.map do |r|
+            [
+              r['timestamp'].to_s
+            ]
+          end
+
+          results.each do |result|
+            result[:results].each_with_index do |r, i|
+              lines[i] << r['value']
+            end
+          end
+
+          lines.unshift(csv_headers)
+
+          CSV.generate do |csv|
+            lines.each { |l| csv << l }
+          end
+        end
       end
     end
 
