@@ -35,6 +35,11 @@ module SirHandel
       error_400(invalid.join(" ")) unless invalid.count == 0
     end
 
+    def get_type
+      halt(404) unless ['signals', 'groups'].include?(params[:type])
+      params[:type]
+    end
+
     def error_400(message)
       error 400, {:status => message}.to_json
     end
@@ -76,6 +81,10 @@ module SirHandel
       ["/signals/#{web_signal(signal)}", format].compact.join('.')
     end
 
+    def group_path(group, format=nil)
+      ["/groups/#{web_signal(group)}", format].compact.join('.')
+    end
+
     def redis
       @redis ||= Redis.new(url: ENV['REDIS_URL'])
       @redis
@@ -93,13 +102,20 @@ module SirHandel
 
       r = Blocktrain::Aggregations::AverageAggregation.new(search).results
 
-      results = r['results']['buckets'].map do |r|
-        {
-          'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
-          'value' => r['average_value']['value']
-        }
+      if r.nil?
+        results_hash(signal, [])
+      else
+        results = r['results']['buckets'].map do |r|
+          {
+            'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
+            'value' => r['average_value']['value']
+          } rescue nil
+        end
+        results_hash(signal, results)
       end
+    end
 
+    def results_hash(signal, results)
       {
         name: I18n.t(db_signal(signal)),
         results: results

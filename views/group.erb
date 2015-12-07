@@ -1,7 +1,7 @@
 <p><a href="/signals" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
 <div class='row'>
   <div class='col-md-12'>
-    <form class='form-inline' action='/signals/<%= @signals %>' method='post'>
+    <form class='form-inline' action='/groups/<%= @group %>' method='post'>
       <div class='form-group'>
         <label for='from'>From</label>
         <div class='input-group date' id='from-date'>
@@ -42,15 +42,6 @@
         </select>
       </div>
       <div class='form-group'>
-        <label for='compare'>Compare with...</label>
-        <select name='compare' id='compare' class='form-control'>
-          <option value=''>None</option>
-          <% @signal_list.each do |key, value| %>
-            <option  <% if @signal_array[1] == web_signal(key) %>selected='selected' <% end %> value='<%= key %>'><%= I18n.t(key) %></option>
-          <% end %>
-        </select>
-      </div>
-      <div class='form-group'>
         <button type='submit' class='btn btn-primary'>Submit</button>
       </div>
     </form>
@@ -63,8 +54,8 @@
 
 <div class='row'>
   <div class='col-md-12' style='text-align: right; margin-bottom: 12px;'>
-    <% csv_url = "/signals/#{@signals}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
-    <% json_url = "/signals/#{@signals}/#{@from}/#{@to}.json?interval=#{@interval}" %>
+    <% csv_url = "/groups/#{@group}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
+    <% json_url = "/groups/#{@group}/#{@from}/#{@to}.json?interval=#{@interval}" %>
     <p>
       <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
       <a class='btn btn-success' href='<%= json_url %>'>JSON version</a>
@@ -73,36 +64,31 @@
 </div>
 
 <script>
-function signalGraph(json) {
 
-  var layout = getLayout(json.signals[0].name)
-  var signal = getSignal(json.signals[0].results, json.signals[0].name, 'rgb(0, 0, 153)')
-  var trend =  getTrend(json.signals[0].trend, json.signals[0].name, 'rgb(0, 0, 153)')
+var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
 
-  var data = [signal, trend]
+var colours = [
+  '#B36305',
+  '#E32017',
+  '#FFD300',
+  '#00782A',
+  '#F3A9BB',
+  '#A0A5A9',
+  '#9B0056',
+  '#000000',
+  '#003688',
+  '#0098D4',
+  '#95CDBA'
+]
 
-  if (json.signals[1]) {
-    layout['yaxis2'] = {
-      title: json.signals[1].name,
-      showgrid: false,
-      titlefont: {
-        family: 'RailwayRegular',
-        color: 'rgb(204, 51, 51)',
-      },
-      tickfont: {
-        family: 'RailwayRegular',
-        color: 'rgb(204, 51, 51)',
-      },
-      overlaying: 'y',
-      side: 'right'
-    }
+function groupGraph(json) {
+  var layout = getLayout('<%= @title %>')
+  var data = []
 
-    var comparison = getSignal(json.signals[1].results, json.signals[1].name, 'rgb(204, 51, 51)', 'y2')
-    var trend = getTrend(json.signals[1].trend, json.signals[1].name, 'rgb(204, 51, 51)')
-
-    data.push(comparison)
-    data.push(trend)
-  }
+  json.signals.forEach(function(s, i) {
+    data.push(getSignal(s.results, s.name, colours[i]))
+    data.push(getTrend(s.trend, s.name, colours[i]))
+  })
 
   Plotly.newPlot('chart', data, layout);
 
@@ -111,7 +97,7 @@ function signalGraph(json) {
 
 $(function () {
   callDatePicker();
-  drawChart(signalGraph);
+  drawChart(groupGraph);
 });
 
 </script>

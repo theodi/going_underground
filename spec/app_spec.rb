@@ -58,10 +58,26 @@ module SirHandel
 
       body = Nokogiri::HTML.parse(last_response.body)
 
-      expect(body.css('#group_1').first.css('div').count).to eq(2)
+      expect(body.css('#group_1').first.css('div').count).to eq(3)
       expect(body.css('#group_1').first.css('div').first.to_s).to match /Line Current/
 
       expect(body.css('#ungrouped').first.to_s).to_not match /Line Current/
+    end
+
+    it 'should show a grouped link' do
+      expect_any_instance_of(described_class).to receive(:groups) {
+        {
+          'group_1' => [
+            'line_current',
+            'line_voltage'
+          ]
+        }
+      }
+
+      get '/signals'
+
+      body = Nokogiri::HTML.parse(last_response.body)
+      expect(body.css('#group_1').last.css('div').last.to_s).to match /group_1 Grouped/
     end
 
     it 'redirects to a RESTful URL' do
@@ -73,6 +89,17 @@ module SirHandel
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
+    end
+
+    it 'redirects to a RESTful URL with a group' do
+      post '/groups/my-awesome-group', {
+        from: '2015-09-03 07:00:00',
+        to: '2015-09-03 10:00:00',
+        interval: '5s' }
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/groups/my-awesome-group/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
     end
 
     it 'redirects with a comparison' do
@@ -113,6 +140,20 @@ module SirHandel
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+    end
+
+    it 'redirects to default datetimes with a group' do
+      get '/groups/passesnger-load'
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+    end
+
+    it 'returns 404 for an unknown redirect type' do
+      get '/foobar/passesnger-load'
+
+      expect(last_response.status).to eq(404)
     end
 
     it 'shows the title of a signal' do

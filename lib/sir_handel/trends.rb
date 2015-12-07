@@ -8,6 +8,7 @@ module SirHandel
     end
 
     def to_hash
+      return {} if @points == [] 
       trend = LinearTrend.new(@points)
       {
         from: {

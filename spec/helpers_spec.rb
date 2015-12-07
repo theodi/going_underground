@@ -63,5 +63,10 @@ module SirHandel
       expect(url).to eq('/signals/actual-motor-power.json')
     end
 
+    it 'generates group urls' do
+      url = helpers.group_path('my_awesome_group', :json)
+      expect(url).to eq('/groups/my-awesome-group.json')
+    end
+
   end
 end

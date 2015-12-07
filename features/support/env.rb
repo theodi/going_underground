@@ -33,6 +33,7 @@ class SirHandelWorld
   include Capybara::DSL
   include RSpec::Expectations
   include RSpec::Matchers
+  include SirHandel::Helpers
 
   def app
     SirHandel::App
