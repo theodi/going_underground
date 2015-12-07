@@ -227,6 +227,16 @@ module SirHandel
       redirect_to_signal
     end
 
+    get '/trains/selection' do
+      @title = 'Choose a station'
+      erb :stations, layout: :default
+    end
+
+    get '/trains/arriving/:direction/:station' do
+      @title = 'Arriving trains'
+      erb :arrivals, layout: :default
+    end
+
     get '/cromulent-dates' do
       cromulent_dates
     end
