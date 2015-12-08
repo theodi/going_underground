@@ -107,10 +107,7 @@ module SirHandel
         return results_hash(signal, []) if r.nil?
 
         results = r.map do |r|
-          {
-            'timestamp' => DateTime.parse(r['_source']['timeStamp']),
-            'value' => r['_source']['value']
-          } rescue nil
+          result_hash(DateTime.parse(r['_source']['timeStamp']), r['_source']['value']) rescue nil
         end
 
         results_hash(signal, results)
@@ -119,13 +116,18 @@ module SirHandel
         return results_hash(signal, []) if r.nil?
 
         results = r['results']['buckets'].map do |r|
-          {
-            'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
-            'value' => r['average_value']['value']
-          } rescue nil
+          result_hash(DateTime.strptime(r['key'].to_s, '%Q'), r['average_value']['value']) rescue nil
         end
+
         results_hash(signal, results)
       end
+    end
+
+    def result_hash(timestamp, value)
+      {
+        'timestamp' => timestamp,
+        'value' => value
+      }
     end
 
     def results_hash(signal, results)
