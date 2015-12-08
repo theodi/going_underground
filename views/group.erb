@@ -92,6 +92,8 @@ function groupGraph(json) {
 
   data = $.grep(data,function(n){ return(n) });
 
+  if (data.length == 0) return noData('this group');
+
   Plotly.newPlot('chart', data, layout);
 
   d3.selectAll("#chart p").classed("hidden", true);
