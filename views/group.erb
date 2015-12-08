@@ -90,6 +90,8 @@ function groupGraph(json) {
     data.push(getTrend(s.trend, s.name, colours[i]))
   })
 
+  data = $.grep(data,function(n){ return(n) });
+
   Plotly.newPlot('chart', data, layout);
 
   d3.selectAll("#chart p").classed("hidden", true);
