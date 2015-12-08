@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require_relative '../lib/blocktrain'
+require_relative '../lib/sir_handel'
+
+require 'irb'
+IRB.start
