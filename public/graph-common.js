@@ -3,6 +3,8 @@ var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
 function getSignal(data, name, colour, axis) {
   axis = typeof axis !== 'undefined' ? axis : 'y';
 
+  if (data.length == 0) return null;
+
   signal = {
       x: [],
       y: [],
@@ -24,6 +26,7 @@ function getSignal(data, name, colour, axis) {
 }
 
 function getTrend(trend, name, colour) {
+  if (trend.from == undefined) return null;    
   return {
       x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
       y: [trend.from.value, trend.to.value],
