@@ -62,7 +62,7 @@ module SirHandel
       @from = params[:from]
       @to = params[:to]
       @signals = params['signals']
-      @interval = params.fetch('interval', '1h')
+      @interval = params[:interval]
 
       @signal_array = @signals.split(',')
 

@@ -100,11 +100,24 @@ module SirHandel
         memory_addresses: lookups[db_signal(signal)].upcase
       }
 
-      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+      if @interval.nil?
+        count = Blocktrain::Count.new(search).results
+        search.merge!({limit: count, sort: { timeStamp: 'asc' }})
+        r = Blocktrain::Query.new(search).results
+        return results_hash(signal, []) if r.nil?
 
-      if r.nil?
-        results_hash(signal, [])
+        results = r.map do |r|
+          {
+            'timestamp' => DateTime.parse(r['_source']['timeStamp']),
+            'value' => r['_source']['value']
+          } rescue nil
+        end
+
+        results_hash(signal, results)
       else
+        r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+        return results_hash(signal, []) if r.nil?
+
         results = r['results']['buckets'].map do |r|
           {
             'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),

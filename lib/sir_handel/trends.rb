@@ -8,7 +8,7 @@ module SirHandel
     end
 
     def to_hash
-      return {} if @points == [] 
+      return {} if @points == []
       trend = LinearTrend.new(@points)
       {
         from: {
@@ -51,7 +51,7 @@ module SirHandel
       n = @points.size
       top = n*sumxy - (sumx*sumy)
       bottom = n*sumx2 - (sumx**2)
-      @slope ||= top / bottom
+      @slope ||= top / (bottom.nonzero? || 1)
     end
 
     def intercept
