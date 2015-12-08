@@ -233,8 +233,25 @@ module SirHandel
     end
 
     get '/trains/arriving/:direction/:station' do
-      @title = 'Arriving trains'
-      erb :arrivals, layout: :default
+      from = if params[:from]
+        Time.parse(params[:from])
+      else
+        Time.now.utc
+      end
+
+      respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.html do
+          @title = 'Arriving trains'
+          erb :arrivals, layout: :default
+        end
+
+        wants.json do
+          Blocktrain::TrainCrowding.new(from,
+            params[:station].to_sym, params[:direction].to_sym).results.to_json
+        end
+      end
     end
 
     get '/cromulent-dates' do

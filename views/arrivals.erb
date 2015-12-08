@@ -1,1 +1,45 @@
 Next <%= params[:direction] %> trains at <%= params[:station] %>
+
+<div id="tik-tok"><%= Time.now.utc.iso8601 %></div>
+
+<table id="arrivals" class="table">
+    <thead>
+        <tr>
+            <th>Next train</th>
+            <th>Car A</th>
+            <th>Car B</th>
+            <th>Car C</th>
+            <th>Car D</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<template id="train-row">
+    <tr>
+        <td class="train"></td>
+        <td class="car a"></td>
+        <td class="car b"></td>
+        <td class="car c"></td>
+        <td class="car d"></td>
+    </tr>
+</template>
+
+<script>
+setupTrainTracking("tik-tok");
+
+var template = document.getElementById('train-row');
+var table = document.getElementById('arrivals').querySelector('tbody');
+
+var tds = template.content.querySelectorAll('td');
+
+tds[0].textContent = 'I am a train';
+tds[1].textContent = '10%';
+tds[2].textContent = '30%';
+tds[3].textContent = '14%';
+tds[4].textContent = '25%';
+
+table.appendChild(document.importNode(template.content, true));
+
+</script>
