@@ -79,6 +79,8 @@ function signalGraph(json) {
   var signal = getSignal(json.signals[0].results, json.signals[0].name, 'rgb(0, 0, 153)')
   var trend =  getTrend(json.signals[0].trend, json.signals[0].name, 'rgb(0, 0, 153)')
 
+  if (signal == null && trend == null) return noData(json.signals[0].name);
+
   var data = [signal, trend]
 
   if (json.signals[1]) {
@@ -99,6 +101,8 @@ function signalGraph(json) {
 
     var comparison = getSignal(json.signals[1].results, json.signals[1].name, 'rgb(204, 51, 51)', 'y2')
     var trend = getTrend(json.signals[1].trend, json.signals[1].name, 'rgb(204, 51, 51)')
+
+    if (comparison == null && trend == null) return noData(json.signals[1].name, '- try another comparison');
 
     data.push(comparison)
     data.push(trend)
