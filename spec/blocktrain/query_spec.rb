@@ -25,6 +25,11 @@ module Blocktrain
       expect(subject.hits).to eq(9766)
     end
 
+    it 'allows results to be sorted', :vcr do
+      subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', memory_addresses: '2E491EEW', limit: 10, sort: { timeStamp: 'asc' })
+      expect(subject.results.first['_source']['timeStamp']).to match(/2015-09-01T10:00:/)
+    end
+
   end
 
 end

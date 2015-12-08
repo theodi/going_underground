@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"size":10,"sort":{"timeStamp":"asc"}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 08 Dec 2015 15:23:31 GMT
+      - Tue, 08 Dec 2015 15:23:31 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '3698'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":9766,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797618725","_score":null,"_source":{"id":"03042E491EEW-178797618725","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":19,"timeStamp":"2015-09-01T10:00:18.725Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101618725]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797618825","_score":null,"_source":{"id":"03042E491EEW-178797618825","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":33,"timeStamp":"2015-09-01T10:00:18.825Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101618825]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619093","_score":null,"_source":{"id":"03042E491EEW-178797619093","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":50,"timeStamp":"2015-09-01T10:00:19.093Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101619093]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619293","_score":null,"_source":{"id":"03042E491EEW-178797619293","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":78,"timeStamp":"2015-09-01T10:00:19.293Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101619293]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619406","_score":null,"_source":{"id":"03042E491EEW-178797619406","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":115,"timeStamp":"2015-09-01T10:00:19.406Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101619406]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619506","_score":null,"_source":{"id":"03042E491EEW-178797619506","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":137,"timeStamp":"2015-09-01T10:00:19.506Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101619506]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619625","_score":null,"_source":{"id":"03042E491EEW-178797619625","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":166,"timeStamp":"2015-09-01T10:00:19.625Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101619625]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619725","_score":null,"_source":{"id":"03042E491EEW-178797619725","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":192,"timeStamp":"2015-09-01T10:00:19.725Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101619725]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797620109","_score":null,"_source":{"id":"03042E491EEW-178797620109","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":265,"timeStamp":"2015-09-01T10:00:20.109Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101620109]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797620209","_score":null,"_source":{"id":"03042E491EEW-178797620209","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":334,"timeStamp":"2015-09-01T10:00:20.209Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101620209]}]}}'
+    http_version: 
+  recorded_at: Tue, 08 Dec 2015 15:23:29 GMT
+recorded_with: VCR 3.0.0

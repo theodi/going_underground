@@ -9,6 +9,8 @@ module Blocktrain
       @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
 
       @limit = options.fetch(:limit, 100)
+
+      @sort = options.fetch(:sort, {})
     end
 
     def results
@@ -73,7 +75,8 @@ module Blocktrain
     def body
       {
         query: query,
-        size: @limit
+        size: @limit,
+        sort: @sort
       }
     end
 
