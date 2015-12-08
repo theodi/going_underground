@@ -79,6 +79,8 @@ function signalGraph(json) {
   var signal = getSignal(json.signals[0].results, json.signals[0].name, 'rgb(0, 0, 153)')
   var trend =  getTrend(json.signals[0].trend, json.signals[0].name, 'rgb(0, 0, 153)')
 
+  if (signal == null && trend == null) return noData(json.signals[0].name);
+
   var data = [signal, trend]
 
   if (json.signals[1]) {

@@ -1,5 +1,10 @@
 var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
 
+function noData(signal_name) {
+  d3.selectAll("#chart p").classed("hidden", true);
+  alert('No data for ' + signal_name);
+}
+
 function getSignal(data, name, colour, axis) {
   axis = typeof axis !== 'undefined' ? axis : 'y';
 
@@ -26,7 +31,7 @@ function getSignal(data, name, colour, axis) {
 }
 
 function getTrend(trend, name, colour) {
-  if (trend.from == undefined) return null;    
+  if (trend.from == undefined) return null;
   return {
       x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
       y: [trend.from.value, trend.to.value],
