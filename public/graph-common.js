@@ -2,7 +2,7 @@ var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
 
 function noData(signal_name) {
   d3.selectAll("#chart p").classed("hidden", true);
-  alert('No data for ' + signal_name);
+  d3.selectAll("#chart").html("<p class='no-data'>No data for " + signal_name + "</p>")
 }
 
 function getSignal(data, name, colour, axis) {
