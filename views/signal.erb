@@ -102,6 +102,8 @@ function signalGraph(json) {
     var comparison = getSignal(json.signals[1].results, json.signals[1].name, 'rgb(204, 51, 51)', 'y2')
     var trend = getTrend(json.signals[1].trend, json.signals[1].name, 'rgb(204, 51, 51)')
 
+    if (comparison == null && trend == null) return noData(json.signals[1].name);
+
     data.push(comparison)
     data.push(trend)
   }
