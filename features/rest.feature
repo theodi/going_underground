@@ -17,11 +17,11 @@ Feature: REST it up
     And the JSON response should have "$.signals[0]results[3].timestamp" with the text "2015-09-23T08:00:00+00:00"
 
   Scenario: Get raw data
-    When I send a GET request to "signals/train-speed/2015-09-01T08:00:00/2015-09-01T10:00:00"
+    When I send a GET request to "signals/train-speed/2015-09-01T09:00:00/2015-09-01T11:00:00"
     Then the response status should be "200"
     And the JSON response should have "$.signals[0].name" with the text "Train Speed"
-    And the JSON response should have "$.signals[0]results[0].timestamp" with the text "2015-09-01T07:08:34+00:00"
-    And the JSON response should have "$.signals[0]results[1].timestamp" with the text "2015-09-01T07:08:34+00:00"
+    And the JSON response should have "$.signals[0]results[0].timestamp" with the text "2015-09-01T08:00:00+00:00"
+    And the JSON response should have "$.signals[0]results[1].timestamp" with the text "2015-09-01T08:00:00+00:00"
 
   Scenario: Allow intervals to be set as query strings
     When I send a GET request to "signals/train-speed/2015-09-23T06:00:00/2015-09-23T10:00:00?interval=5s"
