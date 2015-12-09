@@ -9,7 +9,7 @@ $(function () {
     //debugger;
     var signals = []
     json.signals.forEach(function(signal) {
-      html = "<div class='col-md-6'><h3>"+ signal.name +"</h3><iframe src='"+ signal.url +"?layout=simple' height='500px' width='100%' frameborder='0' scrolling='no'></iframe></div>"
+      html = "<div class='col-md-6'><div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>"+ signal.name +"</h3></div><iframe src='"+ signal.url +"?layout=simple' height='500px' width='100%' frameborder='0' scrolling='no'></iframe></div></div>"
       signals.push(html)
       console.log(signal.name)
     })
