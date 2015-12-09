@@ -1,0 +1,18 @@
+<div id="dashboard" class="row"></div>
+
+<script>
+$(function () {
+  d3.json(document.URL, function(error, json) {
+    //debugger;
+    var signals = []
+    json.signals.forEach(function(signal) {
+      html = "<div class='col-md-4'><iframe src='"+ signal.url +"' height='200px' width='100%' frameborder='0' scrolling='no'></iframe></div>"
+      signals.push(html)
+      console.log(signal.name)
+    })
+    console.log(signals)
+    d3.selectAll("#dashboard").html(signals.join(''))
+
+  });
+});
+</script>

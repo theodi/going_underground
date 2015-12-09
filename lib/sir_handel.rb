@@ -162,14 +162,20 @@ module SirHandel
 
     get '/dashboards/:group' do
       protected!
-#require "pry" ; binding.pry
+
+      @group = params[:group]
+      @title = I18n.t("groups.#{db_signal @group}") + " Dashboard"
+
       respond_to do |wants|
         wants.json do
-          sigs = groups[db_signal params[:group]].map do |s|
+          sigs = groups[db_signal @group].map do |s|
             {name: I18n.t(s), url: "#{request.scheme}://#{request.host}/signals/#{web_signal s}"}
           end
 
           {signals: sigs}.to_json
+        end
+        wants.html do
+          erb :dashboards, layout: :default
         end
       end
     end
