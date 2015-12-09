@@ -160,6 +160,20 @@ module SirHandel
       end
     end
 
+    get '/dashboards/:group' do
+      protected!
+#require "pry" ; binding.pry
+      respond_to do |wants|
+        wants.json do
+          sigs = groups[db_signal params[:group]].map do |s|
+            {name: I18n.t(s), url: "#{request.scheme}://#{request.host}/signals/#{web_signal s}"}
+          end
+
+          {signals: sigs}.to_json
+        end
+      end
+    end
+
     post '/:type/:signal' do
       params.delete_if { |k,v| v == '' }
 
