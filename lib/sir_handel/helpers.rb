@@ -36,7 +36,7 @@ module SirHandel
     end
 
     def get_type
-      halt(404) unless ['signals', 'groups'].include?(params[:type])
+      halt(404) unless ['signals', 'groups', 'dashboards'].include?(params[:type])
       params[:type]
     end
 
