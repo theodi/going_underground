@@ -64,6 +64,8 @@ module SirHandel
       @signals = params['signals']
       @interval = params[:interval]
 
+      @layout = params.fetch('layout', 'default')
+
       @signal_array = @signals.split(',')
 
       error_400('Please set a maximum of two signals') if @signal_array.count > 2
@@ -76,7 +78,7 @@ module SirHandel
 
           signals = @signal_array.map { |s| I18n.t(db_signal(s)) }
           @title = signals.join(' compared with ')
-          erb :signal, layout: :default
+          erb :signal, layout: @layout.to_sym
         end
 
         wants.json do
