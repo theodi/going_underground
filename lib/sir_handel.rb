@@ -162,16 +162,21 @@ module SirHandel
       end
     end
 
-    get '/dashboards/:group' do
+    get '/dashboards/:dashboard/:from/:to' do
       protected!
 
-      @group = params[:group]
-      @title = I18n.t("groups.#{db_signal @group}") + " Dashboard"
+      @dashboard = params[:dashboard]
+      @title = I18n.t("groups.#{db_signal @dashboard}") + " Dashboard"
+      @from = params[:from]
+      @to = params[:to]
+      @interval = params[:interval]
 
       respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
         wants.json do
-          sigs = groups[db_signal @group].map do |s|
-            {name: I18n.t(s), url: "#{request.scheme}://#{request.host}/signals/#{web_signal s}"}
+          sigs = groups[db_signal @dashboard].map do |s|
+            {name: I18n.t(s), url: "#{request.scheme}://#{request.env['HTTP_HOST']}/signals/#{web_signal s}"}
           end
 
           {signals: sigs}.to_json
