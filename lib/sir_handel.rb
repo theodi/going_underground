@@ -165,26 +165,31 @@ module SirHandel
 
       from = params.fetch('from', default_dates[:from])
       to = params.fetch('to', default_dates[:to])
-      interval = params.fetch('interval', settings.default_interval)
-      type = get_type
+
+      @interval = params[:interval]
+      @type = get_type
 
       params[:signal] = params[:signal].split(',').first
 
       signal = params.values_at(:signal, :compare).compact.join(',')
+      @signal = web_signal(signal)
 
-      from = DateTime.parse(from).to_s
-      to = DateTime.parse(to).to_s
+      @from = DateTime.parse(from).to_s
+      @to = DateTime.parse(to).to_s
 
-      redirect to("/#{type}/#{web_signal(signal)}/#{from}/#{to}?interval=#{interval}")
+      redirect_to_signal
     end
 
     get '/:type/:signal' do
-      signal = params['signal']
-      type = params['type']
-      interval = params.fetch('interval', settings.default_interval)
-      type = get_type
+      @signal = params['signal']
+      @type = params['type']
+      @interval = params[:interval]
+      @type = get_type
 
-      redirect to("/#{type}/#{signal}/#{default_dates[:from]}/#{default_dates[:to]}?interval=#{interval}")
+      @from = default_dates[:from]
+      @to = default_dates[:to]
+
+      redirect_to_signal
     end
 
     get '/cromulent-dates' do

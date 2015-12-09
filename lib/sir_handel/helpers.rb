@@ -85,6 +85,16 @@ module SirHandel
       ["/groups/#{web_signal(group)}", format].compact.join('.')
     end
 
+    def redirect_to_signal
+      url = "/#{@type}/#{@signal}/#{@from}/#{@to}"
+
+      if @interval.nil?
+        redirect to(url)
+      else
+        redirect to("#{url}?interval=#{@interval}")
+      end
+    end
+
     def redis
       @redis ||= Redis.new(url: ENV['REDIS_URL'])
       @redis
