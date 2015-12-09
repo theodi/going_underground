@@ -2,3 +2,8 @@
   height: 100%;
   width: 100%;
 }
+
+#chart p {
+  text-align: center;
+  margin: 25% 0;
+}
