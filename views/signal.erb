@@ -1,4 +1,4 @@
-<%= erb :signal_form if @layout == 'default' %>
+<%= erb(:"includes/signal_form", locals: {target: "/signals/#{@signals}"}) if @layout == 'default' %>
 
 <div id='chart'>
   <p><i class="fa fa-spinner fa-spin"></i></p>
