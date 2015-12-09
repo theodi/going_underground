@@ -1,0 +1,36 @@
+body, h1, h2 {
+  font-family: 'RailwayRegular';
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+#chart p {
+  text-align: center;
+}
+
+.fa-spinner {
+  font-size: 200px;
+  color: #ccc;
+}
+
+.input-group-addon {
+  padding: 5px;
+}
+
+.no-data {
+  font-size: 35px;
+  margin: 40px;
+}
+
+#chart {
+  height: 100%;
+  width: 100%;
+}
