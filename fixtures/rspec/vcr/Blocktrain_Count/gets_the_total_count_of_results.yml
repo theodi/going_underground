@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"searchType":"count","sort":{}}'
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 08 Dec 2015 15:36:39 GMT
+      - Tue, 08 Dec 2015 15:36:39 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '501'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"root_cause":[{"type":"search_parse_exception","reason":"failed
+        to parse search source. unknown search element [searchType]","line":1,"col":179}],"type":"search_phase_execution_exception","reason":"all
+        shards failed","phase":"query_fetch","grouped":true,"failed_shards":[{"shard":0,"index":"train_data","node":"1QqPBMKJQqKHw3-ET4_a_A","reason":{"type":"search_parse_exception","reason":"failed
+        to parse search source. unknown search element [searchType]","line":1,"col":179}}]},"status":400}'
+    http_version: 
+  recorded_at: Tue, 08 Dec 2015 15:36:37 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"size":100,"sort":{}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 08 Dec 2015 15:40:56 GMT
+      - Tue, 08 Dec 2015 15:40:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '62'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":9766,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Tue, 08 Dec 2015 15:40:54 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"size":100,"sort":{}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 08 Dec 2015 15:41:04 GMT
+      - Tue, 08 Dec 2015 15:41:04 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000000
+      - instance-0000000000
+      X-Found-Handling-Server:
+      - 10.92.139.117
+      - 10.92.139.117
+      Content-Length:
+      - '345'
+      - '62'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":9766,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Tue, 08 Dec 2015 15:41:03 GMT
+recorded_with: VCR 3.0.0

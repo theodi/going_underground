@@ -85,6 +85,16 @@ module SirHandel
       ["/groups/#{web_signal(group)}", format].compact.join('.')
     end
 
+    def redirect_to_signal
+      url = "/#{@type}/#{@signal}/#{@from}/#{@to}"
+
+      if @interval.nil?
+        redirect to(url)
+      else
+        redirect to("#{url}?interval=#{@interval}")
+      end
+    end
+
     def redis
       @redis ||= Redis.new(url: ENV['REDIS_URL'])
       @redis
@@ -100,19 +110,34 @@ module SirHandel
         memory_addresses: lookups[db_signal(signal)].upcase
       }
 
-      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+      if @interval.nil?
+        count = Blocktrain::Count.new(search).results
+        search.merge!({limit: count, sort: { timeStamp: 'asc' }})
+        r = Blocktrain::Query.new(search).results
+        return results_hash(signal, []) if r.nil?
 
-      if r.nil?
-        results_hash(signal, [])
-      else
-        results = r['results']['buckets'].map do |r|
-          {
-            'timestamp' => DateTime.strptime(r['key'].to_s, '%Q'),
-            'value' => r['average_value']['value']
-          } rescue nil
+        results = r.map do |r|
+          result_hash(DateTime.parse(r['_source']['timeStamp']), r['_source']['value']) rescue nil
         end
+
+        results_hash(signal, results)
+      else
+        r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+        return results_hash(signal, []) if r.nil?
+
+        results = r['results']['buckets'].map do |r|
+          result_hash(DateTime.strptime(r['key'].to_s, '%Q'), r['average_value']['value']) rescue nil
+        end
+
         results_hash(signal, results)
       end
+    end
+
+    def result_hash(timestamp, value)
+      {
+        'timestamp' => timestamp,
+        'value' => value
+      }
     end
 
     def results_hash(signal, results)

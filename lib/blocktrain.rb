@@ -7,6 +7,7 @@ require 'singleton'
 
 require_relative 'blocktrain/client'
 require_relative 'blocktrain/query'
+require_relative 'blocktrain/count'
 require_relative 'blocktrain/aggregation'
 require_relative 'blocktrain/aggregations/histogram_aggregation'
 require_relative 'blocktrain/aggregations/average_aggregation'

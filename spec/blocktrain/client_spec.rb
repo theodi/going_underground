@@ -25,7 +25,7 @@ module Blocktrain
       allow(ENV).to receive(:[]).with('ES_INDEX') { nil }
       allow(ENV).to receive(:[]).with('ES_URL') { 'http://elastic.search' }
 
-      expect(described_class.endpoint).to eq("http://elastic.search/train_data/_search")
+      expect(described_class.endpoint('search')).to eq("http://elastic.search/train_data/_search")
     end
 
   end
