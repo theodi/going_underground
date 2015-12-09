@@ -186,28 +186,24 @@ module SirHandel
       from = params.fetch('from', default_dates[:from])
       to = params.fetch('to', default_dates[:to])
 
-      @interval = params[:interval]
+      params['from'] = DateTime.parse(from).to_s
+      params['to'] = DateTime.parse(to).to_s
+
+      params['signal'] = params[:signal].split(',').first
+      signals = params.values_at(:signal, :compare).compact.join(',')
+      params['signal'] = web_signal(signals)
+
+      @params = params
       @type = get_type
-
-      params[:signal] = params[:signal].split(',').first
-
-      signal = params.values_at(:signal, :compare).compact.join(',')
-      @signal = web_signal(signal)
-
-      @from = DateTime.parse(from).to_s
-      @to = DateTime.parse(to).to_s
 
       redirect_to_signal
     end
 
     get '/:type/:signal' do
-      @signal = params['signal']
-      @type = params['type']
-      @interval = params[:interval]
+      params['from'] = default_dates[:from]
+      params['to'] = default_dates[:to]
+      @params = params
       @type = get_type
-
-      @from = default_dates[:from]
-      @to = default_dates[:to]
 
       redirect_to_signal
     end
