@@ -6,6 +6,7 @@ require 'i18n'
 require 'i18n/backend/fallbacks'
 require 'redis'
 require 'tilt/erubis'
+require 'connection_pool'
 
 require_relative 'blocktrain'
 require_relative 'sir_handel/helpers'
