@@ -36,7 +36,7 @@ module SirHandel
     end
 
     def get_type
-      halt(404) unless ['signals', 'groups'].include?(params[:type])
+      halt(404) unless ['signals', 'groups', 'dashboards'].include?(params[:type])
       params[:type]
     end
 
@@ -86,13 +86,21 @@ module SirHandel
     end
 
     def redirect_to_signal
-      url = "/#{@type}/#{@signal}/#{@from}/#{@to}"
+      signal = @params.delete('signal')
+      type = @params.delete('type')
+      from = @params.delete('from')
+      to = @params.delete('to')
 
-      if @interval.nil?
-        redirect to(url)
-      else
-        redirect to("#{url}?interval=#{@interval}")
-      end
+      clean_params = {
+        'layout' => @params['layout'],
+        'interval' => @params['interval'],
+      }.delete_if { |k,v| v.nil? }
+
+      qs = clean_params.map { |k,v| "#{k}=#{v}" }.join('&')
+
+      url = "/#{type}/#{signal}/#{from}/#{to}?#{qs}"
+
+      redirect to(url)
     end
 
     def redis

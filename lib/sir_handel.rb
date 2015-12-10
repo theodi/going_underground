@@ -64,6 +64,8 @@ module SirHandel
       @signals = params['signals']
       @interval = params[:interval]
 
+      @layout = params.fetch('layout', 'default')
+
       @signal_array = @signals.split(',')
 
       error_400('Please set a maximum of two signals') if @signal_array.count > 2
@@ -76,7 +78,7 @@ module SirHandel
 
           signals = @signal_array.map { |s| I18n.t(db_signal(s)) }
           @title = signals.join(' compared with ')
-          erb :signal, layout: :default
+          erb :signal, layout: @layout.to_sym
         end
 
         wants.json do
@@ -160,34 +162,55 @@ module SirHandel
       end
     end
 
+    get '/dashboards/:dashboard/:from/:to' do
+      protected!
+
+      @dashboard = params[:dashboard]
+      @title = I18n.t("groups.#{db_signal @dashboard}") + " Dashboard"
+      @from = params[:from]
+      @to = params[:to]
+      @interval = params[:interval]
+
+      respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.json do
+          sigs = groups[db_signal @dashboard].map do |s|
+            {name: I18n.t(s), url: "#{request.scheme}://#{request.env['HTTP_HOST']}/signals/#{web_signal s}"}
+          end
+
+          {signals: sigs}.to_json
+        end
+        wants.html do
+          erb :dashboards, layout: :default
+        end
+      end
+    end
+
     post '/:type/:signal' do
       params.delete_if { |k,v| v == '' }
 
       from = params.fetch('from', default_dates[:from])
       to = params.fetch('to', default_dates[:to])
 
-      @interval = params[:interval]
+      params['from'] = DateTime.parse(from).to_s
+      params['to'] = DateTime.parse(to).to_s
+
+      params['signal'] = params[:signal].split(',').first
+      signals = params.values_at(:signal, :compare).compact.join(',')
+      params['signal'] = web_signal(signals)
+
+      @params = params
       @type = get_type
-
-      params[:signal] = params[:signal].split(',').first
-
-      signal = params.values_at(:signal, :compare).compact.join(',')
-      @signal = web_signal(signal)
-
-      @from = DateTime.parse(from).to_s
-      @to = DateTime.parse(to).to_s
 
       redirect_to_signal
     end
 
     get '/:type/:signal' do
-      @signal = params['signal']
-      @type = params['type']
-      @interval = params[:interval]
+      params['from'] = default_dates[:from]
+      params['to'] = default_dates[:to]
+      @params = params
       @type = get_type
-
-      @from = default_dates[:from]
-      @to = default_dates[:to]
 
       redirect_to_signal
     end

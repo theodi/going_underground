@@ -1,7 +1,7 @@
 <% if @groups %>
 
   <% @groups.each do |title, members| %>
-    <h2><%= I18n.t "groups.#{title}" %></h2>
+    <h2><%= I18n.t "groups.#{title}" %> <a class='btn btn-primary' href="/dashboards/<%= title %>">Dashboard</a> </h2>
     <div class='row' id='<%= title %>'>
       <% members.each do |signal| %>
         <% @signals.delete signal %>

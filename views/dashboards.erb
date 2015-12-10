@@ -1,0 +1,63 @@
+<%= erb(:"includes/signal_form", locals: {target: "/dashboards/#{@dashboard}"}) %>
+<div id="alerts"></div>
+<div id="dashboard" class="row"></div>
+
+<script id="dashboard-item" type="text/x-handlebars-template">
+  <div class='col-md-6' id='{{slugify name}}'>
+    <div class='panel panel-default dashboard-item'>
+      <div class='panel-heading'>
+        <h3 class='panel-title'>{{name}}</h3>
+      </div>
+      <div class='panel-body'>
+        <iframe src='{{url}}?layout=simple' height='100%' width='100%' frameborder='0' scrolling='no'></iframe>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="alert-message" type="text/x-handlebars-template">
+  <div class='alert alert-warning alert-dismissible' role='alert'>
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+    The signal {{signal}} returned no data and was removed
+  </div>
+</script>
+
+<script>
+$(function () {
+  callDatePicker();
+
+  function slugify(name) {
+    return name.replace(/[^a-z ]/ig, '').trim().replace(/ /g, '-').toLowerCase();
+  }
+
+  Handlebars.registerHelper('slugify', function(name) {
+    name = Handlebars.Utils.escapeExpression(name);
+    var result = slugify(name)
+    return new Handlebars.SafeString(result);
+  });
+
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var eventer = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+  d3.json(document.URL, function(error, json) {
+    var signals = []
+    json.signals.forEach(function(signal) {
+      var source = $("#dashboard-item").html()
+      var template = Handlebars.compile(source);
+      var html = template(signal);
+      signals.push(html);
+    })
+    d3.selectAll("#dashboard").html(signals.join(''))
+  });
+
+  eventer(messageEvent,function(e) {
+    id = slugify(e.data)
+    $('#' + id).addClass('hidden');
+    var alertMessage = $("#alert-message").html()
+    var alertTemplate = Handlebars.compile(alertMessage);
+    $("#alerts").append(alertTemplate({ signal: e.data }))
+  },false);
+});
+
+</script>

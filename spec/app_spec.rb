@@ -165,5 +165,10 @@ module SirHandel
       get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
       expect(last_response.body).to match(/Passenger Load Car A \(%\) compared with Passenger Load Car B \(%\)<\/h1>/)
     end
+
+    it 'allows a layout to be specified' do
+      expect_any_instance_of(SirHandel::App).to receive(:erb).with(:signal, { layout: :simple })
+      get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?layout=simple'
+    end
   end
 end

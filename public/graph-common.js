@@ -5,6 +5,7 @@ function noData(signal_name, additional) {
 
   d3.selectAll("#chart p").classed("hidden", true);
   d3.selectAll("#chart").html("<p class='no-data'>No data for " + signal_name + " " + additional +"</p>")
+  parent.postMessage(signal_name, "*");
 }
 
 function getSignal(data, name, colour, axis) {
@@ -47,9 +48,9 @@ function getTrend(trend, name, colour) {
   }
 }
 
-function getLayout(name) {
+function getLayout(name, showlegend) {
   return {
-    showlegend: true,
+    showlegend: showlegend,
     xaxis: {
       tickangle: 75,
       exponentformat: 'e',
