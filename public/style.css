@@ -29,3 +29,7 @@ form {
 .dashboard-item {
   height: 500px;
 }
+
+.dashboard-item .panel-body {
+  height: 95%;
+}
