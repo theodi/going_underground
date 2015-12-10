@@ -119,9 +119,8 @@ module SirHandel
       }
 
       if @interval.nil?
-        count = Blocktrain::Count.new(search).results
-        search.merge!({limit: count, sort: { timeStamp: 'asc' }})
-        r = Blocktrain::Query.new(search).results
+        search.merge!({sort: { timeStamp: 'asc' }})
+        r = Blocktrain::PaginatedQuery.new(search).results
         return results_hash(signal, []) if r.nil?
 
         results = r.map do |r|
