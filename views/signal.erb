@@ -9,7 +9,7 @@
 <script>
 function signalGraph(json) {
 
-  var layout = getLayout(json.signals[0].name)
+  var layout = getLayout(json.signals[0].name, <%= @layout == 'default' %>)
   var signal = getSignal(json.signals[0].results, json.signals[0].name, 'rgb(0, 0, 153)')
   var trend =  getTrend(json.signals[0].trend, json.signals[0].name, 'rgb(0, 0, 153)')
 

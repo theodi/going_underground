@@ -47,9 +47,9 @@ function getTrend(trend, name, colour) {
   }
 }
 
-function getLayout(name) {
+function getLayout(name, showlegend) {
   return {
-    showlegend: true,
+    showlegend: showlegend,
     xaxis: {
       tickangle: 75,
       exponentformat: 'e',
