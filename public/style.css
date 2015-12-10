@@ -25,3 +25,7 @@ form {
   font-size: 35px;
   margin: 40px;
 }
+
+.dashboard-item {
+  height: 500px;
+}
