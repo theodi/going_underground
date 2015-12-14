@@ -31,6 +31,9 @@ module Blocktrain
       ['timeStamp']
     end
 
+    def build_query(addresses)
+      "memoryAddress:#{addresses.first} AND value:#{station_filter}"
+    end
 
     def station_filter
       case @direction
