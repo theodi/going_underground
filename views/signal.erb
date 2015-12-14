@@ -48,7 +48,7 @@ function signalGraph(json) {
 }
 
 $(function () {
-  callDatePicker();
+  <% if @layout == 'default' %> callDatePicker(); <% end %>
   drawChart(signalGraph);
 });
 

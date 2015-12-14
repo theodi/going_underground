@@ -45,7 +45,12 @@ module SirHandel
     end
 
     def cromulent_dates
-      redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
+      dates = settings.cache.get('cromulent-dates')
+      if dates.nil?
+        dates = redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
+        settings.cache.set('cromulent-dates', dates)
+      end
+      dates
     end
 
     def default_dates
@@ -104,7 +109,7 @@ module SirHandel
     end
 
     def redis
-      @redis ||= Redis.new(url: ENV['REDIS_URL'])
+      @redis ||= ConnectionPool::Wrapper.new(size: 5, timeout: 3) { Redis.new(url: ENV['REDIS_URL']) }
       @redis
     end
 
@@ -119,9 +124,8 @@ module SirHandel
       }
 
       if @interval.nil?
-        count = Blocktrain::Count.new(search).results
-        search.merge!({limit: count, sort: { timeStamp: 'asc' }})
-        r = Blocktrain::Query.new(search).results
+        search.merge!({sort: { timeStamp: 'asc' }})
+        r = Blocktrain::PaginatedQuery.new(search).results
         return results_hash(signal, []) if r.nil?
 
         results = r.map do |r|

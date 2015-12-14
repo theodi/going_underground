@@ -13,6 +13,8 @@ gem 'redis'
 gem 'puma'
 gem 'foreman'
 gem 'curb', '~> 0.8'
+gem 'connection_pool'
+gem 'dalli'
 
 group :test do
   gem 'pry'
