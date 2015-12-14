@@ -228,11 +228,7 @@ module SirHandel
     end
 
     get '/cromulent-dates' do
-      dates = settings.cache.get('cromulent-dates')
-      if dates.nil?
-        settings.cache.set('cromulent-dates', cromulent_dates)
-      end
-      settings.cache.get('cromulent-dates')
+      cromulent_dates
     end
 
     # start the server if ruby file executed directly
