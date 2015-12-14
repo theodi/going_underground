@@ -32,24 +32,21 @@ module Blocktrain
     end
 
     def station_filter
-      stations = {
-        seven_sisters: {
-          southbound: 289
-        }
-      }
-      range = case direction
+      atp = case direction
       when :northbound
-        op = :gt
+        stations[stations.keys.index(station) + 1]
       when :southbound
-        op = :lt
+        stations[stations.keys.index(station) - 1]
       end
       {
         range: {
-          value: {
-            op => stations[station][direction]
-          }
+          value: atp
         }
       }
+    end
+
+    def stations
+      YAML.load('./config/stations.yml')
     end
 
     def segments_filter
