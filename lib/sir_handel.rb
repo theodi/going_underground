@@ -7,6 +7,7 @@ require 'i18n/backend/fallbacks'
 require 'redis'
 require 'tilt/erubis'
 require 'connection_pool'
+require 'dalli'
 
 require_relative 'blocktrain'
 require_relative 'sir_handel/helpers'
@@ -23,6 +24,16 @@ module SirHandel
       include SirHandel::Helpers
     end
 
+    cache = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                    {:username => ENV["MEMCACHIER_USERNAME"],
+                     :password => ENV["MEMCACHIER_PASSWORD"],
+                     :failover => true,
+                     :socket_timeout => 1.5,
+                     :socket_failure_delay => 0.2,
+                     :pool_size => 5
+                    })
+
+    set :cache, cache
     set :public_folder, 'public'
     set :views, 'views'
     set :raise_errors, ['cucumber', 'test'].include?(ENV['RACK_ENV'])
@@ -217,7 +228,7 @@ module SirHandel
     end
 
     get '/cromulent-dates' do
-      cromulent_dates
+      settings.cache.get('cromulent-dates') || settings.cache.set('cromulent-dates', cromulent_dates)
     end
 
     # start the server if ruby file executed directly
