@@ -124,6 +124,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-timeout (0.3.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -210,6 +211,7 @@ DEPENDENCIES
   puma
   rack-conneg
   rack-test
+  rack-timeout
   rake
   redis
   rspec
