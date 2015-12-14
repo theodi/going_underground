@@ -3,10 +3,10 @@ module Blocktrain
 
     def initialize(search)
       @search = search
-      @search[:limit] ||= 100
+      @count = Blocktrain::Count.new(@search).results
+      @search[:limit] ||= @count
       @search[:offset] ||= 0
       @results = []
-      @count = Blocktrain::Count.new(@search).results
     end
 
     def run_query
