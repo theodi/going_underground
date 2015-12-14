@@ -6,7 +6,7 @@ module Blocktrain
     attr_reader :station, :direction
 
     def initialize(options={})
-      @station = options.fetch(:station, :seven_sisters)
+      @station = options.fetch(:station, :seven_sisters).to_s
       @direction = options.fetch(:direction, :southbound)
       options[:memory_addresses] ||= ATP_WORST_CASE_FORWARD_LOCATION
       super(options)
@@ -31,22 +31,18 @@ module Blocktrain
       ['timeStamp']
     end
 
+
     def station_filter
-      atp = case direction
+      case @direction
       when :northbound
-        stations[stations.keys.index(station) + 1]
+        stations.to_a[stations.keys.index(@station) + 1].last['northbound']
       when :southbound
-        stations[stations.keys.index(station) - 1]
+        stations.to_a[stations.keys.index(@station) - 1].last['southbound']
       end
-      {
-        range: {
-          value: atp
-        }
-      }
     end
 
     def stations
-      YAML.load('./config/stations.yml')
+      YAML.load_file File.join('config', 'stations.yml')
     end
 
     def segments_filter
