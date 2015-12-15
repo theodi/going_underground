@@ -253,11 +253,12 @@ module SirHandel
     get '/stations/arriving/:direction/:station/?:to?' do
       @direction = params[:direction]
       @station = params[:station]
-      @to = if params[:to]
-        Time.parse(params[:to])
+
+      if params[:to]
+        @to = Time.parse(params[:to])
       else
-        redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{DateTime.parse('2015-09-23T08:30:00').to_s}"
-        # Time.now.utc < use a fake time for now until we get real datas
+        to = DateTime.parse('2015-09-23T08:30:00').to_s
+        redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{to}"
       end
 
       respond_to do |wants|
