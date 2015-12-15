@@ -60,14 +60,23 @@
 
 <script>
 $.getJSON(document.URL, function(data) {
-  $('#car1 .level').height(Math.round(data[0][1].CAR_A) + '%')
-  $('#car2 .level').height(Math.round(data[0][1].CAR_B) + '%')
-  $('#car3 .level').height(Math.round(data[0][1].CAR_C) + '%')
-  $('#car4 .level').height(Math.round(data[0][1].CAR_D) + '%')
+  $('#car1 .level').height(percentage(data[0][1].CAR_A))
+  $('#car2 .level').height(percentage(data[0][1].CAR_B))
+  $('#car3 .level').height(percentage(data[0][1].CAR_C))
+  $('#car4 .level').height(percentage(data[0][1].CAR_D))
 
-  $('#car1 .num').text(Math.round(data[0][1].CAR_A) + '%')
-  $('#car2 .num').text(Math.round(data[0][1].CAR_B) + '%')
-  $('#car3 .num').text(Math.round(data[0][1].CAR_C) + '%')
-  $('#car4 .num').text(Math.round(data[0][1].CAR_D) + '%')
+  $('#car1 .num').text(percentage(data[0][1].CAR_A))
+  $('#car2 .num').text(percentage(data[0][1].CAR_B))
+  $('#car3 .num').text(percentage(data[0][1].CAR_C))
+  $('#car4 .num').text(percentage(data[0][1].CAR_D))
 })
+
+function percentage(num) {
+  return valBetween(Math.round(num), 0, 100) + '%'
+}
+
+function valBetween(v, min, max) {
+  return (Math.min(max, Math.max(min, v)));
+}
+
 </script>
