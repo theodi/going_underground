@@ -1,1 +1,15 @@
-<a href="<%= url('/trains/arriving/southbound/seven-sisters') %>">Southbound Seven Sisters</a>
+<h2>Northbound</h2>
+
+<div class='row' id='northbound'>
+  <% @stations.each do |s| %>
+    <%= erb :"includes/station", locals: { station: s } %>
+  <% end %>
+</div>
+
+<h2>Southbound</h2>
+
+<div class='row' id='southbound'>
+  <% Hash[@stations.to_a.reverse].each do |s| %>
+    <%= erb :"includes/station", locals: { station: s } %>
+  <% end %>
+</div>

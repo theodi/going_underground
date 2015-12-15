@@ -218,6 +218,12 @@ module SirHandel
       redirect_to_signal
     end
 
+    get '/trains/selection' do
+      @title = 'Choose a station'
+      @stations = YAML.load_file File.join('config', 'stations.yml')
+      erb :stations, layout: :default
+    end
+
     get '/:type/:signal' do
       params['from'] = default_dates[:from]
       params['to'] = default_dates[:to]
@@ -225,11 +231,6 @@ module SirHandel
       @type = get_type
 
       redirect_to_signal
-    end
-
-    get '/trains/selection' do
-      @title = 'Choose a station'
-      erb :stations, layout: :default
     end
 
     get '/trains/arriving/:direction/:station' do

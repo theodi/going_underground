@@ -183,5 +183,14 @@ module SirHandel
       expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.parse(to), "seven_sisters", :southbound).and_call_original
       get "trains/arriving/southbound/seven-sisters.json?to=#{to}"
     end
+
+    it 'shows all stations' do
+      get 'trains/selection'
+
+      body = Nokogiri::HTML.parse(last_response.body)
+
+      expect(body.css('#northbound').first.css('div').count).to eq(16)
+      expect(body.css('#southbound').first.css('div').count).to eq(16)
+    end
   end
 end
