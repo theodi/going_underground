@@ -59,7 +59,7 @@ form {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: red;
+  background-color: orange;
   border-radius: 20px 20px 0 0;
 }
 
@@ -79,6 +79,8 @@ form {
   border-radius: 10px;
   float: left;
   margin-left: 2.5%;
+  background-color: white;
+  opacity: 0.8;
 }
 
 .front {
