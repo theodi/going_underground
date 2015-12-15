@@ -233,8 +233,8 @@ module SirHandel
     end
 
     get '/trains/arriving/:direction/:station' do
-      from = if params[:from]
-        Time.parse(params[:from])
+      to = if params[:to]
+        Time.parse(params[:to])
       else
         Time.now.utc
       end
@@ -248,7 +248,7 @@ module SirHandel
         end
 
         wants.json do
-          Blocktrain::TrainCrowding.new(from,
+          Blocktrain::TrainCrowding.new(to,
             db_signal(params[:station]), params[:direction].to_sym).results.to_json
         end
       end
