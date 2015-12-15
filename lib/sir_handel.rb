@@ -218,7 +218,7 @@ module SirHandel
       redirect_to_signal
     end
 
-    get '/trains/selection' do
+    get '/stations' do
       @title = 'Choose a station'
       @stations = YAML.load_file File.join('config', 'stations.yml')
       erb :stations, layout: :default
@@ -233,7 +233,7 @@ module SirHandel
       redirect_to_signal
     end
 
-    get '/trains/arriving/:direction/:station' do
+    get '/stations/arriving/:direction/:station' do
       @direction = params[:direction]
       @station = params[:station]
       @to = if params[:to]

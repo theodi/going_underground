@@ -174,18 +174,18 @@ module SirHandel
     it 'sets the current datetime', :vcr do
       Timecop.freeze
       expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.now.utc, "seven_sisters", :southbound).and_call_original
-      get 'trains/arriving/southbound/seven-sisters.json'
+      get 'stations/arriving/southbound/seven-sisters.json'
       Timecop.return
     end
 
     it 'allows the datetime to be set', :vcr do
       to = "2015-09-23T17:10:00Z"
       expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.parse(to), "seven_sisters", :southbound).and_call_original
-      get "trains/arriving/southbound/seven-sisters.json?to=#{to}"
+      get "stations/arriving/southbound/seven-sisters.json?to=#{to}"
     end
 
     it 'shows all stations' do
-      get 'trains/selection'
+      get 'stations'
 
       body = Nokogiri::HTML.parse(last_response.body)
 

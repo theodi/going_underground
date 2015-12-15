@@ -1,9 +1,9 @@
-<p><a href="/trains/selection" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
+<p><a href="/stations" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
 
 
 <div class='row'>
   <div class='col-md-12'>
-    <form class='form-inline' action='/trains/arriving/<%= @direction %>/<%= @station %>' method='get'>
+    <form class='form-inline' action='/stations/arriving/<%= @direction %>/<%= @station %>' method='get'>
       <div class='form-group'>
         <label for='time'>Time</label>
         <div class='input-group date' id='to-date'>
