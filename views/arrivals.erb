@@ -24,69 +24,16 @@
 <h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
 
 <div class="row train">
-  <div class='carriage-wrapper' id='car1'>
-    <div class='carriage'>
-      <div class='level'>
-        <p class='num'>
-          <i class='fa fa-circle-o-notch fa-spin'></i>
-        </p>
-      </div>
-      <div class='windows'>
-        <div class='window'></div>
-        <div class='window'></div>
-        <div class='window'></div>
-      </div>
-    </div>
+  <% (1..4).each do |i| %>
+  <div class='carriage-wrapper' id='car<%= i %>'>
+  <%= erb :'includes/carriage' %>
   </div>
-
-  <div class='carriage-wrapper' id='car2'>
-    <div class='carriage'>
-      <div class='level'>
-        <p class='num'>
-          <i class='fa fa-circle-o-notch fa-spin'></i>
-        </p>
-      </div>
-      <div class='windows'>
-        <div class='window'></div>
-        <div class='window'></div>
-        <div class='window'></div>
-      </div>
-    </div>
-  </div>
-
-  <div class='carriage-wrapper' id='car3'>
-    <div class='carriage'>
-      <div class='level'>
-        <p class='num'>
-          <i class='fa fa-circle-o-notch fa-spin'></i>
-        </p>
-      </div>
-      <div class='windows'>
-        <div class='window'></div>
-        <div class='window'></div>
-        <div class='window'></div>
-      </div>
-    </div>
-  </div>
-
-  <div class='carriage-wrapper' id='car4'>
-    <div class='carriage'>
-      <div class='level'>
-        <p class='num'>
-          <i class='fa fa-circle-o-notch fa-spin'></i>
-        </p>
-      </div>
-      <div class='windows'>
-        <div class='window'></div>
-        <div class='window'></div>
-        <div class='window'></div>
-      </div>
-    </div>
-  </div>
+  <% end %>
 
   <div class="front">
     <div class="window"></div>
   </div>
+
 </div>
 
 <script>
