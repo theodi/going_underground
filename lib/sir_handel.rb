@@ -41,7 +41,20 @@ module SirHandel
     set :default_interval, '10m'
 
     get '/' do
-      redirect to('/signals')
+      respond_to do |wants|
+        @title = 'Welcome to Blocktrain'
+
+        wants.html do
+          erb :index, layout: :default
+        end
+
+        wants.json do
+          {
+            signals: "#{request.scheme}://#{request.env['HTTP_HOST']}/signals",
+            stations: "#{request.scheme}://#{request.env['HTTP_HOST']}/stations"
+          }.to_json
+        end
+      end
     end
 
     get '/signals' do
@@ -218,6 +231,12 @@ module SirHandel
       redirect_to_signal
     end
 
+    get '/stations' do
+      @title = 'Choose a station'
+      @stations = YAML.load_file File.join('config', 'stations.yml')
+      erb :stations, layout: :default
+    end
+
     get '/:type/:signal' do
       params['from'] = default_dates[:from]
       params['to'] = default_dates[:to]
@@ -225,6 +244,36 @@ module SirHandel
       @type = get_type
 
       redirect_to_signal
+    end
+
+    post '/stations/arriving/:direction/:station' do
+      redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{DateTime.parse(params[:to]).to_s}"
+    end
+
+    get '/stations/arriving/:direction/:station/?:to?' do
+      @direction = params[:direction]
+      @station = params[:station]
+
+      if params[:to]
+        @to = Time.parse(params[:to])
+      else
+        to = DateTime.parse('2015-09-23T08:30:00').to_s
+        redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{to}"
+      end
+
+      respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.html do
+          @title = 'Arriving trains'
+          erb :arrivals, layout: :default
+        end
+
+        wants.json do
+          Blocktrain::TrainCrowding.new(@to,
+            db_signal(@station), @direction.to_sym).results.to_json
+        end
+      end
     end
 
     get '/cromulent-dates' do

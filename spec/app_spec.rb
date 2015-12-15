@@ -3,9 +3,8 @@ module SirHandel
 
     it 'should allow accessing the home page' do
       get '/'
-      expect(last_response).to be_redirect
-      follow_redirect!
-      expect(last_request.url). to eq 'http://example.org/signals'
+      expect(last_response.body).to match(/a href='\/signals/)
+      expect(last_response.body).to match(/a href='\/stations/)
     end
 
     it 'varys on the accept header for signals' do
@@ -169,6 +168,27 @@ module SirHandel
     it 'allows a layout to be specified' do
       expect_any_instance_of(SirHandel::App).to receive(:erb).with(:signal, { layout: :simple })
       get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?layout=simple'
+    end
+
+    it 'sets a default datetime' do
+      get 'stations/arriving/southbound/seven-sisters'
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/stations/arriving/southbound/seven-sisters/2015-09-23T08:30:00+00:00'
+    end
+
+    it 'allows the datetime to be set', :vcr do
+      to = "2015-09-23T17:10:00Z"
+      expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.parse(to), "seven_sisters", :southbound).and_call_original
+      get "stations/arriving/southbound/seven-sisters/#{to}.json"
+    end
+
+    it 'shows all stations' do
+      get 'stations'
+
+      body = Nokogiri::HTML.parse(last_response.body)
+
+      expect(body.css('#northbound').first.css('div').count).to eq(16)
+      expect(body.css('#southbound').first.css('div').count).to eq(16)
     end
   end
 end

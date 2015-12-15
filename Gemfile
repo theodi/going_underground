@@ -31,4 +31,5 @@ group :test do
   gem 'terminal-notifier-guard'
   gem 'rspec-pride'
   gem 'nokogiri'
+  gem 'timecop'
 end
