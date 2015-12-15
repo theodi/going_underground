@@ -170,11 +170,10 @@ module SirHandel
       get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?layout=simple'
     end
 
-    it 'sets the current datetime', :vcr do
-      Timecop.freeze '2015-09-23 08:30:00'
-      expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.now.utc, "seven_sisters", :southbound).and_call_original
-      get 'stations/arriving/southbound/seven-sisters/2015-09-23T07:30:00+00:00.json'
-      Timecop.return
+    it 'sets a default datetime' do
+      get 'stations/arriving/southbound/seven-sisters'
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/stations/arriving/southbound/seven-sisters/2015-09-23T08:30:00+00:00'
     end
 
     it 'allows the datetime to be set', :vcr do
