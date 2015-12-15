@@ -174,7 +174,7 @@ module SirHandel
     it 'sets the current datetime', :vcr do
       Timecop.freeze '2015-09-23 08:30:00'
       expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.now.utc, "seven_sisters", :southbound).and_call_original
-      get 'stations/arriving/southbound/seven-sisters.json'
+      get 'stations/arriving/southbound/seven-sisters/2015-09-23T07:30:00+00:00.json'
       Timecop.return
     end
 
