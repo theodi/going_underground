@@ -4,7 +4,7 @@ module Blocktrain
     CAR_NAMES = %w[CAR_A CAR_B CAR_C CAR_D]
 
     def initialize(to, station, direction)
-      from = to - 7200
+      from = to - 86400
       @atp_query = ATPQuery.new(from: from.iso8601,
         to: to.iso8601, station: station, direction: direction)
     end
