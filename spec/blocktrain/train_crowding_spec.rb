@@ -8,5 +8,16 @@ module Blocktrain
 
       tc = described_class.new Time.parse(to), :euston, :southbound
     end
+
+    it 'gets train loading data for a point in time', :vcr do
+      tc = described_class.new Time.parse('2015-09-17T16:02:22.521Z'), :euston, :southbound
+
+      expect(tc.crowd_results Time.parse('2015-09-17T16:02:22.521Z')).to eq({
+        'CAR_A' => 25.333333333333332,
+        'CAR_B' => 33.83582089552239,
+        'CAR_C' => 26.193548387096776,
+        'CAR_D' => 10.428571428571429
+      })
+    end
   end
 end

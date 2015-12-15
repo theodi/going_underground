@@ -20,7 +20,7 @@ module Blocktrain
       end
     end
 
-    def crowd_results(time, train)
+    def crowd_results time, train = nil
       from, to = time - 60, time + 60
       crowd_query = Aggregations::MultiValueAggregation.new(
         from: from.iso8601, to: to.iso8601, memory_addresses: CAR_LOADS)
