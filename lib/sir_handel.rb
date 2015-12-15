@@ -249,7 +249,7 @@ module SirHandel
 
         wants.json do
           Blocktrain::TrainCrowding.new(from,
-            params[:station].to_sym, params[:direction].to_sym).results.to_json
+            db_signal(params[:station]), params[:direction].to_sym).results.to_json
         end
       end
     end
