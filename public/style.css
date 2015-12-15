@@ -33,3 +33,69 @@ form {
 .dashboard-item .panel-body {
   height: 95%;
 }
+
+.carriage-wrapper {
+  width: 20%;
+  float: left;
+  margin: 0 1% 0 0;
+}
+
+.carriage {
+  border: 2px solid #000;
+  height: 100px;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  position: relative;
+}
+
+.carriage .num {
+  text-align: center;
+}
+
+.carriage .level {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: red;
+}
+
+.carriage .windows {
+  width: 95%;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 2.5%;
+  z-index: 10;
+}
+
+.carriage .window {
+  border: 2px solid #000;
+  width: 30%;
+  height: 100%;
+  border-radius: 10px;
+  float: left;
+  margin-left: 2.5%;
+}
+
+.front {
+  border: 2px solid #000;
+  width: 7%;
+  height: 100px;
+  float: left;
+  border-radius: 10px 100px 0 0;
+  position: relative;
+}
+
+.front .window {
+  position: absolute;
+  top: 10px;
+  border: 2px solid #000;
+  height: 40px;
+  left: 10%;
+  width: 60%;
+  border-radius: 10px 100px 10px 10px;
+}
+
+.train {
+  margin: 40px auto;
+}

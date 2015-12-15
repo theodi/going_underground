@@ -1,45 +1,73 @@
-Next <%= params[:direction] %> trains at <%= params[:station] %>
+<h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
 
-<div id="tik-tok"><%= Time.now.utc.iso8601 %></div>
+<div class="row train">
+  <div class='carriage-wrapper' id='car1'>
+    <div class='carriage'>
+      <div class='level'>
+        <p class='num'></p>
+      </div>
+      <div class='windows'>
+        <div class='window'></div>
+        <div class='window'></div>
+        <div class='window'></div>
+      </div>
+    </div>
+  </div>
 
-<table id="arrivals" class="table">
-    <thead>
-        <tr>
-            <th>Next train</th>
-            <th>Car A</th>
-            <th>Car B</th>
-            <th>Car C</th>
-            <th>Car D</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+  <div class='carriage-wrapper' id='car2'>
+    <div class='carriage'>
+      <div class='level'>
+        <p class='num'></p>
+      </div>
+      <div class='windows'>
+        <div class='window'></div>
+        <div class='window'></div>
+        <div class='window'></div>
+      </div>
+    </div>
+  </div>
 
-<template id="train-row">
-    <tr>
-        <td class="train"></td>
-        <td class="car a"></td>
-        <td class="car b"></td>
-        <td class="car c"></td>
-        <td class="car d"></td>
-    </tr>
-</template>
+  <div class='carriage-wrapper' id='car3'>
+    <div class='carriage'>
+      <div class='level'>
+        <p class='num'></p>
+      </div>
+      <div class='windows'>
+        <div class='window'></div>
+        <div class='window'></div>
+        <div class='window'></div>
+      </div>
+    </div>
+  </div>
+
+  <div class='carriage-wrapper' id='car4'>
+    <div class='carriage'>
+      <div class='level'>
+        <p class='num'></p>
+      </div>
+      <div class='windows'>
+        <div class='window'></div>
+        <div class='window'></div>
+        <div class='window'></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="front">
+    <div class="window"></div>
+  </div>
+</div>
 
 <script>
-setupTrainTracking("tik-tok");
+$.getJSON(document.URL, function(data) {
+  $('#car1 .level').height(Math.round(data[0][1].CAR_A) + '%')
+  $('#car2 .level').height(Math.round(data[0][1].CAR_B) + '%')
+  $('#car3 .level').height(Math.round(data[0][1].CAR_C) + '%')
+  $('#car4 .level').height(Math.round(data[0][1].CAR_D) + '%')
 
-var template = document.getElementById('train-row');
-var table = document.getElementById('arrivals').querySelector('tbody');
-
-var tds = template.content.querySelectorAll('td');
-
-tds[0].textContent = 'I am a train';
-tds[1].textContent = '10%';
-tds[2].textContent = '30%';
-tds[3].textContent = '14%';
-tds[4].textContent = '25%';
-
-table.appendChild(document.importNode(template.content, true));
-
+  $('#car1 .num').text(Math.round(data[0][1].CAR_A) + '%')
+  $('#car2 .num').text(Math.round(data[0][1].CAR_B) + '%')
+  $('#car3 .num').text(Math.round(data[0][1].CAR_C) + '%')
+  $('#car4 .num').text(Math.round(data[0][1].CAR_D) + '%')
+})
 </script>
