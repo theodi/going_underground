@@ -20,6 +20,15 @@
     },
     "TUBE_USERNAME": {
       "required": true
+    },
+    "MEMCACHIER_USERNAME": {
+      "required": true
+    },
+    "MEMCACHIER_PASSWORD": {
+      "required": true
+    },
+    "MEMCACHIER_SERVERS": {
+      "required": true
     }
   },
   "addons": [
