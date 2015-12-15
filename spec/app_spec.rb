@@ -170,5 +170,18 @@ module SirHandel
       expect_any_instance_of(SirHandel::App).to receive(:erb).with(:signal, { layout: :simple })
       get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?layout=simple'
     end
+
+    it 'sets the current datetime', :vcr do
+      Timecop.freeze
+      expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.now.utc, "seven_sisters", :southbound).and_call_original
+      get 'trains/arriving/southbound/seven-sisters.json'
+      Timecop.return
+    end
+
+    it 'allows the datetime to be set', :vcr do
+      to = "2015-09-23T17:10:00Z"
+      expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.parse(to), "seven_sisters", :southbound).and_call_original
+      get "trains/arriving/southbound/seven-sisters.json?to=#{to}"
+    end
   end
 end
