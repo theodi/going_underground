@@ -1,5 +1,26 @@
 <p><a href="/trains/selection" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
 
+
+<div class='row'>
+  <div class='col-md-12'>
+    <form class='form-inline' action='/trains/arriving/<%= @direction %>/<%= @station %>' method='get'>
+      <div class='form-group'>
+        <label for='time'>Time</label>
+        <div class='input-group date' id='to-date'>
+          <input type='text' class="form-control" id='date' name='to' value='<%= @to %>'/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 <h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
 
 <div class="row train">
@@ -70,15 +91,17 @@
 
 <script>
 $.getJSON(document.URL, function(data) {
-  $('#car1 .level').height(percentage(data[0][1].CAR_A))
-  $('#car2 .level').height(percentage(data[0][1].CAR_B))
-  $('#car3 .level').height(percentage(data[0][1].CAR_C))
-  $('#car4 .level').height(percentage(data[0][1].CAR_D))
+  if (data[0]) {
+    $('#car1 .level').height(percentage(data[0][1].CAR_A))
+    $('#car2 .level').height(percentage(data[0][1].CAR_B))
+    $('#car3 .level').height(percentage(data[0][1].CAR_C))
+    $('#car4 .level').height(percentage(data[0][1].CAR_D))
 
-  $('#car1 .num').text(percentage(data[0][1].CAR_A))
-  $('#car2 .num').text(percentage(data[0][1].CAR_B))
-  $('#car3 .num').text(percentage(data[0][1].CAR_C))
-  $('#car4 .num').text(percentage(data[0][1].CAR_D))
+    $('#car1 .num').text(percentage(data[0][1].CAR_A))
+    $('#car2 .num').text(percentage(data[0][1].CAR_B))
+    $('#car3 .num').text(percentage(data[0][1].CAR_C))
+    $('#car4 .num').text(percentage(data[0][1].CAR_D))
+  }
 })
 
 function percentage(num) {
@@ -89,4 +112,7 @@ function valBetween(v, min, max) {
   return (Math.min(max, Math.max(min, v)));
 }
 
+$(function() {
+  callDatePicker()
+})
 </script>

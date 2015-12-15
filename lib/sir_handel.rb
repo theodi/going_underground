@@ -234,10 +234,13 @@ module SirHandel
     end
 
     get '/trains/arriving/:direction/:station' do
-      to = if params[:to]
+      @direction = params[:direction]
+      @station = params[:station]
+      @to = if params[:to]
         Time.parse(params[:to])
       else
-        Time.now.utc
+        Time.parse('2015-09-23T08:30:00')
+        # Time.now.utc < use a fake time for now until we get real datas
       end
 
       respond_to do |wants|
@@ -249,8 +252,8 @@ module SirHandel
         end
 
         wants.json do
-          Blocktrain::TrainCrowding.new(to,
-            db_signal(params[:station]), params[:direction].to_sym).results.to_json
+          Blocktrain::TrainCrowding.new(@to,
+            db_signal(@station), @direction.to_sym).results.to_json
         end
       end
     end
