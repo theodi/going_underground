@@ -32,21 +32,5 @@ module Blocktrain
         ]
       end.to_h
     end
-
-    def output
-      results.each do |location, crowd|
-        info = crowd['results']['buckets'].map do |car_mem_addr, bucket|
-          name = CAR_NAMES[CAR_LOADS.index(car_mem_addr)]
-          full = bucket['results']['buckets'][0]['average_value']['value'] rescue nil
-          [name, "%.2f" % full.to_f]
-        end
-        puts [
-          location['timeStamp'].ljust(25),
-          location['value'],
-          *info
-        ].join("\t")
-      end
-      nil
-    end
   end
 end
