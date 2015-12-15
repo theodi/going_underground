@@ -233,13 +233,17 @@ module SirHandel
       redirect_to_signal
     end
 
-    get '/stations/arriving/:direction/:station' do
+    post '/stations/arriving/:direction/:station' do
+      redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{DateTime.parse(params[:to]).to_s}"
+    end
+
+    get '/stations/arriving/:direction/:station/?:to?' do
       @direction = params[:direction]
       @station = params[:station]
       @to = if params[:to]
         Time.parse(params[:to])
       else
-        Time.parse('2015-09-23T08:30:00')
+        redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{DateTime.parse('2015-09-23T08:30:00').to_s}"
         # Time.now.utc < use a fake time for now until we get real datas
       end
 
