@@ -19,5 +19,24 @@ module Blocktrain
         'CAR_D' => 10.428571428571429
       })
     end
+
+    it 'has results', :vcr do
+      tc = described_class.new Time.parse('2015-09-17T17:00:00.000Z'), :euston, :southbound
+
+      expect(tc.results).to eq [
+        [
+          {
+            "number"=>0,
+            "timeStamp"=>"2015-09-17T16:02:22.521Z"
+          },
+          {
+            "CAR_A"=>25.333333333333332,
+            "CAR_B"=>33.83582089552239,
+            "CAR_C"=>26.193548387096776,
+            "CAR_D"=>10.428571428571429
+          }
+        ]
+      ]
+    end
   end
 end
