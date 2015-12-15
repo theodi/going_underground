@@ -8,7 +8,7 @@ module Blocktrain
     def initialize(options={})
       @station = options.fetch(:station, :seven_sisters).to_s
       @direction = options.fetch(:direction, :southbound)
-      options[:sort] ||= 'timeStamp'
+      options[:sort] ||= {'timeStamp' => 'desc'}
       options[:memory_addresses] ||= ATP_WORST_CASE_FORWARD_LOCATION
       super(options)
     end
