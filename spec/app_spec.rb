@@ -3,9 +3,8 @@ module SirHandel
 
     it 'should allow accessing the home page' do
       get '/'
-      expect(last_response).to be_redirect
-      follow_redirect!
-      expect(last_request.url). to eq 'http://example.org/signals'
+      expect(last_response.body).to match(/a href='\/signals/)
+      expect(last_response.body).to match(/a href='\/stations/)
     end
 
     it 'varys on the accept header for signals' do

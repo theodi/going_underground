@@ -41,7 +41,20 @@ module SirHandel
     set :default_interval, '10m'
 
     get '/' do
-      redirect to('/signals')
+      respond_to do |wants|
+        @title = 'Welcome to Blocktrain'
+
+        wants.html do
+          erb :index, layout: :default
+        end
+
+        wants.json do
+          {
+            signals: "#{request.scheme}://#{request.env['HTTP_HOST']}/signals",
+            stations: "#{request.scheme}://#{request.env['HTTP_HOST']}/stations"
+          }.to_json
+        end
+      end
     end
 
     get '/signals' do
