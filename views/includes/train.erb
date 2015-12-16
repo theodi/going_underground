@@ -1,0 +1,11 @@
+<div class='row train'>
+  <% (1..4).each do |i| %>
+  <div class='carriage-wrapper' id='car<%= i %>'>
+    <%= erb :'includes/carriage' %>
+  </div>
+  <% end %>
+
+  <div class='front'>
+    <div class='window'></div>
+  </div>
+</div>
