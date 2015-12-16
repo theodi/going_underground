@@ -187,8 +187,8 @@ module SirHandel
 
       body = Nokogiri::HTML.parse(last_response.body)
 
-      expect(body.css('#northbound').first.css('div').count).to eq(16)
-      expect(body.css('#southbound').first.css('div').count).to eq(16)
+      expect(body.css('#northbound').first.css('li').count).to eq(16)
+      expect(body.css('#southbound').first.css('li').count).to eq(16)
     end
   end
 end

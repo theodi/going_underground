@@ -37,6 +37,7 @@ victoria:
 pimlico:
   southbound: 1753
   northbound: 1746
+  class: normal
 vauxhall:
   southbound: 1809
   northbound: 1798
