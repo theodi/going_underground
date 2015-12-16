@@ -38,5 +38,26 @@ module Blocktrain
         ]
       ]
     end
+
+    context 'start of the line' do
+      it 'knows about the start of the line' do
+        tc = described_class.new Time.parse('2015-09-17T17:00:00.000Z'), :walthamstow_central, :southbound
+
+        expect(tc.results).to eq [
+          [
+            {
+              "number"=>0,
+              "timeStamp"=>"2015-09-17T17:00:00Z"
+            },
+            {
+              "CAR_A"=>0,
+              "CAR_B"=>0,
+              "CAR_C"=>0,
+              "CAR_D"=>0
+            }
+          ]
+        ]
+      end
+    end
   end
 end
