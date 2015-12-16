@@ -1,14 +1,13 @@
-<div class='wheels row'>
-  <div class='col-md-3 wheel text-center'>
-    <i class='fa fa-circle-o-notch fa-spin'></i>
-  </div>
-  <div class='col-md-3 wheel text-center'>
-    <i class='fa fa-circle-o-notch fa-spin'></i>
-  </div>
-  <div class='col-md-3 wheel text-center'>
-    <i class='fa fa-circle-o-notch fa-spin'></i>
-  </div>
-  <div class='col-md-3 wheel text-center'>
-    <i class='fa fa-circle-o-notch fa-spin'></i>
-  </div>
+<% def draw_wheels(count) %>
+  <% count.times do |i| %>
+    <%= erb :'includes/wheel', locals: { span: 12 / count } %>
+  <% end %>
+<% end %>
+
+<div class='wheels row hidden-sm hidden-xs'>
+  <% draw_wheels(4) %>
+</div>
+
+<div class='wheels row hidden-md hidden-lg'>
+  <% draw_wheels(1) %>
 </div>
