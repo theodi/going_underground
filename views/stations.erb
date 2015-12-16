@@ -2,7 +2,7 @@
   <h2>Northbound</h2>
 
   <ul id='northbound' class='victoria'>
-    <% @stations.each do |s| %>
+    <% Hash[@stations.to_a.reverse].each do |s| %>
       <%= erb :"includes/station", locals: { station: s, direction: :northbound } %>
     <% end %>
   </ul>
@@ -12,7 +12,7 @@
   <h2>Southbound</h2>
 
   <ul id='southbound' class='victoria'>
-    <% Hash[@stations.to_a.reverse].each do |s| %>
+    <% @stations.each do |s| %>
       <%= erb :"includes/station", locals: { station: s,  direction: :southbound } %>
     <% end %>
   </ul>
