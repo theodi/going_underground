@@ -1,0 +1,17 @@
+<% orgs = {
+  'odi' => 'http://theodi.org/',
+  'ud2d' => 'http://www.urbandata2decide.eu/'
+} %>
+
+<footer class='footer'>
+  <div class='container'>
+    <ul class='list-inline'>
+      <% orgs.each do |org, url| %>
+        <li>
+          <a href='<%= url %>'>
+            <img src='/public/assets/<%= org %>-logo.png' />
+          </a>
+        </li>
+      <% end %>
+  </div>
+</footer>
