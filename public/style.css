@@ -113,7 +113,7 @@ form {
 .victoria {
   list-style-type: none;
   margin: 20px 0;
-  padding: 2px 0;
+  padding: 0;
   border-left: 7px solid #009DE4;
   width: 100%;
   position: relative;
