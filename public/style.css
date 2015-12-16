@@ -85,6 +85,10 @@ form {
   opacity: 0.8;
 }
 
+.carriage .overloaded {
+  background-color: red;
+}
+
 .front {
   border: 2px solid #000;
   width: 7%;

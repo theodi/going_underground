@@ -9,17 +9,24 @@
 <script>
 $.getJSON(document.URL, function(data) {
   if (data[0]) {
-    $('#car1 .level').height(percentage(data[0][1].CAR_A))
-    $('#car2 .level').height(percentage(data[0][1].CAR_B))
-    $('#car3 .level').height(percentage(data[0][1].CAR_C))
-    $('#car4 .level').height(percentage(data[0][1].CAR_D))
-
     $('#car1 .num').text(percentage(data[0][1].CAR_A))
     $('#car2 .num').text(percentage(data[0][1].CAR_B))
     $('#car3 .num').text(percentage(data[0][1].CAR_C))
     $('#car4 .num').text(percentage(data[0][1].CAR_D))
+
+    setHeight('#car1 .level', data[0][1].CAR_A)
+    setHeight('#car2 .level', data[0][1].CAR_B)
+    setHeight('#car3 .level', data[0][1].CAR_C)
+    setHeight('#car4 .level', data[0][1].CAR_D)
   }
 })
+
+function setHeight(el, num) {
+  $(el).height(percentage(num))
+  if (num >= 100) {
+    $(el).addClass('overloaded')
+  }
+}
 
 function percentage(num) {
   return Math.round(num) + '%'
