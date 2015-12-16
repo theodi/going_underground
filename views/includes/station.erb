@@ -1,6 +1,5 @@
-<div class='col-md-4'>
-  <a href="/stations/arriving/northbound/<%= web_signal station.first %>">
-    <i class='fa fa-subway'></i>
+<li class="<%= station.last['class'] %>">
+  <a href="/stations/arriving/<%= direction %>/<%= web_signal station.first %>">
     <%= I18n.t "stations.#{station.first}" %>
   </a>
-</div>
+</li>

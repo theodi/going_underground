@@ -109,3 +109,52 @@ form {
 .wheel {
   font-size: 2em;
 }
+
+.victoria {
+  list-style-type: none;
+  margin: 20px 0;
+  padding: 2px 0;
+  border-left: 7px solid #009DE4;
+  width: 100%;
+  position: relative;
+  left: 11px;
+}
+
+.victoria li {
+  padding: 0;
+  height: 22px;
+  width: 22px;
+  display: block;
+  position: relative;
+  line-height: 22px;
+}
+
+.victoria li.interchange {
+  border: 5px solid #000;
+  border-radius: 50px;
+  background: #fff;
+  left: -15px;
+  margin: 11px 0;
+}
+
+.victoria li.normal {
+  border-top: 6px solid #009DE4;
+  width: 6px;
+  left 2px;
+  margin: 16px 0 -4px 0;
+}
+
+.victoria li a {
+  padding: 0 0 0 22px;
+  white-space: normal;
+  line-height: 22px;
+  position: absolute;
+  top: -4px;
+  width: 400px;
+  display: block;
+}
+
+.victoria li.normal a {
+  padding: 0 0 0 12px;
+  top: -12px;
+}
