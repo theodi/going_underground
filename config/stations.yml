@@ -1,51 +1,39 @@
 walthamstow_central:
   southbound: 37
   northbound: 30
-  class: interchange
 blackhorse_road:
   southbound: 123
   northbound: 128
-  class: interchange
 tottenham_hale:
   southbound: 195
   northbound: 206
-  class: interchange
 seven_sisters:
   southbound: 329
   northbound: 492
-  class: interchange
 finsbury_park:
   southbound: 893
   northbound: 870
-  class: interchange
 highbury_and_islington:
   southbound: 1035
   northbound: 1026
-  class: interchange
 kings_cross_st_pancras:
   southbound: 1193
   northbound: 1174
-  class: interchange
 euston:
   southbound: 1309
   northbound: 1286
-  class: interchange
 warren_street:
   southbound: 1377
   northbound: 1362
-  class: interchange
 oxford_circus:
   southbound: 1463
   northbound: 1430
-  class: interchange
 green_park:
   southbound: 1525
   northbound: 1496
-  class: interchange
 victoria:
   southbound: 1643
   northbound: 1614
-  class: interchange
 pimlico:
   southbound: 1753
   northbound: 1746
@@ -53,12 +41,9 @@ pimlico:
 vauxhall:
   southbound: 1809
   northbound: 1798
-  class: interchange
 stockwell:
   southbound: 1901
   northbound: 1894
-  class: interchange
 brixton:
   southbound: 2007
   northbound: 1992
-  class: interchange
