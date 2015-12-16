@@ -25,7 +25,7 @@ highbury_and_islington:
 kings_cross_st_pancras:
   southbound: 1193
   northbound: 1174
-  class: normal
+  class: interchange
 euston:
   southbound: 1309
   northbound: 1286
@@ -33,15 +33,15 @@ euston:
 warren_street:
   southbound: 1377
   northbound: 1362
-  class: normal
+  class: interchange
 oxford_circus:
   southbound: 1463
   northbound: 1430
-  class: normal
+  class: interchange
 green_park:
   southbound: 1525
   northbound: 1496
-  class: normal
+  class: interchange
 victoria:
   southbound: 1643
   northbound: 1614
@@ -57,7 +57,7 @@ vauxhall:
 stockwell:
   southbound: 1901
   northbound: 1894
-  class: normal
+  class: interchange
 brixton:
   southbound: 2007
   northbound: 1992
