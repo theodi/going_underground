@@ -1,40 +1,10 @@
 <p><a href="/stations" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
 
-
-<div class='row'>
-  <div class='col-md-12'>
-    <form class='form-inline' action='/stations/arriving/<%= @direction %>/<%= @station %>' method='post'>
-      <div class='form-group'>
-        <label for='time'>Time</label>
-        <div class='input-group date' id='to-date'>
-          <input type='text' class="form-control" id='date' name='to' value='<%= @to %>'/>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-          </span>
-        </div>
-      </div>
-      <div class='form-group'>
-        <button type='submit' class='btn btn-primary'>Submit</button>
-      </div>
-    </form>
-  </div>
-</div>
-
+<%= erb :'includes/crowding_form' %>
 
 <h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
 
-<div class="row train">
-  <% (1..4).each do |i| %>
-  <div class='carriage-wrapper' id='car<%= i %>'>
-    <%= erb :'includes/carriage' %>
-  </div>
-  <% end %>
-
-  <div class="front">
-    <div class="window"></div>
-  </div>
-
-</div>
+<%= erb :'includes/train' %>
 
 <script>
 $.getJSON(document.URL, function(data) {
@@ -52,7 +22,7 @@ $.getJSON(document.URL, function(data) {
 })
 
 function percentage(num) {
-  return valBetween(Math.round(num), 0, 100) + '%'
+  return Math.round(num) + '%'
 }
 
 function valBetween(v, min, max) {
