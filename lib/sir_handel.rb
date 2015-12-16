@@ -40,6 +40,10 @@ module SirHandel
 
     set :default_interval, '10m'
 
+    before do
+      protected!
+    end
+
     get '/' do
       respond_to do |wants|
         @title = 'Welcome to Blocktrain'
@@ -58,8 +62,6 @@ module SirHandel
     end
 
     get '/signals' do
-      protected!
-
       @title = 'Available signals'
       @signals = lookups
       @groups = groups
@@ -82,8 +84,6 @@ module SirHandel
     end
 
     get '/signals/:signals/:from/:to' do
-      protected!
-
       @from = params[:from]
       @to = params[:to]
       @signals = params['signals']
@@ -188,8 +188,6 @@ module SirHandel
     end
 
     get '/dashboards/:dashboard/:from/:to' do
-      protected!
-
       @dashboard = params[:dashboard]
       @title = I18n.t("groups.#{db_signal @dashboard}") + " Dashboard"
       @from = params[:from]
