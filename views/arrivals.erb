@@ -9,17 +9,14 @@
 <script>
 $.getJSON(document.URL, function(data) {
   if (data[0]) {
-    $.each(['f', 'r'], function(index, value) {
+    $.each(['f', 'r'], function(i, side) {
+      $.each(['a', 'b', 'c', 'd'], function(j, letter) {
+        var car = 'car-' + letter;
+        var value = data[0][1][car.toUpperCase().replace('-', '_')];
 
-      $('#car-a-' + value + ' .num').text(percentage(data[0][1].CAR_A))
-      $('#car-b-' + value + ' .num').text(percentage(data[0][1].CAR_B))
-      $('#car-c-' + value + ' .num').text(percentage(data[0][1].CAR_C))
-      $('#car-d-' + value + ' .num').text(percentage(data[0][1].CAR_D))
-
-      setHeight('#car-a-' + value + ' .level', data[0][1].CAR_A)
-      setHeight('#car-b-' + value + ' .level', data[0][1].CAR_B)
-      setHeight('#car-c-' + value + ' .level', data[0][1].CAR_C)
-      setHeight('#car-d-' + value + ' .level', data[0][1].CAR_D)
+        $('#' + car + '-' + side + ' .num').text(percentage(value))
+        setHeight('#' + car + '-' + side + ' .level', value)
+      })
     })
   }
 })
