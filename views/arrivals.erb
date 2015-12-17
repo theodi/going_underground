@@ -23,6 +23,7 @@ $.getJSON(document.URL, function(data) {
 
 function setHeight(el, num) {
   $(el).height(percentage(num))
+  // need a case switch here to set levels of loading
   if (num >= 100) {
     $(el).addClass('overloaded')
   }
