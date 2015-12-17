@@ -10,16 +10,17 @@
 $.getJSON(document.URL, function(data) {
   if (data[0]) {
     $.each(['f', 'r'], function(index, value) {
-    $('#car-a-' + value + ' .num').text(percentage(data[0][1].CAR_A))
-    $('#car-b-' + value + ' .num').text(percentage(data[0][1].CAR_B))
-    $('#car-c-' + value + ' .num').text(percentage(data[0][1].CAR_C))
-    $('#car-d-' + value + ' .num').text(percentage(data[0][1].CAR_D))
 
-    setHeight('#car-a-' + value + ' .level', data[0][1].CAR_A)
-    setHeight('#car-b-' + value + ' .level', data[0][1].CAR_B)
-    setHeight('#car-c-' + value + ' .level', data[0][1].CAR_C)
-    setHeight('#car-d-' + value + ' .level', data[0][1].CAR_D)
-  })
+      $('#car-a-' + value + ' .num').text(percentage(data[0][1].CAR_A))
+      $('#car-b-' + value + ' .num').text(percentage(data[0][1].CAR_B))
+      $('#car-c-' + value + ' .num').text(percentage(data[0][1].CAR_C))
+      $('#car-d-' + value + ' .num').text(percentage(data[0][1].CAR_D))
+
+      setHeight('#car-a-' + value + ' .level', data[0][1].CAR_A)
+      setHeight('#car-b-' + value + ' .level', data[0][1].CAR_B)
+      setHeight('#car-c-' + value + ' .level', data[0][1].CAR_C)
+      setHeight('#car-d-' + value + ' .level', data[0][1].CAR_D)
+    })
   }
 })
 
@@ -31,7 +32,7 @@ function setHeight(el, num) {
 }
 
 function percentage(num) {
-  return Math.round(num) + '%'
+  return valBetween(Math.round(num), 0, 100) + '%'
 }
 
 function valBetween(v, min, max) {
