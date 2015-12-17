@@ -1,0 +1,68 @@
+<div id='timestamp'></div>
+
+<div class='col-md-6'>
+  <h2>Northbound</h2>
+
+  <ul class="segmented">
+    <% @northbound_segments.each do |s| %>
+      <% station = @northbound_stations[s.to_i] %>
+        <% if station.nil? %>
+          <li id="segment_<%= s %>" class="segment"></li>
+        <% else %>
+          <li id="segment_<%= s %>" class="station"><span><%= I18n.t "stations.#{station}" %></span></li>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class='col-md-6'>
+  <h2>Southbound</h2>
+
+  <ul class="segmented">
+    <% @southbound_segments.each do |s| %>
+      <% station = @southbound_stations[s.to_i] %>
+        <% if station.nil? %>
+          <li id="segment_<%= s %>" class="segment"></li>
+        <% else %>
+          <li id="segment_<%= s %>" class="station"><span><%= I18n.t "stations.#{station}" %></span></li>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<script>
+
+$.getJSON(document.URL, function(data) {
+  var total = data.results.length;
+  var index = 0
+
+  var wait = function(){
+    result = data.results[index]
+
+    index++;
+
+    value = result.value
+    timestamp = result.timestamp
+
+    console.log(value)
+    $('.segment, .station').removeClass('selected')
+    $('#segment_' + value).addClass('selected')
+    $('#timestamp').text(timestamp)
+
+    if (index < total) {
+      next = data.results[index].timestamp
+      timeout = (Date.parse(next) - Date.parse(timestamp)) / 10
+      console.log('Waiting ' + timeout + ' ms')
+      setTimeout(wait, timeout);
+    } else {
+      index = 0
+      wait();
+    }
+
+  };
+
+  wait();
+})
+</script>

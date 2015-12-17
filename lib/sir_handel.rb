@@ -274,6 +274,37 @@ module SirHandel
       end
     end
 
+    get '/trains/:train_number/:from/:to' do
+      @stations = YAML.load_file File.join('config', 'stations.yml')
+      @northbound_segments = CSV.read(File.join 'config', 'northbound.csv').flatten!
+      @southbound_segments = CSV.read(File.join 'config', 'southbound.csv').flatten!
+
+      @northbound_stations = {}
+      @southbound_stations = {}
+
+      @stations.each do |s|
+        @northbound_stations[s.last['northbound']] = s.first
+        @southbound_stations[s.last['southbound']] = s.first
+      end
+
+      @from = params[:from]
+      @to = params[:to]
+      @signal = 'atp_worst_case_forward_location'
+
+      respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.html do
+          @title = 'Train location'
+          erb :location, layout: :default
+        end
+
+        wants.json do
+          search(@signal).to_json
+        end
+      end
+    end
+
     get '/cromulent-dates' do
       cromulent_dates
     end

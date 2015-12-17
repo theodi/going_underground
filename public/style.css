@@ -4,6 +4,25 @@ body, h1, h2 {
   font-style: normal;
 }
 
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  text-align: center;
+}
+
 form {
   margin-bottom: 20px;
 }
@@ -206,21 +225,49 @@ form {
   margin-bottom: 7px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
+.segmented {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-left: 7px solid #009DE4;
+  width: 400px;
+}
+
+.segmented li {
   position: relative;
-  min-height: 100%;
 }
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+
+.segmented li.station {
+  border: 3px solid #000;
+  border-radius: 50px;
+  background: #fff;
+  left: -14px;
+  margin: 11px 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: relative;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  text-align: center;
+
+li.segment {
+  height: 1px;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+li.station span {
+  display: block;
+  margin-left: 20px;
+  width: 400px;
+}
+
+li.station.selected {
+  font-weight: bold;
+}
+
+li.segment.selected {
+  width: 4px;
+  height: 4px;
+  background-color: #000;
 }
