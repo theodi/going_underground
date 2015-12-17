@@ -1,6 +1,16 @@
 <div class='row train'>
-  <% (1..4).each do |i| %>
-  <div class='carriage-wrapper' id='car<%= i %>'>
+  <div class='rear'>
+    <div class='window'></div>
+  </div>
+
+  <% ('a'..'d').each do |l| %>
+  <div class='carriage-wrapper' id='car-<%= l %>-r'>
+    <%= erb :'includes/carriage' %>
+  </div>
+  <% end %>
+
+  <% ('a'..'d').reverse_each do |l| %>
+  <div class='carriage-wrapper' id='car-<%= l %>-f'>
     <%= erb :'includes/carriage' %>
   </div>
   <% end %>
