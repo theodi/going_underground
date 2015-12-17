@@ -9,15 +9,17 @@
 <script>
 $.getJSON(document.URL, function(data) {
   if (data[0]) {
-    $('#car-a-f .num').text(percentage(data[0][1].CAR_A))
-    $('#car-b-f .num').text(percentage(data[0][1].CAR_B))
-    $('#car-c-f .num').text(percentage(data[0][1].CAR_C))
-    $('#car-d-f .num').text(percentage(data[0][1].CAR_D))
+    $.each(['f', 'r'], function(index, value) {
+    $('#car-a-' + value + ' .num').text(percentage(data[0][1].CAR_A))
+    $('#car-b-' + value + ' .num').text(percentage(data[0][1].CAR_B))
+    $('#car-c-' + value + ' .num').text(percentage(data[0][1].CAR_C))
+    $('#car-d-' + value + ' .num').text(percentage(data[0][1].CAR_D))
 
-    setHeight('#car-a-f .level', data[0][1].CAR_A)
-    setHeight('#car-b-f .level', data[0][1].CAR_B)
-    setHeight('#car-c-f .level', data[0][1].CAR_C)
-    setHeight('#car-d-f .level', data[0][1].CAR_D)
+    setHeight('#car-a-' + value + ' .level', data[0][1].CAR_A)
+    setHeight('#car-b-' + value + ' .level', data[0][1].CAR_B)
+    setHeight('#car-c-' + value + ' .level', data[0][1].CAR_C)
+    setHeight('#car-d-' + value + ' .level', data[0][1].CAR_D)
+  })
   }
 })
 
