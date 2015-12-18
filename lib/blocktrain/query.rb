@@ -4,10 +4,13 @@ module Blocktrain
     def initialize(options = {})
       @memory_addresses = [options.fetch(:memory_addresses, nil)].flatten.compact
 
-      @from = parse_datetime(options.fetch(:from, '2015-09-01T00:00:00'))
-      @to = parse_datetime(options.fetch(:to, '2015-09-02T00:00:00'))
+      @original_from = options.fetch(:from, '2015-09-01T00:00:00')
+      @original_to = options.fetch(:to, '2015-09-02T00:00:00')
 
-      @limit = options.fetch(:limit, 100)
+      @from = parse_datetime(@original_from)
+      @to = parse_datetime(@original_to)
+
+      @limit = options.fetch(:limit, nil)
       @offset = options.fetch(:offset, 0)
 
       @sort = options.fetch(:sort, {})
@@ -75,10 +78,18 @@ module Blocktrain
     def body
       {
         query: query,
-        size: @limit,
+        size: limit,
         sort: @sort,
         from: @offset
       }
+    end
+
+    def limit
+      if @limit.nil?
+        Blocktrain::Count.new({from: @original_from, to: @original_to, memory_addresses: @memory_addresses, sort: @sort}).results
+      else
+        @limit
+      end
     end
 
     private

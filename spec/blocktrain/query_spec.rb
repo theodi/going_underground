@@ -13,9 +13,9 @@ module Blocktrain
       expect(subject.address_query).to eq('memoryAddress:2E64930W OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W')
     end
 
-    it 'provides 100 results by default', :vcr do
+    it 'provides all results by default', :vcr do
       subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', memory_addresses: '2E491EEW')
-      expect(subject.results.count).to eq(100)
+      expect(subject.results.count).to eq(9766)
       expect(subject.hits).to eq(9766)
     end
 

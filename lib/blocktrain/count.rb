@@ -5,6 +5,10 @@ module Blocktrain
       result['count']
     end
 
+    def limit
+      0
+    end
+
     private
 
       def result
