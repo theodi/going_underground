@@ -37,6 +37,7 @@
 $.getJSON(document.URL, function(data) {
   var total = data.results.length;
   var index = 0
+  var startTime = data.results[0].timestamp
 
   var wait = function(){
     result = data.results[index]
@@ -49,7 +50,6 @@ $.getJSON(document.URL, function(data) {
     console.log(value)
     $('.segment, .station').removeClass('selected')
     $('#segment_' + value).addClass('selected')
-    $('#timestamp').text(timestamp)
 
     if (index < total) {
       next = data.results[index].timestamp
@@ -60,9 +60,15 @@ $.getJSON(document.URL, function(data) {
       index = 0
       wait();
     }
-
   };
 
+  var clock = function(timestamp) {
+    $('#timestamp').text(timestamp)
+    next = new Date(Date.parse(timestamp) + 1000).toISOString()
+    setTimeout(clock, 100, next)
+  }
+
+  clock(startTime);
   wait();
 })
 </script>
