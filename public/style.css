@@ -264,10 +264,18 @@ li.station span {
 
 li.station.selected {
   font-weight: bold;
+  background-color: yellow;
 }
 
 li.segment.selected {
-  width: 4px;
-  height: 4px;
-  background-color: #000;
+  border: 3px solid #000;
+  border-radius: 50px;
+  background: yellow;
+  left: 8px;
+  margin: 11px 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  z-index: 100;
 }
