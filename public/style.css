@@ -47,7 +47,7 @@ form {
   width: 100%;
   position: relative;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 400;
 }
 
 .carriage .num {
@@ -61,7 +61,6 @@ form {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background-color: orange;
   z-index: 5;
 }
 
@@ -83,10 +82,6 @@ form {
   margin-left: 2.5%;
   background-color: white;
   opacity: 0.8;
-}
-
-.carriage .overloaded {
-  background-color: red;
 }
 
 .front, .rear {
