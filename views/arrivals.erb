@@ -9,27 +9,28 @@
 <script>
 $.getJSON(document.URL, function(data) {
   if (data[0]) {
-    $('#car1 .num').text(percentage(data[0][1].CAR_A))
-    $('#car2 .num').text(percentage(data[0][1].CAR_B))
-    $('#car3 .num').text(percentage(data[0][1].CAR_C))
-    $('#car4 .num').text(percentage(data[0][1].CAR_D))
+    $.each(['f', 'r'], function(i, side) {
+      $.each(['a', 'b', 'c', 'd'], function(j, letter) {
+        var car = 'car-' + letter;
+        var value = data[0][1][car.toUpperCase().replace('-', '_')];
 
-    setHeight('#car1 .level', data[0][1].CAR_A)
-    setHeight('#car2 .level', data[0][1].CAR_B)
-    setHeight('#car3 .level', data[0][1].CAR_C)
-    setHeight('#car4 .level', data[0][1].CAR_D)
+        $('#' + car + '-' + side + ' .num').text(percentage(value))
+        setHeight('#' + car + '-' + side + ' .level', value)
+      })
+    })
   }
 })
 
 function setHeight(el, num) {
   $(el).height(percentage(num))
+  // need a case switch here to set levels of loading
   if (num >= 100) {
     $(el).addClass('overloaded')
   }
 }
 
 function percentage(num) {
-  return Math.round(num) + '%'
+  return valBetween(Math.round(num), 0, 100) + '%'
 }
 
 function valBetween(v, min, max) {
