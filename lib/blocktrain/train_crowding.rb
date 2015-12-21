@@ -10,6 +10,7 @@ module Blocktrain
     def results
       @results.map do |location|
         train = {
+          'segment' => location['_source']['value'],
           'number' => location['_source']['trainNumber'],
           'timeStamp' => location['_source']['timeStamp']
         }

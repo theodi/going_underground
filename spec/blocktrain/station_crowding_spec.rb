@@ -25,6 +25,7 @@ module Blocktrain
 
       expect(tc.results).to include [
         {
+          "segment"=>1193,
           "number"=>0,
           "timeStamp"=>"2015-09-17T16:02:22.521Z"
         },

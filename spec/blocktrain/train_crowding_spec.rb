@@ -7,6 +7,7 @@ module Blocktrain
       expect(crowding.count).to eq(results.count)
       expect(crowding.first).to eq([
         {
+          "segment"=>170,
           "number"=>0,
           "timeStamp"=>"2015-09-23T08:08:01.928Z"
         },
