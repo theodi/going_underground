@@ -268,7 +268,7 @@ module SirHandel
         end
 
         wants.json do
-          Blocktrain::TrainCrowding.new(@to,
+          Blocktrain::StationCrowding.new(@to,
             db_signal(@station), @direction.to_sym).results.to_json
         end
       end

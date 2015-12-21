@@ -178,7 +178,7 @@ module SirHandel
 
     it 'allows the datetime to be set', :vcr do
       to = "2015-09-23T17:10:00Z"
-      expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.parse(to), "seven_sisters", :southbound).and_call_original
+      expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse(to), "seven_sisters", :southbound).and_call_original
       get "stations/arriving/southbound/seven-sisters/#{to}.json"
     end
 

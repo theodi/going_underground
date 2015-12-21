@@ -3,49 +3,12 @@ module Blocktrain
     CAR_LOADS = %w[2E64930W 2E64932W 2E64934W 2E64936W]
     CAR_NAMES = %w[CAR_A CAR_B CAR_C CAR_D]
 
-    BAD_COMBINATIONS = [
-      {
-        brixton: :northbound
-      },
-      {
-        walthamstow_central: :southbound
-      }
-    ]
-
-    def initialize(to, station, direction)
-      @to, @station, @direction = to, station, direction
-      from = @to - 86400
-      unless eol?
-        @atp_query = ATPQuery.new(from: from.iso8601,
-          to: @to.iso8601, station: @station, direction: @direction)
-      end
-
-    end
-
-    def eol?
-      BAD_COMBINATIONS.include?(@station.to_sym => @direction.to_sym)
-    end
-
-    def eol_results
-      cars = {}
-      CAR_NAMES.each do |car|
-        cars[car] = 0
-      end
-
-      [
-        [
-          {
-            'number' => 0,
-            'timeStamp' => @to.iso8601,
-          },
-          cars
-        ]
-      ]
+    def initialize(results)
+      @results = results
     end
 
     def results
-      return eol_results if eol?
-      @atp_query.results.map do |location|
+      @results.map do |location|
         train = {
           'number' => location['_source']['trainNumber'],
           'timeStamp' => location['_source']['timeStamp']
