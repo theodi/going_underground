@@ -245,19 +245,28 @@ module SirHandel
           to = Time.parse(params[:date]) + 2400
           signal = '2E5485AW'
 
-          results = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: [signal], sort: {'timeStamp' => 'desc'}).results
+          trains = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: [signal], sort: {'timeStamp' => 'desc'}).results
 
           # Get data two minutes apart to fake what we'd roughly see in real life
-          results.map! { |r|
+          trains.map! { |r|
             if @timestamp.nil? || @timestamp - Time.parse(r["_source"]["timeStamp"]) >= 120
               @timestamp = Time.parse(r["_source"]["timeStamp"])
               r
             end
           }.delete_if { |r| r.nil? }
 
-          crowding = Blocktrain::TrainCrowding.new(results).results
+          crowding = Blocktrain::TrainCrowding.new(trains).results
 
-          crowding.to_json
+          results = crowding.map { |c|
+            {
+              segment: c.first['segment'],
+              load: c.last.values.reduce(:+).to_f / c.last.size
+            }
+          }.sort_by! { |r| r[:segment] }
+
+          {
+            load: results
+          }.to_json
         end
 
         wants.html do
