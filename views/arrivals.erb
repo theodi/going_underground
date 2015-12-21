@@ -23,9 +23,11 @@ $.getJSON(document.URL, function(data) {
 
 function setHeight(el, num) {
   $(el).height(percentage(num))
+  $(el).css('background-color', '#ff' + byte(num) + byte(num))
+}
 
-  var colour = ("0" + ((100 - valBetween(Math.round(num), 0, 100)) * 2.56).toString(16).split('.')[0]).slice(-2);
-  $(el).css('background-color', '#ff' + colour + colour)
+function byte(num) {
+  return ("0" + ((100 - valBetween(Math.round(num), 0, 100)) * 2.56).toString(16).split('.')[0]).slice(-2);
 }
 
 function percentage(num) {
