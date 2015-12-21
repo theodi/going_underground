@@ -235,6 +235,37 @@ module SirHandel
       erb :stations, layout: :default
     end
 
+    get '/heatmap/:date' do
+      respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.json do
+          # Get all trains on the line - faking this by getting all locations 40 minutes either side
+          from = Time.parse(params[:date]) - 2400
+          to = Time.parse(params[:date]) + 2400
+          signal = '2E5485AW'
+
+          results = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: [signal], sort: {'timeStamp' => 'desc'}).results
+
+          # Get data two minutes apart to fake what we'd roughly see in real life
+          results.map! { |r|
+            if @timestamp.nil? || @timestamp - Time.parse(r["_source"]["timeStamp"]) >= 120
+              @timestamp = Time.parse(r["_source"]["timeStamp"])
+              r
+            end
+          }.delete_if { |r| r.nil? }
+
+          crowding = Blocktrain::TrainCrowding.new(results).results
+
+          crowding.to_json
+        end
+
+        wants.html do
+          erb :heatmap, layout: :default
+        end
+      end
+    end
+
     get '/:type/:signal' do
       params['from'] = default_dates[:from]
       params['to'] = default_dates[:to]

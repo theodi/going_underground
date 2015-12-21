@@ -190,5 +190,13 @@ module SirHandel
       expect(body.css('#northbound').first.css('li').count).to eq(16)
       expect(body.css('#southbound').first.css('li').count).to eq(16)
     end
+
+    it 'gets results for heatmap', :vcr do
+      get '/heatmap/2015-09-23T17:10:00Z.json'
+
+      json = JSON.parse(last_response.body)
+
+      expect(json.count).to eq(25)
+    end
   end
 end
