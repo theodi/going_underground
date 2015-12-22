@@ -40,5 +40,12 @@ describe('colouriser', function() {
     it('generates a colour with a different base', function() {
       expect(colour('57', 'blue')).toEqual('#6e6eff')
     })
+
+    it('generates actual useful colours', function() {
+      expect(colour(99.407407)).toEqual('#ff0202')
+      expect(colour(90.521739)).toEqual('#ff1717')
+      expect(colour(87.213333)).toEqual('#ff2121')
+      expect(colour(86.8)).toEqual('#ff2121')
+    })
   })
 })

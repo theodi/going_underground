@@ -7,7 +7,7 @@ function hex(value) {
 }
 
 function percentHex(value) {
-  return hex((100 - valueBetween(value, 0, 100)) * 2.56)
+  return hex((100 - valueBetween(Math.round(value), 0, 100)) * 2.56)
 }
 
 function byte(value) {
