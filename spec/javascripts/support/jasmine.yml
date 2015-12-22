@@ -1,0 +1,26 @@
+src_files:
+  - public/javascripts/**/*.js
+
+stylesheets:
+  - stylesheets/**/*.css
+
+helpers:
+  - 'helpers/**/*.js'
+
+spec_files:
+  - '**/*spec.js'
+
+src_dir:
+
+spec_dir:
+
+spec_helper: spec/javascripts/support/jasmine_helper.rb
+
+boot_dir:
+
+boot_files:
+
+#rack_options:
+#  server: 'webrick'
+
+random: true
