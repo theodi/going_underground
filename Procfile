@@ -1,1 +1,1 @@
-web: rackup -s puma -p $PORT
+web: bin/proximo rackup -s puma -p $PORT
