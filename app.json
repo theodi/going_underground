@@ -33,6 +33,7 @@
   },
   "addons": [
     "redistogo",
-    "scheduler"
+    "scheduler",
+    "proximo"
   ]
 }
