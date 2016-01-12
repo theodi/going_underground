@@ -29,10 +29,15 @@
     },
     "MEMCACHIER_SERVERS": {
       "required": true
+    },
+    "PROXIMO_URL": {
+      "required": true
     }
   },
   "addons": [
     "redistogo",
-    "scheduler"
+    "scheduler",
+    "proximo",
+    "memcachier"
   ]
 }
