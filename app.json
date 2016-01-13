@@ -29,9 +29,6 @@
     },
     "MEMCACHIER_SERVERS": {
       "required": true
-    },
-    "PROXIMO_URL": {
-      "required": true
     }
   },
   "addons": [
