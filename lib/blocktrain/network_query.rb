@@ -9,8 +9,19 @@ module Blocktrain
       @to = Time.parse(@datetime) + 1800
     end
 
-    def results
-      Blocktrain::Aggregations::MinMaxAggregation.new(from: @from.to_s, to: @to.to_s, memory_addresses: [@signal], interval: @interval, sort: {'timeStamp' => 'desc'}).results
+    def aggregation
+      Blocktrain::Aggregations::MinMaxAggregation.new(from: @from.to_s, to: @to.to_s, memory_addresses: [@signal], interval: @interval, sort: {'timeStamp' => 'desc'})
     end
+
+    def results
+      aggregation.results['results']['buckets'].map do |r|
+        {
+          'timestamp' => r['key_as_string'],
+          'value' => r['value']['buckets'].first['max_value']['value']
+        }
+      end
+    end
+
+
   end
 end

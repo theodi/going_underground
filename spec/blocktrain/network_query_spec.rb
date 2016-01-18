@@ -13,8 +13,8 @@ module Blocktrain
 
       results = subject.results
 
-      expect(results['results']['buckets'].first['key_as_string']).to eq('2015-09-01T09:48:00.000Z')
-      expect(results['results']['buckets'].last['key_as_string']).to eq('2015-09-01T10:38:00.000Z')
+      expect(results.first['timestamp']).to eq('2015-09-01T09:48:00.000Z')
+      expect(results.last['timestamp']).to eq('2015-09-01T10:38:00.000Z')
     end
 
   end
