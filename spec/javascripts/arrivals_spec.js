@@ -38,7 +38,7 @@ describe('arrivals', function() {
         }
       ]
 
-      populateTrain(data, 0)
+      populateTrain(data, $('#train-0')[0])
 
       expect($('#car-a-r .num').text()).toEqual('77%');
       expect($('#car-b-r .num').text()).toEqual('67%');

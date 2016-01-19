@@ -16,7 +16,7 @@
 $.getJSON(document.URL, function(data) {
   $.each($('.train'), function(i, train) {
     if (data[i]) {
-      populateTrain(data[i], i)
+      populateTrain(data[i], train)
     }
   })
 })
