@@ -18,6 +18,8 @@ end
 require 'rack/test'
 require 'nokogiri'
 require 'timecop'
+require 'webmock/rspec'
+
 require_relative 'support/vcr_setup'
 
 require File.expand_path '../../lib/sir_handel.rb', __FILE__

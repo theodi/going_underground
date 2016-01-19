@@ -14,6 +14,7 @@ require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
 require_relative 'sir_handel/tasks'
 require_relative 'sir_handel/trends'
+require_relative 'sir_handel/next_trains'
 
 Dotenv.load
 
