@@ -14,12 +14,17 @@ module Blocktrain
 
     def initialize(to, station, direction)
       @to, @station, @direction = to, station, direction
-      from = @to - 86400
       unless eol?
-        @atp_query = ATPQuery.new(from: from.iso8601,
-          to: @to.iso8601, station: @station, direction: @direction)
+        @results = [0,1,2,3].map do |i|
+          to = @to - (86400 * i)
+          from = to - 86400
+          get_results(from, to)
+        end
       end
+    end
 
+    def get_results(from, to)
+      Blocktrain::ATPQuery.new(from: from.iso8601, to: to.iso8601, station: @station, direction: @direction).results.first
     end
 
     def eol?
@@ -45,7 +50,7 @@ module Blocktrain
 
     def results
       return eol_results if eol?
-      @atp_query.results.map do |location|
+      @results.map do |location|
         train = {
           'number' => location['_source']['trainNumber'],
           'timeStamp' => location['_source']['timeStamp']

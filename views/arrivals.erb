@@ -4,32 +4,21 @@
 
 <h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
 
-<%= erb :'includes/train' %>
+<% 4.times do |i| %>
+  <%= erb :'includes/train', locals: { num: i } %>
+<% end %>
 
 <script src="/public/javascripts/colouriser.js"></script>
+<script src="/public/javascripts/arrivals.js"></script>
+
 <script>
-  $.getJSON(document.URL, function(data) {
-  if (data[0]) {
-    $.each(['f', 'r'], function(i, side) {
-      $.each(['a', 'b', 'c', 'd'], function(j, letter) {
-        var car = 'car-' + letter;
-        var value = data[0][1][car.toUpperCase().replace('-', '_')];
-
-        $('#' + car + '-' + side + ' .num').text(percentage(value))
-        setHeight('#' + car + '-' + side + ' .level', value)
-      })
-    })
-  }
+$.getJSON(document.URL, function(data) {
+  $.each([0,1,2,3], function(i) {
+    if (data[i]) {
+      populateTrain(data[i], i)
+    }
+  })
 })
-
-function setHeight(el, num) {
-  $(el).height(percentage(num))
-  $(el).css('background-color', colour(num))
-}
-
-function percentage(num) {
-  return valueBetween(Math.round(num), 0, 100) + '%'
-}
 
 $(function() {
   callDatePicker()
