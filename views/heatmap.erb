@@ -1,0 +1,40 @@
+<%
+segments = {
+  'northbound' => CSV.open(File.join 'config', 'northbound.csv'),
+  'southbound' => CSV.open(File.join 'config', 'southbound.csv')
+}
+%>
+
+<% stations = YAML.load_file File.join('config', 'stations.yml') %>
+
+<% segments.each do |direction, segs| %>
+<h2><%= direction %></h2>
+<ul class="segmented">
+<% segs.each do |s| %>
+  <% station = stations.to_a.select { |station| station.last[direction] == s.first.to_i } %>
+  <% if station.count > 0 %>
+    <li id='segment_<%= s.first %>' class='station'><span><%= station.first.first %></span></li>
+  <% else %>
+    <li id='segment_<%= s.first %>'></li>
+  <% end %>
+<% end %>
+</ul>
+<% end %>
+
+<script>
+function byte(num) {
+  return ("0" + ((100 - valBetween(Math.round(num), 0, 100)) * 2.56).toString(16).split('.')[0]).slice(-2);
+}
+
+function valBetween(v, min, max) {
+  return (Math.min(max, Math.max(min, v)));
+}
+
+d3.json(document.URL, function(error, json) {
+  json.load.forEach(function(data) {
+    $('#segment_' + data.segment).addClass('selected')
+    $('#segment_' + data.segment).css('background-color', '#ff' + byte(data.load) + byte(data.load))
+    $('#segment_' + data.segment).attr('title', data.load + '%')
+  })
+});
+</script>
