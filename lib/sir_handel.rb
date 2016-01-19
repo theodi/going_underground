@@ -265,6 +265,7 @@ module SirHandel
 
         wants.html do
           @title = 'Arriving trains'
+          @next_trains = NextTrains.new(db_signal(@station), @direction.to_sym).results
           erb :arrivals, layout: :default
         end
 
