@@ -4,8 +4,8 @@
 
 <h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
 
-<% 4.times do |i| %>
-  <h3 class="arrival-time">In <%= @next_trains[i] %> minutes</h3>
+<% @next_trains.each_with_index do |minutes, i| %>
+  <h3 class="arrival-time">In <%= minutes %> minutes</h3>
   <%= erb :'includes/train', locals: { num: i } %>
 <% end %>
 
@@ -14,7 +14,7 @@
 
 <script>
 $.getJSON(document.URL, function(data) {
-  $.each([0,1,2,3], function(i) {
+  $.each($('.train'), function(i, train) {
     if (data[i]) {
       populateTrain(data[i], i)
     }
