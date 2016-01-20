@@ -119,8 +119,13 @@ form {
   border-radius: 20px 5px 5px 5px;
 }
 
+.arrival-time {
+  margin: 10px 0;
+  padding: 0;
+}
+
 .train {
-  margin: 40px auto;
+  margin: 30px auto;
 }
 
 .wheel {

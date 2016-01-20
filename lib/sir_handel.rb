@@ -14,6 +14,7 @@ require_relative 'sir_handel/helpers'
 require_relative 'sir_handel/racks'
 require_relative 'sir_handel/tasks'
 require_relative 'sir_handel/trends'
+require_relative 'sir_handel/next_trains'
 
 Dotenv.load
 
@@ -255,7 +256,9 @@ module SirHandel
       if params[:to]
         @to = Time.parse(params[:to])
       else
-        to = DateTime.parse('2015-09-23T08:30:00').to_s
+        hour = Time.now.hour
+        minute = Time.now.min
+        to = DateTime.parse("2015-09-23T#{hour}:#{minute}:00").to_s
         redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{to}"
       end
 
@@ -264,6 +267,7 @@ module SirHandel
 
         wants.html do
           @title = 'Arriving trains'
+          @next_trains = NextTrains.new(db_signal(@station), @direction.to_sym).results
           erb :arrivals, layout: :default
         end
 
