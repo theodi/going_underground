@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441100700000,"lte":1441104300000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"2m","min_doc_count":1,"extended_bounds":{"min":1441100700000,"max":1441104300000}},"aggregations":{"value":{"terms":{"field":"memoryAddress"},"aggregations":{"average_value":{"avg":{"field":"value"}},"max_value":{"max":{"field":"value"}},"min_value":{"min":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 18 Jan 2016 15:06:27 GMT
+      - Mon, 18 Jan 2016 15:06:27 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000001
+      - instance-0000000001
+      X-Found-Handling-Server:
+      - 10.105.22.170
+      - 10.105.22.170
+      Content-Length:
+      - '345'
+      - '6614'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":10,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":11236,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-09-01T09:48:00.000Z","key":1441100880000,"doc_count":271,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":271,"min_value":{"value":0.0},"average_value":{"value":4294.243542435424},"max_value":{"value":7083.0}}]}},{"key_as_string":"2015-09-01T09:50:00.000Z","key":1441101000000,"doc_count":639,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":639,"min_value":{"value":0.0},"average_value":{"value":6053.059467918622},"max_value":{"value":8060.0}}]}},{"key_as_string":"2015-09-01T09:52:00.000Z","key":1441101120000,"doc_count":600,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":600,"min_value":{"value":0.0},"average_value":{"value":5083.921666666667},"max_value":{"value":6927.0}}]}},{"key_as_string":"2015-09-01T09:54:00.000Z","key":1441101240000,"doc_count":532,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":532,"min_value":{"value":0.0},"average_value":{"value":3084.0507518796994},"max_value":{"value":6354.0}}]}},{"key_as_string":"2015-09-01T09:56:00.000Z","key":1441101360000,"doc_count":476,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":476,"min_value":{"value":0.0},"average_value":{"value":6033.964285714285},"max_value":{"value":8042.0}}]}},{"key_as_string":"2015-09-01T09:58:00.000Z","key":1441101480000,"doc_count":586,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":586,"min_value":{"value":0.0},"average_value":{"value":6193.974402730375},"max_value":{"value":8038.0}}]}},{"key_as_string":"2015-09-01T10:00:00.000Z","key":1441101600000,"doc_count":647,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":647,"min_value":{"value":19.0},"average_value":{"value":6483.97372488408},"max_value":{"value":7997.0}}]}},{"key_as_string":"2015-09-01T10:02:00.000Z","key":1441101720000,"doc_count":648,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":648,"min_value":{"value":0.0},"average_value":{"value":5430.986111111111},"max_value":{"value":8024.0}}]}},{"key_as_string":"2015-09-01T10:04:00.000Z","key":1441101840000,"doc_count":677,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":677,"min_value":{"value":0.0},"average_value":{"value":5998.636632200886},"max_value":{"value":8046.0}}]}},{"key_as_string":"2015-09-01T10:06:00.000Z","key":1441101960000,"doc_count":556,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":556,"min_value":{"value":0.0},"average_value":{"value":4518.764388489209},"max_value":{"value":7633.0}}]}},{"key_as_string":"2015-09-01T10:08:00.000Z","key":1441102080000,"doc_count":611,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":611,"min_value":{"value":0.0},"average_value":{"value":4320.20294599018},"max_value":{"value":6888.0}}]}},{"key_as_string":"2015-09-01T10:10:00.000Z","key":1441102200000,"doc_count":634,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":634,"min_value":{"value":0.0},"average_value":{"value":4653.954258675079},"max_value":{"value":7098.0}}]}},{"key_as_string":"2015-09-01T10:12:00.000Z","key":1441102320000,"doc_count":445,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":445,"min_value":{"value":0.0},"average_value":{"value":4784.476404494382},"max_value":{"value":6414.0}}]}},{"key_as_string":"2015-09-01T10:14:00.000Z","key":1441102440000,"doc_count":472,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":472,"min_value":{"value":0.0},"average_value":{"value":5029.872881355932},"max_value":{"value":6849.0}}]}},{"key_as_string":"2015-09-01T10:16:00.000Z","key":1441102560000,"doc_count":576,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":576,"min_value":{"value":0.0},"average_value":{"value":5682.392361111111},"max_value":{"value":8026.0}}]}},{"key_as_string":"2015-09-01T10:18:00.000Z","key":1441102680000,"doc_count":245,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":245,"min_value":{"value":4775.0},"average_value":{"value":6159.881632653061},"max_value":{"value":7467.0}}]}},{"key_as_string":"2015-09-01T10:28:00.000Z","key":1441103280000,"doc_count":417,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":417,"min_value":{"value":0.0},"average_value":{"value":4691.182254196643},"max_value":{"value":7164.0}}]}},{"key_as_string":"2015-09-01T10:30:00.000Z","key":1441103400000,"doc_count":540,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":540,"min_value":{"value":0.0},"average_value":{"value":4636.462962962963},"max_value":{"value":6827.0}}]}},{"key_as_string":"2015-09-01T10:32:00.000Z","key":1441103520000,"doc_count":527,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":527,"min_value":{"value":0.0},"average_value":{"value":5151.351043643263},"max_value":{"value":7367.0}}]}},{"key_as_string":"2015-09-01T10:34:00.000Z","key":1441103640000,"doc_count":508,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":508,"min_value":{"value":0.0},"average_value":{"value":4431.55905511811},"max_value":{"value":6921.0}}]}},{"key_as_string":"2015-09-01T10:36:00.000Z","key":1441103760000,"doc_count":557,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":557,"min_value":{"value":0.0},"average_value":{"value":4856.206463195691},"max_value":{"value":6613.0}}]}},{"key_as_string":"2015-09-01T10:38:00.000Z","key":1441103880000,"doc_count":72,"value":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E491EEW","doc_count":72,"min_value":{"value":0.0},"average_value":{"value":1928.4166666666667},"max_value":{"value":4028.0}}]}}]}}}'
+    http_version: 
+  recorded_at: Mon, 18 Jan 2016 15:06:27 GMT
+recorded_with: VCR 3.0.0
