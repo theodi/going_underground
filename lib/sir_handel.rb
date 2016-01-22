@@ -47,7 +47,7 @@ module SirHandel
 
     get '/' do
       respond_to do |wants|
-        @title = 'Welcome to Blocktrain'
+        @title = 'Train Data Demonstrator'
 
         wants.html do
           erb :index, layout: :default
