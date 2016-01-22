@@ -16,9 +16,21 @@ module SirHandel
     end
 
     def results
-      json.map { |result|
-        (result['timeToStation'].to_f / 60).round
-      }.sort
+      sorted_results.map { |result|
+        format_time(result['timeToStation'])
+      }
+    end
+
+    def sorted_results
+      json.sort_by { |r| r['timeToStation'] }
+    end
+
+    def format_time(timetostation)
+      timetostation > 60 ? "#{round_to_minutes(timetostation)} minutes" : "#{timetostation} seconds"
+    end
+
+    def round_to_minutes(timetostation)
+      (timetostation.to_f / 60).round
     end
 
     def naptan(station)
