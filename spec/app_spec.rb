@@ -172,9 +172,8 @@ module SirHandel
 
     it 'sets a default datetime at the same local time', :vcr do
       Timecop.freeze('2016-01-01T15:44:00Z')
-      get 'stations/arriving/southbound/seven-sisters'
-      follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/stations/arriving/southbound/seven-sisters/2015-09-23T15:44:00+00:00'
+      expect(Blocktrain::TrainCrowding).to receive(:new).with(Time.parse("2015-09-23T15:44:00+00:0"), "seven_sisters", :southbound).and_call_original
+      get 'stations/arriving/southbound/seven-sisters.json'
       Timecop.return
     end
 

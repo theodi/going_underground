@@ -258,8 +258,7 @@ module SirHandel
       else
         hour = Time.now.hour
         minute = Time.now.min
-        to = DateTime.parse("2015-09-23T#{hour}:#{minute}:00").to_s
-        redirect to "/stations/arriving/#{params[:direction]}/#{params[:station]}/#{to}"
+        @to = Time.parse("2015-09-23T#{hour}:#{minute}:00")
       end
 
       respond_to do |wants|
