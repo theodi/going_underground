@@ -22,7 +22,7 @@ module SirHandel
     end
 
     it "formats the time in seconds" do
-      expect(@subject.format_time(59)).to eq("59 seconds")
+      expect(@subject.format_time(59)).to eq("less than a minute")
     end
 
     it 'gets the next trains' do
@@ -46,7 +46,7 @@ module SirHandel
 
       result = described_class.new('warren_street', :southbound).results
 
-      expect(result[0]).to eq("39 seconds")
+      expect(result[0]).to eq("less than a minute")
       expect(result[1]).to eq("3 minutes")
       expect(result[2]).to eq("5 minutes")
       expect(result[3]).to eq("9 minutes")

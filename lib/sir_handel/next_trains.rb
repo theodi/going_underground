@@ -26,7 +26,7 @@ module SirHandel
     end
 
     def format_time(timetostation)
-      timetostation > 60 ? "#{round_to_minutes(timetostation)} minutes" : "#{timetostation} seconds"
+      timetostation > 60 ? "Arriving in #{round_to_minutes(timetostation)} minutes" : "less than a minute"
     end
 
     def round_to_minutes(timetostation)

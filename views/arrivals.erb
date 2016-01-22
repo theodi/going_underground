@@ -13,7 +13,7 @@
 
     <% 4.times do |i| %>
       <% time = @next_trains[i] %>
-      <h4 class="arrival-time">Arriving in <%= time %></h4>
+      <h4 class="arrival-time"><%= time %></h4>
       <%= erb :'includes/train', locals: { num: i } %>
     <% end %>
   </div>
