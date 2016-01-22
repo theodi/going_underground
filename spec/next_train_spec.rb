@@ -46,10 +46,10 @@ module SirHandel
 
       result = described_class.new('warren_street', :southbound).results
 
-      expect(result[0]).to eq("less than a minute")
-      expect(result[1]).to eq("3 minutes")
-      expect(result[2]).to eq("5 minutes")
-      expect(result[3]).to eq("9 minutes")
+      expect(result[0]).to eq("Arriving in less than a minute")
+      expect(result[1]).to eq("Arriving in 3 minutes")
+      expect(result[2]).to eq("Arriving in 5 minutes")
+      expect(result[3]).to eq("Arriving in 9 minutes")
     end
 
   end
