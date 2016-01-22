@@ -12,8 +12,8 @@
     <h3>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h3>
 
     <% 4.times do |i| %>
-      <% minutes = @next_trains[i] %>
-      <h4 class="arrival-time">In <%= minutes %> minutes</h4>
+      <% time = @next_trains[i] %>
+      <h4 class="arrival-time">Arriving in <%= time %></h4>
       <%= erb :'includes/train', locals: { num: i } %>
     <% end %>
   </div>
