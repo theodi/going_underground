@@ -1,25 +1,34 @@
 module SirHandel
   describe NextTrains do
 
+    before(:each) do
+      @subject = described_class.new('warren_street', :southbound)
+    end
+
     it 'gets a correct naptan ID' do
-      next_trains = described_class.new('warren_street', :southbound)
-      expect(next_trains.instance_variable_get('@station')).to eq('940GZZLUWRR')
+      expect(@subject.instance_variable_get('@station')).to eq('940GZZLUWRR')
     end
 
     it 'gets a correct directions' do
-      next_trains = described_class.new('warren_street', :northbound)
-      expect(next_trains.instance_variable_get('@direction')).to eq('inbound')
+      expect(@subject.instance_variable_get('@direction')).to eq('outbound')
     end
 
     it 'builds a correct url' do
-      next_trains = described_class.new('warren_street', :southbound)
-      expect(next_trains.url).to eq('https://api.tfl.gov.uk/line/victoria/arrivals?stopPointId=940GZZLUWRR&direction=outbound')
+      expect(@subject.url).to eq('https://api.tfl.gov.uk/line/victoria/arrivals?stopPointId=940GZZLUWRR&direction=outbound')
+    end
+
+    it "formats the time in minutes" do
+      expect(@subject.format_time(537)).to eq("9 minutes")
+    end
+
+    it "formats the time in seconds" do
+      expect(@subject.format_time(59)).to eq("less than a minute")
     end
 
     it 'gets the next trains' do
       json = [
         {
-          'timeToStation' => 417
+          'timeToStation' => 39
         },
         {
           'timeToStation' => 177
@@ -37,10 +46,10 @@ module SirHandel
 
       result = described_class.new('warren_street', :southbound).results
 
-      expect(result[0]).to eq(3)
-      expect(result[1]).to eq(5)
-      expect(result[2]).to eq(7)
-      expect(result[3]).to eq(9)
+      expect(result[0]).to eq("Arriving in less than a minute")
+      expect(result[1]).to eq("Arriving in 3 minutes")
+      expect(result[2]).to eq("Arriving in 5 minutes")
+      expect(result[3]).to eq("Arriving in 9 minutes")
     end
 
   end
