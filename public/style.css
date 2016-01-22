@@ -6,6 +6,14 @@ body, h1, h2 {
 
 .arrivals-header {
   border-top: 20px solid #00a1e0;
+  padding: 0 10px;
+  position: relative;
+}
+
+.auto-refresh {
+  position: absolute;
+  top: 7px;
+  right: 10px;
 }
 
 .arrivals-header h2 {
@@ -18,11 +26,12 @@ body, h1, h2 {
 
 .arrivals-header h2, h3{
   margin: 0px;
-  padding: 5px;
+  padding: 5px 0;
 }
 
 .box {
   border: 1px solid #333;
+  margin-bottom: 40px;
 }
 
 form {
@@ -141,7 +150,7 @@ form {
 }
 
 .arrival-time {
-  margin: 10px 0;
+  margin: 10px 0 5px 0;
   padding: 0;
 }
 

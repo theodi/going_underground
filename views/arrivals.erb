@@ -4,15 +4,28 @@
 
 <div class='box'>
   <div class='arrivals-header'>
+    <% if @reload_interval %>
+      <p class='auto-refresh' id='stop'><i class="fa fa-refresh"></i> Autorefresh on - <a href="#" id="stop-refresh">Click to stop</a></p>
+      <p class='auto-refresh hidden' id='start'><i class="fa fa-refresh"></i> Autorefresh off - <a href="#" id="start-refresh">Click to start</a></p>
+    <% end %>
     <h2>Victoria Line</h2>
     <h3>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h3>
+
+    <% 4.times do |i| %>
+      <% minutes = @next_trains[i] %>
+      <h4 class="arrival-time">In <%= minutes %> minutes</h4>
+      <%= erb :'includes/train', locals: { num: i } %>
+    <% end %>
   </div>
+
 </div>
 
-<% 4.times do |i| %>
-  <% minutes = @next_trains[i] %>
-  <h3 class="arrival-time">In <%= minutes %> minutes</h3>
-  <%= erb :'includes/train', locals: { num: i } %>
+<% if @reload_interval %>
+  <script src="/public/javascripts/refresh-page.js"></script>
+  <script>
+    var reloadTime = <%= @reload_interval.to_i * 1000 %>;
+    refreshPage(reloadTime)
+  </script>
 <% end %>
 
 <script src="/public/javascripts/colouriser.js"></script>
@@ -26,6 +39,7 @@ $.getJSON(document.URL, function(data) {
     }
   })
 })
+
 
 $(function() {
   callDatePicker()
