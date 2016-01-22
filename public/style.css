@@ -4,6 +4,27 @@ body, h1, h2 {
   font-style: normal;
 }
 
+.arrivals-header {
+  border-top: 20px solid #00a1e0;
+}
+
+.arrivals-header h2 {
+  font-size: 1.5em;
+}
+
+.arrivals-header h3 {
+  font-size: 1.8em;
+}
+
+.arrivals-header h2, h3{
+  margin: 0px;
+  padding: 5px;
+}
+
+.box {
+  border: 1px solid #333;
+}
+
 form {
   margin-bottom: 20px;
 }

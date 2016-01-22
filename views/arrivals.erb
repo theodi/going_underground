@@ -2,7 +2,12 @@
 
 <%= erb :'includes/crowding_form' %>
 
-<h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
+<div class='box'>
+  <div class='arrivals-header'>
+    <h2>Victoria Line</h2>
+    <h3>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h3>
+  </div>
+</div>
 
 <% 4.times do |i| %>
   <% minutes = @next_trains[i] %>
