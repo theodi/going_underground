@@ -1,49 +1,65 @@
 walthamstow_central:
   southbound: 37
   northbound: 30
+  naptan: 940GZZLUWWL
 blackhorse_road:
   southbound: 123
   northbound: 128
+  naptan: 940GZZLUBLR
 tottenham_hale:
   southbound: 195
   northbound: 206
+  naptan: 940GZZLUTMH
 seven_sisters:
   southbound: 329
   northbound: 492
+  naptan: 940GZZLUSVS
 finsbury_park:
   southbound: 893
   northbound: 870
+  naptan: 940GZZLUFPK
 highbury_and_islington:
   southbound: 1035
   northbound: 1026
+  naptan: 940GZZLUHAI
 kings_cross_st_pancras:
   southbound: 1193
   northbound: 1174
+  naptan: 940GZZLUKSX
 euston:
   southbound: 1309
   northbound: 1286
+  naptan: 940GZZLUEUS
 warren_street:
   southbound: 1377
   northbound: 1362
+  naptan: 940GZZLUWRR
 oxford_circus:
   southbound: 1463
   northbound: 1430
+  naptan: 940GZZLUOXC
 green_park:
   southbound: 1525
   northbound: 1496
+  naptan: 940GZZLUGPK
 victoria:
   southbound: 1643
   northbound: 1614
+  naptan: 940GZZLUVIC
 pimlico:
   southbound: 1753
   northbound: 1746
   class: normal
+  naptan: 940GZZLUPCO
 vauxhall:
   southbound: 1809
   northbound: 1798
+  naptan: 940GZZLUVXL
 stockwell:
   southbound: 1901
   northbound: 1894
+  naptan: 940GZZLUSKW
 brixton:
   southbound: 2007
   northbound: 1992
+  naptan: 940GZZLUBXN

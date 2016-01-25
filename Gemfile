@@ -32,4 +32,5 @@ group :test do
   gem 'rspec-pride'
   gem 'nokogiri'
   gem 'timecop'
+  gem 'jasmine'
 end

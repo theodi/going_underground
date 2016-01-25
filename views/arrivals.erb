@@ -2,39 +2,44 @@
 
 <%= erb :'includes/crowding_form' %>
 
-<h2>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h2>
+<div class='box'>
+  <div class='arrivals-header'>
+    <% if @reload_interval %>
+      <p class='auto-refresh' id='stop'><i class="fa fa-refresh"></i> Autorefresh on - <a href="#" id="stop-refresh">Click to stop</a></p>
+      <p class='auto-refresh hidden' id='start'><i class="fa fa-refresh"></i> Autorefresh off - <a href="#" id="start-refresh">Click to start</a></p>
+    <% end %>
+    <h2>Victoria Line</h2>
+    <h3>Next <%= params[:direction] %> trains at <%= I18n.t "stations.#{db_signal params[:station]}" %></h3>
 
-<%= erb :'includes/train' %>
+    <% 4.times do |i| %>
+      <% time = @next_trains[i] %>
+      <h4 class="arrival-time"><%= time %></h4>
+      <%= erb :'includes/train', locals: { num: i } %>
+    <% end %>
+  </div>
+
+</div>
+
+<% if @reload_interval %>
+  <script src="/public/javascripts/refresh-page.js"></script>
+  <script>
+    var reloadTime = <%= @reload_interval.to_i * 1000 %>;
+    refreshPage(reloadTime)
+  </script>
+<% end %>
+
+<script src="/public/javascripts/colouriser.js"></script>
+<script src="/public/javascripts/arrivals.js"></script>
 
 <script>
 $.getJSON(document.URL, function(data) {
-  if (data[0]) {
-    $.each(['f', 'r'], function(i, side) {
-      $.each(['a', 'b', 'c', 'd'], function(j, letter) {
-        var car = 'car-' + letter;
-        var value = data[0][1][car.toUpperCase().replace('-', '_')];
-
-        $('#' + car + '-' + side + ' .num').text(percentage(value))
-        setHeight('#' + car + '-' + side + ' .level', value)
-      })
-    })
-  }
+  $.each($('.train'), function(i, train) {
+    if (data[i]) {
+      populateTrain(data[i], train)
+    }
+  })
 })
 
-function setHeight(el, num) {
-  $(el).height(percentage(num))
-
-  var colour = ("0" + ((100 - valBetween(Math.round(num), 0, 100)) * 2.56).toString(16).split('.')[0]).slice(-2);
-  $(el).css('background-color', '#ff' + colour + colour)
-}
-
-function percentage(num) {
-  return valBetween(Math.round(num), 0, 100) + '%'
-}
-
-function valBetween(v, min, max) {
-  return (Math.min(max, Math.max(min, v)));
-}
 
 $(function() {
   callDatePicker()
