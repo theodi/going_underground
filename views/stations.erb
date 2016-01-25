@@ -1,19 +1,9 @@
 <div class='col-md-6'>
   <h2>Northbound</h2>
-
-  <ul id='northbound' class='victoria'>
-    <% Hash[@stations.to_a.reverse].each do |s| %>
-      <%= erb :"includes/station", locals: { station: s, direction: :northbound } %>
-    <% end %>
-  </ul>
+  <%= erb :"includes/_stations", locals: { stations: Hash[@stations.to_a.reverse], direction: :northbound } %>
 </div>
 
 <div class='col-md-6'>
   <h2>Southbound</h2>
-
-  <ul id='southbound' class='victoria'>
-    <% @stations.each do |s| %>
-      <%= erb :"includes/station", locals: { station: s,  direction: :southbound } %>
-    <% end %>
-  </ul>
+  <%= erb :"includes/_stations", locals: { stations: @stations, direction: :southbound } %>
 </div>

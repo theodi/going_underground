@@ -1,0 +1,5 @@
+<ul id='northbound' class='victoria'>
+  <% stations.each do |s| %>
+    <%= erb :"includes/station", locals: { station: s, direction: direction } %>
+  <% end %>
+</ul>
