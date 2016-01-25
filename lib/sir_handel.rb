@@ -261,6 +261,8 @@ module SirHandel
           results = crowding.map { |c|
             {
               segment: c.first['segment'],
+              station: get_station(c.first['segment']),
+              direction: get_direction(c.first['segment']),
               load: c.last.values.reduce(:+).to_f / c.last.size
             }
           }.sort_by! { |r| r[:segment] }
