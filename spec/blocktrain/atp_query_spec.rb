@@ -35,7 +35,7 @@ module Blocktrain
         warren_street: 1430,
         oxford_circus: 1496,
         green_park: 1614,
-        victoria: 1746,
+        victoria: 1758,
         pimlico: 1798,
         vauxhall: 1894,
         stockwell: 1992
