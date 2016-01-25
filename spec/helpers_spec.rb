@@ -68,5 +68,82 @@ module SirHandel
       expect(url).to eq('/groups/my-awesome-group.json')
     end
 
+    it 'gets the correct direction' do
+      expect(helpers.get_direction 137).to eq('southbound')
+      expect(helpers.get_direction 152).to eq('northbound')
+    end
+
+    it 'gets the correct station' do
+      {
+        'walthamstow_central' => [
+          99,
+          10
+        ],
+        'blackhorse_road' => [
+          161,
+          104
+        ],
+        'tottenham_hale' => [
+          217,
+          182
+        ],
+        'seven_sisters' => [
+          345,
+          456
+        ],
+        'finsbury_park' => [
+          921,
+          842
+        ],
+        'highbury_and_islington' => [
+          1105,
+          1010
+        ],
+        'kings_cross_st_pancras' => [
+          1285,
+          1146
+        ],
+        'euston' => [
+          1321,
+          1210
+        ],
+        'warren_street' => [
+          1427,
+          1342
+        ],
+        'oxford_circus' => [
+          1491,
+          1416
+        ],
+        'green_park' => [
+          1573,
+          1480
+        ],
+        'victoria' => [
+          1677,
+          1578
+        ],
+        'pimlico' => [
+          1785,
+          1750
+        ],
+        'vauxhall' => [
+          1833,
+          1782
+        ],
+        'stockwell' => [
+          1911,
+          1888
+        ],
+        'brixton' => [
+          2031,
+          1960
+        ]
+      }.each do |k,v|
+        expect(helpers.get_station v.first).to eq(k)
+        expect(helpers.get_station v.last).to eq(k)
+      end
+    end
+
   end
 end

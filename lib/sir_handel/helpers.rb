@@ -108,6 +108,19 @@ module SirHandel
       redirect to(url)
     end
 
+    def get_station(segment)
+      direction = get_direction(segment)
+      if direction == 'southbound'
+        stations.to_a.select { |s| s.last[direction] < segment }.last.first
+      else
+        stations.to_a.select { |s| s.last[direction] > segment }.first.first
+      end
+    end
+
+    def get_direction(segment)
+      segment.even? ? 'northbound' : 'southbound'
+    end
+
     def redis
       @redis ||= ConnectionPool::Wrapper.new(size: 5, timeout: 3) { Redis.new(url: ENV['REDIS_URL']) }
       @redis
@@ -165,6 +178,10 @@ module SirHandel
 
     def groups
       load_yaml 'signal_groups.yml'
+    end
+
+    def stations
+      load_yaml  'stations.yml'
     end
 
     def load_yaml(filename)
