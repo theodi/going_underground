@@ -261,6 +261,7 @@ module SirHandel
         end
 
         wants.html do
+          @title = 'Heatmap'
           erb :heatmap, layout: :default
         end
       end
