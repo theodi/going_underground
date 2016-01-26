@@ -121,6 +121,17 @@ module SirHandel
       segment.even? ? 'northbound' : 'southbound'
     end
 
+    def crowding_presenter(results)
+      results.map { |c|
+        {
+          segment: c.first['segment'],
+          station: get_station(c.first['segment']),
+          direction: get_direction(c.first['segment']),
+          load: c.last.values.reduce(:+).to_f / c.last.size
+        }
+      }.sort_by! { |r| r[:segment] }
+    end
+
     def redis
       @redis ||= ConnectionPool::Wrapper.new(size: 5, timeout: 3) { Redis.new(url: ENV['REDIS_URL']) }
       @redis

@@ -197,8 +197,8 @@ module SirHandel
 
       json = JSON.parse(last_response.body)
 
-      expect(json['load'].count).to eq(25)
-      expect(json['load']).to eq([
+      expect(json.count).to eq(25)
+      expect(json).to eq([
         {"segment"=>119, "station"=>"walthamstow_central", "direction"=>"southbound", "load"=>4.4395012689378595},
         {"segment"=>195, "station"=>"blackhorse_road", "direction"=>"southbound", "load"=>5.4407673395445135},
         {"segment"=>297, "station"=>"tottenham_hale", "direction"=>"southbound", "load"=>10.826860508464282},

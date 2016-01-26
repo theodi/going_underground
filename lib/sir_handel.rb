@@ -257,19 +257,7 @@ module SirHandel
           }.delete_if { |r| r.nil? }
 
           crowding = Blocktrain::TrainCrowding.new(trains).results
-
-          results = crowding.map { |c|
-            {
-              segment: c.first['segment'],
-              station: get_station(c.first['segment']),
-              direction: get_direction(c.first['segment']),
-              load: c.last.values.reduce(:+).to_f / c.last.size
-            }
-          }.sort_by! { |r| r[:segment] }
-
-          {
-            load: results
-          }.to_json
+          crowding_presenter(crowding).to_json
         end
 
         wants.html do
