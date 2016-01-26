@@ -242,6 +242,23 @@ form {
   margin-bottom: 7px;
 }
 
+#indicator {
+  display: inline-block;
+}
+
+#indicator .block {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  margin: 0 2px;
+  display: inline-block;
+}
+
+#loading {
+  text-align: center;
+  margin: 20px 0;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

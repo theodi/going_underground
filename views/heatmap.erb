@@ -1,29 +1,23 @@
 <% stations = YAML.load_file File.join('config', 'stations.yml') %>
 
-<div class='col-md-6'>
-  <h2>Northbound</h2>
-  <%= erb :"includes/_stations", locals: { stations: Hash[stations.to_a.reverse], direction: :northbound } %>
+<p id="loading"><i class="fa fa-spinner fa-spin"></i></p>
+
+<div id="stations" class="hidden">
+  <div class='col-md-6'>
+    <h2>Northbound</h2>
+    <%= erb :"includes/_stations", locals: { stations: Hash[stations.to_a.reverse], direction: :northbound } %>
+  </div>
+
+  <div class='col-md-6'>
+    <h2>Southbound</h2>
+    <%= erb :"includes/_stations", locals: { stations: stations, direction: :southbound } %>
+  </div>
 </div>
 
-<div class='col-md-6'>
-  <h2>Southbound</h2>
-  <%= erb :"includes/_stations", locals: { stations: stations, direction: :southbound } %>
-</div>
-
+<script src="/public/javascripts/heatmap.js"></script>
+<script src="/public/javascripts/colouriser.js"></script>
 <script>
-function byte(num) {
-  return ("0" + ((100 - valBetween(Math.round(num), 0, 100)) * 2.56).toString(16).split('.')[0]).slice(-2);
-}
-
-function valBetween(v, min, max) {
-  return (Math.min(max, Math.max(min, v)));
-}
-
-d3.json(document.URL, function(error, json) {
-  json.load.forEach(function(data) {
-    $('#segment_' + data.segment).addClass('selected')
-    $('#segment_' + data.segment).css('background-color', '#ff' + byte(data.load) + byte(data.load))
-    $('#segment_' + data.segment).attr('title', data.load + '%')
-  })
+$(function () {
+  loadHeatmap(document.URL);
 });
 </script>
