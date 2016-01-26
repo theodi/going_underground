@@ -111,9 +111,9 @@ module SirHandel
     def get_station(segment)
       direction = get_direction(segment)
       if direction == 'southbound'
-        stations.to_a.select { |s| s.last[direction] < segment }.last.first
+        stations.to_a.select { |s| s.last[direction] < segment }.last.first rescue nil
       else
-        stations.to_a.select { |s| s.last[direction] > segment }.first.first
+        stations.to_a.select { |s| s.last[direction] > segment }.first.first rescue nil
       end
     end
 
@@ -132,7 +132,7 @@ module SirHandel
       # Group by station and direction
       grouped = results.group_by { |r| "#{r.first['station']}_#{r.first['direction']}" }
 
-      # Average out load values 
+      # Average out load values
       grouped.map do |r|
         values = r.last.map { |r| r.first['load'] }
         {
