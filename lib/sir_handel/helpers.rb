@@ -122,14 +122,26 @@ module SirHandel
     end
 
     def crowding_presenter(results)
-      results.map { |c|
+      # Add stations, directions and total load
+      results.each do |r|
+        r.first['station'] = get_station(r.first['segment'])
+        r.first['direction'] = get_direction(r.first['segment'])
+        r.first['load'] = r.last.values.reduce(:+).to_f / r.last.size
+      end
+
+      # Group by station and direction
+      grouped = results.group_by { |r| "#{r.first['station']}_#{r.first['direction']}" }
+
+      # Average out load values 
+      grouped.map do |r|
+        values = r.last.map { |r| r.first['load'] }
         {
-          segment: c.first['segment'],
-          station: get_station(c.first['segment']),
-          direction: get_direction(c.first['segment']),
-          load: c.last.values.reduce(:+).to_f / c.last.size
+          segment: r.last[0][0]['segment'],
+          station: r.last[0][0]['station'],
+          direction: r.last[0][0]['direction'],
+          load: values.reduce(:+).to_f / values.size
         }
-      }.sort_by! { |r| r[:segment] }
+      end
     end
 
     def redis
