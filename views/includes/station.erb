@@ -1,5 +1,5 @@
 <% category = station.last['class'] || 'interchange' %>
-<li class="<%= category %>">
+<li class="<%= category %> <%= station.first %>">
   <a href="/stations/arriving/<%= direction %>/<%= web_signal station.first %>">
     <%= I18n.t "stations.#{station.first}" %>
   </a>
