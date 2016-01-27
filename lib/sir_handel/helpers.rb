@@ -108,6 +108,20 @@ module SirHandel
       redirect to(url)
     end
 
+    def fake_network(time)
+      from = Time.parse(time) - 2400
+      to = Time.parse(time) + 2400
+      trains = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: ['2E5485AW'], sort: {'timeStamp' => 'desc'}).results
+
+      # Get data two minutes apart to fake what we'd roughly see in real life
+      trains.map! { |r|
+        if @timestamp.nil? || @timestamp - Time.parse(r["_source"]["timeStamp"]) >= 120
+          @timestamp = Time.parse(r["_source"]["timeStamp"])
+          r
+        end
+      }.delete_if { |r| r.nil? }
+    end
+
     def get_station(segment)
       direction = get_direction(segment)
       if direction == 'southbound'
