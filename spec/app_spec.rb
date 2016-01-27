@@ -221,5 +221,13 @@ module SirHandel
         {"segment"=>1642, "station"=>"pimlico", "direction"=>"northbound", "load"=>29.57324973182908}
       ])
     end
+
+    it 'sets a default datetime at the same local time for heatmap', :vcr do
+      Timecop.freeze('2016-01-01T15:44:00')
+
+      expect_any_instance_of(SirHandel::App).to receive(:fake_network).with("2015-09-23T15:44:00").and_call_original
+      get 'heatmap.json'
+      Timecop.return
+    end
   end
 end

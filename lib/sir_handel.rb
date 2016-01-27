@@ -236,11 +236,16 @@ module SirHandel
       erb :stations, layout: :default
     end
 
-    get '/heatmap/:date' do
+    get '/heatmap/?:date?' do
       respond_to do |wants|
         headers 'Vary' => 'Accept'
 
         wants.json do
+          if !params[:date]
+            hour = Time.now.hour
+            minute = Time.now.min
+            params[:date] = "2015-09-23T#{hour}:#{minute}:00"
+          end
 
 
           # Get all trains on the line - faking this by getting all locations 40 minutes either side
