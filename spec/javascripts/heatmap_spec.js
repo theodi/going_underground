@@ -29,8 +29,10 @@ describe('heatmap', function() {
     });
 
     it('makes the block the correct width and colour', function() {
-      expect($('#northbound .tottenham_hale #indicator .block')).toHaveCss({width: '7px'})
-      expect($('#northbound .tottenham_hale #indicator .block')).toHaveCss({'background-color': 'rgba(38, 255, 0, 0.8)'})
+      element = $('#northbound .tottenham_hale #indicator .block')
+
+      expect(element.attr('style')).toMatch(/width: 6.884801609322975%/)
+      expect(element.attr('style')).toMatch(/background-color:hsla\(111\.73823806881242,100%,50%,0.8\)/)
     });
   })
 })
