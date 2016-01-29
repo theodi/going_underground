@@ -236,6 +236,10 @@ module SirHandel
       erb :stations, layout: :default
     end
 
+    post '/heatmap' do
+      redirect to "/heatmap/#{DateTime.parse(params[:to]).to_s}"
+    end
+
     get '/heatmap/?:date?' do
       if !params[:date]
         hour = Time.now.hour

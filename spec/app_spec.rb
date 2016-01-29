@@ -229,5 +229,15 @@ module SirHandel
       get 'heatmap.json'
       Timecop.return
     end
+
+    it 'redirects to the correct datetime' do
+      post '/heatmap', {
+        to: '2015-09-03 10:00:00'
+      }
+
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to eq 'http://example.org/heatmap/2015-09-03T10:00:00+00:00'
+    end
   end
 end
