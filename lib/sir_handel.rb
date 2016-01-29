@@ -237,19 +237,20 @@ module SirHandel
     end
 
     get '/heatmap/?:date?' do
+      if !params[:date]
+        hour = Time.now.hour
+        minute = Time.now.min
+        @date = "2015-09-23T#{hour}:#{minute}:00"
+      else
+        @date = params[:date]
+      end
+
       respond_to do |wants|
         headers 'Vary' => 'Accept'
 
         wants.json do
-          if !params[:date]
-            hour = Time.now.hour
-            minute = Time.now.min
-            params[:date] = "2015-09-23T#{hour}:#{minute}:00"
-          end
-
-
           # Get all trains on the line - faking this by getting all locations 40 minutes either side
-          trains = fake_network(params[:date])
+          trains = fake_network(@date)
 
           crowding = Blocktrain::TrainCrowding.new(trains).results
           crowding_presenter(crowding).to_json
