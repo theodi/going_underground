@@ -8,9 +8,7 @@ function loadHeatmap(url) {
     json.forEach(function(data) {
       count = Math.ceil(data.load / 10)
       $('#'+ data.direction +' .'+ data.station + ' a').append('<div id="indicator" class="weight-'+ count +'"></div>')
-      for (var i=0; i < count; i++) {
-        $('#'+ data.direction +' .'+ data.station +' #indicator').append('<span class="block" style="background-color:'+ colour(data.load) +'"></span>');
-      }
+      $('#'+ data.direction +' .'+ data.station +' #indicator').append('<span class="block" style="background-color:'+ colour(data.load) +'; width: '+ data.load +'%"></span>');
     })
     deferred.resolve();
   });
