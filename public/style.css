@@ -250,8 +250,11 @@ form {
   text-align: right;
 }
 
+.normal #indicator {
+  left: -115px;
+}
+
 #indicator .block {
-  width: 7px;
   height: 7px;
   padding: 0;
   margin: 0 2px;
