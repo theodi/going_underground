@@ -1,6 +1,6 @@
 <p><a href="/stations" class="text-muted"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Back to list</a></p>
 
-<%= erb :'includes/crowding_form' %>
+<%= erb :'includes/date_form', locals: { url: "/stations/arriving/#{@direction}/#{@station}", date: @to } %>
 
 <div class='box'>
   <div class='arrivals-header'>
@@ -38,10 +38,5 @@ $.getJSON(document.URL, function(data) {
       populateTrain(data[i], train)
     }
   })
-})
-
-
-$(function() {
-  callDatePicker()
 })
 </script>

@@ -236,6 +236,37 @@ module SirHandel
       erb :stations, layout: :default
     end
 
+    post '/heatmap' do
+      redirect to "/heatmap/#{DateTime.parse(params[:to]).to_s}"
+    end
+
+    get '/heatmap/?:date?' do
+      if !params[:date]
+        hour = Time.now.hour
+        minute = Time.now.min
+        @date = "2015-09-23T#{hour}:#{minute}:00"
+      else
+        @date = params[:date]
+      end
+
+      respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.json do
+          # Get all trains on the line - faking this by getting all locations 40 minutes either side
+          trains = fake_network(@date)
+
+          crowding = Blocktrain::TrainCrowding.new(trains).results
+          crowding_presenter(crowding).to_json
+        end
+
+        wants.html do
+          @title = 'Heatmap'
+          erb :heatmap, layout: :default
+        end
+      end
+    end
+
     get '/:type/:signal' do
       params['from'] = default_dates[:from]
       params['to'] = default_dates[:to]
@@ -272,7 +303,7 @@ module SirHandel
         end
 
         wants.json do
-          Blocktrain::TrainCrowding.new(@to,
+          Blocktrain::StationCrowding.new(@to,
             db_signal(@station), @direction.to_sym).results.to_json
         end
       end

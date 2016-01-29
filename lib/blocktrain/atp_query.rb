@@ -13,6 +13,10 @@ module Blocktrain
       super(options)
     end
 
+    def limit
+      100
+    end
+
     def build_query(addresses)
       "memoryAddress:#{addresses.first} AND value:#{station_filter}"
     end

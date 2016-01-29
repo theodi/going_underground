@@ -17,8 +17,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Fri, 22 Jan 2016 15:38:38 GMT
-      - Fri, 22 Jan 2016 15:38:39 GMT
+      - Mon, 25 Jan 2016 14:38:38 GMT
+      - Mon, 25 Jan 2016 14:38:38 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -41,139 +41,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":95,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":5,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180710374928","_score":null,"_source":{"id":"03042E5485AW-180710374928","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-23T13:19:34.928Z","vcuNumber":304,"runLengthMs":72900},"sort":[1443014374928]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180706175443","_score":null,"_source":{"id":"03042E5485AW-180706175443","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-23T12:09:35.443Z","vcuNumber":304,"runLengthMs":20516},"sort":[1443010175443]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180658585990","_score":null,"_source":{"id":"03042E5485AW-180658585990","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T22:56:25.99Z","vcuNumber":304,"runLengthMs":24485},"sort":[1442962585990]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180644389028","_score":null,"_source":{"id":"03042E5485AW-180644389028","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T18:59:49.028Z","vcuNumber":304,"runLengthMs":30900},"sort":[1442948389028]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180640099459","_score":null,"_source":{"id":"03042E5485AW-180640099459","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T17:48:19.459Z","vcuNumber":304,"runLengthMs":21900},"sort":[1442944099459]}]}}'
-    http_version: 
-  recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E5485AW
-        AND value:195"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442846640000,"lte":1442933040000}}}]}}}},"size":100,"sort":{"timeStamp":"desc"},"from":0}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Fri, 22 Jan 2016 15:38:39 GMT
-      - Fri, 22 Jan 2016 15:38:39 GMT
-      Server:
-      - fp/25c4c
-      - fp/f6bd83
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000001
-      - instance-0000000001
-      X-Found-Handling-Server:
-      - 10.105.22.170
-      - 10.105.22.170
-      Content-Length:
-      - '1945'
-      - '345'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":29,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":5,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180601262968","_score":null,"_source":{"id":"03042E5485AW-180601262968","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T07:01:02.968Z","vcuNumber":304,"runLengthMs":5647},"sort":[1442905262968]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180601236715","_score":null,"_source":{"id":"03042E5485AW-180601236715","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T07:00:36.715Z","vcuNumber":304,"runLengthMs":26119},"sort":[1442905236715]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180575062668","_score":null,"_source":{"id":"03042E5485AW-180575062668","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-21T23:44:22.668Z","vcuNumber":304,"runLengthMs":28269},"sort":[1442879062668]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180553408621","_score":null,"_source":{"id":"03042E5485AW-180553408621","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-21T17:43:28.621Z","vcuNumber":304,"runLengthMs":26269},"sort":[1442857408621]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180543996490","_score":null,"_source":{"id":"03042E5485AW-180543996490","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-21T15:06:36.49Z","vcuNumber":304,"runLengthMs":29900},"sort":[1442847996490]}]}}'
-    http_version: 
-  recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E5485AW
-        AND value:195"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442760240000,"lte":1442846640000}}}]}}}},"size":100,"sort":{"timeStamp":"desc"},"from":0}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Fri, 22 Jan 2016 15:38:39 GMT
-      - Fri, 22 Jan 2016 15:38:39 GMT
-      Server:
-      - fp/25c4c
-      - fp/25c4c
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000001
-      - instance-0000000001
-      X-Found-Handling-Server:
-      - 10.105.22.170
-      - 10.105.22.170
-      Content-Length:
-      - '1581'
-      - '345'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":28,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":4,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180539778490","_score":null,"_source":{"id":"03042E5485AW-180539778490","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-21T13:56:18.49Z","vcuNumber":304,"runLengthMs":27885},"sort":[1442843778490]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180531371575","_score":null,"_source":{"id":"03042E5485AW-180531371575","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-21T11:36:11.575Z","vcuNumber":304,"runLengthMs":25900},"sort":[1442835371575]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180518964428","_score":null,"_source":{"id":"03042E5485AW-180518964428","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-21T08:09:24.428Z","vcuNumber":304,"runLengthMs":30884},"sort":[1442822964428]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180466696309","_score":null,"_source":{"id":"03042E5485AW-180466696309","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-20T17:38:16.309Z","vcuNumber":304,"runLengthMs":26900},"sort":[1442770696309]}]}}'
-    http_version: 
-  recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E5485AW
-        AND value:195"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442673840000,"lte":1442760240000}}}]}}}},"size":100,"sort":{"timeStamp":"desc"},"from":0}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Fri, 22 Jan 2016 15:38:39 GMT
-      - Fri, 22 Jan 2016 15:38:39 GMT
-      Server:
-      - fp/f6bd83
-      - fp/f6bd83
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000001
-      - instance-0000000001
-      X-Found-Handling-Server:
-      - 10.105.22.170
-      - 10.105.22.170
-      Content-Length:
-      - '3042'
-      - '345'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":30,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":8,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180438781746","_score":null,"_source":{"id":"03042E5485AW-180438781746","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-20T09:53:01.746Z","vcuNumber":304,"runLengthMs":26900},"sort":[1442742781746]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180430662615","_score":null,"_source":{"id":"03042E5485AW-180430662615","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-20T07:37:42.615Z","vcuNumber":304,"runLengthMs":26531},"sort":[1442734662615]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180403005053","_score":null,"_source":{"id":"03042E5485AW-180403005053","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-19T23:56:45.053Z","vcuNumber":304,"runLengthMs":19900},"sort":[1442707005053]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180398209168","_score":null,"_source":{"id":"03042E5485AW-180398209168","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-19T22:36:49.168Z","vcuNumber":304,"runLengthMs":25900},"sort":[1442702209168]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180393583937","_score":null,"_source":{"id":"03042E5485AW-180393583937","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-19T21:19:43.937Z","vcuNumber":304,"runLengthMs":24616},"sort":[1442697583937]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180393573653","_score":null,"_source":{"id":"03042E5485AW-180393573653","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-19T21:19:33.653Z","vcuNumber":304,"runLengthMs":10100},"sort":[1442697573653]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180389411021","_score":null,"_source":{"id":"03042E5485AW-180389411021","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-19T20:10:11.021Z","vcuNumber":304,"runLengthMs":25900},"sort":[1442693411021]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180375602006","_score":null,"_source":{"id":"03042E5485AW-180375602006","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-19T16:20:02.006Z","vcuNumber":304,"runLengthMs":54900},"sort":[1442679602006]}]}}'
+      string: '{"took":30,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":5,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180710374928","_score":null,"_source":{"id":"03042E5485AW-180710374928","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-23T13:19:34.928Z","vcuNumber":304,"runLengthMs":72900},"sort":[1443014374928]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180706175443","_score":null,"_source":{"id":"03042E5485AW-180706175443","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-23T12:09:35.443Z","vcuNumber":304,"runLengthMs":20516},"sort":[1443010175443]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180658585990","_score":null,"_source":{"id":"03042E5485AW-180658585990","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T22:56:25.99Z","vcuNumber":304,"runLengthMs":24485},"sort":[1442962585990]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180644389028","_score":null,"_source":{"id":"03042E5485AW-180644389028","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T18:59:49.028Z","vcuNumber":304,"runLengthMs":30900},"sort":[1442948389028]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180640099459","_score":null,"_source":{"id":"03042E5485AW-180640099459","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":195,"timeStamp":"2015-09-22T17:48:19.459Z","vcuNumber":304,"runLengthMs":21900},"sort":[1442944099459]}]}}'
     http_version: 
   recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
 - request:
@@ -193,8 +61,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Fri, 22 Jan 2016 15:38:39 GMT
-      - Fri, 22 Jan 2016 15:38:40 GMT
+      - Mon, 25 Jan 2016 14:38:38 GMT
+      - Mon, 25 Jan 2016 14:38:38 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -226,7 +94,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W
-        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442905202000,"lte":1442905322000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1442905202000,"max":1442905322000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1443010115000,"lte":1443010235000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1443010115000,"max":1443010235000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
     headers: {}
   response:
     status:
@@ -237,8 +105,52 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Fri, 22 Jan 2016 15:38:40 GMT
-      - Fri, 22 Jan 2016 15:38:40 GMT
+      - Mon, 25 Jan 2016 14:38:39 GMT
+      - Mon, 25 Jan 2016 14:38:39 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000001
+      - instance-0000000001
+      X-Found-Handling-Server:
+      - 10.105.22.170
+      - 10.105.22.170
+      Content-Length:
+      - '1327'
+      - '345'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":308,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":96,"results":{"buckets":[{"key_as_string":"2015-09-23T12:00:00.000Z","key":1443009600000,"doc_count":66,"average_value":{"value":11.0}},{"key_as_string":"2015-09-23T12:10:00.000Z","key":1443010200000,"doc_count":30,"average_value":{"value":11.866666666666667}}]}},"2E64932W":{"doc_count":76,"results":{"buckets":[{"key_as_string":"2015-09-23T12:00:00.000Z","key":1443009600000,"doc_count":49,"average_value":{"value":7.673469387755102}},{"key_as_string":"2015-09-23T12:10:00.000Z","key":1443010200000,"doc_count":27,"average_value":{"value":7.703703703703703}}]}},"2E64934W":{"doc_count":70,"results":{"buckets":[{"key_as_string":"2015-09-23T12:00:00.000Z","key":1443009600000,"doc_count":45,"average_value":{"value":5.044444444444444}},{"key_as_string":"2015-09-23T12:10:00.000Z","key":1443010200000,"doc_count":25,"average_value":{"value":7.28}}]}},"2E64936W":{"doc_count":66,"results":{"buckets":[{"key_as_string":"2015-09-23T12:00:00.000Z","key":1443009600000,"doc_count":40,"average_value":{"value":2.35}},{"key_as_string":"2015-09-23T12:10:00.000Z","key":1443010200000,"doc_count":26,"average_value":{"value":2.6153846153846154}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W
+        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442962525000,"lte":1442962645000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1442962525000,"max":1442962645000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 25 Jan 2016 14:38:39 GMT
+      - Mon, 25 Jan 2016 14:38:39 GMT
       Server:
       - fp/25c4c
       - fp/f6bd83
@@ -255,13 +167,13 @@ http_interactions:
       - 10.105.22.170
       Content-Length:
       - '345'
-      - '847'
+      - '870'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":374,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":100,"results":{"buckets":[{"key_as_string":"2015-09-22T07:00:00.000Z","key":1442905200000,"doc_count":100,"average_value":{"value":63.77}}]}},"2E64932W":{"doc_count":95,"results":{"buckets":[{"key_as_string":"2015-09-22T07:00:00.000Z","key":1442905200000,"doc_count":95,"average_value":{"value":62.92631578947368}}]}},"2E64934W":{"doc_count":87,"results":{"buckets":[{"key_as_string":"2015-09-22T07:00:00.000Z","key":1442905200000,"doc_count":87,"average_value":{"value":55.160919540229884}}]}},"2E64936W":{"doc_count":92,"results":{"buckets":[{"key_as_string":"2015-09-22T07:00:00.000Z","key":1442905200000,"doc_count":92,"average_value":{"value":59.75}}]}}}}}}'
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":243,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":91,"results":{"buckets":[{"key_as_string":"2015-09-22T22:50:00.000Z","key":1442962200000,"doc_count":91,"average_value":{"value":14.571428571428571}}]}},"2E64932W":{"doc_count":67,"results":{"buckets":[{"key_as_string":"2015-09-22T22:50:00.000Z","key":1442962200000,"doc_count":67,"average_value":{"value":7.298507462686567}}]}},"2E64934W":{"doc_count":59,"results":{"buckets":[{"key_as_string":"2015-09-22T22:50:00.000Z","key":1442962200000,"doc_count":59,"average_value":{"value":4.338983050847458}}]}},"2E64936W":{"doc_count":26,"results":{"buckets":[{"key_as_string":"2015-09-22T22:50:00.000Z","key":1442962200000,"doc_count":26,"average_value":{"value":1.7692307692307692}}]}}}}}}'
     http_version: 
   recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
 - request:
@@ -270,7 +182,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W
-        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442843718000,"lte":1442843838000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1442843718000,"max":1442843838000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442948329000,"lte":1442948449000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1442948329000,"max":1442948449000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
     headers: {}
   response:
     status:
@@ -281,8 +193,52 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Fri, 22 Jan 2016 15:38:40 GMT
-      - Fri, 22 Jan 2016 15:38:40 GMT
+      - Mon, 25 Jan 2016 14:38:39 GMT
+      - Mon, 25 Jan 2016 14:38:39 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000001
+      - instance-0000000001
+      X-Found-Handling-Server:
+      - 10.105.22.170
+      - 10.105.22.170
+      Content-Length:
+      - '1330'
+      - '345'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":288,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":84,"results":{"buckets":[{"key_as_string":"2015-09-22T18:50:00.000Z","key":1442947800000,"doc_count":54,"average_value":{"value":11.12962962962963}},{"key_as_string":"2015-09-22T19:00:00.000Z","key":1442948400000,"doc_count":30,"average_value":{"value":15.766666666666667}}]}},"2E64932W":{"doc_count":66,"results":{"buckets":[{"key_as_string":"2015-09-22T18:50:00.000Z","key":1442947800000,"doc_count":40,"average_value":{"value":7.225}},{"key_as_string":"2015-09-22T19:00:00.000Z","key":1442948400000,"doc_count":26,"average_value":{"value":6.461538461538462}}]}},"2E64934W":{"doc_count":62,"results":{"buckets":[{"key_as_string":"2015-09-22T18:50:00.000Z","key":1442947800000,"doc_count":42,"average_value":{"value":3.238095238095238}},{"key_as_string":"2015-09-22T19:00:00.000Z","key":1442948400000,"doc_count":20,"average_value":{"value":4.35}}]}},"2E64936W":{"doc_count":76,"results":{"buckets":[{"key_as_string":"2015-09-22T18:50:00.000Z","key":1442947800000,"doc_count":44,"average_value":{"value":3.272727272727273}},{"key_as_string":"2015-09-22T19:00:00.000Z","key":1442948400000,"doc_count":32,"average_value":{"value":9.03125}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W
+        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442944039000,"lte":1442944159000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1442944039000,"max":1442944159000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 25 Jan 2016 14:38:40 GMT
+      - Mon, 25 Jan 2016 14:38:40 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -305,51 +261,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":306,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":82,"results":{"buckets":[{"key_as_string":"2015-09-21T13:50:00.000Z","key":1442843400000,"doc_count":82,"average_value":{"value":12.329268292682928}}]}},"2E64932W":{"doc_count":72,"results":{"buckets":[{"key_as_string":"2015-09-21T13:50:00.000Z","key":1442843400000,"doc_count":72,"average_value":{"value":10.902777777777779}}]}},"2E64934W":{"doc_count":74,"results":{"buckets":[{"key_as_string":"2015-09-21T13:50:00.000Z","key":1442843400000,"doc_count":74,"average_value":{"value":2.8378378378378377}}]}},"2E64936W":{"doc_count":78,"results":{"buckets":[{"key_as_string":"2015-09-21T13:50:00.000Z","key":1442843400000,"doc_count":78,"average_value":{"value":9.85897435897436}}]}}}}}}'
-    http_version: 
-  recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W
-        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442742721000,"lte":1442742841000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1442742721000,"max":1442742841000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Fri, 22 Jan 2016 15:38:40 GMT
-      - Fri, 22 Jan 2016 15:38:40 GMT
-      Server:
-      - fp/25c4c
-      - fp/25c4c
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000001
-      - instance-0000000001
-      X-Found-Handling-Server:
-      - 10.105.22.170
-      - 10.105.22.170
-      Content-Length:
-      - '345'
-      - '861'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":317,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":86,"results":{"buckets":[{"key_as_string":"2015-09-20T09:50:00.000Z","key":1442742600000,"doc_count":86,"average_value":{"value":15.232558139534884}}]}},"2E64932W":{"doc_count":80,"results":{"buckets":[{"key_as_string":"2015-09-20T09:50:00.000Z","key":1442742600000,"doc_count":80,"average_value":{"value":18.3875}}]}},"2E64934W":{"doc_count":68,"results":{"buckets":[{"key_as_string":"2015-09-20T09:50:00.000Z","key":1442742600000,"doc_count":68,"average_value":{"value":14.632352941176471}}]}},"2E64936W":{"doc_count":83,"results":{"buckets":[{"key_as_string":"2015-09-20T09:50:00.000Z","key":1442742600000,"doc_count":83,"average_value":{"value":19.313253012048193}}]}}}}}}'
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":313,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":85,"results":{"buckets":[{"key_as_string":"2015-09-22T17:40:00.000Z","key":1442943600000,"doc_count":85,"average_value":{"value":12.741176470588234}}]}},"2E64932W":{"doc_count":85,"results":{"buckets":[{"key_as_string":"2015-09-22T17:40:00.000Z","key":1442943600000,"doc_count":85,"average_value":{"value":9.552941176470588}}]}},"2E64934W":{"doc_count":76,"results":{"buckets":[{"key_as_string":"2015-09-22T17:40:00.000Z","key":1442943600000,"doc_count":76,"average_value":{"value":10.894736842105264}}]}},"2E64936W":{"doc_count":67,"results":{"buckets":[{"key_as_string":"2015-09-22T17:40:00.000Z","key":1442943600000,"doc_count":67,"average_value":{"value":6.537313432835821}}]}}}}}}'
     http_version: 
   recorded_at: Fri, 01 Jan 2016 15:44:00 GMT
 recorded_with: VCR 3.0.0

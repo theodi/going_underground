@@ -1,5 +1,5 @@
 function callDatePicker() {
-  d3.json('/cromulent-dates', function(error, json) {
+  $.getJSON('/cromulent-dates', function(json) {
     var format = 'YYYY-MM-DD HH:mm:ss'
 
     $('#from-date').datetimepicker({

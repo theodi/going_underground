@@ -108,6 +108,56 @@ module SirHandel
       redirect to(url)
     end
 
+    def fake_network(time)
+      from = Time.parse(time) - 2400
+      to = Time.parse(time) + 2400
+      trains = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: ['2E5485AW'], sort: {'timeStamp' => 'desc'}).results
+
+      # Get data two minutes apart to fake what we'd roughly see in real life
+      trains.map! { |r|
+        if @timestamp.nil? || @timestamp - Time.parse(r["_source"]["timeStamp"]) >= 120
+          @timestamp = Time.parse(r["_source"]["timeStamp"])
+          r
+        end
+      }.delete_if { |r| r.nil? }
+    end
+
+    def get_station(segment)
+      direction = get_direction(segment)
+      if direction == 'southbound'
+        stations.to_a.select { |s| s.last[direction] < segment }.last.first rescue nil
+      else
+        stations.to_a.select { |s| s.last[direction] > segment }.first.first rescue nil
+      end
+    end
+
+    def get_direction(segment)
+      segment.even? ? 'northbound' : 'southbound'
+    end
+
+    def crowding_presenter(results)
+      # Add stations, directions and total load
+      results.each do |r|
+        r.first['station'] = get_station(r.first['segment'])
+        r.first['direction'] = get_direction(r.first['segment'])
+        r.first['load'] = r.last.values.reduce(:+).to_f / r.last.size
+      end
+
+      # Group by station and direction
+      grouped = results.group_by { |r| "#{r.first['station']}_#{r.first['direction']}" }
+
+      # Average out load values
+      grouped.map do |r|
+        values = r.last.map { |r| r.first['load'] }
+        {
+          segment: r.last[0][0]['segment'],
+          station: r.last[0][0]['station'],
+          direction: r.last[0][0]['direction'],
+          load: values.reduce(:+).to_f / values.size
+        }
+      end
+    end
+
     def redis
       @redis ||= ConnectionPool::Wrapper.new(size: 5, timeout: 3) { Redis.new(url: ENV['REDIS_URL']) }
       @redis
@@ -165,6 +215,10 @@ module SirHandel
 
     def groups
       load_yaml 'signal_groups.yml'
+    end
+
+    def stations
+      load_yaml  'stations.yml'
     end
 
     def load_yaml(filename)
