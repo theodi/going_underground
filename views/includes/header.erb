@@ -31,3 +31,7 @@
 <link rel='icon' type='image/png' href='/public/assets/favicon.png' />
 
 <title><%= @title %></title>
+
+<% if @metarefresh %>
+  <meta http-equiv='refresh' content='30'>
+<% end %>
