@@ -172,5 +172,36 @@ module SirHandel
         ])
       end
     end
+
+    context 'date_step' do
+      let(:from) { DateTime.parse("2015-09-23T09:00:00") }
+      let(:to) { DateTime.parse("2015-09-23T09:30:00") }
+
+      it 'gets a default date step' do
+        range = helpers.date_step(from, to)
+
+        expect(range).to eq([
+          DateTime.parse("2015-09-23T09:00:00"),
+          DateTime.parse("2015-09-23T09:05:00"),
+          DateTime.parse("2015-09-23T09:10:00"),
+          DateTime.parse("2015-09-23T09:15:00"),
+          DateTime.parse("2015-09-23T09:20:00"),
+          DateTime.parse("2015-09-23T09:25:00"),
+          DateTime.parse("2015-09-23T09:30:00")
+        ])
+      end
+
+      it 'gets a date step every 10 minutes' do
+        range = helpers.date_step(from, to, 10)
+
+        expect(range).to eq([
+          DateTime.parse("2015-09-23T09:00:00"),
+          DateTime.parse("2015-09-23T09:10:00"),
+          DateTime.parse("2015-09-23T09:20:00"),
+          DateTime.parse("2015-09-23T09:30:00")
+        ])
+      end
+    end
+
   end
 end

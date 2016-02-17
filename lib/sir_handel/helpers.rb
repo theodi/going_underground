@@ -164,6 +164,18 @@ module SirHandel
       crowding = Blocktrain::TrainCrowding.new(trains).results
       crowding_presenter(crowding)
     end
+
+    def date_step(from, to, step_in_minutes = 5)
+      from = to_seconds(from)
+      to = to_seconds(to)
+      step = step_in_minutes * 60
+      from.step(to,step).map { |s| DateTime.strptime(s.to_s,'%s') }
+    end
+
+    def to_seconds(date)
+      date.to_time.to_i
+    end
+
     def redis
       @redis ||= ConnectionPool::Wrapper.new(size: 5, timeout: 3) { Redis.new(url: ENV['REDIS_URL']) }
       @redis
