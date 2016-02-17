@@ -158,6 +158,12 @@ module SirHandel
       end
     end
 
+    def heatmap(date)
+      # Get all trains on the line - faking this by getting all locations 40 minutes either side
+      trains = fake_network(date)
+      crowding = Blocktrain::TrainCrowding.new(trains).results
+      crowding_presenter(crowding)
+    end
     def redis
       @redis ||= ConnectionPool::Wrapper.new(size: 5, timeout: 3) { Redis.new(url: ENV['REDIS_URL']) }
       @redis

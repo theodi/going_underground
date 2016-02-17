@@ -253,11 +253,7 @@ module SirHandel
         headers 'Vary' => 'Accept'
 
         wants.json do
-          # Get all trains on the line - faking this by getting all locations 40 minutes either side
-          trains = fake_network(@date)
-
-          crowding = Blocktrain::TrainCrowding.new(trains).results
-          crowding_presenter(crowding).to_json
+          heatmap(@date).to_json
         end
 
         wants.html do
