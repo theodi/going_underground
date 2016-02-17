@@ -14,9 +14,3 @@ function loadHeatmap(url) {
 
   return deferred.promise();
 }
-
-function getColor(value){
-  value = value / 100
-  hue = ((1-value)*120).toString(10);
-  return ["hsla(",hue,",100%,50%,0.8)"].join("");
-}
