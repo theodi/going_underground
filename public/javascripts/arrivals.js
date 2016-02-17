@@ -18,3 +18,7 @@ function setHeight(el, num) {
 function percentage(num) {
   return valueBetween(Math.round(num), 0, 100) + '%'
 }
+
+function valueBetween(v, min, max) {
+  return (Math.min(max, Math.max(min, v)))
+}

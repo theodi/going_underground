@@ -59,4 +59,15 @@ describe('arrivals', function() {
       expect($('#car-d-f .level')[0].style.height).toEqual("59%")
     })
   })
+  
+  describe('valueBetween', function() {
+    it('returns a value between two bounds', function() {
+      expect(valueBetween(99, 0, 100)).toEqual(99)
+      expect(valueBetween(87, 0, 100)).toEqual(87)
+    })
+
+    it('caps at the max value', function() {
+      expect(valueBetween(105, 0, 100)).toEqual(100)
+    })
+  })
 })
