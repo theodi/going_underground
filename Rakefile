@@ -1,5 +1,5 @@
-#require 'jasmine'
-#load 'jasmine/tasks/jasmine.rake'
+require 'jasmine'
+load 'jasmine/tasks/jasmine.rake'
 
 require File.join(File.dirname(__FILE__), 'lib/sir_handel.rb')
 
@@ -12,7 +12,7 @@ unless ENV['RACK_ENV'] == 'production'
   Cucumber::Rake::Task.new
   Coveralls::RakeTask.new
 
-  #  task :default => [:spec, :cucumber, 'jasmine:ci', 'coveralls:push']
+  task :default => [:spec, :cucumber, 'jasmine:ci', 'coveralls:push']
   task :default => [:spec, :cucumber, 'coveralls:push']
 end
 

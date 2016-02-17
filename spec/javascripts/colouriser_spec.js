@@ -1,51 +1,23 @@
 describe('colouriser', function() {
-  describe('valueBetween', function() {
-    it('returns a value between two bounds', function() {
-      expect(valueBetween(99, 0, 100)).toEqual(99)
-      expect(valueBetween(87, 0, 100)).toEqual(87)
-    })
 
-    it('caps at the max value', function() {
-      expect(valueBetween(105, 0, 100)).toEqual(100)
-    })
-  })
-
-  describe('hex', function() {
-    it('returns a hex representation', function() {
-      expect(hex(99)).toEqual('63')
-      expect(hex(7)).toEqual('7')
-      expect(hex(15)).toEqual('f')
-      expect(hex(123.56)).toEqual('7b')
-    })
-  })
-
-  describe('percentHex', function() {
-    it('turns a percentage value into a hex value', function() {
-      expect(percentHex(12)).toEqual('e1')
-    })
-  })
-
-  describe('byte', function() {
-    it('returns a left-padded hexbyte', function() {
-      expect(byte('fe')).toEqual('fe')
-      expect(byte('7')).toEqual('07')
-    })
-  })
-
-  describe('colour', function() {
-    it('generates a colour with the default base of red', function() {
-      expect(colour('12')).toEqual('#ffe1e1')
-    })
-
-    it('generates a colour with a different base', function() {
-      expect(colour('57', 'blue')).toEqual('#6e6eff')
-    })
-
+  describe('getColour', function() {
     it('generates actual useful colours', function() {
-      expect(colour(99.407407)).toEqual('#ff0202')
-      expect(colour(90.521739)).toEqual('#ff1717')
-      expect(colour(87.213333)).toEqual('#ff2121')
-      expect(colour(86.8)).toEqual('#ff2121')
+      expect(getColour(100)).toEqual('hsla(0,100%,50%,0.8)')
+      expect(getColour(75)).toEqual('hsla(30,100%,50%,0.8)')
+      expect(getColour(50)).toEqual('hsla(60,100%,50%,0.8)')
+      expect(getColour(25)).toEqual('hsla(90,100%,50%,0.8)')
+      expect(getColour(0)).toEqual('hsla(120,100%,50%,0.8)')
     })
   })
+
+  describe('hue', function() {
+    it('gets a hue', function() {
+      expect(hue(1)).toEqual(0)
+      expect(hue(0.75)).toEqual(30)
+      expect(hue(0.50)).toEqual(60)
+      expect(hue(0.25)).toEqual(90)
+      expect(hue(0)).toEqual(120)
+    })
+  })
+
 })
