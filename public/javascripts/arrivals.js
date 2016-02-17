@@ -12,7 +12,7 @@ function populateTrain(data, train) {
 
 function setHeight(el, num) {
   $(el).height(percentage(num))
-  $(el).css('background-color', colour(num))
+  $(el).css('background-color', getColour(num))
 }
 
 function percentage(num) {
