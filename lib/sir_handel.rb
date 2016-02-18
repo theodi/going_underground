@@ -240,13 +240,19 @@ module SirHandel
       redirect to "/heatmap/#{DateTime.parse(params[:to]).to_s}"
     end
 
-    get '/heatmap/?:date?' do
-      if !params[:date]
+    get '/heatmap/?:from?/?:to?' do
+      if !params[:from]
         hour = Time.now.hour
         minute = Time.now.min
         @date = "2015-09-23T#{hour}:#{minute}:00"
       else
-        @date = params[:date]
+        @date = params[:from]
+      end
+
+      if params[:to]
+        @period = true
+        @to = params[:to]
+        @from = params[:from]
       end
 
       respond_to do |wants|
@@ -254,26 +260,6 @@ module SirHandel
 
         wants.json do
           heatmap(@date).to_json
-        end
-
-        wants.html do
-          @title = 'Heatmap'
-          erb :heatmap, layout: :default
-        end
-      end
-    end
-
-    get '/heatmap/:from/:to' do
-      from = DateTime.parse(params[:from])
-      to = DateTime.parse(params[:to])
-
-      dates = date_step(from, to)
-
-      respond_to do |wants|
-        headers 'Vary' => 'Accept'
-
-        wants.json do
-          dates.map { |d| heatmap(d.to_s) }.to_json
         end
 
         wants.html do
