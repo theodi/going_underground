@@ -242,7 +242,7 @@ form {
   margin-bottom: 7px;
 }
 
-#indicator {
+.indicator {
   display: inline-block;
   position: absolute;
   width: 100px;
@@ -250,11 +250,11 @@ form {
   text-align: right;
 }
 
-.normal #indicator {
+.normal .indicator {
   left: -115px;
 }
 
-#indicator .block {
+.indicator .block {
   height: 7px;
   padding: 0;
   margin: 0 2px;

@@ -6,8 +6,8 @@ function loadHeatmap(url) {
     $('#loading').addClass('hidden');
 
     json.forEach(function(data) {
-      $('#'+ data.direction +' .'+ data.station + ' a').append('<div id="indicator"></div>')
-      $('#'+ data.direction +' .'+ data.station +' #indicator').append('<span class="block" style="background-color:'+ getColour(data.load) +'; width: '+ data.load +'%"></span>');
+      $('#'+ data.direction +' .'+ data.station + ' a').append('<div class="indicator"></div>')
+      $('#'+ data.direction +' .'+ data.station +' .indicator').append('<span class="block" style="background-color:'+ getColour(data.load) +'; width: '+ data.load +'%"></span>');
     })
     deferred.resolve();
   });
