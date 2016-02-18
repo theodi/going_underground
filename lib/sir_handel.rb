@@ -263,6 +263,26 @@ module SirHandel
       end
     end
 
+    get '/heatmap/:from/:to' do
+      from = DateTime.parse(params[:from])
+      to = DateTime.parse(params[:to])
+
+      dates = date_step(from, to)
+
+      respond_to do |wants|
+        headers 'Vary' => 'Accept'
+
+        wants.json do
+          dates.map { |d| heatmap(d.to_s) }.to_json
+        end
+
+        wants.html do
+          @title = 'Heatmap'
+          erb :heatmap, layout: :default
+        end
+      end
+    end
+
     get '/:type/:signal' do
       params['from'] = default_dates[:from]
       params['to'] = default_dates[:to]
