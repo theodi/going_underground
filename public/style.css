@@ -266,6 +266,17 @@ form {
   margin: 20px 0;
 }
 
+.slider {
+  width: 80% !important;
+  margin: 0 auto 40px auto !important;
+  display: block;
+}
+
+.slider-tick-label {
+  margin-top: 24px;
+  font-size: 12px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
