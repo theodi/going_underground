@@ -240,24 +240,26 @@ module SirHandel
       redirect to "/heatmap/#{DateTime.parse(params[:to]).to_s}"
     end
 
-    get '/heatmap/?:date?' do
-      if !params[:date]
+    get '/heatmap/?:from?/?:to?' do
+      if !params[:from]
         hour = Time.now.hour
         minute = Time.now.min
         @date = "2015-09-23T#{hour}:#{minute}:00"
       else
-        @date = params[:date]
+        @date = params[:from]
+      end
+
+      if params[:to]
+        @period = true
+        @to = params[:to]
+        @from = params[:from]
       end
 
       respond_to do |wants|
         headers 'Vary' => 'Accept'
 
         wants.json do
-          # Get all trains on the line - faking this by getting all locations 40 minutes either side
-          trains = fake_network(@date)
-
-          crowding = Blocktrain::TrainCrowding.new(trains).results
-          crowding_presenter(crowding).to_json
+          heatmap(@date).to_json
         end
 
         wants.html do

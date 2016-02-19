@@ -112,6 +112,8 @@ module SirHandel
       from = Time.parse(time) - 2400
       to = Time.parse(time) + 2400
       trains = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: ['2E5485AW'], sort: {'timeStamp' => 'desc'}).results
+    
+      @timestamp = nil
 
       # Get data two minutes apart to fake what we'd roughly see in real life
       trains.map! { |r|
@@ -156,6 +158,24 @@ module SirHandel
           load: values.reduce(:+).to_f / values.size
         }
       end
+    end
+
+    def heatmap(date)
+      # Get all trains on the line - faking this by getting all locations 40 minutes either side
+      trains = fake_network(date)
+      crowding = Blocktrain::TrainCrowding.new(trains).results
+      crowding_presenter(crowding)
+    end
+
+    def date_step(from, to, step_in_minutes = 5)
+      from = to_seconds(from)
+      to = to_seconds(to)
+      step = step_in_minutes * 60
+      from.step(to,step).map { |s| DateTime.strptime(s.to_s,'%s') }
+    end
+
+    def to_seconds(date)
+      date.to_time.to_i
     end
 
     def redis

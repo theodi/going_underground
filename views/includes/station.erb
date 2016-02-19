@@ -2,5 +2,8 @@
 <li class="<%= category %> <%= station.first %>">
   <a href="/stations/arriving/<%= direction %>/<%= web_signal station.first %>">
     <%= I18n.t "stations.#{station.first}" %>
+    <div class="indicator">
+      <span class="block" style="width: 0; background-color: #fff;"></span>
+    </div>
   </a>
 </li>

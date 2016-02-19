@@ -239,5 +239,6 @@ module SirHandel
       follow_redirect!
       expect(last_request.url).to eq 'http://example.org/heatmap/2015-09-03T10:00:00+00:00'
     end
+
   end
 end
