@@ -9,19 +9,12 @@
   <script>
   var min = <%= DateTime.parse(@from).strftime '%s' %>
   var max = <%= DateTime.parse(@to).strftime '%s' %>
-
-  ticks = []
-  ticks_labels = []
-  for(var i = min; i <= max; i += 300) {
-    ticks.push(i)
-    ticks_labels.push(dateFormat(i))
-  }
+  var ticks = getTicks(min, max)
 
   $('#slider').slider({
     min: min,
     max: max,
-    ticks: ticks,
-    ticks_labels: ticks_labels,
+    ticks: ticks.ticks,
     ticks_snap_bounds: 300,
     value: min,
     tooltip: 'hide'

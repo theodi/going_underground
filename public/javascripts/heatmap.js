@@ -41,3 +41,16 @@ function getDataForDateTime(datetime) {
 function dateFormat(date) {
   return moment.unix(date).utcOffset(0).format("YYYY-MM-DD HH:mm:SS")
 }
+
+function getTicks(min, max) {
+  ticks = []
+  tick_labels = []
+  for(var i = min; i <= max; i += 300) {
+    ticks.push(i)
+    tick_labels.push(dateFormat(i))
+  }
+  return {
+    "ticks": ticks,
+    "tick_labels": tick_labels
+  }
+}
