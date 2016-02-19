@@ -35,8 +35,11 @@ function getDataForDateTime(datetime) {
   loadHeatmap(url);
 }
 
-function dateFormat(date) {
-  return moment.unix(date).utcOffset(0).format("YYYY-MM-DD HH:mm:SS")
+function dateFormat(date, format) {
+  if(format === undefined) {
+    format = "YYYY-MM-DD HH:mm:SS"
+  }
+  return moment.unix(date).utcOffset(0).format(format)
 }
 
 function getTicks(min, max) {
@@ -44,7 +47,7 @@ function getTicks(min, max) {
   tick_labels = []
   for(var i = min; i <= max; i += 300) {
     ticks.push(i)
-    tick_labels.push(dateFormat(i))
+    tick_labels.push(dateFormat(i, 'HH:mm'))
   }
   return {
     "ticks": ticks,
