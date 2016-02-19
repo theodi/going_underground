@@ -37,33 +37,3 @@ function getDataForDateTime(datetime) {
   $('.indicator').remove();
   loadHeatmap(url);
 }
-
-function initButtons(datetime) {
-  $('#previous').attr('disabled', true);
-  $('#next').attr('data-date', nextDate(datetime));
-}
-
-function wouldBeInTheFuture(date, edge) {
-  return Date.parse(date) >= Date.parse(edge)
-}
-
-function wouldBeInThePast(date, edge) {
-  return Date.parse(date) <= Date.parse(edge)
-}
-
-function directionButton(date, min, max) {
-  if (wouldBeInThePast(date, min)) {
-    $('#previous').attr('disabled', true);
-  } else {
-    $('#previous').attr('disabled', false);
-    $('#previous').attr('data-date', previousDate(date));
-  }
-
-  if (wouldBeInTheFuture(date, max)) {
-    $('#next').attr('disabled', true);
-  } else {
-    $('#next').attr('disabled', false);
-    $('#next').attr('data-date', nextDate(date));
-  }
-  getDataForDateTime(date)
-}

@@ -71,58 +71,6 @@ describe('heatmap', function() {
       expect($('#from-date').val()).toEqual('2016-01-01 08:00:00');
     });
 
-
-  })
-
-  describe('initButtons', function() {
-    it('initialises the buttons correctly', function() {
-      setFixtures("<a href='#' class='btn btn-primary' id='previous'>Previous</a><a href='#' class='btn btn-primary' id='next'>Next</a>")
-
-      initButtons('2016-01-01T09:00:00.000Z')
-
-      expect($('#previous')).toHaveAttr('disabled', 'disabled')
-      expect($('#next')).toHaveAttr('data-date', '2016-01-01T09:05:00.000Z')
-    })
-  })
-
-  describe('directionButton', function() {
-    beforeEach(function() {
-      spyOn(jasmine.getGlobal(), 'getDataForDateTime')
-      setFixtures("<a href='#' class='btn btn-primary' id='previous'>Previous</a><a href='#' class='btn btn-primary' id='next'>Next</a>")
-    })
-
-    it('sets the correct dates', function() {
-      directionButton('2016-01-01T09:00:00.000Z', '2016-01-01T08:00:00.000Z', '2016-01-01T10:00:00.000Z')
-      expect($('#previous')).toHaveAttr('data-date', '2016-01-01T08:55:00.000Z')
-      expect($('#next')).toHaveAttr('data-date', '2016-01-01T09:05:00.000Z')
-    })
-
-    it('calls getDataForDateTime with the correct date', function() {
-      directionButton('2016-01-01T09:00:00.000Z', '2016-01-01T08:00:00.000Z', '2016-01-01T10:00:00.000Z')
-      expect(getDataForDateTime).toHaveBeenCalledWith('2016-01-01T09:00:00.000Z')
-    })
-
-    it('disables a button if beyond the edge', function() {
-      directionButton('2016-01-01T09:00:00.000Z', '2016-01-01T09:00:00.000Z', '2016-01-01T10:00:00.000Z')
-      expect($('#previous')).toHaveAttr('disabled', 'disabled')
-      expect($('#next')).toHaveAttr('data-date', '2016-01-01T09:05:00.000Z')
-    })
-  })
-
-  describe('wouldBeInTheFuture', function() {
-    it('knows about past and future', function() {
-      expect(wouldBeInTheFuture('2016-01-01T09:00:00.000Z', '2016-01-01T10:00:00.000Z')).toEqual(false)
-      expect(wouldBeInTheFuture('2016-01-01T11:00:00.000Z', '2016-01-01T10:00:00.000Z')).toEqual(true)
-      expect(wouldBeInTheFuture('2016-01-01T10:00:00.000Z', '2016-01-01T10:00:00.000Z')).toEqual(true)
-    })
-  })
-
-  describe('wouldBeInThePast', function() {
-    it('knows about past and future', function() {
-      expect(wouldBeInThePast('2016-01-01T09:00:00.000Z', '2016-01-01T10:00:00.000Z')).toEqual(true)
-      expect(wouldBeInThePast('2016-01-01T11:00:00.000Z', '2016-01-01T10:00:00.000Z')).toEqual(false)
-      expect(wouldBeInThePast('2016-01-01T10:00:00.000Z', '2016-01-01T10:00:00.000Z')).toEqual(true)
-    })
   })
 
 })
