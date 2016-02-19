@@ -3,11 +3,10 @@ function loadHeatmap(url) {
 
   $.getJSON(url, function(json) {
     $('#loading').addClass('hidden');
-    $('.indicator').remove();
 
     json.forEach(function(data) {
-      $('#'+ data.direction +' .'+ data.station + ' a').append('<div class="indicator"></div>')
-      $('#'+ data.direction +' .'+ data.station +' .indicator').append('<span class="block" style="background-color:'+ getColour(data.load) +'; width: '+ data.load +'%"></span>');
+      $('#'+ data.direction +' .'+ data.station +' .indicator .block').animate({width: data.load + 10}).animate({width: data.load})
+      $('#'+ data.direction +' .'+ data.station +' .indicator .block').css('background-color', getColour(data.load))
     })
     deferred.resolve();
   });
