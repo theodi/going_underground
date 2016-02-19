@@ -49,11 +49,29 @@ describe('heatmap', function() {
   })
 
   describe('getDataForDateTime', function() {
-    it('gets data for a specific datetime', function() {
+    beforeEach(function() {
       spyOn(jasmine.getGlobal(), 'loadHeatmap')
+      loadFixtures('heatmap.html')
       getDataForDateTime('2016-01-01T08:00:00.000Z')
+    })
+
+    it('gets data for a specific datetime', function() {
       expect(loadHeatmap).toHaveBeenCalledWith('/heatmap/2016-01-01T08:00:00.000Z')
     })
+
+    it('hides the stations', function() {
+      expect($('#stations')).toHaveClass('hidden');
+    });
+
+    it('shows the loading indicator', function() {
+      expect($('#loading')).not.toHaveClass('hidden');
+    });
+
+    it('sets the correct datetime value', function() {
+      expect($('#from-date').val()).toEqual('2016-01-01 08:00:00');
+    });
+
+
   })
 
   describe('initButtons', function() {

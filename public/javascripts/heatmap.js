@@ -25,10 +25,15 @@ function previousDate(date) {
   return new Date(date - 300000).toISOString()
 }
 
+function cleanDate(date) {
+  return date.replace('T', ' ').split('.')[0]
+}
+
 function getDataForDateTime(datetime) {
   url = '/heatmap/' + datetime
   $('#stations').addClass('hidden');
   $('#loading').removeClass('hidden');
+  $('#from-date').val(cleanDate(datetime))
   $('.indicator').remove();
   loadHeatmap(url);
 }
