@@ -19,6 +19,8 @@ The platform consists of three parts
 
 Allows signal data to be viewed and compared on a time series graph. There is also an API that exposes signal data for a given time period in JSON format.
 
+![Signal graph](/signal-screenshot.png)
+
 URLs are in the following format:
 
 * ``/signals(.json)`` - List of signals, grouped by theme
@@ -32,6 +34,8 @@ All DateTimes must be in an [ISO8601](https://tools.ietf.org/html/rfc3339) DateT
 
 Shows crowding data visualisations for train carriages due to arrive at a particular Victoria Line station at a given date and time, together with simulated data for subsequent trains.
 
+![Signal graph](/crowding-screenshot.png)
+
 URLs are in the following format:
 
 * ``/stations`` - Lists all the stations, northbound and southbound
@@ -43,6 +47,8 @@ All DateTimes must be in an [ISO8601](https://tools.ietf.org/html/rfc3339) DateT
 ## Heatmap
 
 Simulated data and visualisation that shows the occupancy of the Victoria line network at a given date and time, expressed.
+
+![Signal graph](/heatmap-screenshot.png)
 
 URLs are in the following format:
 
