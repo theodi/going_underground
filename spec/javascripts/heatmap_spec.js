@@ -70,7 +70,12 @@ describe('heatmap', function() {
     it('sets the correct datetime value', function() {
       expect($('#from-date').val()).toEqual('2016-01-01 08:00:00');
     });
+  })
 
+  describe('dateFormat', function() {
+    it('formats a date correctly', function() {
+      expect(dateFormat(1451635200)).toEqual('2016-01-01 08:00:00')
+    })
   })
 
 })

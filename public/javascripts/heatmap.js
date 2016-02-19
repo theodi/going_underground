@@ -37,3 +37,7 @@ function getDataForDateTime(datetime) {
   $('.indicator').remove();
   loadHeatmap(url);
 }
+
+function dateFormat(date) {
+  return moment.unix(date).utcOffset(0).format("YYYY-MM-DD HH:mm:SS")
+}

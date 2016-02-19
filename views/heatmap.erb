@@ -27,10 +27,6 @@
     tooltip: 'hide'
   })
 
-  function dateFormat(date) {
-    return moment.unix(date).utcOffset(0).format("YYYY-MM-DD HH:mm:SS")
-  }
-
   $('#slider').slider().on('slideStop', function(event) {
     getDataForDateTime(dateFormat(event.value))
   })
