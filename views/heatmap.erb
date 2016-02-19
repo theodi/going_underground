@@ -15,6 +15,7 @@
     min: min,
     max: max,
     ticks: ticks.ticks,
+    ticks_labels: ticks.tick_labels,
     ticks_snap_bounds: 300,
     value: min,
     tooltip: 'hide'
@@ -29,11 +30,13 @@
 
 <% stations = YAML.load_file File.join('config', 'stations.yml') %>
 
-<p id="loading"><i class="fa fa-spinner fa-spin"></i></p>
-
 <div id="heatmap" class="col-md-10 col-md-offset-2">
 
-  <div id="stations" class="hidden">
+  <div id="stations">
+    <div id="loading">
+      <p><i class="fa fa-spinner fa-spin"></i></p>
+    </div>
+
     <div class='col-md-6'>
       <h2>Northbound</h2>
       <%= erb :"includes/_stations", locals: { stations: Hash[stations.to_a.reverse], direction: :northbound } %>

@@ -261,9 +261,20 @@ form {
   display: inline-block;
 }
 
+#stations {
+  position: relative;
+}
+
 #loading {
   text-align: center;
-  margin: 20px 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  margin-left: -120px;
+}
+
+#loading p {
+  text-align: center;
 }
 
 .slider {

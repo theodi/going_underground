@@ -2,8 +2,8 @@ function loadHeatmap(url) {
   var deferred = $.Deferred();
 
   $.getJSON(url, function(json) {
-    $('#stations').removeClass('hidden');
     $('#loading').addClass('hidden');
+    $('.indicator').remove();
 
     json.forEach(function(data) {
       $('#'+ data.direction +' .'+ data.station + ' a').append('<div class="indicator"></div>')
@@ -31,10 +31,8 @@ function cleanDate(date) {
 
 function getDataForDateTime(datetime) {
   url = '/heatmap/' + datetime
-  $('#stations').addClass('hidden');
   $('#loading').removeClass('hidden');
   $('#from-date').val(cleanDate(datetime))
-  $('.indicator').remove();
   loadHeatmap(url);
 }
 
