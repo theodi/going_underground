@@ -61,7 +61,6 @@ describe('heatmap', function() {
     });
 
     it('sets the correct datetime value', function() {
-      debugger
       expect($('#from-date').val()).toEqual('2016-01-01 08:00:00');
     });
   })

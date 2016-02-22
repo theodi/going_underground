@@ -3,15 +3,42 @@ function loadHeatmap(url) {
 
   $.getJSON(url, function(json) {
     $('#loading').addClass('hidden');
-
-    json.forEach(function(data) {
-      $('#'+ data.direction +' .'+ data.station +' .indicator .block').animate({width: data.load + 10}).animate({width: data.load})
-      $('#'+ data.direction +' .'+ data.station +' .indicator .block').css('background-color', getColour(data.load))
-    })
+    populateMap(json)
     deferred.resolve();
   });
 
   return deferred.promise();
+}
+
+function populateMap(json) {
+  ['northbound', 'southbound'].forEach(function(direction) {
+    $('#' + direction +' li').each(function() {
+      console.log(this)
+      populateStation(this, json, direction)
+    })
+  })
+}
+
+function populateStation(el, json, direction) {
+  station = $(el).attr('class').split(' ').pop()
+  data = getDataforStation(json, station, direction)
+  el = $(el).find(' .indicator .block')
+  if (data == null) {
+    el.animate({width: 0})
+  } else {
+    el.animate({width: data.load})
+    el.css('background-color', getColour(data.load))
+  }
+}
+
+function getDataforStation(json, station, direction) {
+  var result = null
+  json.forEach(function(data) {
+    if (data.station == station && data.direction == direction) {
+      result = data
+    }
+  })
+  return result;
 }
 
 function nextDate(date) {
