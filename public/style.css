@@ -65,7 +65,7 @@ form {
 }
 
 .carriage-wrapper {
-  width: 10%;
+  width: 11%;
   float: left;
   margin: 0 0.5% 0 0;
 }
@@ -116,7 +116,7 @@ form {
 
 .front, .rear {
   border: 2px solid #000;
-  width: 5%;
+  width: 4%;
   height: 50px;
   float: left;
   position: relative;
