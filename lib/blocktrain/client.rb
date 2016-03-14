@@ -1,12 +1,12 @@
 module Blocktrain
   class Client
 
-    def self.results query, method = 'search'
-      r = Curl::Easy.http_post(endpoint(method), query.to_json)
+    def self.results query, method = 'search', index = 'train_data'
+      r = Curl::Easy.http_post(endpoint(method, index), query.to_json)
       JSON.parse r.body_str
     end
 
-    def self.endpoint(method)
+    def self.endpoint(method, index)
       "#{url}/#{index}/_#{method}"
     end
 
@@ -14,8 +14,5 @@ module Blocktrain
       ENV['ES_URL']
     end
 
-    def self.index
-      ENV['ES_INDEX'] || 'train_data'
-    end
   end
 end

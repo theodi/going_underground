@@ -106,7 +106,7 @@ module Blocktrain
     private
 
       def result
-        Client.results(body)
+        Client.results(body, 'search', index_name)
       end
 
   end
