@@ -289,6 +289,14 @@ form {
   font-size: 12px;
 }
 
+#readme img {
+  width: 100%;
+}
+
+.docs {
+  margin-top: 30px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

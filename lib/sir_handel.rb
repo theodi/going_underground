@@ -8,6 +8,7 @@ require 'redis'
 require 'tilt/erubis'
 require 'connection_pool'
 require 'dalli'
+require 'kramdown'
 
 require_relative 'blocktrain'
 require_relative 'sir_handel/helpers'

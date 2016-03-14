@@ -15,6 +15,7 @@ gem 'foreman'
 gem 'curb', '~> 0.8'
 gem 'connection_pool'
 gem 'dalli'
+gem 'kramdown'
 gem 'rack-timeout'
 
 group :test do
