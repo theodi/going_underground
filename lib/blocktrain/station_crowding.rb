@@ -11,7 +11,7 @@ module Blocktrain
 
     def initialize(to, station, direction)
       @to, @station, @direction = to, station, direction
-      from = @to - 86400
+      from = Time.new(@to.year, @to.month, @to.day, 0, 0, 0, '+00:00')
       unless eol?
         @results = ATPQuery.new(from: from.iso8601,
           to: @to.iso8601, station: @station, direction: @direction).results
