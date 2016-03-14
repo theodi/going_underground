@@ -98,6 +98,7 @@ GEM
     json (1.8.3)
     jsonpath (0.5.8)
       multi_json
+    kramdown (1.10.0)
     listen (3.0.4)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -215,6 +216,7 @@ DEPENDENCIES
   guard-rspec
   i18n
   jasmine
+  kramdown
   nokogiri
   pry
   puma

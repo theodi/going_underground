@@ -1,5 +1,3 @@
-<h2>Things that are here:</h2>
-
 <ul id="menu">
   <li>
     <a href='/signals'><i class="fa fa-line-chart"></i><br />Signal<br />graphs</a>
@@ -11,3 +9,34 @@
     <a href='/heatmap'><i class="fa fa-bar-chart"></i><br />Heatmap<br /><br /></a>
   </li>
 </ul>
+
+<div class='row'>
+  <div class='col-md-3'></div>
+
+  <% lines = File.read('README.md').split("\n") %>
+  <% interesting_index = lines.index { |s| s =~ /^#/ } %>
+  <% good_parts = lines[interesting_index..-1] %>
+  <% good_parts[0] = good_parts[0] + " <button data-toggle='collapse' data-target='#readme' class='btn btn-info read-docs pull-right'>Show documentation <i class='fa fa-arrow-circle-down'></i></button>" %>
+
+  <div class='col-md-6 well docs'>
+    <div id='heading'>
+      <%= Kramdown::Document.new(good_parts[0..2].join("\n")).to_html %>
+    </div>
+    <div id='readme' class='collapse'>
+      <%= Kramdown::Document.new(good_parts[3..-1].join("\n")).to_html %>
+    </div>
+  </div>
+  <div class='col-md-3'></div>
+</div>
+
+<script>
+  $('.read-docs').click(function(){
+    var $this = $(this);
+    $this.toggleClass('read-docs');
+    if($this.hasClass('read-docs')){
+      $this.html('Show documentation <i class="fa fa-arrow-circle-down"></i>');
+    } else {
+      $this.html('Hide documentation <i class="fa fa-arrow-circle-up"></i>');
+    }
+  });
+</script>

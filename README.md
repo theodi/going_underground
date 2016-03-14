@@ -6,9 +6,6 @@
 
 # Sir Handel
 
-[![Train](https://farm1.staticflickr.com/41/76607175_d76b553995_z.jpg)](https://www.flickr.com/photos/tomloudon/76607175/)
-(Photo by [Tomosaurus](https://www.flickr.com/photos/tomloudon/))
-
 A visualisation platform for London Underground train signal data.
 
 # What is it?
@@ -19,7 +16,8 @@ The platform consists of three parts
 
 Allows signal data to be viewed and compared on a time series graph. There is also an API that exposes signal data for a given time period in JSON format.
 
-![Signal graph](/signal-screenshot.png)
+![Signal graph](https://raw.githubusercontent.com/TheODI-UD2D/sir_handel/master/signal-screenshot.png)
+
 
 URLs are in the following format:
 
@@ -34,7 +32,7 @@ All DateTimes must be in an [ISO8601](https://tools.ietf.org/html/rfc3339) DateT
 
 Shows crowding data visualisations for train carriages due to arrive at a particular Victoria Line station at a given date and time, together with simulated data for subsequent trains.
 
-![Signal graph](/crowding-screenshot.png)
+![Signal graph](https://raw.githubusercontent.com/TheODI-UD2D/sir_handel/master/crowding-screenshot.png)
 
 URLs are in the following format:
 
@@ -48,7 +46,7 @@ All DateTimes must be in an [ISO8601](https://tools.ietf.org/html/rfc3339) DateT
 
 Simulated data and visualisation that shows the occupancy of the Victoria line network at a given date and time, expressed.
 
-![Signal graph](/heatmap-screenshot.png)
+![Signal graph](https://raw.githubusercontent.com/TheODI-UD2D/sir_handel/master/heatmap-screenshot.png)
 
 URLs are in the following format:
 
@@ -67,46 +65,33 @@ All DateTimes must be in an [ISO8601](https://tools.ietf.org/html/rfc3339) DateT
 
 ## Clone the repo:
 
-```
-git clone https://github.com/TheODI-UD2D/sir_handel.git
-```
+    git clone https://github.com/TheODI-UD2D/sir_handel.git
 
 ## Install Ruby Dependencies:
 
-```
-bundle install
-```
+    bundle install
 
 ## Set environment variables
 
 Create a new file called `.env` and enter the variables in the following format:
 
-```
-ES_URL: {the url to your elasticsearch instance - probable http://localhost:9292 if you're working locally}
-ES_INDEX: {the name of the index that contains your data}
-```
+    ES_URL: {the url to your elasticsearch instance - probably http://localhost:9292 if you're working locally}
+    ES_INDEX: {the name of the index that contains your data}
 
 If you want to add http basic auth to your installation, you can also add the following variables:
 
-```
-TUBE_USERNAME: {some username}
-TUBE_PASSWORD: {some password}
-```
+    TUBE_USERNAME: {some username}
+    TUBE_PASSWORD: {some password}
 
-We also use [Memcachier](https://www.memcachier.com/) in production for caching. If you have a Memcachier account,
-you can also add your credentials
+We also use [Memcachier](https://www.memcachier.com/) in production for caching. If you have a Memcachier account, you can also add your credentials
 
-```
-MEMCACHIER_USERNAME: {your memchachier username}
-MEMCACHIER_PASSWORD: {your memchachier password}
-MEMCACHIER_SERVERS: {your memchachier servers (comma seperated)}
-```
+    MEMCACHIER_USERNAME: {your memchachier username}
+    MEMCACHIER_PASSWORD: {your memchachier password}
+    MEMCACHIER_SERVERS: {your memchachier servers (comma seperated)}
 
 ## Start the server
 
-```
-bundle exec rackup
-```
+    bundle exec rackup
 
 The server will then be running at ``http://localhost:9292``
 
@@ -114,64 +99,60 @@ The server will then be running at ``http://localhost:9292``
 
 The Elasticsearch database should be set up with the following mappings:
 
-```JSON
-{
-  "train_sample": {
-    "properties": {
-      "timeStamp": {
-        "format": "strict_date_optional_time||epoch_millis",
-        "type": "date"
-      },
-      "signalName": {
-        "index": "not_analyzed",
-        "type": "string"
-      },
-      "runLengthMs": {
-        "type": "long"
-      },
-      "memoryAddress": {
-        "index": "not_analyzed",
-        "type": "string"
-      },
-      "vcuNumber": {
-        "type": "integer"
-      },
-      "bits": {
-        "type": "integer"
-      },
-      "vcu": {
-        "index": "not_analyzed",
-        "type": "string"
-      },
-      "id": {
-        "type": "string"
-      },
-      "trainNumber": {
-        "type": "integer"
-      },
-      "value": {
-        "type": "integer"
+    {
+      "train_sample": {
+        "properties": {
+          "timeStamp": {
+            "format": "strict_date_optional_time||epoch_millis",
+            "type": "date"
+          },
+          "signalName": {
+            "index": "not_analyzed",
+            "type": "string"
+          },
+          "runLengthMs": {
+            "type": "long"
+          },
+          "memoryAddress": {
+            "index": "not_analyzed",
+            "type": "string"
+          },
+          "vcuNumber": {
+            "type": "integer"
+          },
+          "bits": {
+            "type": "integer"
+          },
+          "vcu": {
+            "index": "not_analyzed",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "trainNumber": {
+            "type": "integer"
+          },
+          "value": {
+            "type": "integer"
+          }
+        }
       }
     }
-  }
-}
-```
 
 An example document looks like this:
 
-```JSON
-{
-  "id": "03042E4414AW-178888437906",
-  "trainNumber": 0,
-  "signalName": "@.MWT.CT_CI_T2_1.UCOD4_I_MLC20.CI_COP_XU_Ln",
-  "memoryAddress": "2E4414AW",
-  "bits": 16,
-  "value": 6377,
-  "timeStamp": "2015-09-02T11:13:57.906Z",
-  "vcuNumber": 304,
-  "runLengthMs": 0
-}
-```
+    {
+      "id": "03042E4414AW-178888437906",
+      "trainNumber": 0,
+      "signalName": "@.MWT.CT_CI_T2_1.UCOD4_I_MLC20.CI_COP_XU_Ln",
+      "memoryAddress": "2E4414AW",
+      "bits": 16,
+      "value": 6377,
+      "timeStamp": "2015-09-02T11:13:57.906Z",
+      "vcuNumber": 304,
+      "runLengthMs": 0
+    }
 
 Each field is defined as follows:
 
