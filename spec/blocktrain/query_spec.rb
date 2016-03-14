@@ -30,6 +30,16 @@ module Blocktrain
       expect(subject.results.first['_source']['timeStamp']).to match(/2015-09-01T10:00:/)
     end
 
+    it 'gets the index name' do
+      subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-01 11:00:00Z', memory_addresses: '2E491EEW', limit: 10, sort: { timeStamp: 'asc' })
+      expect(subject.index_name).to eq('train_data_2015_9_1')
+    end
+
+    it 'returns an error if to and from span over a day' do
+      subject = described_class.new(from: '2015-09-01 10:00:00Z', to: '2015-09-02 11:00:00Z', memory_addresses: '2E491EEW', limit: 10, sort: { timeStamp: 'asc' })
+      expect { subject.index_name }.to raise_error(RuntimeError, "Queries can only span one day")
+    end
+
   end
 
 end
