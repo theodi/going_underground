@@ -112,7 +112,7 @@ module SirHandel
       from = Time.parse(time) - 2400
       to = Time.parse(time) + 2400
       trains = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: ['2E5485AW'], sort: {'timeStamp' => 'desc'}).results
-    
+
       @timestamp = nil
 
       # Get data two minutes apart to fake what we'd roughly see in real life
@@ -195,7 +195,7 @@ module SirHandel
 
       if @interval.nil?
         search.merge!({sort: { timeStamp: 'asc' }})
-        r = Blocktrain::PaginatedQuery.new(search).results
+        r = Blocktrain::Query.new(search).results
         return results_hash(signal, []) if r.nil?
 
         results = r.map do |r|
