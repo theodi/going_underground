@@ -45,12 +45,16 @@ module SirHandel
     end
 
     def cromulent_dates
-      dates = settings.cache.get('cromulent-dates')
+      dates = cached_dates
       if dates.nil?
         dates = redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
         settings.cache.set('cromulent-dates', dates)
       end
       dates
+    end
+
+    def cached_dates
+      settings.cache.get('cromulent-dates')
     end
 
     def default_dates

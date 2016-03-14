@@ -7,9 +7,7 @@ Given /^I have the following signals$/ do |string|
 end
 
 Given /^I have the following Cromulent Dates$/ do |json|
-  allow_any_instance_of(Redis).to receive(:get) {
-    json
-  }
+  allow_any_instance_of(SirHandel::App).to receive(:cached_dates) { json }
 end
 
 Given(/^I have the following grouped signals$/) do |string|
@@ -19,9 +17,8 @@ Given(/^I have the following grouped signals$/) do |string|
 end
 
 Given /^I have no Cromulent Dates$/ do
-  allow_any_instance_of(Redis).to receive(:get) {
-    nil
-  }
+  allow_any_instance_of(SirHandel::App).to receive(:cached_dates) { nil }
+  allow_any_instance_of(Redis).to receive(:get) { nil }
 end
 
 Given /^I request CSV$/ do
