@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://elastic.search//train_data/_search
+    uri: http://elastic.search//train_data_2015_12_10/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"size":0,"aggregations":{"langs":{"terms":{"field":"memoryAddress","size":0}}}}'
+      string: '{"query":{"filtered":{"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449741600000,"lte":1449745200000}}}]}}}},"size":0,"aggregations":{"langs":{"terms":{"field":"memoryAddress","size":0}}}}'
     headers: {}
   response:
     status:
@@ -16,8 +16,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 30 Nov 2015 13:21:06 GMT
-      - Mon, 30 Nov 2015 13:21:06 GMT
+      - Mon, 14 Mar 2016 12:00:43 GMT
+      - Mon, 14 Mar 2016 12:00:43 GMT
       Server:
       - fp/25c4c
       - fp/f6bd83
@@ -27,20 +27,20 @@ http_interactions:
       - 1c3896668c131013e40bf29fbe4b3148
       - 1c3896668c131013e40bf29fbe4b3148
       X-Found-Handling-Instance:
-      - instance-0000000000
-      - instance-0000000000
+      - instance-0000000004
+      - instance-0000000004
       X-Found-Handling-Server:
-      - 10.92.139.117
-      - 10.92.139.117
+      - 10.122.137.190
+      - 10.122.137.190
       Content-Length:
-      - '2537'
       - '345'
+      - '4070'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":28,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":97846,"max_score":0.0,"hits":[]},"aggregations":{"langs":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2E4414CW","doc_count":15699},{"key":"2E4414AW","doc_count":14968},{"key":"2E4540CW","doc_count":10131},{"key":"2E491EEW","doc_count":9766},{"key":"2E49E16W","doc_count":8461},{"key":"2E450D8W","doc_count":4056},{"key":"2E450D6W","doc_count":3724},{"key":"2E450CAW","doc_count":3556},{"key":"2E464BAW","doc_count":2666},{"key":"2E464BCW","doc_count":2644},{"key":"2E464B6W","doc_count":1955},{"key":"2E464C4W","doc_count":1918},{"key":"2E464B8W","doc_count":1891},{"key":"2E464BEW","doc_count":1845},{"key":"2E4CD7CW","doc_count":1795},{"key":"2E464C2W","doc_count":1758},{"key":"2E464C0W","doc_count":1726},{"key":"2E54858W","doc_count":1516},{"key":"2E64930W","doc_count":1497},{"key":"2E64932W","doc_count":1347},{"key":"2E64936W","doc_count":1318},{"key":"2E64934W","doc_count":1297},{"key":"2E6493CW","doc_count":787},{"key":"2E5485AW","doc_count":376},{"key":"2E58B40W","doc_count":289},{"key":"2E49EB4W","doc_count":201},{"key":"2E49E12W","doc_count":76},{"key":"2E44126","doc_count":54},{"key":"2E63F52W","doc_count":48},{"key":"2E66C1CW","doc_count":48},{"key":"2E66CA6W","doc_count":48},{"key":"2E44127","doc_count":47},{"key":"2E45405","doc_count":43},{"key":"2E4CFACW","doc_count":29},{"key":"2E4CFC0W","doc_count":29},{"key":"2E4CFAEW","doc_count":26},{"key":"2E4CFC2W","doc_count":26},{"key":"2E4645C","doc_count":23},{"key":"2E4645D","doc_count":23},{"key":"2E4643B","doc_count":22},{"key":"2E60BA2","doc_count":16},{"key":"2E60BC2","doc_count":16},{"key":"2E4645A","doc_count":5},{"key":"2E55A2D","doc_count":5},{"key":"2E4647F","doc_count":4},{"key":"2E493EA","doc_count":4},{"key":"2E4ADEC","doc_count":4},{"key":"2E44CB0","doc_count":3},{"key":"2E45415","doc_count":3},{"key":"2E4541CW","doc_count":3},{"key":"2E46458","doc_count":3},{"key":"2E46459","doc_count":3},{"key":"2E4645B","doc_count":3},{"key":"2E464E7","doc_count":3},{"key":"2E46508","doc_count":3},{"key":"2E48698","doc_count":3},{"key":"2E49A5AW","doc_count":3},{"key":"2E49E2EW","doc_count":3},{"key":"2E49E30W","doc_count":3},{"key":"2E49ECCW","doc_count":3},{"key":"2E4CD5AW","doc_count":3},{"key":"2E4CD5CW","doc_count":3},{"key":"2E58A38W","doc_count":3},{"key":"2E58B42W","doc_count":3},{"key":"2E60D96W","doc_count":3},{"key":"2E60E5EW","doc_count":3},{"key":"2E63F54W","doc_count":3},{"key":"2E66C1EW","doc_count":3}]}}}'
+      string: '{"took":10,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":224682,"max_score":0.0,"hits":[]},"aggregations":{"langs":{"doc_count_error_upper_bound":0,"sum_other_doc_count":0,"buckets":[{"key":"2e49e22w","doc_count":15835},{"key":"2e49e24w","doc_count":15820},{"key":"2e49e1ew","doc_count":15800},{"key":"2e49e20w","doc_count":15755},{"key":"2e4414cw","doc_count":10154},{"key":"2e4414aw","doc_count":9568},{"key":"2e49e3ew","doc_count":8694},{"key":"2e49e3cw","doc_count":8639},{"key":"2e49e38w","doc_count":8611},{"key":"2e49e3aw","doc_count":8602},{"key":"2e629d0w","doc_count":6891},{"key":"2e4540cw","doc_count":6270},{"key":"2e491eew","doc_count":6027},{"key":"2e450d8w","doc_count":4473},{"key":"2e49e16w","doc_count":4466},{"key":"2e450d6w","doc_count":4259},{"key":"2e450caw","doc_count":4148},{"key":"2e647faw","doc_count":3018},{"key":"2e647f6w","doc_count":3017},{"key":"2e64812w","doc_count":3016},{"key":"2e6480aw","doc_count":3014},{"key":"2e6480ew","doc_count":3013},{"key":"2e647f8w","doc_count":3007},{"key":"2e64810w","doc_count":3002},{"key":"2e6480cw","doc_count":3001},{"key":"2e64800w","doc_count":3000},{"key":"2e64808w","doc_count":3000},{"key":"2e647fcw","doc_count":2996},{"key":"2e64804w","doc_count":2992},{"key":"2e64802w","doc_count":2991},{"key":"2e64806w","doc_count":2991},{"key":"2e647few","doc_count":2989},{"key":"2e64814w","doc_count":2989},{"key":"2e4cd7cw","doc_count":2263},{"key":"2e464baw","doc_count":1777},{"key":"2e464bcw","doc_count":1777},{"key":"2e464b6w","doc_count":1618},{"key":"2e464b8w","doc_count":1457},{"key":"2e464c0w","doc_count":1388},{"key":"2e464c4w","doc_count":1354},{"key":"2e64930w","doc_count":1353},{"key":"2e464c2w","doc_count":1343},{"key":"2e464bew","doc_count":1237},{"key":"2e54858w","doc_count":1211},{"key":"2e64936w","doc_count":1191},{"key":"2e64932w","doc_count":1086},{"key":"2e64934w","doc_count":1083},{"key":"2e6493cw","doc_count":613},{"key":"2e5485aw","doc_count":244},{"key":"2e49e12w","doc_count":140},{"key":"2e58b40w","doc_count":138},{"key":"2e49eb4w","doc_count":123},{"key":"2e629cew","doc_count":119},{"key":"2e63f54w","doc_count":115},{"key":"2e66c1ew","doc_count":115},{"key":"2e63f52w","doc_count":84},{"key":"2e66c1cw","doc_count":84},{"key":"2e66ca6w","doc_count":84},{"key":"2e44126","doc_count":72},{"key":"2e44127","doc_count":64},{"key":"2e60ba2","doc_count":48},{"key":"2e60bc2","doc_count":48},{"key":"2e45405","doc_count":24},{"key":"2e4cfacw","doc_count":24},{"key":"2e4cfc0w","doc_count":24},{"key":"2e54852w","doc_count":18},{"key":"2e4cfaew","doc_count":15},{"key":"2e4cfc2w","doc_count":15},{"key":"2e493ea","doc_count":14},{"key":"2e4643b","doc_count":13},{"key":"2e55a2d","doc_count":10},{"key":"2e4645c","doc_count":8},{"key":"2e4645d","doc_count":8},{"key":"2e54840w","doc_count":8},{"key":"2e54842w","doc_count":8},{"key":"2e54844w","doc_count":8},{"key":"2e54846w","doc_count":8},{"key":"2e5484aw","doc_count":8},{"key":"2e5484cw","doc_count":8},{"key":"2e5484ew","doc_count":8},{"key":"2e54850w","doc_count":8},{"key":"2e629c6w","doc_count":8},{"key":"2e629c8w","doc_count":8},{"key":"2e629caw","doc_count":8},{"key":"2e629ccw","doc_count":8},{"key":"2e62d14","doc_count":8},{"key":"2e62d15","doc_count":8},{"key":"2e62d16","doc_count":8},{"key":"2e62d17","doc_count":8},{"key":"2e62d18","doc_count":8},{"key":"2e4adec","doc_count":7},{"key":"2e46459","doc_count":6},{"key":"2e4645a","doc_count":6},{"key":"2e4647f","doc_count":5},{"key":"2e44cb0","doc_count":4},{"key":"2e45415","doc_count":4},{"key":"2e4541cw","doc_count":4},{"key":"2e46458","doc_count":4},{"key":"2e4645b","doc_count":4},{"key":"2e464e7","doc_count":4},{"key":"2e46508","doc_count":4},{"key":"2e48698","doc_count":4},{"key":"2e49a5aw","doc_count":4},{"key":"2e49e2ew","doc_count":4},{"key":"2e49e30w","doc_count":4},{"key":"2e49eccw","doc_count":4},{"key":"2e4cd5aw","doc_count":4},{"key":"2e4cd5cw","doc_count":4},{"key":"2e58a38w","doc_count":4},{"key":"2e58b42w","doc_count":4},{"key":"2e60d96w","doc_count":4},{"key":"2e60e5ew","doc_count":4}]}}}'
     http_version: 
-  recorded_at: Mon, 30 Nov 2015 13:21:06 GMT
+  recorded_at: Mon, 14 Mar 2016 12:00:43 GMT
 recorded_with: VCR 3.0.0

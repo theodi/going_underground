@@ -11,6 +11,8 @@ module Blocktrain
 
     def run_query
       while @search[:offset] < @count
+        require "pry"; binding.pry
+
         get_page
       end
     end
