@@ -1,7 +1,7 @@
 module Blocktrain
   class ATPQuery < Query
 
-    ATP_WORST_CASE_FORWARD_LOCATION = %w[2E5485AW]
+    ATP_WORST_CASE_FORWARD_LOCATION = %w[2e5485aw]
 
     attr_reader :station, :direction
 

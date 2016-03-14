@@ -1,6 +1,6 @@
 module Blocktrain
   class TrainCrowding
-    CAR_LOADS = %w[2E64930W 2E64932W 2E64934W 2E64936W]
+    CAR_LOADS = %w[2e64930w 2e64932w 2e64934w 2e64936w]
     CAR_NAMES = %w[CAR_A CAR_B CAR_C CAR_D]
 
     def initialize(results)
@@ -21,6 +21,7 @@ module Blocktrain
 
     def crowd_results time, train = nil
       from, to = time - 60, time + 60
+
       crowd_query = Aggregations::MultiValueAggregation.new(
         from: from.iso8601, to: to.iso8601, memory_addresses: CAR_LOADS)
       crowd_query.results['results']['buckets'].map do |car_mem_addr, v|
