@@ -1,23 +1,26 @@
 module SirHandel
   class Tasks
     def self.cromulise
-      search = {
-        from: '2015-01-01T00:00:00+00:00',
-        to: '2016-01-01T00:00:00+00:00',
-        interval: '1h',
-        memory_addresses: '2E4414CW'
-      }
-
-      r = Blocktrain::Aggregations::AverageAggregation.new(search).results
+      date_list = dates
 
       cromulent_dates = {
-        start: Time.parse(r['results']['buckets'].first['key_as_string']).utc.to_datetime.iso8601,
-        end: Time.parse(r['results']['buckets'].last['key_as_string']).utc.to_datetime.iso8601
+        start: date_list.first.iso8601,
+        end: date_list.last.iso8601
       }.to_json
 
       redis.set 'cromulent-dates', cromulent_dates
 
       cromulent_dates
+    end
+
+    def self.indexes
+      request = Curl::Easy.http_get(ENV['ES_URL'] + "/_aliases")
+      result = JSON.parse(request.body_str)
+      result.select { |r| r.match /train_data_[0-9]{4}_[0-9]{1,2}_[0-9]{1,2}/ }
+    end
+
+    def self.dates
+      indexes.map { |i| DateTime.parse i.first.gsub("train_data_", "").gsub("_", "-") }.sort
     end
 
     def self.redis
