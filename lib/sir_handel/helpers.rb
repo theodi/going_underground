@@ -61,7 +61,7 @@ module SirHandel
       dates = JSON.parse(cromulent_dates)
 
       from = round_up(DateTime.parse(dates["start"]))
-      to = from + 1
+      to = DateTime.new(from.year, from.month, from.day, 23, 59, 00, "+00:00")
       {
         from: from.to_s,
         to: to.to_s

@@ -108,7 +108,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects with a new comparison' do
@@ -118,7 +118,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects with defaults' do
@@ -130,7 +130,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects to default datetimes' do
@@ -138,7 +138,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects to default datetimes with a group' do
@@ -146,7 +146,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'returns 404 for an unknown redirect type' do
