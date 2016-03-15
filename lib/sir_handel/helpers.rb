@@ -63,8 +63,8 @@ module SirHandel
       from = round_up(DateTime.parse(dates["start"]))
       to = DateTime.new(from.year, from.month, from.day, 23, 59, 00, "+00:00")
       {
-        from: from.to_s,
-        to: to.to_s
+        from: from.strftime('%Y-%m-%dT%H:%M:%S%:z'),
+        to: to.strftime('%Y-%m-%dT%H:%M:%S%:z')
       }
     end
 
