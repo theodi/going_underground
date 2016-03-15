@@ -264,7 +264,7 @@ module SirHandel
     def signal_url(signals, from, to, interval, format)
       path = [signals, from, to].join('/')
       qs = interval.nil? ? "" : "?interval=#{interval}"
-      "/#{path}.#{format}#{qs}"
+      "/signals/#{path}.#{format}#{qs}"
     end
 
   end

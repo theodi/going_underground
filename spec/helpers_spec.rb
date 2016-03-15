@@ -214,12 +214,12 @@ module SirHandel
 
       it 'generates a url with an interval' do
         url = helpers.signal_url('my-cool-signal', '2015-09-23T09:00:00', '2015-09-23T10:00:00', '5s', 'csv')
-        expect(url).to eq('/my-cool-signal/2015-09-23T09:00:00/2015-09-23T10:00:00.csv?interval=5s')
+        expect(url).to eq('/signals/my-cool-signal/2015-09-23T09:00:00/2015-09-23T10:00:00.csv?interval=5s')
       end
 
       it 'generates a url without an interval' do
         url = helpers.signal_url('my-cool-signal', '2015-09-23T09:00:00', '2015-09-23T10:00:00', nil, 'csv')
-        expect(url).to eq('/my-cool-signal/2015-09-23T09:00:00/2015-09-23T10:00:00.csv')
+        expect(url).to eq('/signals/my-cool-signal/2015-09-23T09:00:00/2015-09-23T10:00:00.csv')
       end
 
     end
