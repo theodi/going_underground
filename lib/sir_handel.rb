@@ -19,6 +19,12 @@ require_relative 'sir_handel/next_trains'
 
 Dotenv.load
 
+class DateTime
+  def to_s
+    strftime('%Y-%m-%dT%H:%M:%S.%L%:z')
+  end
+end
+
 module SirHandel
   class App < Sinatra::Base
 

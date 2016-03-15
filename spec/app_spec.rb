@@ -13,7 +13,7 @@ module SirHandel
     end
 
     it 'varys on the accept header for a particular signal' do
-      get '/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      get '/signals/passesnger-load-car-a/2015-08-29T00:00:00.000+00:00/2015-08-30T00:00:00.000+00:00?interval=10m'
       expect(last_response.headers['Vary']).to eq('Accept')
     end
 
@@ -87,7 +87,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00.000+00:00/2015-09-03T10:00:00.000+00:00?interval=5s'
     end
 
     it 'redirects to a RESTful URL with a group' do
@@ -98,7 +98,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/groups/my-awesome-group/2015-09-03T07:00:00+00:00/2015-09-03T10:00:00+00:00?interval=5s'
+      expect(last_request.url).to eq 'http://example.org/groups/my-awesome-group/2015-09-03T07:00:00.000+00:00/2015-09-03T10:00:00.000+00:00?interval=5s'
     end
 
     it 'redirects with a comparison' do
@@ -108,7 +108,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
     end
 
     it 'redirects with a new comparison' do
@@ -118,7 +118,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
     end
 
     it 'redirects with defaults' do
@@ -130,7 +130,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
     end
 
     it 'redirects to default datetimes' do
@@ -138,7 +138,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
     end
 
     it 'redirects to default datetimes with a group' do
@@ -146,7 +146,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
     end
 
     it 'returns 404 for an unknown redirect type' do
@@ -156,18 +156,18 @@ module SirHandel
     end
 
     it 'shows the title of a signal' do
-      get '/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      get '/signals/passesnger-load-car-a/2015-08-29T00:00:00.000+00:00/2015-08-30T00:00:00.000+00:00?interval=10m'
       expect(last_response.body).to match(/Passenger Load Car A \(%\)<\/h1>/)
     end
 
     it 'shows the title of two signals' do
-      get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?interval=10m'
+      get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00.000+00:00/2015-08-30T00:00:00.000+00:00?interval=10m'
       expect(last_response.body).to match(/Passenger Load Car A \(%\) compared with Passenger Load Car B \(%\)<\/h1>/)
     end
 
     it 'allows a layout to be specified' do
       expect_any_instance_of(SirHandel::App).to receive(:erb).with(:signal, { layout: :simple })
-      get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00?layout=simple'
+      get '/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00.000+00:00/2015-08-30T00:00:00.000+00:00?layout=simple'
     end
 
     it 'sets a default datetime at the same local time', :vcr do
@@ -244,7 +244,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/heatmap/2015-09-03T10:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/heatmap/2015-09-03T10:00:00.000+00:00'
     end
 
   end
