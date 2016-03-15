@@ -1,5 +1,3 @@
-var timeFormat = d3.time.format('%Y-%m-%dT%H:%M:%S+00:00');
-
 function noData(signal_name, additional) {
   additional = typeof additional !== 'undefined' ? additional : '';
 
@@ -26,7 +24,7 @@ function getSignal(data, name, colour, axis) {
   };
 
   data.forEach(function(r) {
-    signal.x.push(timeFormat.parse(r.timestamp))
+    signal.x.push(new Date(r.timestamp))
     signal.y.push(r.value)
   });
 
@@ -36,7 +34,7 @@ function getSignal(data, name, colour, axis) {
 function getTrend(trend, name, colour) {
   if (trend.from == undefined) return null;
   return {
-      x: [timeFormat.parse(trend.from.timestamp), timeFormat.parse(trend.to.timestamp)],
+      x: [new Date(trend.from.timestamp), new Date(trend.to.timestamp)],
       y: [trend.from.value, trend.to.value],
       mode: 'lines',
       name: name + ' Trend',
