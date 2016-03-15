@@ -1,7 +1,7 @@
 <div class='row'>
   <div class='col-md-12' style='text-align: right; margin-bottom: 12px;'>
-    <% csv_url = "/signals/#{@signals}/#{@from}/#{@to}.csv?interval=#{@interval}" %>
-    <% json_url = "/signals/#{@signals}/#{@from}/#{@to}.json?interval=#{@interval}" %>
+    <% csv_url = signal_url(@signals, @from, @to, @interval, 'csv') %>
+    <% json_url = signal_url(@signals, @from, @to, @interval, 'json') %>
     <p>
       <a class='btn btn-info' href='<%= csv_url %>'>CSV download</a>
       <a class='btn btn-success' href='<%= json_url %>'>JSON version</a>
