@@ -2,7 +2,7 @@ module SirHandel
   class Trend
     def initialize(points, from, to)
       @points = points.map do |p|
-        [p['timestamp'].to_time.to_i, p['value']]
+        [p['timestamp'].to_time.to_i, p['value'].to_f]
       end
       @from, @to = from, to
     end
