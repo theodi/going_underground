@@ -2,11 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: http://elastic.search//train_data/_search
+    uri: http://elastic.search//train_data_2015_12_11/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E5485AW
-        AND value:1193"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442419342000,"lte":1442505742000}}}]}}}},"size":100,"sort":{"timeStamp":"desc"},"from":0}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e5485aw
+        AND value:1193"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449792000000,"lte":1449849742000}}}]}}}},"size":100,"sort":{"timeStamp":"desc"},"from":0}'
     headers: {}
   response:
     status:
@@ -17,40 +17,40 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 21 Dec 2015 10:26:45 GMT
-      - Mon, 21 Dec 2015 10:26:45 GMT
+      - Mon, 14 Mar 2016 13:53:18 GMT
+      - Mon, 14 Mar 2016 13:53:19 GMT
       Server:
       - fp/25c4c
-      - fp/25c4c
+      - fp/f6bd83
       Www-Authenticate:
       - Basic realm=shield
       X-Found-Handling-Cluster:
       - 1c3896668c131013e40bf29fbe4b3148
       - 1c3896668c131013e40bf29fbe4b3148
       X-Found-Handling-Instance:
-      - instance-0000000001
-      - instance-0000000001
+      - instance-0000000004
+      - instance-0000000004
       X-Found-Handling-Server:
-      - 10.105.22.170
-      - 10.105.22.170
+      - 10.122.137.190
+      - 10.122.137.190
       Content-Length:
-      - '3413'
       - '345'
+      - '4760'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":30,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":9,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180173590890","_score":null,"_source":{"id":"03042E5485AW-180173590890","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-17T08:13:10.89Z","vcuNumber":304,"runLengthMs":14569},"sort":[1442477590890]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180169485028","_score":null,"_source":{"id":"03042E5485AW-180169485028","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-17T07:04:45.028Z","vcuNumber":304,"runLengthMs":37331},"sort":[1442473485028]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180165341459","_score":null,"_source":{"id":"03042E5485AW-180165341459","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-17T05:55:41.459Z","vcuNumber":304,"runLengthMs":48900},"sort":[1442469341459]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180140529037","_score":null,"_source":{"id":"03042E5485AW-180140529037","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-16T23:02:09.037Z","vcuNumber":304,"runLengthMs":36516},"sort":[1442444529037]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180135912006","_score":null,"_source":{"id":"03042E5485AW-180135912006","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-16T21:45:12.006Z","vcuNumber":304,"runLengthMs":27515},"sort":[1442439912006]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180131740168","_score":null,"_source":{"id":"03042E5485AW-180131740168","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-16T20:35:40.168Z","vcuNumber":304,"runLengthMs":20900},"sort":[1442435740168]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180127828621","_score":null,"_source":{"id":"03042E5485AW-180127828621","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-16T19:30:28.621Z","vcuNumber":304,"runLengthMs":27285},"sort":[1442431828621]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180123497153","_score":null,"_source":{"id":"03042E5485AW-180123497153","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-16T18:18:17.153Z","vcuNumber":304,"runLengthMs":9368},"sort":[1442427497153]},{"_index":"train_data","_type":"train_sample","_id":"03042E5485AW-180118759590","_score":null,"_source":{"id":"03042E5485AW-180118759590","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-09-16T16:59:19.59Z","vcuNumber":304,"runLengthMs":31916},"sort":[1442422759590]}]}}'
+      string: '{"took":163,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":13,"max_score":null,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187542457281","_score":null,"_source":{"id":"03102E5485AW-187542457281","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T15:07:37.281Z","vcuNumber":310},"sort":[1449846457281]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187538288331","_score":null,"_source":{"id":"03042E5485AW-187538288331","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T13:58:08.331Z","vcuNumber":304},"sort":[1449842288331]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187538288190","_score":null,"_source":{"id":"03102E5485AW-187538288190","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T13:58:08.19Z","vcuNumber":310},"sort":[1449842288190]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187534105700","_score":null,"_source":{"id":"03102E5485AW-187534105700","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T12:48:25.7Z","vcuNumber":310},"sort":[1449838105700]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187534105350","_score":null,"_source":{"id":"03042E5485AW-187534105350","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T12:48:25.35Z","vcuNumber":304},"sort":[1449838105350]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187529793884","_score":null,"_source":{"id":"03102E5485AW-187529793884","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T11:36:33.884Z","vcuNumber":310},"sort":[1449833793884]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187529793750","_score":null,"_source":{"id":"03042E5485AW-187529793750","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T11:36:33.75Z","vcuNumber":304},"sort":[1449833793750]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187525740096","_score":null,"_source":{"id":"03042E5485AW-187525740096","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T10:29:00.096Z","vcuNumber":304},"sort":[1449829740096]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187525679868","_score":null,"_source":{"id":"03102E5485AW-187525679868","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T10:27:59.868Z","vcuNumber":310},"sort":[1449829679868]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187521493262","_score":null,"_source":{"id":"03042E5485AW-187521493262","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T09:18:13.262Z","vcuNumber":304},"sort":[1449825493262]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187521492115","_score":null,"_source":{"id":"03102E5485AW-187521492115","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T09:18:12.115Z","vcuNumber":310},"sort":[1449825492115]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187517316631","_score":null,"_source":{"id":"03102E5485AW-187517316631","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T08:08:36.631Z","vcuNumber":310},"sort":[1449821316631]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187517316578","_score":null,"_source":{"id":"03042E5485AW-187517316578","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T08:08:36.578Z","vcuNumber":304},"sort":[1449821316578]}]}}'
     http_version: 
-  recorded_at: Mon, 21 Dec 2015 10:26:45 GMT
+  recorded_at: Mon, 14 Mar 2016 13:53:19 GMT
 - request:
     method: post
-    uri: http://elastic.search//train_data/_search
+    uri: http://elastic.search//train_data_2015_12_11/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E64930W
-        OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1442505682000,"lte":1442505802000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2E64930W":{"term":{"memoryAddress":"2E64930W"}},"2E64932W":{"term":{"memoryAddress":"2E64932W"}},"2E64934W":{"term":{"memoryAddress":"2E64934W"}},"2E64936W":{"term":{"memoryAddress":"2E64936W"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1442505682000,"max":1442505802000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449849682000,"lte":1449849802000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449849682000,"max":1449849802000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
     headers: {}
   response:
     status:
@@ -61,31 +61,31 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 21 Dec 2015 10:26:45 GMT
-      - Mon, 21 Dec 2015 10:26:45 GMT
+      - Mon, 14 Mar 2016 13:53:19 GMT
+      - Mon, 14 Mar 2016 13:53:19 GMT
       Server:
       - fp/25c4c
-      - fp/25c4c
+      - fp/f6bd83
       Www-Authenticate:
       - Basic realm=shield
       X-Found-Handling-Cluster:
       - 1c3896668c131013e40bf29fbe4b3148
       - 1c3896668c131013e40bf29fbe4b3148
       X-Found-Handling-Instance:
-      - instance-0000000001
-      - instance-0000000001
+      - instance-0000000004
+      - instance-0000000004
       X-Found-Handling-Server:
-      - 10.105.22.170
-      - 10.105.22.170
+      - 10.122.137.190
+      - 10.122.137.190
       Content-Length:
       - '345'
-      - '871'
+      - '830'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":248,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2E64930W":{"doc_count":87,"results":{"buckets":[{"key_as_string":"2015-09-17T16:00:00.000Z","key":1442505600000,"doc_count":87,"average_value":{"value":25.333333333333332}}]}},"2E64932W":{"doc_count":67,"results":{"buckets":[{"key_as_string":"2015-09-17T16:00:00.000Z","key":1442505600000,"doc_count":67,"average_value":{"value":33.83582089552239}}]}},"2E64934W":{"doc_count":31,"results":{"buckets":[{"key_as_string":"2015-09-17T16:00:00.000Z","key":1442505600000,"doc_count":31,"average_value":{"value":26.193548387096776}}]}},"2E64936W":{"doc_count":63,"results":{"buckets":[{"key_as_string":"2015-09-17T16:00:00.000Z","key":1442505600000,"doc_count":63,"average_value":{"value":10.428571428571429}}]}}}}}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":132,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":26,"results":{"buckets":[{"key_as_string":"2015-12-11T16:00:00.000Z","key":1449849600000,"doc_count":26,"average_value":{"value":8.038461538461538}}]}},"2e64932w":{"doc_count":40,"results":{"buckets":[{"key_as_string":"2015-12-11T16:00:00.000Z","key":1449849600000,"doc_count":40,"average_value":{"value":18.6}}]}},"2e64934w":{"doc_count":32,"results":{"buckets":[{"key_as_string":"2015-12-11T16:00:00.000Z","key":1449849600000,"doc_count":32,"average_value":{"value":7.625}}]}},"2e64936w":{"doc_count":34,"results":{"buckets":[{"key_as_string":"2015-12-11T16:00:00.000Z","key":1449849600000,"doc_count":34,"average_value":{"value":18.0}}]}}}}}}'
     http_version: 
-  recorded_at: Mon, 21 Dec 2015 10:26:45 GMT
+  recorded_at: Mon, 14 Mar 2016 13:53:19 GMT
 recorded_with: VCR 3.0.0

@@ -16,6 +16,17 @@ module Blocktrain
       @sort = options.fetch(:sort, {})
     end
 
+    def index_name
+      from = Date.parse(@original_from)
+      to = Date.parse(@original_to)
+      if from == to
+        y, m, d = from.strftime("%Y"), from.strftime("%-m"), from.strftime("%-e")
+        "train_data_#{y}_#{m}_#{d}"
+      else
+        raise RuntimeError.new("Queries can only span one day")
+      end
+    end
+
     def results
       result['hits']['hits']
     end
@@ -95,7 +106,7 @@ module Blocktrain
     private
 
       def result
-        Client.results(body)
+        Client.results(body, 'search', index_name)
       end
 
   end

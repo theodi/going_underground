@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://elastic.search//train_data/_search
+    uri: http://elastic.search//train_data_2015_12_10/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1441101600000,"lte":1441105200000}}}]}}}},"size":10,"sort":{"timeStamp":"asc"}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2E491EEW"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449741600000,"lte":1449745200000}}}]}}}},"size":10,"sort":{"timeStamp":"asc"},"from":0}'
     headers: {}
   response:
     status:
@@ -16,8 +16,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Tue, 08 Dec 2015 15:23:31 GMT
-      - Tue, 08 Dec 2015 15:23:31 GMT
+      - Mon, 14 Mar 2016 11:32:06 GMT
+      - Mon, 14 Mar 2016 11:32:06 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -27,20 +27,20 @@ http_interactions:
       - 1c3896668c131013e40bf29fbe4b3148
       - 1c3896668c131013e40bf29fbe4b3148
       X-Found-Handling-Instance:
-      - instance-0000000000
-      - instance-0000000000
+      - instance-0000000004
+      - instance-0000000004
       X-Found-Handling-Server:
-      - 10.92.139.117
-      - 10.92.139.117
+      - 10.122.137.190
+      - 10.122.137.190
       Content-Length:
       - '345'
-      - '3698'
+      - '3655'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":9766,"max_score":null,"hits":[{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797618725","_score":null,"_source":{"id":"03042E491EEW-178797618725","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":19,"timeStamp":"2015-09-01T10:00:18.725Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101618725]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797618825","_score":null,"_source":{"id":"03042E491EEW-178797618825","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":33,"timeStamp":"2015-09-01T10:00:18.825Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101618825]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619093","_score":null,"_source":{"id":"03042E491EEW-178797619093","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":50,"timeStamp":"2015-09-01T10:00:19.093Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101619093]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619293","_score":null,"_source":{"id":"03042E491EEW-178797619293","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":78,"timeStamp":"2015-09-01T10:00:19.293Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101619293]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619406","_score":null,"_source":{"id":"03042E491EEW-178797619406","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":115,"timeStamp":"2015-09-01T10:00:19.406Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101619406]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619506","_score":null,"_source":{"id":"03042E491EEW-178797619506","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":137,"timeStamp":"2015-09-01T10:00:19.506Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101619506]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619625","_score":null,"_source":{"id":"03042E491EEW-178797619625","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":166,"timeStamp":"2015-09-01T10:00:19.625Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101619625]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797619725","_score":null,"_source":{"id":"03042E491EEW-178797619725","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":192,"timeStamp":"2015-09-01T10:00:19.725Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101619725]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797620109","_score":null,"_source":{"id":"03042E491EEW-178797620109","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":265,"timeStamp":"2015-09-01T10:00:20.109Z","vcuNumber":304,"runLengthMs":0},"sort":[1441101620109]},{"_index":"train_data","_type":"train_sample","_id":"03042E491EEW-178797620209","_score":null,"_source":{"id":"03042E491EEW-178797620209","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":334,"timeStamp":"2015-09-01T10:00:20.209Z","vcuNumber":304,"runLengthMs":100},"sort":[1441101620209]}]}}'
+      string: '{"took":28,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":6027,"max_score":null,"hits":[{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03042E491EEW-187437600406","_score":null,"_source":{"id":"03042E491EEW-187437600406","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7972,"timeStamp":"2015-12-10T10:00:00.406Z","vcuNumber":304},"sort":[1449741600406]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03042E491EEW-187437600506","_score":null,"_source":{"id":"03042E491EEW-187437600506","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7968,"timeStamp":"2015-12-10T10:00:00.506Z","vcuNumber":304},"sort":[1449741600506]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03102E491EEW-187437600584","_score":null,"_source":{"id":"03102E491EEW-187437600584","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7836,"timeStamp":"2015-12-10T10:00:00.584Z","vcuNumber":310},"sort":[1449741600584]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03042E491EEW-187437600606","_score":null,"_source":{"id":"03042E491EEW-187437600606","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7985,"timeStamp":"2015-12-10T10:00:00.606Z","vcuNumber":304},"sort":[1449741600606]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03102E491EEW-187437600684","_score":null,"_source":{"id":"03102E491EEW-187437600684","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7851,"timeStamp":"2015-12-10T10:00:00.684Z","vcuNumber":310},"sort":[1449741600684]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03042E491EEW-187437600706","_score":null,"_source":{"id":"03042E491EEW-187437600706","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7981,"timeStamp":"2015-12-10T10:00:00.706Z","vcuNumber":304},"sort":[1449741600706]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03042E491EEW-187437600806","_score":null,"_source":{"id":"03042E491EEW-187437600806","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7984,"timeStamp":"2015-12-10T10:00:00.806Z","vcuNumber":304},"sort":[1449741600806]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03102E491EEW-187437600884","_score":null,"_source":{"id":"03102E491EEW-187437600884","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7863,"timeStamp":"2015-12-10T10:00:00.884Z","vcuNumber":310},"sort":[1449741600884]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03042E491EEW-187437600906","_score":null,"_source":{"id":"03042E491EEW-187437600906","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7979,"timeStamp":"2015-12-10T10:00:00.906Z","vcuNumber":304},"sort":[1449741600906]},{"_index":"train_data_2015_12_10","_type":"train_sample","_id":"03102E491EEW-187437600984","_score":null,"_source":{"id":"03102E491EEW-187437600984","trainNumber":0,"signalName":"@.MWT.M_T3_1.MRV_TrnSpd_1.TON_4.MRV_Xv_Trn","memoryAddress":"2E491EEW","bits":16,"value":7862,"timeStamp":"2015-12-10T10:00:00.984Z","vcuNumber":310},"sort":[1449741600984]}]}}'
     http_version: 
-  recorded_at: Tue, 08 Dec 2015 15:23:29 GMT
+  recorded_at: Mon, 14 Mar 2016 11:32:06 GMT
 recorded_with: VCR 3.0.0

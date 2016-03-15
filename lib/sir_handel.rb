@@ -245,7 +245,7 @@ module SirHandel
       if !params[:from]
         hour = Time.now.hour
         minute = Time.now.min
-        @date = "2015-09-23T#{hour}:#{minute}:00"
+        @date = "2015-12-11T#{hour}:#{minute}:00"
       else
         @date = params[:from]
       end
@@ -293,7 +293,7 @@ module SirHandel
         @reload_interval = '30'
         hour = Time.now.hour
         minute = Time.now.min
-        @to = Time.parse("2015-09-23T#{hour}:#{minute}:00")
+        @to = Time.parse("2015-12-11T#{hour}:#{minute}:00")
       end
 
       respond_to do |wants|

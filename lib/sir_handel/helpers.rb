@@ -45,7 +45,7 @@ module SirHandel
     end
 
     def cromulent_dates
-      dates = settings.cache.get('cromulent-dates')
+      dates = cached_dates
       if dates.nil?
         dates = redis.get('cromulent-dates') || SirHandel::Tasks.cromulise
         settings.cache.set('cromulent-dates', dates)
@@ -53,11 +53,15 @@ module SirHandel
       dates
     end
 
+    def cached_dates
+      settings.cache.get('cromulent-dates')
+    end
+
     def default_dates
       dates = JSON.parse(cromulent_dates)
 
       from = round_up(DateTime.parse(dates["start"]))
-      to = from + 1
+      to = DateTime.new(from.year, from.month, from.day, 23, 59, 00, "+00:00")
       {
         from: from.to_s,
         to: to.to_s
@@ -112,7 +116,7 @@ module SirHandel
       from = Time.parse(time) - 2400
       to = Time.parse(time) + 2400
       trains = Blocktrain::Query.new(from: from.to_s, to: to.to_s, memory_addresses: ['2E5485AW'], sort: {'timeStamp' => 'desc'}).results
-    
+
       @timestamp = nil
 
       # Get data two minutes apart to fake what we'd roughly see in real life
@@ -195,7 +199,7 @@ module SirHandel
 
       if @interval.nil?
         search.merge!({sort: { timeStamp: 'asc' }})
-        r = Blocktrain::PaginatedQuery.new(search).results
+        r = Blocktrain::Query.new(search).results
         return results_hash(signal, []) if r.nil?
 
         results = r.map do |r|

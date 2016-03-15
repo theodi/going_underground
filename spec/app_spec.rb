@@ -108,7 +108,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects with a new comparison' do
@@ -118,7 +118,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects with defaults' do
@@ -130,7 +130,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects to default datetimes' do
@@ -138,7 +138,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'redirects to default datetimes with a group' do
@@ -146,7 +146,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-08-29T00:00:00+00:00/2015-08-30T00:00:00+00:00'
+      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
     end
 
     it 'returns 404 for an unknown redirect type' do
@@ -172,13 +172,13 @@ module SirHandel
 
     it 'sets a default datetime at the same local time', :vcr do
       Timecop.freeze('2016-01-01T15:44:00Z')
-      expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse("2015-09-23T15:44:00+00:0"), "seven_sisters", :southbound).and_call_original
+      expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse("2015-12-11T15:44:00+00:0"), "seven_sisters", :southbound).and_call_original
       get 'stations/arriving/southbound/seven-sisters.json'
       Timecop.return
     end
 
     it 'allows the datetime to be set', :vcr do
-      to = "2015-09-23T17:10:00Z"
+      to = "2015-12-11T17:10:00Z"
       expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse(to), "seven_sisters", :southbound).and_call_original
       get "stations/arriving/southbound/seven-sisters/#{to}.json"
     end
@@ -193,39 +193,46 @@ module SirHandel
     end
 
     it 'gets results for heatmap', :vcr do
-      get '/heatmap/2015-09-23T17:10:00Z.json'
+      get '/heatmap/2015-12-11T17:10:00Z.json'
 
       json = JSON.parse(last_response.body)
 
-      expect(json.count).to eq(20)
+      expect(json.count).to eq(27)
       expect(json).to eq([
-        {"segment"=>1794, "station"=>"vauxhall", "direction"=>"northbound", "load"=>14.666694206512755},
-        {"segment"=>1892, "station"=>"stockwell", "direction"=>"northbound", "load"=>11.681944444444444},
-        {"segment"=>1999, "station"=>"stockwell", "direction"=>"southbound", "load"=>30.084578161003556},
-        {"segment"=>1881, "station"=>"vauxhall", "direction"=>"southbound", "load"=>43.350831430318934},
-        {"segment"=>1793, "station"=>"pimlico", "direction"=>"southbound", "load"=>53.23052300174797},
-        {"segment"=>1681, "station"=>"victoria", "direction"=>"southbound", "load"=>57.001145337653135},
-        {"segment"=>1565, "station"=>"green_park", "direction"=>"southbound", "load"=>97.07543448715087},
-        {"segment"=>1487, "station"=>"oxford_circus", "direction"=>"southbound", "load"=>94.94368275515336},
-        {"segment"=>893, "station"=>"seven_sisters", "direction"=>"southbound", "load"=>24.849155220589473},
-        {"segment"=>297, "station"=>"tottenham_hale", "direction"=>"southbound", "load"=>10.826860508464282},
-        {"segment"=>195, "station"=>"blackhorse_road", "direction"=>"southbound", "load"=>5.4407673395445135},
-        {"segment"=>119, "station"=>"walthamstow_central", "direction"=>"southbound", "load"=>4.4395012689378595},
-        {"segment"=>600, "station"=>"finsbury_park", "direction"=>"northbound", "load"=>70.67649122807018},
-        {"segment"=>870, "station"=>"highbury_and_islington", "direction"=>"northbound", "load"=>86.94923155737705},
-        {"segment"=>1026, "station"=>"kings_cross_st_pancras", "direction"=>"northbound", "load"=>89.4342820479},
-        {"segment"=>1282, "station"=>"euston", "direction"=>"northbound", "load"=>82.932464411741},
-        {"segment"=>1358, "station"=>"warren_street", "direction"=>"northbound", "load"=>86.75000130493461},
-        {"segment"=>1444, "station"=>"green_park", "direction"=>"northbound", "load"=>71.93170006408403},
-        {"segment"=>1522, "station"=>"victoria", "direction"=>"northbound", "load"=>62.61486433754038},
-        {"segment"=>1642, "station"=>"pimlico", "direction"=>"northbound", "load"=>29.57324973182908}
+        {"segment"=>1880, "station"=>"stockwell", "direction"=>"northbound", "load"=>24.488272731343095},
+        {"segment"=>1964, "station"=>"brixton", "direction"=>"northbound", "load"=>17.951754964610437},
+        {"segment"=>1992, "station"=>nil, "direction"=>"northbound", "load"=>18.661633584850353},
+        {"segment"=>1917, "station"=>"stockwell", "direction"=>"southbound", "load"=>24.84395211642495},
+        {"segment"=>1873, "station"=>"vauxhall", "direction"=>"southbound", "load"=>29.092204277438732},
+        {"segment"=>1785, "station"=>"pimlico", "direction"=>"southbound", "load"=>36.897582649258155},
+        {"segment"=>1681, "station"=>"victoria", "direction"=>"southbound", "load"=>57.55294569677568},
+        {"segment"=>1547, "station"=>"green_park", "direction"=>"southbound", "load"=>57.392686109906876},
+        {"segment"=>1475, "station"=>"oxford_circus", "direction"=>"southbound", "load"=>58.81698094492034},
+        {"segment"=>1385, "station"=>"warren_street", "direction"=>"southbound", "load"=>48.657847712808014},
+        {"segment"=>1309, "station"=>"kings_cross_st_pancras", "direction"=>"southbound", "load"=>38.41160381437677},
+        {"segment"=>1125, "station"=>"highbury_and_islington", "direction"=>"southbound", "load"=>32.32625212012753},
+        {"segment"=>1019, "station"=>"finsbury_park", "direction"=>"southbound", "load"=>32.7875},
+        {"segment"=>893, "station"=>"seven_sisters", "direction"=>"southbound", "load"=>28.91019045755694},
+        {"segment"=>281, "station"=>"tottenham_hale", "direction"=>"southbound", "load"=>21.96156616768571},
+        {"segment"=>195, "station"=>"blackhorse_road", "direction"=>"southbound", "load"=>21.97426246670985},
+        {"segment"=>111, "station"=>"walthamstow_central", "direction"=>"southbound", "load"=>22.566850959281375},
+        {"segment"=>37, "station"=>nil, "direction"=>"southbound", "load"=>10.273214285714285},
+        {"segment"=>140, "station"=>"tottenham_hale", "direction"=>"northbound", "load"=>44.224934273995004},
+        {"segment"=>492, "station"=>"finsbury_park", "direction"=>"northbound", "load"=>51.85740100027405},
+        {"segment"=>902, "station"=>"highbury_and_islington", "direction"=>"northbound", "load"=>58.45109399177477},
+        {"segment"=>1026, "station"=>"kings_cross_st_pancras", "direction"=>"northbound", "load"=>63.36043015168848},
+        {"segment"=>1286, "station"=>"warren_street", "direction"=>"northbound", "load"=>74.71738355780023},
+        {"segment"=>1412, "station"=>"oxford_circus", "direction"=>"northbound", "load"=>69.9823760322155},
+        {"segment"=>1492, "station"=>"green_park", "direction"=>"northbound", "load"=>64.4967868057391},
+        {"segment"=>1610, "station"=>"victoria", "direction"=>"northbound", "load"=>46.14937201744452},
+        {"segment"=>1766, "station"=>"vauxhall", "direction"=>"northbound", "load"=>29.68374116885208}
       ])
     end
 
     it 'sets a default datetime at the same local time for heatmap', :vcr do
       Timecop.freeze('2016-01-01T15:44:00')
 
-      expect_any_instance_of(SirHandel::App).to receive(:fake_network).with("2015-09-23T15:44:00").and_call_original
+      expect_any_instance_of(SirHandel::App).to receive(:fake_network).with("2015-12-11T15:44:00").and_call_original
       get 'heatmap.json'
       Timecop.return
     end

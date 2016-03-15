@@ -12,7 +12,7 @@ module Blocktrain
     private
 
       def result
-        Client.results(body, 'count')
+        Client.results(body, 'count', index_name)
       end
 
   end

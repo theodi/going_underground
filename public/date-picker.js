@@ -16,11 +16,13 @@ function callDatePicker() {
       maxDate: json.end
     });
 
-    $("#from-date").on("dp.change", function (e) {
-        $('#to-date').data("DateTimePicker").minDate(e.date);
-    });
-    $("#to-date").on("dp.change", function (e) {
-        $('#from-date').data("DateTimePicker").maxDate(e.date);
-    });
+    $('#from-date input').blur(function() {
+      dateFrom = moment(this.value)
+      dateTo = $('#to-date').data("DateTimePicker")
+      dateTo.maxDate(dateFrom.endOf('day').format())
+      dateTo.minDate(dateFrom.startOf('day').format())
+      dateTo.date(dateFrom.add(1, 'hours').format())
+    })
+
   });
 }
