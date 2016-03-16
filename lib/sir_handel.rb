@@ -21,10 +21,11 @@ Dotenv.load
 
 module SirHandel
   class App < Sinatra::Base
-
     helpers do
       include SirHandel::Helpers
     end
+
+    DEFAULT_DATE = YAML.load_file('config/defaults.yml')['date']
 
     cache = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
                               {:username => ENV["MEMCACHIER_USERNAME"],
@@ -245,7 +246,7 @@ module SirHandel
       if !params[:from]
         hour = Time.now.hour
         minute = Time.now.min
-        @date = "2015-12-11T#{hour}:#{minute}:00"
+        @date = "#{DEFAULT_DATE}T#{hour}:#{minute}:00"
       else
         @date = params[:from]
       end
@@ -293,7 +294,7 @@ module SirHandel
         @reload_interval = '30'
         hour = Time.now.hour
         minute = Time.now.min
-        @to = Time.parse("2015-12-11T#{hour}:#{minute}:00")
+        @to = Time.parse("#{DEFAULT_DATE}T#{hour}:#{minute}:00")
       end
 
       respond_to do |wants|

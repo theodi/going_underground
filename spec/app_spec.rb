@@ -1,5 +1,6 @@
 module SirHandel
   describe App, :vcr do
+    DEFAULT_DATE = YAML.load_file('config/defaults.yml')['date']
 
     it 'should allow accessing the home page' do
       get '/'
@@ -172,7 +173,7 @@ module SirHandel
 
     it 'sets a default datetime at the same local time', :vcr do
       Timecop.freeze('2016-01-01T15:44:00Z')
-      expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse("2015-12-11T15:44:00+00:0"), "seven_sisters", :southbound).and_call_original
+      expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse("#{DEFAULT_DATE}T15:44:00+00:0"), "seven_sisters", :southbound).and_call_original
       get 'stations/arriving/southbound/seven-sisters.json'
       Timecop.return
     end
@@ -232,7 +233,7 @@ module SirHandel
     it 'sets a default datetime at the same local time for heatmap', :vcr do
       Timecop.freeze('2016-01-01T15:44:00')
 
-      expect_any_instance_of(SirHandel::App).to receive(:fake_network).with("2015-12-11T15:44:00").and_call_original
+      expect_any_instance_of(SirHandel::App).to receive(:fake_network).with("#{DEFAULT_DATE}T15:44:00").and_call_original
       get 'heatmap.json'
       Timecop.return
     end
