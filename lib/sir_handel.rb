@@ -31,8 +31,6 @@ module SirHandel
       include SirHandel::Helpers
     end
 
-    DEFAULT_DATE = YAML.load_file('config/defaults.yml')['date']
-
     cache = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
                               {:username => ENV["MEMCACHIER_USERNAME"],
                                :password => ENV["MEMCACHIER_PASSWORD"],
@@ -252,7 +250,7 @@ module SirHandel
       if !params[:from]
         hour = Time.now.hour
         minute = Time.now.min
-        @date = "#{DEFAULT_DATE}T#{hour}:#{minute}:00"
+        @date = "#{ENV['DEFAULT_DATE']}T#{hour}:#{minute}:00"
       else
         @date = params[:from]
       end
@@ -300,7 +298,7 @@ module SirHandel
         @reload_interval = '30'
         hour = Time.now.hour
         minute = Time.now.min
-        @to = Time.parse("#{DEFAULT_DATE}T#{hour}:#{minute}:00")
+        @to = Time.parse("#{ENV['DEFAULT_DATE']}T#{hour}:#{minute}:00")
       end
 
       respond_to do |wants|
