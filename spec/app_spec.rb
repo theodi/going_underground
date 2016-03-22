@@ -1,6 +1,5 @@
 module SirHandel
   describe App, :vcr do
-    DEFAULT_DATE = YAML.load_file('config/defaults.yml')['date']
 
     it 'should allow accessing the home page' do
       get '/'
@@ -82,24 +81,24 @@ module SirHandel
 
     it 'redirects to a RESTful URL' do
       post '/signals/passesnger-load-car-a', {
-        from: '2015-09-03 07:00:00',
-        to: '2015-09-03 10:00:00',
+        from: "2015-09-03 07:00:00",
+        to: "2015-09-03 10:00:00",
         interval: '5s' }
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00.000+00:00/2015-09-03T10:00:00.000+00:00?interval=5s'
+      expect(last_request.url).to eq "http://example.org/signals/passesnger-load-car-a/2015-09-03T07:00:00.000+00:00/2015-09-03T10:00:00.000+00:00?interval=5s"
     end
 
     it 'redirects to a RESTful URL with a group' do
       post '/groups/my-awesome-group', {
-        from: '2015-09-03 07:00:00',
-        to: '2015-09-03 10:00:00',
+        from: "2015-09-03 07:00:00",
+        to: "2015-09-03 10:00:00",
         interval: '5s' }
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/groups/my-awesome-group/2015-09-03T07:00:00.000+00:00/2015-09-03T10:00:00.000+00:00?interval=5s'
+      expect(last_request.url).to eq "http://example.org/groups/my-awesome-group/2015-09-03T07:00:00.000+00:00/2015-09-03T10:00:00.000+00:00?interval=5s"
     end
 
     it 'redirects with a comparison' do
@@ -109,7 +108,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
+      expect(last_request.url).to eq "http://example.org/signals/passesnger-load-car-a,passesnger-load-car-b/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_FROM']}+00:00/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_TO']}+00:00"
     end
 
     it 'redirects with a new comparison' do
@@ -119,7 +118,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
+      expect(last_request.url).to eq "http://example.org/signals/passesnger-load-car-a,passesnger-load-car-c/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_FROM']}+00:00/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_TO']}+00:00"
     end
 
     it 'redirects with defaults' do
@@ -131,7 +130,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00.000+00:00/2015-12-01T23:59:00.000+00:00'
+      expect(last_request.url).to eq "http://example.org/signals/passesnger-load-car-a/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_FROM']}+00:00/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_TO']}+00:00"
     end
 
     it 'redirects to default datetimes' do
@@ -139,7 +138,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/signals/passesnger-load-car-a/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
+      expect(last_request.url).to eq "http://example.org/signals/passesnger-load-car-a/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_FROM']}+00:00/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_TO']}+00:00"
     end
 
     it 'redirects to default datetimes with a group' do
@@ -147,7 +146,7 @@ module SirHandel
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/groups/passesnger-load/2015-12-01T00:00:00+00:00/2015-12-01T23:59:00+00:00'
+      expect(last_request.url).to eq "http://example.org/groups/passesnger-load/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_FROM']}+00:00/#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_TO']}+00:00"
     end
 
     it 'returns 404 for an unknown redirect type' do
@@ -173,7 +172,7 @@ module SirHandel
 
     it 'sets a default datetime at the same local time', :vcr do
       Timecop.freeze('2016-01-01T15:44:00Z')
-      expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse("#{DEFAULT_DATE}T15:44:00+00:0"), "seven_sisters", :southbound).and_call_original
+      expect(Blocktrain::StationCrowding).to receive(:new).with(Time.parse("#{ENV['DEFAULT_DATE']}T15:44:00+00:0"), "seven_sisters", :southbound).and_call_original
       get 'stations/arriving/southbound/seven-sisters.json'
       Timecop.return
     end
@@ -231,21 +230,21 @@ module SirHandel
     end
 
     it 'sets a default datetime at the same local time for heatmap', :vcr do
-      Timecop.freeze('2016-01-01T15:44:00')
+      Timecop.freeze("2016-01-01T15:44:00")
 
-      expect_any_instance_of(SirHandel::App).to receive(:fake_network).with("#{DEFAULT_DATE}T15:44:00").and_call_original
+      expect_any_instance_of(SirHandel::App).to receive(:fake_network).with("#{ENV['DEFAULT_DATE']}T15:44:00").and_call_original
       get 'heatmap.json'
       Timecop.return
     end
 
     it 'redirects to the correct datetime' do
       post '/heatmap', {
-        to: '2015-09-03 10:00:00'
+        to: "2015-09-03 10:00:00"
       }
 
       expect(last_response).to be_redirect
       follow_redirect!
-      expect(last_request.url).to eq 'http://example.org/heatmap/2015-09-03T10:00:00.000+00:00'
+      expect(last_request.url).to eq "http://example.org/heatmap/2015-09-03T10:00:00.000+00:00"
     end
 
   end

@@ -29,6 +29,18 @@
     },
     "MEMCACHIER_SERVERS": {
       "required": true
+    },
+    "DEFAULT_DATE": {
+      "required": true,
+      "value": "2016-02-01"
+    },
+    "DEFAULT_FROM": {
+      "required": true,
+      "value": "10:30:00.000"
+    },
+    "DEFAULT_TO": {
+      "required": true,
+      "value": "11:30:00.000"
     }
   },
   "addons": [

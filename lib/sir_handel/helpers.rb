@@ -58,13 +58,15 @@ module SirHandel
     end
 
     def default_dates
-      dates = JSON.parse(cromulent_dates)
-
-      from = round_up(DateTime.parse(dates["start"]))
-      to = DateTime.new(from.year, from.month, from.day, 23, 59, 00, "+00:00")
+      from = DateTime.parse("#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_FROM']}+00:00")
+      if ENV['DEFAULT_TO']
+        to = DateTime.parse("#{ENV['DEFAULT_DATE']}T#{ENV['DEFAULT_TO']}+00:00")
+      else
+        to = DateTime.new(from.year, from.month, from.day, 23, 59, 00, "+00:00")
+      end
       {
-        from: from.strftime('%Y-%m-%dT%H:%M:%S%:z'),
-        to: to.strftime('%Y-%m-%dT%H:%M:%S%:z')
+        from: from.to_s,
+        to: to.to_s
       }
     end
 
