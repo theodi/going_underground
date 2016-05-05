@@ -30,7 +30,7 @@ All DateTimes must be in an [ISO8601](https://tools.ietf.org/html/rfc3339) DateT
 
 ## Crowding data
 
-Shows crowding data visualisations for train carriages due to arrive at a particular Victoria Line station at a given date and time, together with simulated data for subsequent trains.
+Shows crowding data visualisations for train carriages due to arrive at a particular Victoria Line station at a given date and time, together with simulated data for subsequent trains due to arrive. Train arrival data is taken from the [live TfL API](https://api.tfl.gov.uk/).
 
 ![Signal graph](https://raw.githubusercontent.com/TheODI-UD2D/sir_handel/master/crowding-screenshot.png)
 
