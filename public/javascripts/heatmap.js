@@ -26,8 +26,11 @@ function populateStation(el, json, direction) {
   if (data == null) {
     el.animate({width: 0})
   } else {
-    el.animate({width: data.load})
-    el.css('background-color', getColour(data.load))
+    console.log(data.load)
+    load = valueBetween(data.load, 0, 100)
+    console.log(load)
+    el.animate({width: load})
+    el.css('background-color', getColour(load))
   }
 }
 
@@ -80,4 +83,8 @@ function getTicks(min, max) {
     "ticks": ticks,
     "tick_labels": tick_labels
   }
+}
+
+function valueBetween(v, min, max) {
+  return (Math.min(max, Math.max(min, v)))
 }

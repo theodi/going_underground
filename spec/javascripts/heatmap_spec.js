@@ -30,6 +30,12 @@ describe('heatmap', function() {
       expect(element.attr('style')).toMatch(/width: 6.88/)
       expect(element.attr('style')).toMatch(/background-color: rgba\(38, 255, 0, 0./)
     });
+
+    it('limits width to 100', function() {
+      element = $('#southbound .oxford_circus .indicator .block')
+      expect(element.attr('style')).toMatch(/width: 100/)
+      expect(element.attr('style')).toMatch(/background-color: rgba\(255, 0, 0, 0./)
+    });
   })
 
   describe('nextDate', function() {
