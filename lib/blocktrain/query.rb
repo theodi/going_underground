@@ -1,11 +1,14 @@
 module Blocktrain
   class Query
 
+    VCU_NUMBERS = ['304', '306', '308', '310']
+
     def initialize(options = {})
       @memory_addresses = [options.fetch(:memory_addresses, nil)].flatten.compact
 
       @original_from = options.fetch(:from, '2015-09-01T00:00:00')
       @original_to = options.fetch(:to, '2015-09-02T00:00:00')
+      @vcu_numbers = [options.fetch(:vcu_number) || VCU_NUMBERS].flatten.compact
 
       @from = parse_datetime(@original_from)
       @to = parse_datetime(@original_to)
@@ -42,12 +45,13 @@ module Blocktrain
 
     def address_query
       return nil if @memory_addresses == []
-      build_query(@memory_addresses)
+      build_query
     end
 
-    def build_query(addresses)
-      terms = addresses.map { |a| "memoryAddress:#{a}" }
-      terms.join(" OR ")
+    def build_query
+      terms = @memory_addresses.map { |a| "memoryAddress:#{a}" }
+      numbers = @vcu_numbers.map { |n| "vcuNumber:#{n}"}
+      "(#{terms.join(' OR ')}) AND (#{numbers.join(' OR ')})"
     end
 
     def query
@@ -97,7 +101,7 @@ module Blocktrain
 
     def limit
       if @limit.nil?
-        Blocktrain::Count.new({from: @original_from, to: @original_to, memory_addresses: @memory_addresses, sort: @sort}).results
+        Blocktrain::Count.new({from: @original_from, to: @original_to, memory_addresses: @memory_addresses, sort: @sort, vcu_number: @vcu_number}).results
       else
         @limit
       end

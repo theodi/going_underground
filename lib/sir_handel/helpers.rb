@@ -196,7 +196,8 @@ module SirHandel
         from: @from,
         to: @to,
         interval: @interval,
-        memory_addresses: lookups[db_signal(signal)].upcase
+        memory_addresses: lookups[db_signal(signal)].upcase,
+        vcu_number: @vcu
       }
 
       if @interval.nil?

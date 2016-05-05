@@ -96,6 +96,8 @@ module SirHandel
       @signals = params['signals']
       @interval = params[:interval]
 
+      @vcu = params[:vcu]
+
       @layout = params.fetch('layout', 'default')
 
       @signal_array = @signals.split(',')
