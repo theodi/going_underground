@@ -246,7 +246,7 @@ form {
   display: inline-block;
   position: absolute;
   width: 100px;
-  left: -105px;
+  left: -107px;
   text-align: right;
 }
 
@@ -257,7 +257,7 @@ form {
 .indicator .block {
   height: 7px;
   padding: 0;
-  margin: 0 2px;
+  margin: 0;
   display: inline-block;
 }
 
