@@ -8,7 +8,7 @@ module Blocktrain
 
       @original_from = options.fetch(:from, '2015-09-01T00:00:00')
       @original_to = options.fetch(:to, '2015-09-02T00:00:00')
-      @vcu_numbers = [options.fetch(:vcu_number) || VCU_NUMBERS].flatten.compact
+      @vcu_numbers = [options.fetch(:vcu_number, nil) || VCU_NUMBERS].flatten.compact
 
       @from = parse_datetime(@original_from)
       @to = parse_datetime(@original_to)
