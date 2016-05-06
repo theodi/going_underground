@@ -43,4 +43,48 @@ http_interactions:
       string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":6027,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-12-10T10:00:00.000Z","key":1449741600000,"doc_count":3324,"average_value":{"value":6420.120637785801}},{"key_as_string":"2015-12-10T10:10:00.000Z","key":1449742200000,"doc_count":2703,"average_value":{"value":1992.899741028487}}]}}}'
     http_version: 
   recorded_at: Mon, 14 Mar 2016 12:00:42 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_10/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2E491EEW)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449741600000,"lte":1449745200000}}}]}}}},"size":0,"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449741600000,"max":1449745200000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:09:57 GMT
+      - Fri, 06 May 2016 09:09:57 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '417'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":6027,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":[{"key_as_string":"2015-12-10T10:00:00.000Z","key":1449741600000,"doc_count":3324,"average_value":{"value":6420.120637785801}},{"key_as_string":"2015-12-10T10:10:00.000Z","key":1449742200000,"doc_count":2703,"average_value":{"value":1992.899741028487}}]}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:10:23 GMT
 recorded_with: VCR 3.0.0

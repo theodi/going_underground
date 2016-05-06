@@ -46,8 +46,8 @@ module Blocktrain
     end
 
     it 'builds the query correctly' do
-      subject = described_class.new(from: '2015-12-10 10:00:00Z', to: '2015-12-10 11:00:00Z', station: :green_park, direction: :northbound)
-      expect(subject.build_query(['2E5485AW'])).to eq("memoryAddress:2E5485AW AND value:1614")
+      subject = described_class.new(from: '2015-12-10 10:00:00Z', to: '2015-12-10 11:00:00Z', station: :green_park, direction: :northbound, vcu_number: 304)
+      expect(subject.build_query).to eq("memoryAddress:2e5485aw AND vcuNumber:304 AND value:1614")
     end
   end
 end

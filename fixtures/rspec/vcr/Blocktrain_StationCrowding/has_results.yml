@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e5485aw
-        AND value:1193"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449792000000,"lte":1449853200000}}}]}}}},"size":100,"sort":{"timeStamp":"desc"},"from":0}'
+        AND vcuNumber:304 AND value:1193"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449792000000,"lte":1449853200000}}}]}}}},"size":100,"sort":{"timeStamp":"desc"},"from":0}'
     headers: {}
   response:
     status:
@@ -17,8 +17,52 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:16 GMT
-      - Mon, 14 Mar 2016 13:53:16 GMT
+      - Fri, 06 May 2016 09:58:53 GMT
+      - Fri, 06 May 2016 09:58:53 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '2619'
+      - '345'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":36,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":7,"max_score":null,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187546666934","_score":null,"_source":{"id":"03042E5485AW-187546666934","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T16:17:46.934Z","vcuNumber":304},"sort":[1449850666934]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187538288331","_score":null,"_source":{"id":"03042E5485AW-187538288331","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T13:58:08.331Z","vcuNumber":304},"sort":[1449842288331]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187534105350","_score":null,"_source":{"id":"03042E5485AW-187534105350","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T12:48:25.35Z","vcuNumber":304},"sort":[1449838105350]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187529793750","_score":null,"_source":{"id":"03042E5485AW-187529793750","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T11:36:33.75Z","vcuNumber":304},"sort":[1449833793750]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187525740096","_score":null,"_source":{"id":"03042E5485AW-187525740096","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T10:29:00.096Z","vcuNumber":304},"sort":[1449829740096]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187521493262","_score":null,"_source":{"id":"03042E5485AW-187521493262","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T09:18:13.262Z","vcuNumber":304},"sort":[1449825493262]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187517316578","_score":null,"_source":{"id":"03042E5485AW-187517316578","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T08:08:36.578Z","vcuNumber":304},"sort":[1449821316578]}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:19 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449851506000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:54 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -35,22 +79,22 @@ http_interactions:
       - 10.122.137.190
       Content-Length:
       - '345'
-      - '5470'
+      - '59'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":5,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":15,"max_score":null,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187546666934","_score":null,"_source":{"id":"03042E5485AW-187546666934","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T16:17:46.934Z","vcuNumber":304},"sort":[1449850666934]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187546666900","_score":null,"_source":{"id":"03102E5485AW-187546666900","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T16:17:46.9Z","vcuNumber":310},"sort":[1449850666900]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187542457281","_score":null,"_source":{"id":"03102E5485AW-187542457281","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T15:07:37.281Z","vcuNumber":310},"sort":[1449846457281]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187538288331","_score":null,"_source":{"id":"03042E5485AW-187538288331","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T13:58:08.331Z","vcuNumber":304},"sort":[1449842288331]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187538288190","_score":null,"_source":{"id":"03102E5485AW-187538288190","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T13:58:08.19Z","vcuNumber":310},"sort":[1449842288190]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187534105700","_score":null,"_source":{"id":"03102E5485AW-187534105700","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T12:48:25.7Z","vcuNumber":310},"sort":[1449838105700]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187534105350","_score":null,"_source":{"id":"03042E5485AW-187534105350","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T12:48:25.35Z","vcuNumber":304},"sort":[1449838105350]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187529793884","_score":null,"_source":{"id":"03102E5485AW-187529793884","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T11:36:33.884Z","vcuNumber":310},"sort":[1449833793884]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187529793750","_score":null,"_source":{"id":"03042E5485AW-187529793750","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T11:36:33.75Z","vcuNumber":304},"sort":[1449833793750]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187525740096","_score":null,"_source":{"id":"03042E5485AW-187525740096","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T10:29:00.096Z","vcuNumber":304},"sort":[1449829740096]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187525679868","_score":null,"_source":{"id":"03102E5485AW-187525679868","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T10:27:59.868Z","vcuNumber":310},"sort":[1449829679868]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187521493262","_score":null,"_source":{"id":"03042E5485AW-187521493262","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T09:18:13.262Z","vcuNumber":304},"sort":[1449825493262]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187521492115","_score":null,"_source":{"id":"03102E5485AW-187521492115","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T09:18:12.115Z","vcuNumber":310},"sort":[1449825492115]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E5485AW-187517316631","_score":null,"_source":{"id":"03102E5485AW-187517316631","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T08:08:36.631Z","vcuNumber":310},"sort":[1449821316631]},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E5485AW-187517316578","_score":null,"_source":{"id":"03042E5485AW-187517316578","trainNumber":0,"signalName":"@.MWT.S_ATC_T4_1.TOF_1.SSV_X_AtpWrstFwLocSegId","memoryAddress":"2E5485AW","bits":16,"value":1193,"timeStamp":"2015-12-11T08:08:36.578Z","vcuNumber":304},"sort":[1449821316578]}]}}'
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:16 GMT
+  recorded_at: Fri, 06 May 2016 09:59:19 GMT
 - request:
     method: post
     uri: http://elastic.search//train_data_2015_12_11/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449850726000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449850606000,"max":1449850726000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449851506000}}}]}}}},"size":4,"sort":{},"from":0}'
     headers: {}
   response:
     status:
@@ -61,96 +105,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:16 GMT
-      - Mon, 14 Mar 2016 13:53:16 GMT
-      Server:
-      - fp/25c4c
-      - fp/f6bd83
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '879'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":619,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":177,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":177,"average_value":{"value":28.429378531073446}}]}},"2e64932w":{"doc_count":164,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":164,"average_value":{"value":32.40853658536585}}]}},"2e64934w":{"doc_count":138,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":138,"average_value":{"value":30.681159420289855}}]}},"2e64936w":{"doc_count":140,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":140,"average_value":{"value":44.857142857142854}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:16 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449850726000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449850606000,"max":1449850726000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:16 GMT
-      - Mon, 14 Mar 2016 13:53:16 GMT
-      Server:
-      - fp/25c4c
-      - fp/f6bd83
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '879'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":619,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":177,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":177,"average_value":{"value":28.429378531073446}}]}},"2e64932w":{"doc_count":164,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":164,"average_value":{"value":32.40853658536585}}]}},"2e64934w":{"doc_count":138,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":138,"average_value":{"value":30.681159420289855}}]}},"2e64936w":{"doc_count":140,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":140,"average_value":{"value":44.857142857142854}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:16 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449846397000,"lte":1449846517000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449846397000,"max":1449846517000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:16 GMT
-      - Mon, 14 Mar 2016 13:53:16 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -167,22 +123,22 @@ http_interactions:
       - 10.122.137.190
       Content-Length:
       - '345'
-      - '871'
+      - '792'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":251,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":62,"results":{"buckets":[{"key_as_string":"2015-12-11T15:00:00.000Z","key":1449846000000,"doc_count":62,"average_value":{"value":27.677419354838708}}]}},"2e64932w":{"doc_count":68,"results":{"buckets":[{"key_as_string":"2015-12-11T15:00:00.000Z","key":1449846000000,"doc_count":68,"average_value":{"value":17.83823529411765}}]}},"2e64934w":{"doc_count":61,"results":{"buckets":[{"key_as_string":"2015-12-11T15:00:00.000Z","key":1449846000000,"doc_count":61,"average_value":{"value":28.114754098360656}}]}},"2e64936w":{"doc_count":60,"results":{"buckets":[{"key_as_string":"2015-12-11T15:00:00.000Z","key":1449846000000,"doc_count":60,"average_value":{"value":44.733333333333334}}]}}}}}}'
+      string: '{"took":4,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.644465,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187547399281","_score":11.644465,"_source":{"id":"03042E4ADEC-187547399281","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T16:29:59.281Z","vcuNumber":304}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187546799031","_score":11.644465,"_source":{"id":"03042E4ADEC-187546799031","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T16:19:59.031Z","vcuNumber":304}}]}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:16 GMT
+  recorded_at: Fri, 06 May 2016 09:59:19 GMT
 - request:
     method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
+    uri: http://elastic.search//train_data_2015_12_11/_count
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449842348000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449842228000,"max":1449842348000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449851506000}}}]}}}},"size":0,"sort":{},"from":0}'
     headers: {}
   response:
     status:
@@ -193,184 +149,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      Server:
-      - fp/25c4c
-      - fp/25c4c
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '877'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":637,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":171,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":171,"average_value":{"value":35.11695906432749}}]}},"2e64932w":{"doc_count":177,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":177,"average_value":{"value":38.2090395480226}}]}},"2e64934w":{"doc_count":150,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":150,"average_value":{"value":29.946666666666665}}]}},"2e64936w":{"doc_count":139,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":139,"average_value":{"value":55.884892086330936}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:16 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449842348000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449842228000,"max":1449842348000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      Server:
-      - fp/25c4c
-      - fp/25c4c
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '877'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":637,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":171,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":171,"average_value":{"value":35.11695906432749}}]}},"2e64932w":{"doc_count":177,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":177,"average_value":{"value":38.2090395480226}}]}},"2e64934w":{"doc_count":150,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":150,"average_value":{"value":29.946666666666665}}]}},"2e64936w":{"doc_count":139,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":139,"average_value":{"value":55.884892086330936}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:17 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838165000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449838045000,"max":1449838165000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      Server:
-      - fp/25c4c
-      - fp/25c4c
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '867'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":689,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":188,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":188,"average_value":{"value":37.079787234042556}}]}},"2e64932w":{"doc_count":181,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":181,"average_value":{"value":44.812154696132595}}]}},"2e64934w":{"doc_count":168,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":168,"average_value":{"value":33.26190476190476}}]}},"2e64936w":{"doc_count":152,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":152,"average_value":{"value":48.625}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:17 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838165000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449838045000,"max":1449838165000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      Server:
-      - fp/f6bd83
-      - fp/f6bd83
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '867'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":689,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":188,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":188,"average_value":{"value":37.079787234042556}}]}},"2e64932w":{"doc_count":181,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":181,"average_value":{"value":44.812154696132595}}]}},"2e64934w":{"doc_count":168,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":168,"average_value":{"value":33.26190476190476}}]}},"2e64936w":{"doc_count":152,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":152,"average_value":{"value":48.625}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:17 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449833853000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449833733000,"max":1449833853000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      - Mon, 14 Mar 2016 13:53:17 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
       Server:
       - fp/25c4c
       - fp/f6bd83
@@ -387,22 +167,22 @@ http_interactions:
       - 10.122.137.190
       Content-Length:
       - '345'
-      - '878'
+      - '59'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":519,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":144,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":144,"average_value":{"value":42.56944444444444}}]}},"2e64932w":{"doc_count":147,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":147,"average_value":{"value":44.673469387755105}}]}},"2e64934w":{"doc_count":116,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":116,"average_value":{"value":38.939655172413794}}]}},"2e64936w":{"doc_count":112,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":112,"average_value":{"value":46.05357142857143}}]}}}}}}'
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:17 GMT
+  recorded_at: Fri, 06 May 2016 09:59:20 GMT
 - request:
     method: post
     uri: http://elastic.search//train_data_2015_12_11/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449833853000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449833733000,"max":1449833853000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449851506000}}}]}}}},"size":4,"sort":{},"from":0}'
     headers: {}
   response:
     status:
@@ -413,8 +193,53 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      - Mon, 14 Mar 2016 13:53:17 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '792'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.630138,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187547399562","_score":11.630138,"_source":{"id":"03102E4ADEC-187547399562","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T16:29:59.562Z","vcuNumber":310}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187546799265","_score":11.630138,"_source":{"id":"03102E4ADEC-187546799265","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T16:19:59.265Z","vcuNumber":310}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:20 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449850726000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449850606000,"max":1449850726000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:54 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
       Server:
       - fp/25c4c
       - fp/f6bd83
@@ -431,22 +256,23 @@ http_interactions:
       - 10.122.137.190
       Content-Length:
       - '345'
-      - '878'
+      - '870'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":519,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":144,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":144,"average_value":{"value":42.56944444444444}}]}},"2e64932w":{"doc_count":147,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":147,"average_value":{"value":44.673469387755105}}]}},"2e64934w":{"doc_count":116,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":116,"average_value":{"value":38.939655172413794}}]}},"2e64936w":{"doc_count":112,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":112,"average_value":{"value":46.05357142857143}}]}}}}}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":302,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":98,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":98,"average_value":{"value":43.39795918367347}}]}},"2e64932w":{"doc_count":73,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":73,"average_value":{"value":46.67123287671233}}]}},"2e64934w":{"doc_count":60,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":60,"average_value":{"value":29.416666666666668}}]}},"2e64936w":{"doc_count":71,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":71,"average_value":{"value":52.056338028169016}}]}}}}}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:17 GMT
+  recorded_at: Fri, 06 May 2016 09:59:20 GMT
 - request:
     method: post
     uri: http://elastic.search//train_data_2015_12_11/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829680000,"lte":1449829800000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449829680000,"max":1449829800000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449850606000,"lte":1449850726000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449850606000,"max":1449850726000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
     headers: {}
   response:
     status:
@@ -457,8 +283,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:17 GMT
-      - Mon, 14 Mar 2016 13:53:17 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -475,22 +301,22 @@ http_interactions:
       - 10.122.137.190
       Content-Length:
       - '345'
-      - '840'
+      - '870'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":290,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":80,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":80,"average_value":{"value":35.6375}}]}},"2e64932w":{"doc_count":80,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":80,"average_value":{"value":44.5125}}]}},"2e64934w":{"doc_count":64,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":64,"average_value":{"value":38.703125}}]}},"2e64936w":{"doc_count":66,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":66,"average_value":{"value":55.34848484848485}}]}}}}}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":317,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":79,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":79,"average_value":{"value":9.860759493670885}}]}},"2e64932w":{"doc_count":91,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":91,"average_value":{"value":20.967032967032967}}]}},"2e64934w":{"doc_count":78,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":78,"average_value":{"value":31.653846153846153}}]}},"2e64936w":{"doc_count":69,"results":{"buckets":[{"key_as_string":"2015-12-11T16:10:00.000Z","key":1449850200000,"doc_count":69,"average_value":{"value":37.44927536231884}}]}}}}}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:17 GMT
+  recorded_at: Fri, 06 May 2016 09:59:20 GMT
 - request:
     method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
+    uri: http://elastic.search//train_data_2015_12_11/_count
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829619000,"lte":1449829739000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449829619000,"max":1449829739000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449843128000}}}]}}}},"size":0,"sort":{},"from":0}'
     headers: {}
   response:
     status:
@@ -501,8 +327,8 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:18 GMT
-      - Mon, 14 Mar 2016 13:53:18 GMT
+      - Fri, 06 May 2016 09:58:54 GMT
+      - Fri, 06 May 2016 09:58:55 GMT
       Server:
       - fp/25c4c
       - fp/25c4c
@@ -519,22 +345,22 @@ http_interactions:
       - 10.122.137.190
       Content-Length:
       - '345'
-      - '877'
+      - '59'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":432,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":107,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":107,"average_value":{"value":29.093457943925234}}]}},"2e64932w":{"doc_count":115,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":115,"average_value":{"value":38.66086956521739}}]}},"2e64934w":{"doc_count":101,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":101,"average_value":{"value":32.87128712871287}}]}},"2e64936w":{"doc_count":109,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":109,"average_value":{"value":62.24770642201835}}]}}}}}}'
+      string: '{"count":2,"_shards":{"total":1,"successful":1,"failed":0}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:18 GMT
+  recorded_at: Fri, 06 May 2016 09:59:20 GMT
 - request:
     method: post
     uri: http://elastic.search//train_data_2015_12_11/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825433000,"lte":1449825553000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449825433000,"max":1449825553000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449843128000}}}]}}}},"size":2,"sort":{},"from":0}'
     headers: {}
   response:
     status:
@@ -545,8 +371,1471 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:18 GMT
-      - Mon, 14 Mar 2016 13:53:18 GMT
+      - Fri, 06 May 2016 09:58:55 GMT
+      - Fri, 06 May 2016 09:58:55 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '459'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":1,"max_score":11.644465,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187538639765","_score":11.644465,"_source":{"id":"03042E4ADEC-187538639765","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T14:03:59.765Z","vcuNumber":304}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:20 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449843128000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:55 GMT
+      - Fri, 06 May 2016 09:58:55 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":2,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:21 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449843128000}}}]}}}},"size":2,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:55 GMT
+      - Fri, 06 May 2016 09:58:55 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '455'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":1,"max_score":11.630138,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187538579000","_score":11.630138,"_source":{"id":"03102E4ADEC-187538579000","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T14:02:59Z","vcuNumber":310}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:21 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449842348000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449842228000,"max":1449842348000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:55 GMT
+      - Fri, 06 May 2016 09:58:55 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '859'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":4,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":315,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":94,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":94,"average_value":{"value":48.212765957446805}}]}},"2e64932w":{"doc_count":87,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":87,"average_value":{"value":55.9080459770115}}]}},"2e64934w":{"doc_count":70,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":70,"average_value":{"value":37.51428571428571}}]}},"2e64936w":{"doc_count":64,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":64,"average_value":{"value":57.21875}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:21 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449842228000,"lte":1449842348000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449842228000,"max":1449842348000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:55 GMT
+      - Fri, 06 May 2016 09:58:55 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '844'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":6,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":322,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":77,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":77,"average_value":{"value":19.12987012987013}}]}},"2e64932w":{"doc_count":90,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":90,"average_value":{"value":21.1}}]}},"2e64934w":{"doc_count":80,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":80,"average_value":{"value":23.325}}]}},"2e64936w":{"doc_count":75,"results":{"buckets":[{"key_as_string":"2015-12-11T13:50:00.000Z","key":1449841800000,"doc_count":75,"average_value":{"value":54.74666666666667}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:21 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838945000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:55 GMT
+      - Fri, 06 May 2016 09:58:56 GMT
+      Server:
+      - fp/f6bd83
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":3,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:21 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838945000}}}]}}}},"size":3,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:56 GMT
+      - Fri, 06 May 2016 09:58:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '459'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":1,"max_score":11.644465,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187534439031","_score":11.644465,"_source":{"id":"03042E4ADEC-187534439031","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T12:53:59.031Z","vcuNumber":304}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:21 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838945000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:56 GMT
+      - Fri, 06 May 2016 09:58:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":3,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:22 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838945000}}}]}}}},"size":3,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:56 GMT
+      - Fri, 06 May 2016 09:58:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '788'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.630138,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187534319375","_score":11.630138,"_source":{"id":"03102E4ADEC-187534319375","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T12:51:59.375Z","vcuNumber":310}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187534919000","_score":11.630138,"_source":{"id":"03102E4ADEC-187534919000","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T13:01:59Z","vcuNumber":310}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:22 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838165000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449838045000,"max":1449838165000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:56 GMT
+      - Fri, 06 May 2016 09:58:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '872'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":351,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":106,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":106,"average_value":{"value":48.679245283018865}}]}},"2e64932w":{"doc_count":90,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":90,"average_value":{"value":66.26666666666667}}]}},"2e64934w":{"doc_count":77,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":77,"average_value":{"value":40.896103896103895}}]}},"2e64936w":{"doc_count":78,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":78,"average_value":{"value":59.94871794871795}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:22 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449838045000,"lte":1449838165000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449838045000,"max":1449838165000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:56 GMT
+      - Fri, 06 May 2016 09:58:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '872'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":338,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":82,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":82,"average_value":{"value":22.085365853658537}}]}},"2e64932w":{"doc_count":91,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":91,"average_value":{"value":23.593406593406595}}]}},"2e64934w":{"doc_count":91,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":91,"average_value":{"value":26.802197802197803}}]}},"2e64936w":{"doc_count":74,"results":{"buckets":[{"key_as_string":"2015-12-11T12:40:00.000Z","key":1449837600000,"doc_count":74,"average_value":{"value":36.689189189189186}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:22 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449834633000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:56 GMT
+      - Fri, 06 May 2016 09:58:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":2,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:22 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449834633000}}}]}}}},"size":2,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:57 GMT
+      - Fri, 06 May 2016 09:58:57 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '459'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":4,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":1,"max_score":11.644465,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187530179796","_score":11.644465,"_source":{"id":"03042E4ADEC-187530179796","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T11:42:59.796Z","vcuNumber":304}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:22 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449834633000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:57 GMT
+      - Fri, 06 May 2016 09:58:57 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":2,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:23 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449834633000}}}]}}}},"size":2,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:57 GMT
+      - Fri, 06 May 2016 09:58:57 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '459'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":1,"max_score":11.630138,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187530063015","_score":11.630138,"_source":{"id":"03102E4ADEC-187530063015","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T11:41:03.015Z","vcuNumber":310}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:23 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449833853000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449833733000,"max":1449833853000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:57 GMT
+      - Fri, 06 May 2016 09:58:57 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '855'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":254,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":83,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":83,"average_value":{"value":63.06024096385542}}]}},"2e64932w":{"doc_count":66,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":66,"average_value":{"value":68.60606060606061}}]}},"2e64934w":{"doc_count":50,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":50,"average_value":{"value":48.0}}]}},"2e64936w":{"doc_count":55,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":55,"average_value":{"value":52.56363636363636}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:23 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449833733000,"lte":1449833853000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449833733000,"max":1449833853000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:57 GMT
+      - Fri, 06 May 2016 09:58:57 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '870'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":265,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":61,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":61,"average_value":{"value":14.688524590163935}}]}},"2e64932w":{"doc_count":81,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":81,"average_value":{"value":25.17283950617284}}]}},"2e64934w":{"doc_count":66,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":66,"average_value":{"value":32.07575757575758}}]}},"2e64936w":{"doc_count":57,"results":{"buckets":[{"key_as_string":"2015-12-11T11:30:00.000Z","key":1449833400000,"doc_count":57,"average_value":{"value":39.771929824561404}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:23 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829680000,"lte":1449830580000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:57 GMT
+      - Fri, 06 May 2016 09:58:57 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:23 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829680000,"lte":1449830580000}}}]}}}},"size":4,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:58 GMT
+      - Fri, 06 May 2016 09:58:58 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '792'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":5,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.644465,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187525979765","_score":11.644465,"_source":{"id":"03042E4ADEC-187525979765","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T10:32:59.765Z","vcuNumber":304}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187526579359","_score":11.644465,"_source":{"id":"03042E4ADEC-187526579359","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T10:42:59.359Z","vcuNumber":304}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:23 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829680000,"lte":1449830580000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:58 GMT
+      - Fri, 06 May 2016 09:58:58 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:24 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829680000,"lte":1449830580000}}}]}}}},"size":4,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:58 GMT
+      - Fri, 06 May 2016 09:58:58 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '788'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.630138,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187526462000","_score":11.630138,"_source":{"id":"03102E4ADEC-187526462000","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T10:41:02Z","vcuNumber":310}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187525862015","_score":11.630138,"_source":{"id":"03102E4ADEC-187525862015","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T10:31:02.015Z","vcuNumber":310}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:24 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829680000,"lte":1449829800000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449829680000,"max":1449829800000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:58 GMT
+      - Fri, 06 May 2016 09:58:58 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '857'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":144,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":50,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":50,"average_value":{"value":43.7}}]}},"2e64932w":{"doc_count":36,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":36,"average_value":{"value":48.833333333333336}}]}},"2e64934w":{"doc_count":27,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":27,"average_value":{"value":38.333333333333336}}]}},"2e64936w":{"doc_count":31,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":31,"average_value":{"value":61.83870967741935}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:24 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449829680000,"lte":1449829800000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449829680000,"max":1449829800000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:58 GMT
+      - Fri, 06 May 2016 09:58:58 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '843'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":146,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":30,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":30,"average_value":{"value":22.2}}]}},"2e64932w":{"doc_count":44,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":44,"average_value":{"value":40.97727272727273}}]}},"2e64934w":{"doc_count":37,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":37,"average_value":{"value":38.972972972972975}}]}},"2e64936w":{"doc_count":35,"results":{"buckets":[{"key_as_string":"2015-12-11T10:20:00.000Z","key":1449829200000,"doc_count":35,"average_value":{"value":49.6}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:24 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825433000,"lte":1449826333000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:58 GMT
+      - Fri, 06 May 2016 09:58:58 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:24 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825433000,"lte":1449826333000}}}]}}}},"size":4,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:59 GMT
+      - Fri, 06 May 2016 09:58:59 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '792'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":4,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.644465,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187521721078","_score":11.644465,"_source":{"id":"03042E4ADEC-187521721078","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T09:22:01.078Z","vcuNumber":304}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187522321062","_score":11.644465,"_source":{"id":"03042E4ADEC-187522321062","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T09:32:01.062Z","vcuNumber":304}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:24 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825433000,"lte":1449826333000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:59 GMT
+      - Fri, 06 May 2016 09:58:59 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:25 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825433000,"lte":1449826333000}}}]}}}},"size":4,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:59 GMT
+      - Fri, 06 May 2016 09:58:59 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '792'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.630138,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187522261015","_score":11.630138,"_source":{"id":"03102E4ADEC-187522261015","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T09:31:01.015Z","vcuNumber":310}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187521661015","_score":11.630138,"_source":{"id":"03102E4ADEC-187521661015","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T09:21:01.015Z","vcuNumber":310}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:25 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825433000,"lte":1449825553000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449825433000,"max":1449825553000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:59 GMT
+      - Fri, 06 May 2016 09:58:59 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '874'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":3,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":376,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":104,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":104,"average_value":{"value":101.76923076923077}}]}},"2e64932w":{"doc_count":97,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":97,"average_value":{"value":120.61855670103093}}]}},"2e64934w":{"doc_count":87,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":87,"average_value":{"value":103.52873563218391}}]}},"2e64936w":{"doc_count":88,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":88,"average_value":{"value":117.92045454545455}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:25 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825433000,"lte":1449825553000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449825433000,"max":1449825553000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:59 GMT
+      - Fri, 06 May 2016 09:58:59 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '872'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":4,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":376,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":91,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":91,"average_value":{"value":84.51648351648352}}]}},"2e64932w":{"doc_count":103,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":103,"average_value":{"value":93.36893203883496}}]}},"2e64934w":{"doc_count":97,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":97,"average_value":{"value":106.94845360824742}}]}},"2e64936w":{"doc_count":85,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":85,"average_value":{"value":106.30588235294118}}]}}}}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:25 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449822156000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:58:59 GMT
+      - Fri, 06 May 2016 09:58:59 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:25 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449822156000}}}]}}}},"size":4,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:59:00 GMT
+      - Fri, 06 May 2016 09:59:00 GMT
+      Server:
+      - fp/f6bd83
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '792'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.644465,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187518119843","_score":11.644465,"_source":{"id":"03042E4ADEC-187518119843","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T08:21:59.843Z","vcuNumber":304}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03042E4ADEC-187517519812","_score":11.644465,"_source":{"id":"03042E4ADEC-187517519812","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":1,"timeStamp":"2015-12-11T08:11:59.812Z","vcuNumber":304}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:25 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449822156000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:59:00 GMT
+      - Fri, 06 May 2016 09:59:00 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '59'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":4,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:26 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e4aDeC)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449822156000}}}]}}}},"size":4,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:59:00 GMT
+      - Fri, 06 May 2016 09:59:00 GMT
+      Server:
+      - fp/f6bd83
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '792'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":2,"max_score":11.630138,"hits":[{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187518059968","_score":11.630138,"_source":{"id":"03102E4ADEC-187518059968","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T08:20:59.968Z","vcuNumber":310}},{"_index":"train_data_2015_12_11","_type":"train_sample","_id":"03102E4ADEC-187517459953","_score":11.630138,"_source":{"id":"03102E4ADEC-187517459953","trainNumber":0,"signalName":"@.MWT.R_T3_1.RCV_RedIO_1.TON_1.RCV_S_ThisCabAct","memoryAddress":"2E4ADEC","bits":1,"value":0,"timeStamp":"2015-12-11T08:10:59.953Z","vcuNumber":310}}]}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:59:26 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_11/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:304)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449821376000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449821256000,"max":1449821376000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:59:00 GMT
+      - Fri, 06 May 2016 09:59:00 GMT
       Server:
       - fp/25c4c
       - fp/f6bd83
@@ -569,16 +1858,17 @@ http_interactions:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":752,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":195,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":195,"average_value":{"value":93.71794871794872}}]}},"2e64932w":{"doc_count":200,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":200,"average_value":{"value":106.585}}]}},"2e64934w":{"doc_count":184,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":184,"average_value":{"value":105.33152173913044}}]}},"2e64936w":{"doc_count":173,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":173,"average_value":{"value":112.21387283236994}}]}}}}}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":329,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":92,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":92,"average_value":{"value":75.20652173913044}}]}},"2e64932w":{"doc_count":86,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":86,"average_value":{"value":89.45348837209302}}]}},"2e64934w":{"doc_count":74,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":74,"average_value":{"value":60.13513513513514}}]}},"2e64936w":{"doc_count":77,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":77,"average_value":{"value":90.36363636363636}}]}}}}}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:18 GMT
+  recorded_at: Fri, 06 May 2016 09:59:26 GMT
 - request:
     method: post
     uri: http://elastic.search//train_data_2015_12_11/_search
     body:
       encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449825432000,"lte":1449825552000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449825432000,"max":1449825552000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2e64930w
+        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w)
+        AND (vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449821376000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449821256000,"max":1449821376000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
     headers: {}
   response:
     status:
@@ -589,10 +1879,10 @@ http_interactions:
       - application/json; charset=UTF-8
       - application/json; charset=UTF-8
       Date:
-      - Mon, 14 Mar 2016 13:53:18 GMT
-      - Mon, 14 Mar 2016 13:53:18 GMT
+      - Fri, 06 May 2016 09:59:00 GMT
+      - Fri, 06 May 2016 09:59:00 GMT
       Server:
-      - fp/25c4c
+      - fp/f6bd83
       - fp/f6bd83
       Www-Authenticate:
       - Basic realm=shield
@@ -607,101 +1897,13 @@ http_interactions:
       - 10.122.137.190
       Content-Length:
       - '345'
-      - '867'
+      - '859'
       Connection:
       - keep-alive
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":753,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":195,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":195,"average_value":{"value":93.87179487179488}}]}},"2e64932w":{"doc_count":200,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":200,"average_value":{"value":106.755}}]}},"2e64934w":{"doc_count":184,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":184,"average_value":{"value":105.31521739130434}}]}},"2e64936w":{"doc_count":174,"results":{"buckets":[{"key_as_string":"2015-12-11T09:10:00.000Z","key":1449825000000,"doc_count":174,"average_value":{"value":112.2816091954023}}]}}}}}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":339,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":80,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":80,"average_value":{"value":49.3625}}]}},"2e64932w":{"doc_count":98,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":98,"average_value":{"value":63.816326530612244}}]}},"2e64934w":{"doc_count":84,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":84,"average_value":{"value":66.52380952380952}}]}},"2e64936w":{"doc_count":77,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":77,"average_value":{"value":68.45454545454545}}]}}}}}}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:18 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449821376000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449821256000,"max":1449821376000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:18 GMT
-      - Mon, 14 Mar 2016 13:53:18 GMT
-      Server:
-      - fp/25c4c
-      - fp/f6bd83
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '875'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":668,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":172,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":172,"average_value":{"value":63.18604651162791}}]}},"2e64932w":{"doc_count":184,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":184,"average_value":{"value":75.79891304347827}}]}},"2e64934w":{"doc_count":158,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":158,"average_value":{"value":63.53164556962025}}]}},"2e64936w":{"doc_count":154,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":154,"average_value":{"value":79.4090909090909}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:18 GMT
-- request:
-    method: post
-    uri: http://elastic.search//train_data_2015_12_11/_search
-    body:
-      encoding: UTF-8
-      string: '{"query":{"filtered":{"query":{"query_string":{"query":"memoryAddress:2e64930w
-        OR memoryAddress:2e64932w OR memoryAddress:2e64934w OR memoryAddress:2e64936w"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449821256000,"lte":1449821376000}}}]}}}},"size":0,"aggregations":{"results":{"filters":{"filters":{"2e64930w":{"term":{"memoryAddress":"2e64930w"}},"2e64932w":{"term":{"memoryAddress":"2e64932w"}},"2e64934w":{"term":{"memoryAddress":"2e64934w"}},"2e64936w":{"term":{"memoryAddress":"2e64936w"}}}},"aggregations":{"results":{"date_histogram":{"field":"timeStamp","interval":"10m","min_doc_count":1,"extended_bounds":{"min":1449821256000,"max":1449821376000}},"aggregations":{"average_value":{"avg":{"field":"value"}}}}}}}}'
-    headers: {}
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      - application/json; charset=UTF-8
-      Date:
-      - Mon, 14 Mar 2016 13:53:18 GMT
-      - Mon, 14 Mar 2016 13:53:18 GMT
-      Server:
-      - fp/25c4c
-      - fp/f6bd83
-      Www-Authenticate:
-      - Basic realm=shield
-      X-Found-Handling-Cluster:
-      - 1c3896668c131013e40bf29fbe4b3148
-      - 1c3896668c131013e40bf29fbe4b3148
-      X-Found-Handling-Instance:
-      - instance-0000000004
-      - instance-0000000004
-      X-Found-Handling-Server:
-      - 10.122.137.190
-      - 10.122.137.190
-      Content-Length:
-      - '345'
-      - '875'
-      Connection:
-      - keep-alive
-      - keep-alive
-    body:
-      encoding: ASCII-8BIT
-      string: '{"took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"failed":0},"hits":{"total":668,"max_score":0.0,"hits":[]},"aggregations":{"results":{"buckets":{"2e64930w":{"doc_count":172,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":172,"average_value":{"value":63.18604651162791}}]}},"2e64932w":{"doc_count":184,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":184,"average_value":{"value":75.79891304347827}}]}},"2e64934w":{"doc_count":158,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":158,"average_value":{"value":63.53164556962025}}]}},"2e64936w":{"doc_count":154,"results":{"buckets":[{"key_as_string":"2015-12-11T08:00:00.000Z","key":1449820800000,"doc_count":154,"average_value":{"value":79.4090909090909}}]}}}}}}'
-    http_version: 
-  recorded_at: Mon, 14 Mar 2016 13:53:18 GMT
+  recorded_at: Fri, 06 May 2016 09:59:26 GMT
 recorded_with: VCR 3.0.0

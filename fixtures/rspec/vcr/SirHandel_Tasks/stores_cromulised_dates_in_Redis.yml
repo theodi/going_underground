@@ -43,4 +43,47 @@ http_interactions:
       string: '{".kibana":{"aliases":{}},"kibana-int":{"aliases":{}},"search":{"aliases":{}},"train_data":{"aliases":{}},"train_data_2":{"aliases":{}},"train_data_2015_12_1":{"aliases":{}},"train_data_2015_12_10":{"aliases":{}},"train_data_2015_12_11":{"aliases":{}},"train_data_2015_12_12":{"aliases":{}},"train_data_2015_12_13":{"aliases":{}},"train_data_2015_12_14":{"aliases":{}},"train_data_2015_12_15":{"aliases":{}},"train_data_2015_12_16":{"aliases":{}},"train_data_2015_12_17":{"aliases":{}},"train_data_2015_12_18":{"aliases":{}},"train_data_2015_12_19":{"aliases":{}},"train_data_2015_12_2":{"aliases":{}},"train_data_2015_12_20":{"aliases":{}},"train_data_2015_12_21":{"aliases":{}},"train_data_2015_12_22":{"aliases":{}},"train_data_2015_12_23":{"aliases":{}},"train_data_2015_12_24":{"aliases":{}},"train_data_2015_12_26":{"aliases":{}},"train_data_2015_12_27":{"aliases":{}},"train_data_2015_12_28":{"aliases":{}},"train_data_2015_12_29":{"aliases":{}},"train_data_2015_12_3":{"aliases":{}},"train_data_2015_12_30":{"aliases":{}},"train_data_2015_12_31":{"aliases":{}},"train_data_2015_12_4":{"aliases":{}},"train_data_2015_12_5":{"aliases":{}},"train_data_2015_12_6":{"aliases":{}},"train_data_2015_12_7":{"aliases":{}},"train_data_2015_12_8":{"aliases":{}},"train_data_2015_12_9":{"aliases":{}},"train_data_2016_1_1":{"aliases":{}},"train_data_2016_1_10":{"aliases":{}},"train_data_2016_1_11":{"aliases":{}},"train_data_2016_1_12":{"aliases":{}},"train_data_2016_1_13":{"aliases":{}},"train_data_2016_1_14":{"aliases":{}},"train_data_2016_1_15":{"aliases":{}},"train_data_2016_1_16":{"aliases":{}},"train_data_2016_1_17":{"aliases":{}},"train_data_2016_1_18":{"aliases":{}},"train_data_2016_1_19":{"aliases":{}},"train_data_2016_1_2":{"aliases":{}},"train_data_2016_1_20":{"aliases":{}},"train_data_2016_1_21":{"aliases":{}},"train_data_2016_1_22":{"aliases":{}},"train_data_2016_1_23":{"aliases":{}},"train_data_2016_1_24":{"aliases":{}},"train_data_2016_1_25":{"aliases":{}},"train_data_2016_1_26":{"aliases":{}},"train_data_2016_1_27":{"aliases":{}},"train_data_2016_1_28":{"aliases":{}},"train_data_2016_1_29":{"aliases":{}},"train_data_2016_1_3":{"aliases":{}},"train_data_2016_1_30":{"aliases":{}},"train_data_2016_1_31":{"aliases":{}},"train_data_2016_1_4":{"aliases":{}},"train_data_2016_1_5":{"aliases":{}},"train_data_2016_1_6":{"aliases":{}},"train_data_2016_1_7":{"aliases":{}},"train_data_2016_1_8":{"aliases":{}},"train_data_2016_1_9":{"aliases":{}},"train_data_2016_2_1":{"aliases":{}},"train_data_2016_2_2":{"aliases":{}},"train_data_2016_2_3":{"aliases":{}},"train_data_2016_2_4":{"aliases":{}},"train_data_2016_2_5":{"aliases":{}}}'
     http_version: 
   recorded_at: Mon, 14 Mar 2016 15:00:18 GMT
+- request:
+    method: get
+    uri: http://elastic.search//_aliases
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:03:33 GMT
+      - Fri, 06 May 2016 09:03:33 GMT
+      Server:
+      - fp/25c4c
+      - fp/f6bd83
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '3031'
+      - '331'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{".kibana":{"aliases":{}},"kibana-int":{"aliases":{}},"search":{"aliases":{}},"train_data":{"aliases":{}},"train_data_2":{"aliases":{}},"train_data_2015_10_1":{"aliases":{}},"train_data_2015_10_2":{"aliases":{}},"train_data_2015_10_3":{"aliases":{}},"train_data_2015_10_4":{"aliases":{}},"train_data_2015_10_5":{"aliases":{}},"train_data_2015_10_6":{"aliases":{}},"train_data_2015_10_7":{"aliases":{}},"train_data_2015_10_8":{"aliases":{}},"train_data_2015_12_1":{"aliases":{}},"train_data_2015_12_10":{"aliases":{}},"train_data_2015_12_11":{"aliases":{}},"train_data_2015_12_12":{"aliases":{}},"train_data_2015_12_13":{"aliases":{}},"train_data_2015_12_14":{"aliases":{}},"train_data_2015_12_15":{"aliases":{}},"train_data_2015_12_16":{"aliases":{}},"train_data_2015_12_17":{"aliases":{}},"train_data_2015_12_18":{"aliases":{}},"train_data_2015_12_19":{"aliases":{}},"train_data_2015_12_2":{"aliases":{}},"train_data_2015_12_20":{"aliases":{}},"train_data_2015_12_21":{"aliases":{}},"train_data_2015_12_22":{"aliases":{}},"train_data_2015_12_23":{"aliases":{}},"train_data_2015_12_24":{"aliases":{}},"train_data_2015_12_26":{"aliases":{}},"train_data_2015_12_27":{"aliases":{}},"train_data_2015_12_28":{"aliases":{}},"train_data_2015_12_29":{"aliases":{}},"train_data_2015_12_3":{"aliases":{}},"train_data_2015_12_30":{"aliases":{}},"train_data_2015_12_31":{"aliases":{}},"train_data_2015_12_4":{"aliases":{}},"train_data_2015_12_5":{"aliases":{}},"train_data_2015_12_6":{"aliases":{}},"train_data_2015_12_7":{"aliases":{}},"train_data_2015_12_8":{"aliases":{}},"train_data_2015_12_9":{"aliases":{}},"train_data_2015_9_29":{"aliases":{}},"train_data_2015_9_30":{"aliases":{}},"train_data_2016_1_1":{"aliases":{}},"train_data_2016_1_10":{"aliases":{}},"train_data_2016_1_11":{"aliases":{}},"train_data_2016_1_12":{"aliases":{}},"train_data_2016_1_13":{"aliases":{}},"train_data_2016_1_14":{"aliases":{}},"train_data_2016_1_15":{"aliases":{}},"train_data_2016_1_16":{"aliases":{}},"train_data_2016_1_17":{"aliases":{}},"train_data_2016_1_18":{"aliases":{}},"train_data_2016_1_19":{"aliases":{}},"train_data_2016_1_2":{"aliases":{}},"train_data_2016_1_20":{"aliases":{}},"train_data_2016_1_21":{"aliases":{}},"train_data_2016_1_22":{"aliases":{}},"train_data_2016_1_23":{"aliases":{}},"train_data_2016_1_24":{"aliases":{}},"train_data_2016_1_25":{"aliases":{}},"train_data_2016_1_26":{"aliases":{}},"train_data_2016_1_27":{"aliases":{}},"train_data_2016_1_28":{"aliases":{}},"train_data_2016_1_29":{"aliases":{}},"train_data_2016_1_3":{"aliases":{}},"train_data_2016_1_30":{"aliases":{}},"train_data_2016_1_31":{"aliases":{}},"train_data_2016_1_4":{"aliases":{}},"train_data_2016_1_5":{"aliases":{}},"train_data_2016_1_6":{"aliases":{}},"train_data_2016_1_7":{"aliases":{}},"train_data_2016_1_8":{"aliases":{}},"train_data_2016_1_9":{"aliases":{}},"train_data_2016_2_1":{"aliases":{}},"train_data_2016_2_2":{"aliases":{}},"train_data_2016_2_3":{"aliases":{}},"train_data_2016_2_4":{"aliases":{}},"train_data_2016_2_5":{"aliases":{}}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:03:59 GMT
 recorded_with: VCR 3.0.0
