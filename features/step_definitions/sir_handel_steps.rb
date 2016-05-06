@@ -45,7 +45,8 @@ Given(/^the signal '(.+)' returns no data$/) do |signal|
     from: anything,
     to: anything,
     interval: anything,
-    memory_addresses: memory_address
+    memory_addresses: memory_address,
+    vcu_number: anything
   }) do
     stub = Blocktrain::Aggregations::AverageAggregation.new
     allow(stub).to receive(:results) { nil }
