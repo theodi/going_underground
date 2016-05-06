@@ -39,8 +39,8 @@ module Blocktrain
     end
 
     def directions(from)
-      direction_304 = Query.new(from: from.iso8601, to: (from + 600).iso8601, memory_addresses: ['2e4aDeC'], vcu_number: 304).results
-      direction_310 = Query.new(from: from.iso8601, to: (from + 600).iso8601, memory_addresses: ['2e4aDeC'], vcu_number: 310).results
+      direction_304 = Query.new(from: from.iso8601, to: (from + 900).iso8601, memory_addresses: ['2e4aDeC'], vcu_number: 304).results
+      direction_310 = Query.new(from: from.iso8601, to: (from + 900).iso8601, memory_addresses: ['2e4aDeC'], vcu_number: 310).results
 
       if direction_304.first['_source']['value'] == 1
         {
