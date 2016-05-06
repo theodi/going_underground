@@ -28,38 +28,46 @@ describe('arrivals', function() {
       data = [
         {
           number: 0,
-          timeStamp: "2015-09-23T08:29:05.443Z"
+          timeStamp: "2016-01-29T10:57:22.668Z"
         },
         {
-          CAR_A: 77.37209302325581,
-          CAR_B: 66.67073170731707,
-          CAR_C: 71.1917808219178,
-          CAR_D: 59.160493827160494
+          front: {
+            CAR_A: 6.763636363636364,
+            CAR_B: 2.0454545454545454,
+            CAR_C: 3,
+            CAR_D: 14.211538461538462
+          },
+          back: {
+            CAR_A: 7.120689655172414,
+            CAR_B: 23.24,
+            CAR_C: 15.391304347826088,
+            CAR_D: 17.264150943396228
+          }
         }
       ]
 
       populateTrain(data, $('#train-0')[0])
 
-      expect($('#car-a-r .num').text()).toEqual('77%');
-      expect($('#car-b-r .num').text()).toEqual('67%');
-      expect($('#car-c-r .num').text()).toEqual('71%');
-      expect($('#car-d-r .num').text()).toEqual('59%');
-      expect($('#car-a-f .num').text()).toEqual('77%');
-      expect($('#car-b-f .num').text()).toEqual('67%');
-      expect($('#car-c-f .num').text()).toEqual('71%');
-      expect($('#car-d-f .num').text()).toEqual('59%');
+      expect($('#car-a-front .num').text()).toEqual('7%');
+      expect($('#car-b-front .num').text()).toEqual('2%');
+      expect($('#car-c-front .num').text()).toEqual('3%');
+      expect($('#car-d-front .num').text()).toEqual('14%');
+      expect($('#car-a-back .num').text()).toEqual('7%');
+      expect($('#car-b-back .num').text()).toEqual('23%');
+      expect($('#car-c-back .num').text()).toEqual('15%');
+      expect($('#car-d-back .num').text()).toEqual('17%');
 
-      expect($('#car-a-r .level')[0].style.height).toEqual("77%")
-      expect($('#car-b-r .level')[0].style.height).toEqual("67%")
-      expect($('#car-c-r .level')[0].style.height).toEqual("71%")
-      expect($('#car-d-r .level')[0].style.height).toEqual("59%")
-      expect($('#car-a-f .level')[0].style.height).toEqual("77%")
-      expect($('#car-b-f .level')[0].style.height).toEqual("67%")
-      expect($('#car-c-f .level')[0].style.height).toEqual("71%")
-      expect($('#car-d-f .level')[0].style.height).toEqual("59%")
+      expect($('#car-a-front .level')[0].style.height).toEqual("7%")
+      expect($('#car-b-front .level')[0].style.height).toEqual("2%")
+      expect($('#car-c-front .level')[0].style.height).toEqual("3%")
+      expect($('#car-d-front .level')[0].style.height).toEqual("14%")
+      expect($('#car-a-back .level')[0].style.height).toEqual("7%")
+      expect($('#car-b-back .level')[0].style.height).toEqual("23%")
+      expect($('#car-c-back .level')[0].style.height).toEqual("15%")
+      expect($('#car-d-back .level')[0].style.height).toEqual("17%")
     })
   })
-  
+
   describe('valueBetween', function() {
     it('returns a value between two bounds', function() {
       expect(valueBetween(99, 0, 100)).toEqual(99)
