@@ -17,8 +17,8 @@ module Blocktrain
       100
     end
 
-    def build_query(addresses)
-      "memoryAddress:#{addresses.first} AND value:#{station_filter}"
+    def build_query
+      "memoryAddress:#{@memory_addresses.first} AND vcuNumber:#{@vcu_numbers.first} AND value:#{station_filter}"
     end
 
     def station_filter

@@ -148,7 +148,9 @@ module SirHandel
       results.each do |r|
         r.first['station'] = get_station(r.first['segment'])
         r.first['direction'] = get_direction(r.first['segment'])
-        r.first['load'] = r.last.values.reduce(:+).to_f / r.last.size
+        front_average =  r.last[:front].values.reduce(:+).to_f / r.last[:front].size
+        back_average = r.last[:back].values.reduce(:+).to_f / r.last[:back].size
+        r.first['load'] = [front_average, back_average].reduce(:+).to_f / 2
       end
 
       # Group by station and direction
@@ -196,7 +198,8 @@ module SirHandel
         from: @from,
         to: @to,
         interval: @interval,
-        memory_addresses: lookups[db_signal(signal)].upcase
+        memory_addresses: lookups[db_signal(signal)].upcase,
+        vcu_number: @vcu
       }
 
       if @interval.nil?

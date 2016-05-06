@@ -21,16 +21,38 @@ module Blocktrain
 
     def crowd_results time, train = nil
       from, to = time - 60, time + 60
+      results = {}
 
-      crowd_query = Aggregations::MultiValueAggregation.new(
-        from: from.iso8601, to: to.iso8601, memory_addresses: CAR_LOADS)
-      crowd_query.results['results']['buckets'].map do |car_mem_addr, v|
-        res = v['results']['buckets'][0]
-        [
-          CAR_NAMES[CAR_LOADS.index(car_mem_addr)],
-          (res ? res['average_value']['value'] : 0)
-        ]
-      end.to_h
+      directions(from).each do |direction, vcu|
+        crowd_query = Aggregations::MultiValueAggregation.new(
+          from: from.iso8601, to: to.iso8601, memory_addresses: CAR_LOADS, vcu_number: vcu)
+        results[direction] = crowd_query.results['results']['buckets'].map do |car_mem_addr, v|
+          res = v['results']['buckets'][0]
+          [
+            CAR_NAMES[CAR_LOADS.index(car_mem_addr)],
+            (res ? res['average_value']['value'] : 0)
+          ]
+        end.to_h
+      end
+
+      results
+    end
+
+    def directions(from)
+      direction_304 = Query.new(from: from.iso8601, to: (from + 900).iso8601, memory_addresses: ['2e4aDeC'], vcu_number: 304).results
+      direction_310 = Query.new(from: from.iso8601, to: (from + 900).iso8601, memory_addresses: ['2e4aDeC'], vcu_number: 310).results
+
+      if direction_304.first['_source']['value'] == 1
+        {
+          front: 304,
+          back: 310
+        }
+      else
+        {
+          front: 310,
+          back: 304
+        }
+      end
     end
   end
 end

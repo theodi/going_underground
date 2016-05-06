@@ -43,4 +43,48 @@ http_interactions:
       string: '{"count":6027,"_shards":{"total":1,"successful":1,"failed":0}}'
     http_version: 
   recorded_at: Mon, 14 Mar 2016 11:40:04 GMT
+- request:
+    method: post
+    uri: http://elastic.search//train_data_2015_12_10/_count
+    body:
+      encoding: UTF-8
+      string: '{"query":{"filtered":{"query":{"query_string":{"query":"(memoryAddress:2E491EEW)
+        AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)"}},"filter":{"bool":{"must":[{"range":{"timeStamp":{"gte":1449741600000,"lte":1449745200000}}}]}}}},"size":0,"sort":{},"from":0}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 May 2016 09:09:56 GMT
+      - Fri, 06 May 2016 09:09:56 GMT
+      Server:
+      - fp/25c4c
+      - fp/25c4c
+      Www-Authenticate:
+      - Basic realm=shield
+      X-Found-Handling-Cluster:
+      - 1c3896668c131013e40bf29fbe4b3148
+      - 1c3896668c131013e40bf29fbe4b3148
+      X-Found-Handling-Instance:
+      - instance-0000000004
+      - instance-0000000004
+      X-Found-Handling-Server:
+      - 10.122.137.190
+      - 10.122.137.190
+      Content-Length:
+      - '345'
+      - '62'
+      Connection:
+      - keep-alive
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":6027,"_shards":{"total":1,"successful":1,"failed":0}}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 09:10:21 GMT
 recorded_with: VCR 3.0.0

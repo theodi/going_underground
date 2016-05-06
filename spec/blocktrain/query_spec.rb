@@ -4,13 +4,13 @@ module Blocktrain
     it 'queries a single signal', :vcr do
       subject = described_class.new(from: '2015-12-10 10:00:00Z', to: '2015-12-10 11:00:00Z', memory_addresses: '2E491EEW')
 
-      expect(subject.address_query).to eq('memoryAddress:2E491EEW')
+      expect(subject.address_query).to eq("(memoryAddress:2E491EEW) AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)")
     end
 
     it 'queries multiple signals', :vcr do
       subject = described_class.new(from: '2015-12-10 10:00:00Z', to: '2015-12-10 11:00:00Z', memory_addresses: ['2E64930W', '2E64932W', '2E64934W', '2E64936W'])
 
-      expect(subject.address_query).to eq('memoryAddress:2E64930W OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W')
+      expect(subject.address_query).to eq('(memoryAddress:2E64930W OR memoryAddress:2E64932W OR memoryAddress:2E64934W OR memoryAddress:2E64936W) AND (vcuNumber:304 OR vcuNumber:306 OR vcuNumber:308 OR vcuNumber:310)')
     end
 
     it 'provides all results by default', :vcr do

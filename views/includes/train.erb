@@ -1,13 +1,13 @@
 <div class='row train' id ='train-<%= num %>'>
 
   <% ('a'..'d').each do |l| %>
-  <div class='carriage-wrapper' id='car-<%= l %>-r'>
+  <div class='carriage-wrapper' id='car-<%= l %>-back'>
     <%= erb :'includes/carriage' %>
   </div>
   <% end %>
 
   <% ('a'..'d').reverse_each do |l| %>
-  <div class='carriage-wrapper' id='car-<%= l %>-f'>
+  <div class='carriage-wrapper' id='car-<%= l %>-front'>
     <%= erb :'includes/carriage' %>
   </div>
   <% end %>

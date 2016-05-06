@@ -4,7 +4,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'fixtures/rspec/vcr'
   c.hook_into :webmock
   if ENV['VCR_RECORD'] == 'yes'
-    c.default_cassette_options = { :record => :once }
+    c.default_cassette_options = { :record => :all }
   else
     c.default_cassette_options = { :record => :none }
   end
