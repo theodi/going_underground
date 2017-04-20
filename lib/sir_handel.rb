@@ -47,6 +47,8 @@ module SirHandel
 
     set :default_interval, '10m'
 
+    set :protection, :except => :frame_options
+
     get '/' do
       respond_to do |wants|
         @title = 'Train Data Demonstrator'
