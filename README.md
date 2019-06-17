@@ -4,7 +4,7 @@
 [![Code Climate](http://img.shields.io/codeclimate/github/TheODI-UD2D/sir_handel.svg?style=flat-square)](https://codeclimate.com/github/TheODI-UD2D/sir_handel)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://TheODI-UD2D.mit-license.org)
 
-# Sir Handel
+# Going Underground
 
 A visualisation platform for London Underground train signal data.
 
